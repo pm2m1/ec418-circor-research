@@ -91,3 +91,21 @@ submission 3 Nov.
      frozen v1 features; all nine sets run under the new tag `e2` (RF + SMO, frozen folds, `scripts/06`).
   6. The decision-rule Δ is the AUROC of repeat-averaged patient scores (as `scripts/07` did for v1); the
      mean-of-repeats Δ is reported alongside and labelled.
+  Checked against `configs/protocol_v2.json` (unchanged, sha256 = `configs/protocol_v2_lock.sha256`): no
+  constant, null definition, representation or decision rule differs. Item 3 interprets "from the same seeded
+  RNG" as "a generator seeded identically (crc32(rec_id))", not as continuing the `perm` generator's stream.
+
+* **D1 (2026-10-27, data version; written and committed before any Phase-2 run on new data).**
+  Reason: E0 (`docs/PROVENANCE_PHYSIONET.md`) verified the official PhysioNet CirCor **v1.0.3** download
+  (10,434/10,434 files match physionet.org's `SHA256SUMS.txt`; files fetched from PhysioNet's AWS Open Data
+  mirror) and found header differences from the Phase-1 copy (Challenge-2022 redistribution). Decision: **all
+  Phase-2 runs use v1.0.3 exactly as downloaded** (the download folder is never edited). Differences from the
+  Phase-1 copy:
+  (a) `50782.txt` now lists `50782_MV_1.tsv` (bytes identical to the copy's misnamed `50782_MV.tsv`), so
+      recording 50782_MV_1 has its expert segmentation; this changes the aligned features of 1/874
+      binary-task patients (50782, Absent). Whole-signal sets, B0, B1, labels and folds are unaffected.
+  (b) 73 `#Age` categories differ; age is not used by any feature, model or analysis.
+  (c) `#Outcome` is now present but is **not** added to Phase 2; any outcome analysis needs its own later
+      amendment.
+  The like-for-like Phase-1 reproduction on the Mac (`docs/REPRO_MAC.md`) uses a separate gitignored view
+  (v1.0.3 symlinks + the Phase-1 copy's `50782.txt`) and is not a Phase-2 run.
