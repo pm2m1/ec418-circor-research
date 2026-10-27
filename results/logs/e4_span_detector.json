@@ -1,0 +1,34 @@
+{
+  "primary_repeat": 0,
+  "window_auroc": 0.7697901299390806,
+  "accuracy": 0.7093429203868495,
+  "expert_annotated_frac": 0.5493292528932004,
+  "predicted_annotated_frac": 0.5487201580675353,
+  "by_repeat": [
+    {
+      "repeat": 0,
+      "window_auroc": 0.7697901299390806,
+      "accuracy": 0.7093429203868495
+    },
+    {
+      "repeat": 1,
+      "window_auroc": 0.7695874464643262,
+      "accuracy": 0.7096103278712879
+    },
+    {
+      "repeat": 2,
+      "window_auroc": 0.7701471690436147,
+      "accuracy": 0.7100560070120184
+    },
+    {
+      "repeat": 3,
+      "window_auroc": 0.7694521015757998,
+      "accuracy": 0.7094320562149956
+    },
+    {
+      "repeat": 4,
+      "window_auroc": 0.7698858272915459,
+      "accuracy": 0.7098777353557262
+    }
+  ]
+}

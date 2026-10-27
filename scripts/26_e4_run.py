@@ -55,7 +55,7 @@ def cache_one(args):
     nw = SP.n_windows(n_cols, raw.size)
     expert = column_labels(load_segmentation(tsv), n_cols, HOP, FS2)
     np.savez(f"{WCACHE}/{rec_id}.npz", X=SP.signal_window_features(raw, x2, n_cols),
-             y=SP.window_targets(expert, nw), n_cols=n_cols)
+             y=SP.window_targets(expert, nw), n_cols=n_cols, n_samples=x2.size)
     return rec_id
 
 
@@ -89,7 +89,7 @@ def fold_job(rk):
         z = np.load(f"{WCACHE}/{x.rec_id}.npz")
         n_cols = int(z["n_cols"])
         try:
-            seg = H.states_to_segments(H.decode(m, F, ac)[0], n_cols * HOP / FS2)
+            seg = H.states_to_segments(H.decode(m, F, ac)[0], int(z["n_samples"]) / FS2)   # exact duration, as E1b
         except Exception:
             seg = np.zeros((0, 3))
         if assign[x.patient_id] == "outer":
