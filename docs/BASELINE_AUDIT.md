@@ -35,6 +35,11 @@ entropy-CV feature for 100 random recordings. **Re-aligned rows match the shippe
 relative error (100/100); the demo's positional pairing is off by a median 31 %.**
 `data/processed/rec_features_B1.csv` holds the corrected, per-recording B1 features (3007 rows).
 
+**Public-claim status:** verified inside this repository only. Before describing this as an error in
+the published work (report, slides, any submission), (1) re-run the check on the official PhysioNet copy,
+(2) send the authors the evidence and give them time to reply, and (3) phrase it as "the released feature
+files appear to be misaligned", not as a confirmed error in the paper.
+
 ## 3. Reproduction (B1-A, original recording-level protocol)
 All with the paper's SVM (RBF, C = 100, γ = 0.1). Recording-level metrics, Present = positive.
 

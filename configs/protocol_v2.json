@@ -1,0 +1,51 @@
+{
+  "protocol_version": "2.0-locked-2026-10-27",
+  "supersedes": "nothing; extends protocol 1.0 (configs/protocol.json), whose results are frozen in results/v1_freeze/MANIFEST_v1.sha256",
+  "title": "Physiology-Aligned Multiresolution Analysis for Patient-Independent Heart-Murmur Detection: A Comparative Study of Wavelet and Fourier Features",
+  "research_question": "Does cardiac-cycle timing alignment improve patient-independent murmur detection, and does the wavelet-vs-Fourier choice matter once alignment is controlled?",
+  "unchanged_from_v1": ["dataset and label rules", "binary Present vs Absent, Unknown excluded", "subject grouping",
+                         "frozen folds configs/folds_patient_level.csv sha256 c4aa74c76946253bd3a5daa54d34ddfaa631d20405427993836ab247314e2339",
+                         "preprocessing (2 kHz, 25-900 Hz, z-score)", "WPD depth 4, db4 primary, order=freq, periodization",
+                         "STFT Hann 64 / hop 16", "aligned feature definitions (34/recording)", "patient aggregation median+max",
+                         "thresholds from inner folds only", "metrics and subject bootstrap (2000)"],
+  "representations": {
+    "stft": "matched STFT band energies",
+    "wpd": "WPD db4 raw squared coefficients (v1 primary)",
+    "wpds": "WPD db4 energies smoothed along time with the STFT's 64-sample Hann (4-tap over level-4 columns) -- now pre-registered"
+  },
+  "classifiers": {"RF": "primary, as v1", "SMO": "secondary, as v1"},
+  "E2_isolate_alignment": {
+    "conditions": {
+      "true": "expert .tsv labels (as v1)",
+      "perm": "PRIMARY NULL: column labels randomly permuted within each recording (np.random.default_rng(crc32(rec_id)).permutation); same counts of S1/systole/S2/diastole/unannotated, timing destroyed; same 34-feature definitions",
+      "shift": "SECONDARY NULL: label sequence circularly shifted by u*T columns, u ~ U(0.2,0.8) from the same seeded RNG, T = median S1-to-S1 interval of that recording (0.6 s if <2 S1 events); caveat: shifts near 0.5T can partly invert systole/diastole"
+    },
+    "hypotheses": {
+      "H5a": "RF AUROC(true) - AUROC(perm) >= 0.03 for wpd",
+      "H5b": "same for stft",
+      "H5c": "same for wpds",
+      "H5d_secondary": "RF AUROC(true) - AUROC(shift) >= 0.03 for each representation"
+    },
+    "rule": "SUPPORTED iff delta >= 0.03 AND subject-bootstrap 95% CI lower bound > 0 AND delta > 0 in >= 18/25 outer folds; otherwise NOT SUPPORTED",
+    "interpretation_if_not_supported": "the v1 aligned-pipeline gain is attributed to feature definitions/normalisation, not to physiological timing"
+  },
+  "E1_automatic_segmentation": {
+    "segmenter": "unsupervised, uses no murmur labels and no expert .tsv: (1) homomorphic envelope of the 25-400 Hz band (|Hilbert| -> log -> 8 Hz low-pass -> exp, 50 Hz rate); (2) heart period T = envelope autocorrelation peak in [0.3, 1.5] s; (3) heart-sound peaks = envelope local maxima with min spacing 0.2*T and height >= 25th percentile of envelope; (4) consecutive peak intervals paired, shorter interval of each pair = systole (S1 -> S2), longer = diastole (S2 -> S1); (5) S1/S2 extents = contiguous region around the peak where envelope >= 50% of the peak value, clipped to [40, 160] ms; (6) everything else labelled 0 only if no valid pairing exists",
+    "parameter_freeze": "all constants above are fixed now; no tuning on classification results. Any change must be justified by segmentation metrics only (no murmur labels) and logged as an amendment before rerunning classification",
+    "segmentation_evaluation": "against expert .tsv inside expert-annotated spans: S1 and S2 centre detection F1 with +/-50 ms tolerance; frame-wise 4-state accuracy",
+    "hypotheses": {
+      "H6a": "RF AUROC(auto, wpd) >= AUROC(true, wpd) - 0.03",
+      "H6b": "RF AUROC(auto, wpd) > AUROC(B1) with subject-bootstrap CI lower bound > 0",
+      "H6c": "same as H6a/H6b for stft and wpds (reported, same rule)"
+    },
+    "flag": "if S1/S2 F1 < 0.70 the downstream result is still reported, flagged as 'low-quality segmentation'"
+  },
+  "E3_soft_murmurs": {
+    "status": "optional, run only if E1 and E2 are complete by 2026-10-30",
+    "feature": "per recording: log(mean systolic energy in 62.5-187.5 Hz / mean S1 energy in 62.5-187.5 Hz) using wpd and stft maps, added to the aligned set",
+    "hypothesis": "H7: sensitivity on grade I/VI Present patients at the spec80 operating point increases by >= 0.05 with overall RF AUROC not below the v1 value minus 0.01"
+  },
+  "equivalence_report": "for wpds vs stft (aligned, true labels): report delta and 95% CI; say 'no meaningful difference' only if the whole CI lies within +/-0.03",
+  "forbidden": "as v1; additionally: no re-selection of segmenter constants, null definitions, or representations after seeing E1/E2 classification results",
+  "schedule": {"E0_provenance_on_mac": "user, any time before 2026-10-30", "E2": "2026-10-27/28", "E1": "2026-10-28/29", "E3": "2026-10-30 if time", "results_freeze": "2026-10-31", "submission": "2026-11-03"}
+}

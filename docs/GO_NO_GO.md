@@ -32,15 +32,18 @@ removed, the outcome study is deferred, and the baseline was reproduced from the
    and specificity appear swapped (true murmur sensitivity ≈ 0.54); fixing the split changes AUC by only
    +0.015.
 2. **Patient-level, leakage-controlled WEKA comparison** of six feature families on 874 patients:
-   cycle-aligned band features beat the corrected 2025 baseline (+0.072 AUROC, CI +0.027…+0.122, 24/25 folds).
-3. **Controlled 2×2 ablation answering "do wavelets matter?":** cycle alignment adds +0.06–0.11 AUROC;
-   wavelet packets add nothing over matched Fourier bands (and lose when energy estimates are not smoothed).
+   the cycle-aligned band-feature pipeline beats the corrected 2025 baseline (+0.072 AUROC, CI +0.027…+0.122, 24/25 folds).
+3. **2×2 ablation on "do wavelets matter?":** the aligned pipeline adds +0.06–0.11 AUROC over the
+   whole-signal pipeline (feature definitions differ, so this is not yet attributable to alignment alone);
+   wavelet packets add nothing over Fourier bands with matched nominal bands (and lose when packet energies
+   are not smoothed).
 4. **Failure analysis:** soft (grade I/VI) and low-pitch murmurs are detected only ~35–54 % of the time at
    80 % specificity.
 
 That still satisfies the brief: wavelet analysis (DWT/WPD, with correct band maths), WEKA classifiers,
 a 2024–26 journal comparison with a demonstrated, properly evaluated improvement, and the full metric set.
-The honest headline is "**alignment, not the wavelet, is what helps**" — present it that way. Examiners
+The honest headline is "**the cycle-aligned pipeline helps; the wavelet does not, by itself**" — present it
+that way, and treat "timing alignment is the cause" as the hypothesis tested in Phase 2. Examiners
 will respect a correctly designed ablation more than an unsupported "our wavelet method is better".
 
 ## Strongest argument against continuing

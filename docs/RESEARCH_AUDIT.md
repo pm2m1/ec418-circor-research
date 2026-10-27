@@ -64,7 +64,7 @@ abstract level unless noted.
 | Signal-quality estimation for murmur screening | McDonald et al. 2024 estimates recording quality inside the model [abs]; De Simone et al. 2025 preprint spectral gate + abstention | **Already established** (wavelet SQI = minor variant) |
 | Patient-level / leakage-safe CirCor evaluation | Elola 2023 JBHI (patient-level CV + hidden test) [abs]; Ameen et al. 2026 Sci Rep (patient-level splits on PN2022) [abs] | **Already established** |
 | Automatic segmentation on CirCor (to remove oracle) | Arjoune 2024 IEEE Access; Tatulli 2025 CBM; Grooby 2024 EMBC; Huo 2026 BPEX [abs, PubMed] | **Established — usable as tooling** |
-| Controlled 2×2: WPD vs *matched* STFT × whole vs cycle-aligned, same bands/grid/dims, patient-grouped, WEKA | none found doing this exact controlled comparison | **Incremental improvement / distinctive engineering ablation** (not a new algorithm) |
+| 2×2: WPD vs STFT (matched nominal bands/grid/dims; not matched effective time resolution) × whole vs cycle-aligned pipelines (different feature definitions), patient-grouped, WEKA | none found doing this exact controlled comparison | **Incremental improvement / distinctive engineering ablation** (not a new algorithm) |
 | Reproducibility audit of the 2025 Sci Rep wavelet baseline (feature misalignment, metric labelling, leakage size) | none found | **Distinctive (small) reproducibility contribution** — must be handled respectfully; contact authors before publishing claims |
 
 **Honest scope:** this project's defensible contribution is *a corrected, patient-independent, fully

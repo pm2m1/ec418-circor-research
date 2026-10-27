@@ -2,7 +2,12 @@
 
 NIT Warangal · EC418 Biomedical Instrumentation & Signal Processing · Assignment-2 validation phase.
 
-**Status:** feasibility/validation pilot. Read `docs/GO_NO_GO.md` first, then `docs/PILOT_RESULTS.md`.
+**Status:** Phase 1 (validation pilot) frozen at tag `v1.0-pilot` + wording errata (`docs/ERRATA_v1.md`).
+Phase 2 pre-registered in `docs/PROTOCOL_V2_LOCKED.md` (tag `protocol-v2-lock`). Read `docs/GO_NO_GO.md`,
+then `docs/PILOT_RESULTS.md`.
+
+Working title: *Physiology-Aligned Multiresolution Analysis for Patient-Independent Heart-Murmur Detection:
+A Comparative Study of Wavelet and Fourier Features*.
 Every number in `docs/` comes from a script in this repo run on the real CirCor files.
 
 ## What is here
