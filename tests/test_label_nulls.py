@@ -88,3 +88,16 @@ def test_no_valid_labels_gives_no_aligned_features(tmp_path, content):
         assert out.shape == lab.shape and not out.any()
         assert aligned_features(E, out, "wpdA") is None
     assert median_s1_period_cols(lab, CPS) == pytest.approx(0.6 * CPS)
+
+
+def test_perm_within_annotated_keeps_spans_and_counts():
+    from ec418.features.label_nulls import perm_within_annotated
+    lab = _cycles(lead=137, tail=223)
+    lab[600:800] = 0                                                    # an unannotated gap inside the recording
+    out = perm_within_annotated(lab, "50001_MV")
+    assert np.array_equal(out == 0, lab == 0)                           # label-0 columns unchanged
+    assert np.array_equal(np.bincount(out, minlength=5), np.bincount(lab, minlength=5))
+    assert np.array_equal(out, perm_within_annotated(lab.copy(), "50001_MV"))
+    assert (out[lab > 0] != lab[lab > 0]).mean() > 0.3
+    assert s1_onsets(out).size > 5 * s1_onsets(lab).size               # timing destroyed inside the spans
+    assert not perm_within_annotated(np.zeros(50, int), "x").any()

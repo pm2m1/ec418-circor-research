@@ -1,0 +1,85 @@
+D1_stft r0 f0: 68 patient features, patients with all-missing: 25
+D1_stft r0 f1: 68 patient features, patients with all-missing: 26
+D1_stft r0 f2: 68 patient features, patients with all-missing: 26
+D1_stft r0 f3: 68 patient features, patients with all-missing: 22
+D1_stft r0 f4: 68 patient features, patients with all-missing: 24
+D1_stft r1 f0: 68 patient features, patients with all-missing: 23
+D1_stft r1 f1: 68 patient features, patients with all-missing: 22
+D1_stft r1 f2: 68 patient features, patients with all-missing: 24
+D1_stft r1 f3: 68 patient features, patients with all-missing: 23
+D1_stft r1 f4: 68 patient features, patients with all-missing: 24
+D1_stft r2 f0: 68 patient features, patients with all-missing: 24
+D1_stft r2 f1: 68 patient features, patients with all-missing: 23
+D1_stft r2 f2: 68 patient features, patients with all-missing: 21
+D1_stft r2 f3: 68 patient features, patients with all-missing: 26
+D1_stft r2 f4: 68 patient features, patients with all-missing: 25
+D1_stft r3 f0: 68 patient features, patients with all-missing: 24
+D1_stft r3 f1: 68 patient features, patients with all-missing: 21
+D1_stft r3 f2: 68 patient features, patients with all-missing: 27
+D1_stft r3 f3: 68 patient features, patients with all-missing: 27
+D1_stft r3 f4: 68 patient features, patients with all-missing: 24
+D1_stft r4 f0: 68 patient features, patients with all-missing: 25
+D1_stft r4 f1: 68 patient features, patients with all-missing: 24
+D1_stft r4 f2: 68 patient features, patients with all-missing: 21
+D1_stft r4 f3: 68 patient features, patients with all-missing: 24
+D1_stft r4 f4: 68 patient features, patients with all-missing: 26
+D1_wpd r0 f0: 68 patient features, patients with all-missing: 25
+D1_wpd r0 f1: 68 patient features, patients with all-missing: 26
+D1_wpd r0 f2: 68 patient features, patients with all-missing: 26
+D1_wpd r0 f3: 68 patient features, patients with all-missing: 22
+D1_wpd r0 f4: 68 patient features, patients with all-missing: 24
+D1_wpd r1 f0: 68 patient features, patients with all-missing: 23
+D1_wpd r1 f1: 68 patient features, patients with all-missing: 22
+D1_wpd r1 f2: 68 patient features, patients with all-missing: 24
+D1_wpd r1 f3: 68 patient features, patients with all-missing: 23
+D1_wpd r1 f4: 68 patient features, patients with all-missing: 24
+D1_wpd r2 f0: 68 patient features, patients with all-missing: 24
+D1_wpd r2 f1: 68 patient features, patients with all-missing: 23
+D1_wpd r2 f2: 68 patient features, patients with all-missing: 21
+D1_wpd r2 f3: 68 patient features, patients with all-missing: 26
+D1_wpd r2 f4: 68 patient features, patients with all-missing: 25
+D1_wpd r3 f0: 68 patient features, patients with all-missing: 24
+D1_wpd r3 f1: 68 patient features, patients with all-missing: 21
+D1_wpd r3 f2: 68 patient features, patients with all-missing: 27
+D1_wpd r3 f3: 68 patient features, patients with all-missing: 27
+D1_wpd r3 f4: 68 patient features, patients with all-missing: 24
+D1_wpd r4 f0: 68 patient features, patients with all-missing: 25
+D1_wpd r4 f1: 68 patient features, patients with all-missing: 24
+D1_wpd r4 f2: 68 patient features, patients with all-missing: 21
+D1_wpd r4 f3: 68 patient features, patients with all-missing: 24
+D1_wpd r4 f4: 68 patient features, patients with all-missing: 26
+D1_wpds r0 f0: 68 patient features, patients with all-missing: 25
+D1_wpds r0 f1: 68 patient features, patients with all-missing: 26
+D1_wpds r0 f2: 68 patient features, patients with all-missing: 26
+D1_wpds r0 f3: 68 patient features, patients with all-missing: 22
+D1_wpds r0 f4: 68 patient features, patients with all-missing: 24
+D1_wpds r1 f0: 68 patient features, patients with all-missing: 23
+D1_wpds r1 f1: 68 patient features, patients with all-missing: 22
+D1_wpds r1 f2: 68 patient features, patients with all-missing: 24
+D1_wpds r1 f3: 68 patient features, patients with all-missing: 23
+D1_wpds r1 f4: 68 patient features, patients with all-missing: 24
+D1_wpds r2 f0: 68 patient features, patients with all-missing: 24
+D1_wpds r2 f1: 68 patient features, patients with all-missing: 23
+D1_wpds r2 f2: 68 patient features, patients with all-missing: 21
+D1_wpds r2 f3: 68 patient features, patients with all-missing: 26
+D1_wpds r2 f4: 68 patient features, patients with all-missing: 25
+D1_wpds r3 f0: 68 patient features, patients with all-missing: 24
+D1_wpds r3 f1: 68 patient features, patients with all-missing: 21
+D1_wpds r3 f2: 68 patient features, patients with all-missing: 27
+D1_wpds r3 f3: 68 patient features, patients with all-missing: 27
+D1_wpds r3 f4: 68 patient features, patients with all-missing: 24
+D1_wpds r4 f0: 68 patient features, patients with all-missing: 25
+D1_wpds r4 f1: 68 patient features, patients with all-missing: 24
+D1_wpds r4 f2: 68 patient features, patients with all-missing: 21
+D1_wpds r4 f3: 68 patient features, patients with all-missing: 24
+D1_wpds r4 f4: 68 patient features, patients with all-missing: 26
+D2_stft: 68 patient features, patients with all-missing: 0
+D2_wpd: 68 patient features, patients with all-missing: 0
+D2_wpds: 68 patient features, patients with all-missing: 0
+D3_stft: 68 patient features, patients with all-missing: 0
+D3_wpd: 68 patient features, patients with all-missing: 0
+D3_wpds: 68 patient features, patients with all-missing: 0
+W_wpd_db4_smooth: 68 patient features, patients with all-missing: 0
+jobs to run: 2000, already complete (resumed): 0
+WEKA: 2000 jobs in 80s
+saved (87400, 10)

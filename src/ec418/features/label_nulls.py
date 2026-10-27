@@ -44,6 +44,15 @@ def perm_labels(labels: np.ndarray, rec_id: str) -> np.ndarray:
     return np.random.default_rng(rec_seed(rec_id)).permutation(labels)
 
 
+def perm_within_annotated(labels: np.ndarray, rec_id: str) -> np.ndarray:
+    """Diagnostic D2: permute labels only among the annotated (label > 0) columns, seed = crc32(rec_id); label-0
+    columns stay where they are, so the expert's span selection is held fixed and only timing is destroyed."""
+    out = labels.copy()
+    idx = np.flatnonzero(labels > 0)
+    out[idx] = np.random.default_rng(rec_seed(rec_id)).permutation(labels[idx])
+    return out
+
+
 def shift_labels(labels: np.ndarray, rec_id: str, cols_per_s: float) -> tuple[np.ndarray, int]:
     """Secondary null: circular shift by round(u*T) columns. Returns (labels, shift_in_columns)."""
     u = np.random.default_rng(rec_seed(rec_id)).uniform(*SHIFT_U_RANGE)

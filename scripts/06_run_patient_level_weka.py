@@ -41,6 +41,10 @@ for rep in ["stft", "wpd", "wpds"]:          # Phase-2 E2 (scripts/15_e2_extract
     SETFILE[f"E1_{rep}_auto"] = f"e1/rec_features_E1_{rep}_auto.csv"   # Phase-2 E1 (scripts/19)
     # Phase-2 E1b (scripts/21): fold-specific features, {r}/{k} = repeat / outer fold, path relative to the repo
     SETFILE[f"E1b_{rep}_auto"] = "data/interim/e1b/features/r{r}_f{k}/rec_features_E1b_" + rep + "_auto.csv"
+    # diagnostics D1-D3 (scripts/24; diagnostics only, use the expert annotation at test time)
+    SETFILE[f"D1_{rep}"] = "data/interim/diag/features/r{r}_f{k}/rec_features_D1_" + rep + ".csv"
+    SETFILE[f"D2_{rep}"] = f"diag/rec_features_D2_{rep}.csv"
+    SETFILE[f"D3_{rep}"] = f"diag/rec_features_D3_{rep}.csv"
 B1_USED = ["b1_entropy_cv", "b1_slope", "b1_Hurst_spectral_mode", "b1_LeftSlope", "b1_RightSlope",
            "b1_LeftTangent", "b1_LeftTangentPoint", "b1_RightTangentPoint"]
 
