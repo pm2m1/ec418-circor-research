@@ -70,3 +70,21 @@ def test_perm_destroys_runs():
 def test_unknown_condition():
     with pytest.raises(ValueError):
         null_labels(_cycles(), "oracle", "x", CPS)
+
+
+@pytest.mark.parametrize("content", ["", "0\t0\t28"])   # empty .tsv; v1.0.3's degenerate 50782_MV_1.tsv
+def test_no_valid_labels_gives_no_aligned_features(tmp_path, content):
+    from ec418.data.circor import load_segmentation
+    from ec418.features.extract import aligned_features
+    from ec418.wavelets.bands import column_labels
+    p = tmp_path / "rec.tsv"
+    p.write_text(content)
+    n_cols = 3562                                          # 50782_MV_1: 28.5 s at 125 columns/s
+    lab = column_labels(load_segmentation(str(p)), n_cols, 16, 2000)
+    assert not lab.any()
+    E = np.random.default_rng(0).random((16, n_cols))
+    for cond in ["true", "perm", "shift"]:
+        out = null_labels(lab, cond, "50782_MV_1", CPS)
+        assert out.shape == lab.shape and not out.any()
+        assert aligned_features(E, out, "wpdA") is None
+    assert median_s1_period_cols(lab, CPS) == pytest.approx(0.6 * CPS)

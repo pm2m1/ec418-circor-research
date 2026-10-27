@@ -1,5 +1,10 @@
 """Dataset audit on the real CirCor files: counts, labels, linkage, audio properties,
-segmentation coverage. Writes results/tables/*.csv and results/logs/dataset_audit.json."""
+segmentation coverage. Writes results/tables/*.csv and results/logs/dataset_audit.json.
+
+usage: python scripts/01_dataset_audit.py [DATA_DIR] [TAG]
+  TAG (e.g. v103) writes results/tables/TAG_*.csv and results/logs/dataset_audit_TAG.json instead, so an audit
+  of other data never overwrites the frozen Phase-1 tables. Segmentation rows whose label is not in 0-4 or whose
+  end <= start are skipped and listed (file, row, values) in TAG_invalid_segment_rows.csv and the json."""
 import json
 import os
 import sys
@@ -12,7 +17,10 @@ import soundfile as sf
 from ec418.data.circor import linkage_report, load_patients, load_segmentation, patient_table, recording_table
 
 DATA = sys.argv[1] if len(sys.argv) > 1 else "data/raw/circor_training_data"
+TAG = sys.argv[2] if len(sys.argv) > 2 else ""
 OUT_T, OUT_L = "results/tables", "results/logs"
+PFX = f"{TAG}_" if TAG else ""
+JSON_OUT = f"{OUT_L}/dataset_audit_{TAG}.json" if TAG else f"{OUT_L}/dataset_audit.json"
 
 pats = load_patients(DATA)
 pt = patient_table(pats)
@@ -25,11 +33,17 @@ csv_lab = dict(zip(csv["Patient ID"], csv["Murmur"]))
 csv_mismatch = [p for p in pt.patient_id if csv_lab.get(p) != pats[p].murmur]
 
 # audio properties of every recording
-audio = []
+audio, invalid = [], []
 for r in rt.itertuples():
     info = sf.info(r.wav)
     x, fs = sf.read(r.wav, dtype="int16")
     seg = load_segmentation(r.tsv)
+    if seg.size:
+        ok = np.isin(seg[:, 2], np.arange(5)) & (seg[:, 1] > seg[:, 0])
+        for i in np.flatnonzero(~ok):
+            invalid.append(dict(file=os.path.basename(r.tsv), row=int(i) + 1, start_s=float(seg[i, 0]),
+                                end_s=float(seg[i, 1]), label=float(seg[i, 2])))
+        seg = seg[ok]
     dur = info.frames / info.samplerate
     lab_dur = {k: 0.0 for k in range(5)}
     for s, e, l in seg:
@@ -42,8 +56,9 @@ for r in rt.itertuples():
                       sys_s=lab_dur[2], dia_s=lab_dur[4]))
 au = pd.DataFrame(audio)
 rt = rt.merge(au, on="rec_id")
-rt.assign(has_tsv=rt.tsv.apply(lambda p: isinstance(p, str))).drop(columns=["wav", "tsv"]).to_csv(f"{OUT_T}/recordings_audit.csv", index=False)
-pt.to_csv(f"{OUT_T}/patients_audit.csv", index=False)
+rt.assign(has_tsv=rt.tsv.apply(lambda p: isinstance(p, str))).drop(columns=["wav", "tsv"]).to_csv(f"{OUT_T}/{PFX}recordings_audit.csv", index=False)
+pt.to_csv(f"{OUT_T}/{PFX}patients_audit.csv", index=False)
+pd.DataFrame(invalid, columns=["file", "row", "start_s", "end_s", "label"]).to_csv(f"{OUT_T}/{PFX}invalid_segment_rows.csv", index=False)
 
 summary = dict(
     data_dir=DATA,
@@ -75,6 +90,7 @@ summary = dict(
     present_recordings_at_murmur_location=int(rt[(rt.murmur == "Present")].murmur_at_location.sum()),
     subjects_binary_task=int(pt[pt.murmur != "Unknown"].subject_id.nunique()),
     patients_binary_task=int((pt.murmur != "Unknown").sum()),
+    invalid_segment_rows_skipped=invalid,
 )
-json.dump(summary, open(f"{OUT_L}/dataset_audit.json", "w"), indent=2, default=str)
+json.dump(summary, open(JSON_OUT, "w"), indent=2, default=str)
 print(json.dumps(summary, indent=2, default=str))

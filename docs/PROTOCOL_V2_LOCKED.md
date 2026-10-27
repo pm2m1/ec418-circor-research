@@ -109,3 +109,13 @@ submission 3 Nov.
       amendment.
   The like-for-like Phase-1 reproduction on the Mac (`docs/REPRO_MAC.md`) uses a separate gitignored view
   (v1.0.3 symlinks + the Phase-1 copy's `50782.txt`) and is not a Phase-2 run.
+
+* **D2 (2026-10-27, correction of D1(a); D1 is left as written; committed before any Phase-2 run).**
+  Reason: running the v1.0.3 audit showed that v1.0.3's `50782_MV_1.tsv` is a degenerate 6-byte file
+  (`0\t0\t28`: zero length, invalid label 28), so it adds no annotated columns. 50782_MV_1 has **no aligned
+  features on either data version**, and Phase-2 aligned features are identical to Phase 1 for all 874
+  binary-task patients (verified: `seg_coverage` 0/0/0, `A_wpd`/`A_stft` None on v1.0.3). The statement in
+  D1(a) that the aligned features of 1/874 patients change is therefore wrong. `scripts/01_dataset_audit.py`
+  now skips segmentation rows with a label outside 0–4 or end ≤ start and lists them (v1.0.3: 16 rows — this
+  one plus 15 zero-length label-0 rows, which add 0 s to every duration); its v1.0.3 output goes to
+  `results/tables/v103_*.csv` and `results/logs/dataset_audit_v103.json`. No feature or model code changed.

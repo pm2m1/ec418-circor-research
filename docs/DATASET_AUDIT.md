@@ -3,6 +3,17 @@
 All numbers below were computed by `scripts/01_dataset_audit.py` on the actual files
 (`results/logs/dataset_audit.json`, `results/tables/patients_audit.csv`, `recordings_audit.csv`).
 
+> **Note (2026-10-27, Mac E0 — see `docs/PROVENANCE_PHYSIONET.md` and amendments D1/D2 in
+> `docs/PROTOCOL_V2_LOCKED.md`).** This audit was run on the Phase-1 copy (Challenge-2022 redistribution), not on
+> PhysioNet CirCor v1.0.3. Two findings below are properties of that copy and v1.0.3 corrects both:
+> * **Age counts (§2):** v1.0.3 recategorises 73 patients (65 Infant→Child, 7 Young Adult→Adolescent,
+>   1 Adolescent→Child) → Child 664, Infant 126, Adolescent 72, Neonate 6, missing 74. Age is not used anywhere.
+> * **"Missing `.tsv` for 50782_MV_1" (§5):** in v1.0.3 the header lists `50782_MV_1.tsv` (the copy had the same
+>   bytes misnamed `50782_MV.tsv`). The file is a degenerate 6-byte `0 0 28` row with no annotated time, so the
+>   recording still has no aligned features and every downstream number is unchanged.
+> The v1.0.3 audit is in `results/logs/dataset_audit_v103.json` and `results/tables/v103_*.csv`; murmur labels,
+> Additional IDs, counts and folds are identical.
+
 ## 1. How the data was obtained (provenance — read this)
 * **PhysioNet, its AWS/GCS mirrors, Zenodo, Kaggle and Hugging Face were blocked by this session's
   network policy (HTTP 403).** I did not download from physionet.org.
