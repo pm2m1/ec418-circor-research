@@ -1,5 +1,7 @@
 # E2_RESULTS — Does cardiac-cycle timing alignment itself help? (Phase 2, pre-registered)
 
+> **Erratum E2-1 (2026-10-27, `docs/ERRATA_PHASE2.md`):** the `perm` null also moved ~48 % of the labels into columns the expert left unannotated, so the true − perm gap = timing **+ expert span selection** (the `shift` null moved only ~3 % and is close to a pure timing contrast). No number changes.
+
 Run 2026-10-27 on the Mac, PhysioNet CirCor **v1.0.3** as downloaded (amendments D1, D2), frozen folds
 (sha256 `c4aa74c7…2339`), protocol `docs/PROTOCOL_V2_LOCKED.md` (E2 + amendment I1, all committed before the run).
 Every number below comes from:

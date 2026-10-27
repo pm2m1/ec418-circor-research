@@ -1,5 +1,7 @@
 # E1_RESULTS — Does the aligned-feature gain survive without the expert segmentation? (Phase 2, pre-registered)
 
+> **Erratum E2-1 (2026-10-27, `docs/ERRATA_PHASE2.md`):** the `perm` null also moved ~48 % of the labels into columns the expert left unannotated, so the true − perm gap = timing **+ expert span selection** (the `shift` null moved only ~3 % and is close to a pure timing contrast). No number changes.
+
 Run 2026-10-27 on the Mac, PhysioNet CirCor **v1.0.3** as downloaded (amendments D1, D2), frozen folds
 (sha256 `c4aa74c7…2339`), protocol `docs/PROTOCOL_V2_LOCKED.md` "E1" with **all segmenter constants unchanged** and
 amendment I2 (implementation details + analysis plan) committed after the segmentation metrics and **before** the

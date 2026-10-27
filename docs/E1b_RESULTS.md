@@ -1,5 +1,7 @@
 # E1b_RESULTS — A standard trained segmenter (LR-HSMM) instead of the expert labels (Phase 2)
 
+> **Erratum E2-1 (2026-10-27, `docs/ERRATA_PHASE2.md`):** the `perm` null also moved ~48 % of the labels into columns the expert left unannotated, so the true − perm gap = timing **+ expert span selection** (the `shift` null moved only ~3 % and is close to a pure timing contrast). No number changes.
+
 Pre-registered 2026-10-27 22:35 IST in `docs/PROTOCOL_V2_LOCKED.md` "E1b" + `configs/protocol_v2.json`
 (commit `7f07b74`, tag `e1b-prereg`, pushed before any E1b code). **E1b was designed after the E1 results were known**
 (E1: S1/S2 F1 0.510/0.493, all H6 NOT SUPPORTED); E1 and its segmenter are unchanged. Data: PhysioNet CirCor v1.0.3
