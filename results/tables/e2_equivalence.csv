@@ -1,0 +1,3 @@
+contrast,clf,delta_auroc_repeat_averaged,ci_lo,ci_hi,folds_positive,delta_auroc_mean_of_repeats,margin,ci_within_margin,statement
+"wpds - stft (aligned, true labels)",RF,-0.014710019693742193,-0.03205633218333662,0.0025850165675345422,5/25,-0.014899722679956873,0.03,False,equivalence NOT shown (CI extends beyond +/-0.03)
+"wpds - stft (aligned, true labels)",SMO,-0.0221695269482739,-0.04077727234419691,-0.004380877099977496,2/25,-0.021862465334994585,0.03,False,equivalence NOT shown (CI extends beyond +/-0.03) [descriptive]

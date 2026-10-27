@@ -1,0 +1,57 @@
+{
+  "tag": "e2",
+  "n_pred_rows": 78660,
+  "sets": [
+    "E2_stft_perm",
+    "E2_stft_shift",
+    "E2_stft_true",
+    "E2_wpd_perm",
+    "E2_wpd_shift",
+    "E2_wpd_true",
+    "E2_wpds_perm",
+    "E2_wpds_shift",
+    "E2_wpds_true"
+  ],
+  "clfs": [
+    "RF",
+    "SMO"
+  ],
+  "rf_verdicts": [
+    {
+      "hypothesis": "H5a",
+      "representation": "wpd",
+      "b": "E2_wpd_perm",
+      "verdict": "SUPPORTED"
+    },
+    {
+      "hypothesis": "H5b",
+      "representation": "stft",
+      "b": "E2_stft_perm",
+      "verdict": "SUPPORTED"
+    },
+    {
+      "hypothesis": "H5c",
+      "representation": "wpds",
+      "b": "E2_wpds_perm",
+      "verdict": "SUPPORTED"
+    },
+    {
+      "hypothesis": "H5d",
+      "representation": "wpd",
+      "b": "E2_wpd_shift",
+      "verdict": "SUPPORTED"
+    },
+    {
+      "hypothesis": "H5d",
+      "representation": "stft",
+      "b": "E2_stft_shift",
+      "verdict": "SUPPORTED"
+    },
+    {
+      "hypothesis": "H5d",
+      "representation": "wpds",
+      "b": "E2_wpds_shift",
+      "verdict": "SUPPORTED"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+
+== AUROC ==
+          set representation labels clf  n_patients  auroc_mean_of_repeats  auroc_mean_of_repeats_sd  auroc_repeat_averaged  auroc_repeat_averaged_ci_lo  auroc_repeat_averaged_ci_hi
+ E2_stft_perm           stft   perm  RF         874                 0.6355                    0.0050                 0.6416                       0.5915                       0.6905
+E2_stft_shift           stft  shift  RF         874                 0.6070                    0.0166                 0.6128                       0.5636                       0.6593
+ E2_stft_true           stft   true  RF         874                 0.8114                    0.0067                 0.8151                       0.7715                       0.8525
+  E2_wpd_perm            wpd   perm  RF         874                 0.6424                    0.0049                 0.6511                       0.6036                       0.6999
+ E2_wpd_shift            wpd  shift  RF         874                 0.6011                    0.0092                 0.6056                       0.5565                       0.6535
+  E2_wpd_true            wpd   true  RF         874                 0.7934                    0.0078                 0.7977                       0.7527                       0.8376
+ E2_wpds_perm           wpds   perm  RF         874                 0.6615                    0.0062                 0.6691                       0.6184                       0.7166
+E2_wpds_shift           wpds  shift  RF         874                 0.5916                    0.0091                 0.5946                       0.5424                       0.6424
+ E2_wpds_true           wpds   true  RF         874                 0.7965                    0.0104                 0.8004                       0.7563                       0.8387
+ E2_stft_perm           stft   perm SMO         874                 0.5558                    0.0183                 0.5808                       0.5318                       0.6292
+E2_stft_shift           stft  shift SMO         874                 0.5413                    0.0193                 0.5638                       0.5155                       0.6138
+ E2_stft_true           stft   true SMO         874                 0.8144                    0.0048                 0.8161                       0.7736                       0.8563
+  E2_wpd_perm            wpd   perm SMO         874                 0.5618                    0.0153                 0.6005                       0.5572                       0.6443
+ E2_wpd_shift            wpd  shift SMO         874                 0.5171                    0.0140                 0.5319                       0.4841                       0.5776
+  E2_wpd_true            wpd   true SMO         874                 0.7829                    0.0065                 0.7847                       0.7364                       0.8286
+ E2_wpds_perm           wpds   perm SMO         874                 0.5564                    0.0098                 0.5961                       0.5492                       0.6429
+E2_wpds_shift           wpds  shift SMO         874                 0.5089                    0.0083                 0.5197                       0.4726                       0.5656
+ E2_wpds_true           wpds   true SMO         874                 0.7926                    0.0064                 0.7939                       0.7464                       0.8368
+
+== CONTRASTS ==
+hypothesis clf representation            a             b  delta_auroc_repeat_averaged  ci_lo  ci_hi folds_positive  delta_auroc_mean_of_repeats  crit_delta  crit_ci  crit_folds     verdict
+       H5a  RF            wpd  E2_wpd_true   E2_wpd_perm                       0.1466 0.0944 0.1994          25/25                       0.1510        True     True        True   SUPPORTED
+       H5b  RF           stft E2_stft_true  E2_stft_perm                       0.1735 0.1151 0.2290          25/25                       0.1759        True     True        True   SUPPORTED
+       H5c  RF           wpds E2_wpds_true  E2_wpds_perm                       0.1313 0.0792 0.1851          25/25                       0.1350        True     True        True   SUPPORTED
+       H5d  RF            wpd  E2_wpd_true  E2_wpd_shift                       0.1921 0.1407 0.2477          25/25                       0.1922        True     True        True   SUPPORTED
+       H5d  RF           stft E2_stft_true E2_stft_shift                       0.2024 0.1521 0.2539          25/25                       0.2044        True     True        True   SUPPORTED
+       H5d  RF           wpds E2_wpds_true E2_wpds_shift                       0.2058 0.1526 0.2597          25/25                       0.2049        True     True        True   SUPPORTED
+       H5a SMO            wpd  E2_wpd_true   E2_wpd_perm                       0.1842 0.1201 0.2468          25/25                       0.2211        True     True        True descriptive
+       H5b SMO           stft E2_stft_true  E2_stft_perm                       0.2353 0.1768 0.2970          25/25                       0.2586        True     True        True descriptive
+       H5c SMO           wpds E2_wpds_true  E2_wpds_perm                       0.1978 0.1317 0.2601          25/25                       0.2362        True     True        True descriptive
+       H5d SMO            wpd  E2_wpd_true  E2_wpd_shift                       0.2528 0.1913 0.3150          25/25                       0.2658        True     True        True descriptive
+       H5d SMO           stft E2_stft_true E2_stft_shift                       0.2523 0.1972 0.3045          25/25                       0.2731        True     True        True descriptive
+       H5d SMO           wpds E2_wpds_true E2_wpds_shift                       0.2742 0.2171 0.3313          25/25                       0.2836        True     True        True descriptive
+
+== EQUIVALENCE ==
+                          contrast clf  delta_auroc_repeat_averaged   ci_lo   ci_hi folds_positive  delta_auroc_mean_of_repeats  margin  ci_within_margin                                                       statement
+wpds - stft (aligned, true labels)  RF                      -0.0147 -0.0321  0.0026           5/25                      -0.0149    0.03             False               equivalence NOT shown (CI extends beyond +/-0.03)
+wpds - stft (aligned, true labels) SMO                      -0.0222 -0.0408 -0.0044           2/25                      -0.0219    0.03             False equivalence NOT shown (CI extends beyond +/-0.03) [descriptive]
+
+== TRUE ARM vs V1 ==
+representation clf           v1_set  features_same_nan_pattern  features_max_abs_diff  v1_auroc_mean_of_repeats  v1_auroc_repeat_averaged  e2_auroc_mean_of_repeats  e2_auroc_repeat_averaged
+          stft  RF           A_stft                       True                    0.0                    0.8115                    0.8152                    0.8114                    0.8151
+          stft SMO           A_stft                       True                    0.0                    0.8146                    0.8159                    0.8144                    0.8161
+           wpd  RF        A_wpd_db4                       True                    0.0                    0.7934                    0.7979                    0.7934                    0.7977
+           wpd SMO        A_wpd_db4                       True                    0.0                    0.7832                    0.7848                    0.7829                    0.7847
+          wpds  RF A_wpd_db4_smooth                       True                    0.0                    0.7964                    0.8006                    0.7965                    0.8004
+          wpds SMO A_wpd_db4_smooth                       True                    0.0                       NaN                       NaN                    0.7926                    0.7939

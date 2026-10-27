@@ -1,0 +1,11 @@
+extracted 3163 recordings in 2.5s
+errors: []
+E2_stft_true: (3163, 39), recordings without aligned features: 1
+E2_stft_perm: (3163, 39), recordings without aligned features: 1
+E2_stft_shift: (3163, 39), recordings without aligned features: 1
+E2_wpd_true: (3163, 39), recordings without aligned features: 1
+E2_wpd_perm: (3163, 39), recordings without aligned features: 1
+E2_wpd_shift: (3163, 39), recordings without aligned features: 1
+E2_wpds_true: (3163, 39), recordings without aligned features: 1
+E2_wpds_perm: (3163, 39), recordings without aligned features: 1
+E2_wpds_shift: (3163, 39), recordings without aligned features: 1

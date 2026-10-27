@@ -1,0 +1,12 @@
+E2_stft_true: 68 patient features, patients with all-missing: 0
+E2_stft_perm: 68 patient features, patients with all-missing: 0
+E2_stft_shift: 68 patient features, patients with all-missing: 0
+E2_wpd_true: 68 patient features, patients with all-missing: 0
+E2_wpd_perm: 68 patient features, patients with all-missing: 0
+E2_wpd_shift: 68 patient features, patients with all-missing: 0
+E2_wpds_true: 68 patient features, patients with all-missing: 0
+E2_wpds_perm: 68 patient features, patients with all-missing: 0
+E2_wpds_shift: 68 patient features, patients with all-missing: 0
+jobs to run: 1800, already complete (resumed): 0
+WEKA: 1800 jobs in 58s
+saved (78660, 10)
