@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: ec418-circor
+Version: 0.1.0
+Summary: EC418: patient-level, leakage-audited wavelet murmur detection on CirCor (WEKA + Python)
+Requires-Python: >=3.11
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: pandas
+Requires-Dist: pywavelets
+Requires-Dist: scikit-learn
+Requires-Dist: matplotlib
+Requires-Dist: soundfile
+Requires-Dist: librosa
+Requires-Dist: seaborn
+Requires-Dist: pytest

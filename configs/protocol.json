@@ -1,0 +1,44 @@
+{
+  "protocol_version": "1.0-locked-2026-10-27",
+  "data_dir": "data/raw/circor_training_data",
+  "task": "patient-level binary Murmur Present (1) vs Absent (0); Unknown excluded",
+  "group": "canonical subject_id = connected components of Additional ID links",
+  "outer_folds": 5,
+  "repeat_seeds": [0, 1, 2, 3, 4],
+  "inner_folds": 3,
+  "preprocessing": {"fs_in": 4000, "fs_out": 2000, "resampler": "scipy.signal.resample_poly (Kaiser FIR anti-alias)",
+                    "bandpass_hz": [25, 900], "bandpass": "Butterworth order 4, zero-phase sosfiltfilt", "normalisation": "per-recording z-score"},
+  "wavelet": {"transform": "wavelet packet, pywt, mode=periodization, order=freq", "depth": 4,
+              "nominal_band_hz": 62.5, "primary_wavelet": "db4", "sensitivity_wavelets": ["db6", "sym8", "coif3"]},
+  "stft_control": {"window": "hann", "nperseg": 64, "hop": 16, "bands": "same 16 x 62.5 Hz nominal bands"},
+  "segmentation": "dataset .tsv (expert-assisted) => ORACLE-segmentation-assisted; min 40 systolic cols, 40 diastolic cols, 10 S1 cols per recording",
+  "aggregation": "patient vector = [median, max] over recordings of each recording feature (NaN-aware)",
+  "feature_sets": {
+    "B0": "conventional acoustic: 13 MFCC means + centroid + bandwidth + rolloff + ZCR + RMS-envelope CV (18)",
+    "B1": "Vimalajeewa et al. 2025 features, authors' own MATLAB values re-aligned to recordings (10 -> 8 used as in their demo)",
+    "W_stft": "whole-signal STFT band features (34)",
+    "W_wpd": "whole-signal WPD band features (34)",
+    "A_stft": "cycle-aligned STFT band features (34)",
+    "P1_A_wpd": "cycle-aligned WPD band features (34) -- proposed"
+  },
+  "classifiers_weka_3.9.7": {
+    "RF": "weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 (PRIMARY)",
+    "SMO": "weka.classifiers.functions.SMO -C 1.0 -N 0 -M -V 5, PolyKernel -E 1.0",
+    "MLP": "weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -H a -S 1",
+    "LR": "weka.classifiers.functions.Logistic -R 1.0"
+  },
+  "metrics": {
+    "primary": ["patient AUROC (pooled out-of-fold, per repeat)", "sensitivity at train-derived threshold for specificity>=0.80", "macro-F1 at that threshold"],
+    "secondary": ["accuracy", "sensitivity", "specificity", "precision", "F1 (Present)", "AUPRC", "official Challenge weighted accuracy (official code)", "fit/predict time", "feature dimensionality"],
+    "thresholds": "chosen ONLY on inner grouped OOF predictions of the training part: (a) specificity>=0.80, (b) max weighted accuracy"
+  },
+  "uncertainty": "subject-level bootstrap (2000 resamples of canonical subjects) on repeat-averaged patient scores; paired differences on identical patients",
+  "hypotheses": {
+    "H1_leakage": "B1 + paper SVM (RBF, C=100, gamma=0.1, class weight 1:4): recording-level metrics under random 80/20 recording split exceed those under subject-grouped CV",
+    "H2_wavelet_vs_fourier": "A_wpd(db4) AUROC > A_stft AUROC (and W_wpd > W_stft)",
+    "H3_alignment": "A_wpd(db4) AUROC > W_wpd(db4) AUROC",
+    "H4_vs_baselines": "A_wpd(db4) AUROC > max(B0, B1) AUROC"
+  },
+  "success_rule": "a contrast is SUPPORTED if RF delta-AUROC >= 0.03, subject-bootstrap 95% CI excludes 0, and the delta is positive in >= 18/25 outer folds; otherwise NOT SUPPORTED (reported as is)",
+  "forbidden": "no test-fold use for feature selection, wavelet/depth choice, thresholds, hyperparameters, or choosing which result to report"
+}

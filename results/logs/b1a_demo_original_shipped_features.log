@@ -1,0 +1,20 @@
+Train Accuracy: 0.749802371541502
+              precision    recall  f1-score   support
+
+           0       0.87      0.77      0.82       514
+           1       0.34      0.51      0.41       119
+
+    accuracy                           0.72       633
+   macro avg       0.61      0.64      0.61       633
+weighted avg       0.77      0.72      0.74       633
+
+AUC: 0.7037242912729295
+Test Accuracy: 0.7203791469194313
+Present F1 score: 0.4080267558528428
+Absent F1 score: 0.8169596690796277
+Sensitivity: 0.5126050420168067
+Speicificity: 0.7684824902723736
+Confusion Matrix:
+                          Predicted Negative(Absent)  Predicted Positive(Present)
+Actual Negative(Absent)                          395                          119
+Actual positive(Present)                          58                           61

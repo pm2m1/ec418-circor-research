@@ -1,0 +1,243 @@
+{
+  "data_dir": "data/raw/circor_training_data",
+  "n_patients": 942,
+  "n_recordings": 3163,
+  "murmur_patients": {
+    "Absent": 695,
+    "Present": 179,
+    "Unknown": 68
+  },
+  "murmur_recordings": {
+    "Absent": 2391,
+    "Present": 616,
+    "Unknown": 156
+  },
+  "outcome_available": false,
+  "campaign": {
+    "CC2015": 557,
+    "CC2014": 385
+  },
+  "recordings_per_patient": {
+    "1": 62,
+    "2": 156,
+    "3": 123,
+    "4": 588,
+    "5": 10,
+    "6": 3
+  },
+  "location_counts": {
+    "MV": 861,
+    "AV": 800,
+    "PV": 766,
+    "TV": 732,
+    "Phc": 4
+  },
+  "linkage": {
+    "n_patients": 942,
+    "n_subjects": 872,
+    "component_sizes": {
+      "1": 802,
+      "2": 70
+    },
+    "n_patients_with_additional_id": 140,
+    "dangling_links": [],
+    "asymmetric_links": [],
+    "label_conflicts": [
+      [
+        [
+          46579,
+          49761
+        ],
+        [
+          "Present",
+          "Unknown"
+        ]
+      ],
+      [
+        [
+          49638,
+          69096
+        ],
+        [
+          "Present",
+          "Unknown"
+        ]
+      ],
+      [
+        [
+          49751,
+          68175
+        ],
+        [
+          "Present",
+          "Unknown"
+        ]
+      ],
+      [
+        [
+          49963,
+          68204
+        ],
+        [
+          "Absent",
+          "Present"
+        ]
+      ],
+      [
+        [
+          50030,
+          68279
+        ],
+        [
+          "Present",
+          "Unknown"
+        ]
+      ],
+      [
+        [
+          50066,
+          68298
+        ],
+        [
+          "Absent",
+          "Unknown"
+        ]
+      ],
+      [
+        [
+          50080,
+          68330
+        ],
+        [
+          "Absent",
+          "Unknown"
+        ]
+      ],
+      [
+        [
+          50115,
+          68377
+        ],
+        [
+          "Absent",
+          "Present"
+        ]
+      ],
+      [
+        [
+          50152,
+          68407
+        ],
+        [
+          "Absent",
+          "Unknown"
+        ]
+      ],
+      [
+        [
+          50291,
+          68567
+        ],
+        [
+          "Absent",
+          "Present"
+        ]
+      ],
+      [
+        [
+          50321,
+          68556
+        ],
+        [
+          "Absent",
+          "Unknown"
+        ]
+      ],
+      [
+        [
+          50332,
+          68576
+        ],
+        [
+          "Present",
+          "Unknown"
+        ]
+      ],
+      [
+        [
+          50625,
+          68857
+        ],
+        [
+          "Absent",
+          "Unknown"
+        ]
+      ],
+      [
+        [
+          50628,
+          68864
+        ],
+        [
+          "Absent",
+          "Unknown"
+        ]
+      ],
+      [
+        [
+          50643,
+          68874
+        ],
+        [
+          "Absent",
+          "Present"
+        ]
+      ]
+    ]
+  },
+  "csv_label_mismatches_vs_txt": [],
+  "fs_values": {
+    "4000": 3163
+  },
+  "channels": {
+    "1": 3163
+  },
+  "subtype": {
+    "PCM_16": 3163
+  },
+  "duration_s": {
+    "min": 5.152,
+    "median": 21.456,
+    "max": 64.512,
+    "total_h": 20.09410076388889
+  },
+  "recordings_with_any_clipping": 1970,
+  "flat_recordings": 0,
+  "segmentation": {
+    "recordings_with_tsv": 3162,
+    "median_annotated_frac": 0.523107905982906,
+    "recordings_zero_systoles": 1,
+    "recordings_lt3_systoles": 1,
+    "annotated_frac_by_murmur": {
+      "Absent": 0.525,
+      "Present": 0.612,
+      "Unknown": 0.244
+    }
+  },
+  "present_patients_grading": {
+    "I/VI": 104,
+    "III/VI": 46,
+    "II/VI": 28,
+    "NaN": 1
+  },
+  "present_patients_pitch": {
+    "Low": 87,
+    "Medium": 49,
+    "High": 42,
+    "NaN": 1
+  },
+  "present_patients_with_diastolic": 5,
+  "present_recordings_at_murmur_location": 499,
+  "subjects_binary_task": 816,
+  "patients_binary_task": 874
+}
