@@ -58,6 +58,67 @@ metrics and only as a logged amendment before classification is re-run.
 Add one feature: log(systolic / S1 energy in 62.5–187.5 Hz). **H7:** grade-I/VI sensitivity at the
 spec80 operating point rises by ≥ 0.05 with overall RF AUROC no lower than v1 − 0.01.
 
+## E1b — Standard segmenter: logistic-regression HSMM (pre-registered 2026-10-27 22:35 IST)
+**Designed after the E1 results were known** (E1 segmenter S1/S2 F1 0.510/0.493, flagged low quality; all H6
+NOT SUPPORTED; `docs/E1_RESULTS.md`). E1 and its segmenter are unchanged and stand as reported. E1b asks whether a
+standard, trained segmenter recovers the expert-label performance. Machine-readable copy:
+`configs/protocol_v2.json` → `E1b_lr_hsmm_segmentation` (sha256 of the updated file in `configs/protocol_v2_e1b.sha256`).
+
+**Source.** Springer, Tarassenko & Clifford, "Logistic Regression-HSMM-based Heart Sound Segmentation", IEEE TBME
+63(4):822–832, 2016, and the authors' MATLAB reference code (PhysioNet `hss` v1.0, DOI 10.13026/vnt9-kf93,
+**GPL-3.0**). Existing Python implementations checked: `EchoStatements/Springer-Segmentation-Python` (no licence →
+not used); `pyPCG-toolbox` 0.1b5 (GPL-3.0-only, but model training not implemented → not usable). E1b is therefore a
+Python port of the paper/reference code in `src/ec418/segmentation/lr_hsmm.py`, licensed GPL-3.0.
+
+**Fixed from the paper / reference code (no tuning):** audio resampled 4 kHz → 1 kHz; Butterworth order-2 low-pass
+400 Hz and order-2 high-pass 25 Hz (zero-phase); Schmidt spike removal (500 ms windows, 3 × median MAA); four
+features at 50 Hz, each z-scored per recording: homomorphic envelope (order-1 8 Hz low-pass), Hilbert envelope,
+40–60 Hz PSD (spectrogram, 25-sample Hamming window, 13-sample overlap, 1-Hz bins), and |level-3 detail| of an
+`rbio3.9` DWT (coefficients repeated 2³ times, central part kept); one binary logistic regression per state
+(unpenalised, state vs. an equal-size random sample of the other three states, as `trainBandPiMatricesSpringer`);
+emission = P(state | o)·N(o; μ, Σ)/π with π = 0.25 and μ, Σ over all training samples; deterministic cycle
+S1 → systole → S2 → diastole; Gaussian state durations truncated to [mean − 3 SD, mean + 3 SD] (systole: ±3(SD_sys + SD_S1);
+S1/S2 lower bound ≥ 1 sample), normalised over 1…D with D = round(T·50); Springer's extended duration Viterbi
+(`viterbiDecodePCG_Springer`, segments may start before / end after the recording); per-recording heart period T and
+systolic interval from the autocorrelation of the 1 kHz homomorphic envelope (`getHeartRateSchmidt`).
+Two numerical substitutes: features resampled with `scipy.signal.resample_poly` (Kaiser, as MATLAB `resample`); the PSD
+series is brought to the envelope length by linear interpolation.
+
+**Learned from the training annotations only (paediatric, replaces the adult defaults):** S1 and S2 duration mean and
+SD (rounded to 50 Hz samples as in the reference; SD ≥ 1 sample); systole SD = pooled within-recording SD of expert
+systole durations; diastole SD = a·mean_diastole + b with (a, b) from an OLS fit of within-recording SD on
+within-recording mean diastole duration (SD ≥ 1 sample); mean_systole = systolic interval − mean S1, mean_diastole =
+T − systolic interval − mean S2 (as the reference, with learned means); heart-period search range = [1st, 99th]
+percentile of the training recordings' median S1-onset-to-S1-onset interval (replaces 0.5–2 s); systolic-interval
+search range = [1st, 99th] percentile of the per-recording ratio median(S1→S2 onset)/median(S1→S1 onset), times T
+(replaces 0.2 s … T/2). Training samples = 50 Hz feature samples inside valid expert rows (labels 1–4).
+
+**No leakage.** For each outer fold (repeat r, fold k) of the frozen folds:
+* test patients are decoded by a segmenter trained on all training patients of (r, k), without reading their `.tsv`;
+* training patients (classifier training and inner-fold thresholds) are decoded by cross-fitting over the 3 frozen inner
+  folds of (r, k): patients of inner fold i by a segmenter trained on the other training patients;
+* so every feature the classifier sees comes from a segmenter that never saw that patient's annotation. Unknown-murmur
+  recordings (not classified) are decoded by one segmenter trained on all 874 binary-task patients, for the
+  segmentation report only. Random seed for the balanced sampling: 1000·r + 10·k + i (i = 0 outer, 1–3 inner);
+  Unknown model: seed 9999.
+
+**Segmentation report (as E1):** S1/S2 centre F1 at ±50 ms, frame-wise 4-state accuracy, failure fraction (no
+segments), by Present/Absent/Unknown and v1.0.3 age, on the test-fold decodings (primary: repeat 0, each recording once;
+the other repeats' overall values also reported). Low-quality flag if S1 or S2 F1 < 0.70.
+
+**Classification:** the same 34 aligned features for `stft`, `wpd`, `wpds` (same extractor, coverage minimum, patient
+median + max), WEKA RF (primary) and SMO (secondary), frozen folds, tag `e1b`, fold-specific feature files.
+* **H8a:** RF AUROC(auto-HSMM, wpd) ≥ AUROC(expert, wpd) − 0.03 (expert = `E2_wpd_true`).
+* **H8b:** RF AUROC(auto-HSMM, wpd) > AUROC(B1) with subject-bootstrap 95 % CI lower bound > 0.
+* **H8c:** H8a and H8b for `stft` and `wpds`.
+Same statistics as E1 (repeat-averaged scores, 2000 subject resamples, seed 2; both AUROC summaries; fold counts reported).
+Descriptive: vs W_stft and vs the E1 auto sets; sensitivity by murmur grade.
+
+**Runtime rule (decided on timing only, before the run):** time the segmenter on ~50 recordings and estimate the full
+25-fold cost. If it exceeds ~4 h on this Mac, a dated amendment reducing E1b to **repeat 0 only (5 folds)** is committed
+before running, with repeat-0 expert-label, B1, W_stft and E1 results as comparators; the results will say so.
+**Timebox:** if E1b classification is not complete by **2026-10-30 23:59 IST**, it is stopped and reported as incomplete.
+
 ## Equivalence reporting
 For `wpds` vs `stft` (aligned, `true`): report Δ and 95 % CI; claim "no meaningful difference" only if
 the entire CI lies within ±0.03.
@@ -150,3 +211,10 @@ submission 3 Nov.
   frame accuracy 0.325, failures 11/3163 → **flagged low-quality segmentation**; per protocol, E1 continues with
   the constants unchanged. Unit tests also show the locked peak rule is noise-sensitive: noise-free synthetic PCG
   is segmented correctly, but 0.1 % white noise already adds envelope peaks inside diastole.
+
+* **E3-drop (2026-10-27 22:35 IST).** E3 (soft murmurs, H7) is **not run**. Reason: time, and E1 showed that
+  segmentation is the bottleneck, so the remaining effort goes to E1b (pre-registered above, designed after E1).
+  No E3 result exists or will be reported as such.
+* **Lock-file note (2026-10-27).** `configs/protocol_v2.json` gains the E3-drop status and the E1b section; its
+  lock-time hash stays in `configs/protocol_v2_lock.sha256` (= tag `protocol-v2-lock`), the updated hash is in
+  `configs/protocol_v2_e1b.sha256`. Earlier statements "protocol_v2.json unchanged" (I1) refer to the lock-time file.

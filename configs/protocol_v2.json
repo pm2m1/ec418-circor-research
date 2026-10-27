@@ -3,17 +3,28 @@
   "supersedes": "nothing; extends protocol 1.0 (configs/protocol.json), whose results are frozen in results/v1_freeze/MANIFEST_v1.sha256",
   "title": "Physiology-Aligned Multiresolution Analysis for Patient-Independent Heart-Murmur Detection: A Comparative Study of Wavelet and Fourier Features",
   "research_question": "Does cardiac-cycle timing alignment improve patient-independent murmur detection, and does the wavelet-vs-Fourier choice matter once alignment is controlled?",
-  "unchanged_from_v1": ["dataset and label rules", "binary Present vs Absent, Unknown excluded", "subject grouping",
-                         "frozen folds configs/folds_patient_level.csv sha256 c4aa74c76946253bd3a5daa54d34ddfaa631d20405427993836ab247314e2339",
-                         "preprocessing (2 kHz, 25-900 Hz, z-score)", "WPD depth 4, db4 primary, order=freq, periodization",
-                         "STFT Hann 64 / hop 16", "aligned feature definitions (34/recording)", "patient aggregation median+max",
-                         "thresholds from inner folds only", "metrics and subject bootstrap (2000)"],
+  "unchanged_from_v1": [
+    "dataset and label rules",
+    "binary Present vs Absent, Unknown excluded",
+    "subject grouping",
+    "frozen folds configs/folds_patient_level.csv sha256 c4aa74c76946253bd3a5daa54d34ddfaa631d20405427993836ab247314e2339",
+    "preprocessing (2 kHz, 25-900 Hz, z-score)",
+    "WPD depth 4, db4 primary, order=freq, periodization",
+    "STFT Hann 64 / hop 16",
+    "aligned feature definitions (34/recording)",
+    "patient aggregation median+max",
+    "thresholds from inner folds only",
+    "metrics and subject bootstrap (2000)"
+  ],
   "representations": {
     "stft": "matched STFT band energies",
     "wpd": "WPD db4 raw squared coefficients (v1 primary)",
     "wpds": "WPD db4 energies smoothed along time with the STFT's 64-sample Hann (4-tap over level-4 columns) -- now pre-registered"
   },
-  "classifiers": {"RF": "primary, as v1", "SMO": "secondary, as v1"},
+  "classifiers": {
+    "RF": "primary, as v1",
+    "SMO": "secondary, as v1"
+  },
   "E2_isolate_alignment": {
     "conditions": {
       "true": "expert .tsv labels (as v1)",
@@ -41,11 +52,35 @@
     "flag": "if S1/S2 F1 < 0.70 the downstream result is still reported, flagged as 'low-quality segmentation'"
   },
   "E3_soft_murmurs": {
-    "status": "optional, run only if E1 and E2 are complete by 2026-10-30",
+    "status": "DROPPED 2026-10-27 22:35 IST (not run): time, and E1 showed segmentation is the bottleneck",
     "feature": "per recording: log(mean systolic energy in 62.5-187.5 Hz / mean S1 energy in 62.5-187.5 Hz) using wpd and stft maps, added to the aligned set",
     "hypothesis": "H7: sensitivity on grade I/VI Present patients at the spec80 operating point increases by >= 0.05 with overall RF AUROC not below the v1 value minus 0.01"
   },
   "equivalence_report": "for wpds vs stft (aligned, true labels): report delta and 95% CI; say 'no meaningful difference' only if the whole CI lies within +/-0.03",
   "forbidden": "as v1; additionally: no re-selection of segmenter constants, null definitions, or representations after seeing E1/E2 classification results",
-  "schedule": {"E0_provenance_on_mac": "user, any time before 2026-10-30", "E2": "2026-10-27/28", "E1": "2026-10-28/29", "E3": "2026-10-30 if time", "results_freeze": "2026-10-31", "submission": "2026-11-03"}
+  "schedule": {
+    "E0_provenance_on_mac": "user, any time before 2026-10-30",
+    "E2": "2026-10-27/28",
+    "E1": "2026-10-28/29",
+    "E3": "2026-10-30 if time",
+    "results_freeze": "2026-10-31",
+    "submission": "2026-11-03"
+  },
+  "E1b_lr_hsmm_segmentation": {
+    "preregistered": "2026-10-27 22:35 IST, designed AFTER the E1 results were known (E1 S1/S2 F1 0.510/0.493, all H6 NOT SUPPORTED); E1 unchanged",
+    "source": "Springer, Tarassenko & Clifford, IEEE TBME 63(4):822-832, 2016; MATLAB reference PhysioNet hss v1.0 (DOI 10.13026/vnt9-kf93, GPL-3.0); Python port in src/ec418/segmentation/lr_hsmm.py (GPL-3.0). Not used: EchoStatements/Springer-Segmentation-Python (no licence), pyPCG-toolbox 0.1b5 (no training)",
+    "fixed_from_paper": "1 kHz audio; Butterworth order-2 LP 400 Hz + HP 25 Hz zero-phase; Schmidt spike removal; 50 Hz features z-scored per recording: homomorphic envelope (order-1 8 Hz LP), Hilbert envelope, 40-60 Hz PSD (25-sample Hamming, 13 overlap, 1 Hz bins), |rbio3.9 level-3 detail| (repeated 2^3, central part); per-state unpenalised logistic regression vs equal-size random other-state sample; emission P(s|o) N(o;mu,Sigma)/0.25; cyclic transitions; Gaussian durations truncated at mean +/- 3 SD (systole +/- 3(SD_sys+SD_S1)), normalised over 1..D, D=round(T*50); Springer extended duration Viterbi; HR/systolic interval from autocorrelation of 1 kHz homomorphic envelope. resample_poly for features; PSD to envelope length by linear interpolation",
+    "learned_from_training_annotations": "S1/S2 duration mean and SD (rounded to 50 Hz samples, SD>=1); systole SD = pooled within-recording SD; diastole SD = a*mean+b by OLS of within-recording SD on mean (>=1 sample); mean_systole = systolic interval - mean_S1; mean_diastole = T - systolic interval - mean_S2; period search range = [p1, p99] of per-recording median S1-S1 onset interval; systolic search range = [p1, p99] of per-recording median(S1->S2 onset)/median(S1->S1 onset) times T. Training samples = 50 Hz samples inside valid expert rows (labels 1-4)",
+    "leakage_control": "per outer fold (r,k): test patients decoded by a segmenter trained on all training patients of (r,k); training patients decoded by cross-fitting over the 3 frozen inner folds; Unknown-murmur recordings (not classified) decoded by a segmenter trained on all 874 binary-task patients (segmentation report only); seeds 1000r+10k+i (i=0 outer, 1-3 inner), Unknown model 9999",
+    "segmentation_report": "as E1 (S1/S2 centre F1 +/-50 ms, 4-state frame accuracy, failures, by Present/Absent/Unknown and v1.0.3 age) on test-fold decodings; primary repeat 0; low-quality flag if S1 or S2 F1 < 0.70",
+    "classification": "34 aligned features for stft, wpd, wpds (same extractor); WEKA RF primary, SMO secondary; frozen folds; tag e1b; fold-specific feature files",
+    "hypotheses": {
+      "H8a": "RF AUROC(auto-HSMM, wpd) >= AUROC(expert E2_wpd_true) - 0.03",
+      "H8b": "RF AUROC(auto-HSMM, wpd) > AUROC(B1) with subject-bootstrap 95% CI lower bound > 0",
+      "H8c": "H8a and H8b for stft and wpds"
+    },
+    "statistics": "as E1: repeat-averaged scores, 2000 subject resamples seed 2, both AUROC summaries, fold counts reported; descriptive vs W_stft, vs E1 auto sets, grade sensitivity",
+    "runtime_rule": "time on ~50 recordings; if the full 25-fold estimate exceeds ~4 h, commit an amendment reducing to repeat 0 only (5 folds) BEFORE running, with repeat-0 comparators",
+    "timebox": "if classification is not complete by 2026-10-30 23:59 IST, stop and report as incomplete"
+  }
 }
