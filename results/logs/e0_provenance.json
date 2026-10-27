@@ -1,0 +1,584 @@
+{
+  "physionet_root": "/Users/kiyo/data/circor-1.0.3/physionet.org/files/circor-heart-sound/1.0.3",
+  "download": {
+    "files_listed_in_physionet_sha256sums": 10434,
+    "missing": [],
+    "hash_mismatch": [],
+    "unlisted_files_on_disk": []
+  },
+  "phase1_recording_files": {
+    "n": 9489,
+    "identical": 9488,
+    "not_identical": [
+      "50782_MV.tsv"
+    ],
+    "wav_hea_tsv_in_physionet_not_used_in_phase1": [
+      "50782_MV_1.tsv"
+    ]
+  },
+  "copy_vs_physionet_sha256sums": {
+    "n_copy": 10434,
+    "n_physionet": 10434,
+    "n_differences": 945,
+    "by_kind": {
+      "hash_differs": 943,
+      "only_in_copy": 1,
+      "only_in_physionet": 1
+    },
+    "patient_txt_differences": 942,
+    "patient_txt_identical_after_removing_outcome": 0,
+    "non_patient_txt_differences": [
+      "training_data.csv",
+      "training_data/50782_MV.tsv",
+      "training_data/50782_MV_1.tsv"
+    ]
+  },
+  "labels_vs_phase1": {
+    "patients_v1": 942,
+    "patients_physionet": 942,
+    "only_in_one": 0,
+    "murmur_mismatch": 0,
+    "additional_id_mismatch": 0
+  },
+  "patient_txt_content_vs_copy": {
+    "copy_txt_dir": "<scratch>/copytxt (github.com/chihoon1/Murmur@56b9846 data/training_data/*.txt)",
+    "copy_txt_files": 942,
+    "copy_txt_sha256_verified": 942,
+    "copy_txt_with_crlf": 942,
+    "patients_with_content_difference_after_normalisation": [
+      36327,
+      38337,
+      39403,
+      43852,
+      46532,
+      46579,
+      47002,
+      49595,
+      49598,
+      49638,
+      49832,
+      49850,
+      49959,
+      49966,
+      49970,
+      49989,
+      50017,
+      50027,
+      50080,
+      50123,
+      50149,
+      50164,
+      50174,
+      50204,
+      50214,
+      50244,
+      50247,
+      50249,
+      50251,
+      50264,
+      50272,
+      50291,
+      50631,
+      50644,
+      50671,
+      50768,
+      50782,
+      50787,
+      50797,
+      59536,
+      61117,
+      68213,
+      68269,
+      68298,
+      68404,
+      68406,
+      68407,
+      68435,
+      68532,
+      68556,
+      68576,
+      68698,
+      68857,
+      68888,
+      69093,
+      75440,
+      77373,
+      78582,
+      81501,
+      84693,
+      84704,
+      84721,
+      84755,
+      84760,
+      84762,
+      84824,
+      84894,
+      84912,
+      85010,
+      85198,
+      85226,
+      85230,
+      85322,
+      85336
+    ],
+    "differing_lines": [
+      {
+        "patient_id": 36327,
+        "line": 6,
+        "copy": "#Age: Young Adult",
+        "physionet": "#Age: Adolescent"
+      },
+      {
+        "patient_id": 38337,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 39403,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 43852,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 46532,
+        "line": 3,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 46579,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 47002,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 49595,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 49598,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 49638,
+        "line": 5,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 49832,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 49850,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 49959,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 49966,
+        "line": 3,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 49970,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 49989,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50017,
+        "line": 6,
+        "copy": "#Age: Young Adult",
+        "physionet": "#Age: Adolescent"
+      },
+      {
+        "patient_id": 50027,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50080,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50123,
+        "line": 3,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50149,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50164,
+        "line": 5,
+        "copy": "#Age: Young Adult",
+        "physionet": "#Age: Adolescent"
+      },
+      {
+        "patient_id": 50174,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50204,
+        "line": 5,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50214,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50244,
+        "line": 6,
+        "copy": "#Age: Young Adult",
+        "physionet": "#Age: Adolescent"
+      },
+      {
+        "patient_id": 50247,
+        "line": 5,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50249,
+        "line": 5,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50251,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50264,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50272,
+        "line": 6,
+        "copy": "#Age: Young Adult",
+        "physionet": "#Age: Adolescent"
+      },
+      {
+        "patient_id": 50291,
+        "line": 5,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50631,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50644,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50671,
+        "line": 3,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50768,
+        "line": 3,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50782,
+        "line": 6,
+        "copy": "MV 50782_MV_1.hea 50782_MV_1.wav",
+        "physionet": "MV 50782_MV_1.hea 50782_MV_1.wav 50782_MV_1.tsv"
+      },
+      {
+        "patient_id": 50787,
+        "line": 3,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 50797,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 59536,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 61117,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 68213,
+        "line": 6,
+        "copy": "#Age: Young Adult",
+        "physionet": "#Age: Adolescent"
+      },
+      {
+        "patient_id": 68269,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 68298,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 68404,
+        "line": 5,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 68406,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 68407,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 68435,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 68532,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 68556,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 68576,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 68698,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 68857,
+        "line": 3,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 68888,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 69093,
+        "line": 6,
+        "copy": "#Age: Adolescent",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 75440,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 77373,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 78582,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 81501,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 84693,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 84704,
+        "line": 3,
+        "copy": "#Age: Young Adult",
+        "physionet": "#Age: Adolescent"
+      },
+      {
+        "patient_id": 84721,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 84755,
+        "line": 3,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 84760,
+        "line": 5,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 84762,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 84824,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 84894,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 84912,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 85010,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 85198,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 85226,
+        "line": 5,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 85230,
+        "line": 6,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 85322,
+        "line": 3,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      },
+      {
+        "patient_id": 85336,
+        "line": 4,
+        "copy": "#Age: Infant",
+        "physionet": "#Age: Child"
+      }
+    ]
+  },
+  "counts": {
+    "patients": 942,
+    "recordings": 3163,
+    "murmur": {
+      "Absent": 695,
+      "Present": 179,
+      "Unknown": 68
+    },
+    "outcome": {
+      "Normal": 486,
+      "Abnormal": 456
+    }
+  }
+}

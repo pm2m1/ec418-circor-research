@@ -10,7 +10,11 @@ in git):
   5. counts: patients, recordings, murmur classes.
 Writes results/logs/e0_provenance.json and results/tables/e0_sha256_differences.csv.
 
-usage: python scripts/12_e0_provenance.py PHYSIONET_ROOT   (folder holding SHA256SUMS.txt and training_data/)
+  6. optional COPY_TXT_DIR (the Phase-1 copy's 942 patient .txt, e.g. fetched from github.com/chihoon1/Murmur
+     @56b9846 and verified against circor_copy_SHA256SUMS.txt): line-by-line comparison after normalising
+     line endings (CRLF -> LF, final newline) and dropping '#Outcome' -> results/tables/e0_patient_txt_content_diffs.csv
+
+usage: python scripts/12_e0_provenance.py PHYSIONET_ROOT [COPY_TXT_DIR]
 """
 import hashlib
 import json
@@ -22,6 +26,7 @@ import pandas as pd
 from ec418.data.circor import load_patients, recording_table
 
 ROOT = sys.argv[1]
+COPY_TXT = sys.argv[2] if len(sys.argv) > 2 else None
 TRAIN = os.path.join(ROOT, "training_data")
 REF = "references/data_provenance"
 
@@ -101,6 +106,31 @@ J = audit[["patient_id", "murmur", "additional_id"]].merge(now, on="patient_id",
 same_add = (J.additional_id_v1.fillna(-1).astype(float) == J.additional_id_phys.fillna(-1).astype(float))
 rt = recording_table(pats)
 
+# 6. normalised content comparison of patient headers (copy vs PhysioNet)
+txt_cmp = None
+if COPY_TXT:
+    def norm(path):
+        return [l for l in open(path, "rb").read().decode().replace("\r\n", "\n").split("\n")
+                if l and not l.startswith("#Outcome")]
+    crow, n_verified, n_crlf = [], 0, 0
+    for pid in sorted(pats):
+        name = f"training_data/{pid}.txt"
+        cp = os.path.join(COPY_TXT, f"{pid}.txt")
+        n_verified += sha256(cp) == copy.get(name)
+        n_crlf += b"\r\n" in open(cp, "rb").read()
+        a, b = norm(cp), norm(os.path.join(TRAIN, f"{pid}.txt"))
+        if a != b:
+            for i in range(max(len(a), len(b))):
+                la, lb = (a[i] if i < len(a) else None), (b[i] if i < len(b) else None)
+                if la != lb:
+                    crow.append(dict(patient_id=pid, line=i + 1, copy=la, physionet=lb))
+    TC = pd.DataFrame(crow, columns=["patient_id", "line", "copy", "physionet"])
+    TC.to_csv("results/tables/e0_patient_txt_content_diffs.csv", index=False)
+    txt_cmp = dict(copy_txt_dir=COPY_TXT, copy_txt_files=len(pats), copy_txt_sha256_verified=int(n_verified),
+                   copy_txt_with_crlf=int(n_crlf),
+                   patients_with_content_difference_after_normalisation=sorted(int(x) for x in TC.patient_id.unique()),
+                   differing_lines=TC.to_dict("records"))
+
 summary = dict(
     physionet_root=ROOT,
     download=dict(files_listed_in_physionet_sha256sums=len(phys), missing=dl_missing, hash_mismatch=dl_bad,
@@ -117,6 +147,7 @@ summary = dict(
                           only_in_one=int((J._merge != "both").sum()),
                           murmur_mismatch=int((J.murmur_v1 != J.murmur_phys).sum()),
                           additional_id_mismatch=int((~same_add).sum())),
+    patient_txt_content_vs_copy=txt_cmp,
     counts=dict(patients=len(pats), recordings=len(rt), murmur=now.murmur.value_counts().to_dict(),
                 outcome=now.outcome.value_counts(dropna=False).to_dict()),
 )
