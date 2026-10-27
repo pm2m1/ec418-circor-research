@@ -39,12 +39,19 @@ for rep in ["stft", "wpd", "wpds"]:          # Phase-2 E2 (scripts/15_e2_extract
     for cond in ["true", "perm", "shift"]:
         SETFILE[f"E2_{rep}_{cond}"] = f"e2/rec_features_E2_{rep}_{cond}.csv"
     SETFILE[f"E1_{rep}_auto"] = f"e1/rec_features_E1_{rep}_auto.csv"   # Phase-2 E1 (scripts/19)
+    # Phase-2 E1b (scripts/21): fold-specific features, {r}/{k} = repeat / outer fold, path relative to the repo
+    SETFILE[f"E1b_{rep}_auto"] = "data/interim/e1b/features/r{r}_f{k}/rec_features_E1b_" + rep + "_auto.csv"
 B1_USED = ["b1_entropy_cv", "b1_slope", "b1_Hurst_spectral_mode", "b1_LeftSlope", "b1_RightSlope",
            "b1_LeftTangent", "b1_LeftTangentPoint", "b1_RightTangentPoint"]
 
 
-def patient_matrix(set_name: str, patients: pd.DataFrame) -> pd.DataFrame:
-    rec = pd.read_csv(os.path.join(FEATDIR, SETFILE[set_name]))
+def fold_specific(set_name: str) -> bool:
+    return "{r}" in SETFILE[set_name]
+
+
+def patient_matrix(set_name: str, patients: pd.DataFrame, r=None, k=None) -> pd.DataFrame:
+    path = SETFILE[set_name].format(r=r, k=k)
+    rec = pd.read_csv(path if path.startswith("data/") else os.path.join(FEATDIR, path))
     cols = B1_USED if set_name == "B1" else [c for c in rec.columns if c not in META]
     P = aggregate_patient(rec, cols)
     P = patients[["patient_id"]].merge(P, left_on="patient_id", right_index=True, how="left").set_index("patient_id")
@@ -72,12 +79,19 @@ def main():
     pair_idx, n_skipped = 0, 0
     dims = {}
     for S in sets:
-        P = patient_matrix(S, patients)
-        feats = list(P.columns)
-        dims[S] = len(feats)
-        miss = P.isna().all(axis=1).sum()
-        print(f"{S}: {len(feats)} patient features, patients with all-missing: {miss}", flush=True)
+        if not fold_specific(S):
+            P = patient_matrix(S, patients)
+            feats = list(P.columns)
+            dims[S] = len(feats)
+            miss = P.isna().all(axis=1).sum()
+            print(f"{S}: {len(feats)} patient features, patients with all-missing: {miss}", flush=True)
         for (r, k), g in ft.groupby(["repeat", "outer_fold"]):
+            if fold_specific(S):           # features differ per outer fold (fold-trained segmenter)
+                P = patient_matrix(S, patients, r, k)
+                feats = list(P.columns)
+                dims[S] = len(feats)
+                print(f"{S} r{r} f{k}: {len(feats)} patient features, patients with all-missing: "
+                      f"{P.isna().all(axis=1).sum()}", flush=True)
             tr = g[g.role == "train"]; te = g[g.role == "test"]
             pairs = [("outer", tr, te)]
             for ik in sorted(tr.inner_fold.unique()):

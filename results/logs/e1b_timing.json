@@ -1,0 +1,12 @@
+{
+  "n_timed": 50,
+  "train_s": 1.4995331764221191,
+  "decode_plus_features_s_per_recording": 0.01439770221710205,
+  "binary_task_recordings": 3007,
+  "folds": 25,
+  "trainings_per_fold": 4,
+  "nproc": 10,
+  "full_25_fold_cpu_h": 0.3423057171702385,
+  "full_25_fold_wall_h_estimate": 0.03423057171702385,
+  "exceeds_4h": false
+}
