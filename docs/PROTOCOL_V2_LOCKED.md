@@ -119,6 +119,37 @@ Descriptive: vs W_stft and vs the E1 auto sets; sensitivity by murmur grade.
 before running, with repeat-0 expert-label, B1, W_stft and E1 results as comparators; the results will say so.
 **Timebox:** if E1b classification is not complete by **2026-10-30 23:59 IST**, it is stopped and reported as incomplete.
 
+## Diagnostics D1–D3 — span selection vs timing (pre-registered 2026-10-27 23:05 IST)
+(Unrelated to the data-version amendments D1/D2.) **Designed after the E1b results were known** and after erratum E2-1
+(`docs/ERRATA_PHASE2.md`). **All three use the expert annotation of the test recordings at test time. They are
+DIAGNOSTICS ONLY, never deployable, and carry no pass/fail threshold**: descriptive decompositions, every number
+reported. Machine-readable: `configs/protocol_v2.json` → `diagnostics_D1_D3` (hash in `configs/protocol_v2_diag.sha256`).
+
+"Expert-annotated columns" = level-4 columns whose expert label (`column_labels` of the expert `.tsv`, exactly as the
+E2 `true` arm) is 1–4; label-0 columns are unannotated.
+* **D1 — HSMM timing inside the expert spans.** The E1b fold-wise LR-HSMM labels (same models and seeds; test
+  patients from the outer model, training patients cross-fitted; re-decoded deterministically and checked identical to
+  the saved E1b test decodes) with every expert label-0 column set to 0, then the same 34 aligned features.
+  *Question:* with the expert span selection, does automatic timing recover the expert-label result?
+* **D2 — within-span timing null.** The expert labels permuted only among the expert-annotated columns
+  (`np.random.default_rng(zlib.crc32(rec_id)).permutation`, the `perm` seed rule); label-0 columns stay where they are.
+  Same 34 aligned features. *Question:* does timing matter once the span selection is held fixed?
+* **D3 — pure selection, no timing.** The whole-signal feature definitions (`whole_features`, as W_stft / W_wpd_db4 /
+  W_wpd_db4_smooth) computed only on the expert-annotated columns (for wpds the 4-tap smoothing is applied to the full
+  map first, as in v1). Recordings without annotated columns → missing. *Question:* how much is just "use the clean
+  parts"?
+
+Representations `stft`, `wpd`, `wpds` for all three. WEKA RF (primary) and SMO (secondary), frozen folds, tag `diag`
+(sets D1_/D2_/D3_<rep>, D1 fold-specific; plus W_wpd_db4_smooth on the committed features as the Mac comparator).
+Comparators from the same Mac: expert-true = `E2_<rep>_true`, E2 perm = `E2_<rep>_perm` (tag `e2`), HSMM-full =
+`E1b_<rep>_auto` (tag `e1b`), W_stft / W_wpd_db4 (tag `e1`).
+**Reported:** repeat-averaged AUROC with subject-bootstrap 95 % CI (2000, seed 1) and mean of repeats for every set;
+paired contrasts Δ = AUROC(a) − AUROC(b) on repeat-averaged scores, subject-bootstrap CI (2000, seed 2), folds Δ > 0:
+(1) expert-true − D1, (2) expert-true − D2, (3) D3 − whole-signal on the full recording (same representation),
+(4) D1 − HSMM-full; plus, for the plain decomposition, D2 − E2 perm, using the exact identities
+true − perm = (true − D2) [within-span timing] + (D2 − perm) [span selection without timing] and
+true − HSMM-full = (true − D1) [timing error inside the spans] + (D1 − HSMM-full) [span selection with HSMM timing].
+
 ## Equivalence reporting
 For `wpds` vs `stft` (aligned, `true`): report Δ and 95 % CI; claim "no meaningful difference" only if
 the entire CI lies within ±0.03.

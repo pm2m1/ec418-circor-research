@@ -82,5 +82,20 @@
     "statistics": "as E1: repeat-averaged scores, 2000 subject resamples seed 2, both AUROC summaries, fold counts reported; descriptive vs W_stft, vs E1 auto sets, grade sensitivity",
     "runtime_rule": "time on ~50 recordings; if the full 25-fold estimate exceeds ~4 h, commit an amendment reducing to repeat 0 only (5 folds) BEFORE running, with repeat-0 comparators",
     "timebox": "if classification is not complete by 2026-10-30 23:59 IST, stop and report as incomplete"
+  },
+  "diagnostics_D1_D3": {
+    "preregistered": "2026-10-27 23:05 IST, designed AFTER the E1b results and erratum E2-1; unrelated to data amendments D1/D2",
+    "status": "DIAGNOSTICS ONLY: use the expert annotation of test recordings at test time; never deployable; no pass/fail thresholds; descriptive decomposition, every number reported",
+    "expert_annotated_columns": "level-4 columns with expert label 1-4 (column_labels of the expert .tsv, as the E2 true arm); label 0 = unannotated",
+    "D1": "E1b fold-wise LR-HSMM labels (same models/seeds, test = outer model, training = cross-fitted; re-decoded and checked identical to saved E1b test decodes) with expert label-0 columns set to 0; same 34 aligned features",
+    "D2": "expert labels permuted only among expert-annotated columns with np.random.default_rng(zlib.crc32(rec_id)).permutation; label-0 columns unchanged; same 34 aligned features",
+    "D3": "whole_features (W_stft / W_wpd_db4 / W_wpd_db4_smooth definitions; wpds smoothing on the full map first) on expert-annotated columns only; recordings without annotated columns missing",
+    "representations": [
+      "stft",
+      "wpd",
+      "wpds"
+    ],
+    "classification": "WEKA RF primary, SMO secondary, frozen folds, tag diag (D1 fold-specific) + W_wpd_db4_smooth on committed features as Mac comparator; comparators E2_<rep>_true, E2_<rep>_perm (e2), E1b_<rep>_auto (e1b), W_stft, W_wpd_db4 (e1)",
+    "reporting": "repeat-averaged AUROC + subject-bootstrap CI (2000, seed 1) and mean of repeats; paired contrasts on repeat-averaged scores, subject bootstrap 2000 seed 2, folds positive: (1) true - D1, (2) true - D2, (3) D3 - full-recording whole-signal, (4) D1 - E1b HSMM-full, plus D2 - E2 perm; decomposition identities true-perm = (true-D2)+(D2-perm), true-HSMMfull = (true-D1)+(D1-HSMMfull)"
   }
 }
