@@ -200,6 +200,31 @@ References (descriptive): D1 (expert spans, upper) and E1b (no span selection, l
 **Timebox:** complete by **2026-10-29 23:59 IST** or report as incomplete. No extensions; no tuning after seeing
 classification results.
 
+## S1 — Shortcut control for E4 (diagnostic; pre-registered 2026-10-28 00:05 IST)
+**Designed after the E4 results were known** (`docs/E4_RESULTS.md`: E4 ≈ expert labels; the predicted-span fraction alone
+separates the classes, AUROC 0.646, post-hoc). **S1 is a diagnostic**: it asks whether E4's advantage over whole-signal
+features survives when the baseline is given the same span/missingness shortcut. Machine-readable:
+`configs/protocol_v2.json` → `S1_shortcut_control` (hash in `configs/protocol_v2_s1.sha256`); tag `s1-prereg`.
+
+**Shortcut variables (SC), computed exactly as in E4** (same HSMM models, span detectors, thresholds and cross-fitting:
+training patients from the inner-fold detectors, test patients from the full-training-fold detector; the training
+patients' window predictions, which E4 did not save, are re-derived deterministically and the test patients' are
+checked identical to the saved E4 predictions):
+* per recording: predicted-span fraction = share of its full 1-s windows predicted annotated;
+* per recording: no-aligned-features flag = the recording has no E4 aligned features (identical for stft / wpd / wpds);
+* per patient: median and max of the predicted-span fraction, and the number and the fraction of the patient's
+  recordings flagged. Implementation through the standard aggregation: the count and fraction are attached to every
+  recording of the patient, so they enter the patient vector as identical `__med` / `__max` columns.
+
+**Sets (WEKA RF primary, SMO secondary, frozen folds, tag `s1`, fold-specific files):** `S1_Wstft_SC` = W_stft patient
+features (68) + SC; `S1_Wwpd_SC` = W_wpd_db4 patient features (68) + SC; `S1_SC_only` = SC alone (no audio features).
+**Report** (repeat-averaged AUROC, subject-bootstrap 95 % CI 2000 / seed 2, folds Δ > 0, both summaries):
+(a) E4_<rep> − S1_Wstft_SC and E4_<rep> − S1_Wwpd_SC for rep = stft, wpd, wpds; (b) S1_Wstft_SC − W_stft and
+S1_Wwpd_SC − W_wpd_db4; (c) S1_SC_only AUROC with CI.
+**Interpretation rule (fixed now):** for each pair in (a), E4's advantage over whole-signal features counts as **"not
+explained by the span/missingness shortcut"** only if E4 − (W_*+SC) has a CI lower bound > 0; otherwise it is reported as
+**"possibly shortcut-driven"**. RF determines the label; SMO is descriptive.
+
 ## Equivalence reporting
 For `wpds` vs `stft` (aligned, `true`): report Δ and 95 % CI; claim "no meaningful difference" only if
 the entire CI lies within ±0.03.

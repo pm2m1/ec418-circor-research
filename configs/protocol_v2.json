@@ -123,5 +123,17 @@
     },
     "references": "D1 (upper) and E1b (lower), descriptive: E4 - D1, E4 - E1b",
     "timebox": "complete by 2026-10-29 23:59 IST or report as incomplete; no extensions; no tuning after classification results"
+  },
+  "S1_shortcut_control": {
+    "preregistered": "2026-10-28 00:05 IST, designed AFTER the E4 results; diagnostic; tag s1-prereg",
+    "shortcut_variables": "as E4 (same HSMM models, detectors, thresholds, cross-fitting; training-patient window predictions re-derived deterministically, test-patient ones checked identical to saved E4): per recording predicted-span fraction and no-aligned-features flag (identical across stft/wpd/wpds); per patient median and max of predicted-span fraction, number and fraction of flagged recordings (count/fraction attached to every recording -> identical __med/__max columns via the standard aggregation)",
+    "sets": {
+      "S1_Wstft_SC": "W_stft patient features + SC",
+      "S1_Wwpd_SC": "W_wpd_db4 patient features + SC",
+      "S1_SC_only": "SC alone"
+    },
+    "classification": "WEKA RF primary, SMO secondary, frozen folds, tag s1, fold-specific files",
+    "report": "(a) E4_<rep> - S1_Wstft_SC and E4_<rep> - S1_Wwpd_SC for stft/wpd/wpds; (b) S1_Wstft_SC - W_stft, S1_Wwpd_SC - W_wpd_db4; (c) S1_SC_only AUROC; repeat-averaged AUROC, subject bootstrap 2000 seed 2, folds positive, both summaries",
+    "interpretation_rule": "per pair in (a): 'not explained by the span/missingness shortcut' only if E4 - (W_*+SC) CI lower bound > 0, else 'possibly shortcut-driven'; RF decides, SMO descriptive"
   }
 }
