@@ -1,0 +1,6 @@
+index,orientation,auroc_unknown_vs_known
+sqi_periodicity,lower=worse,0.6894
+sqi_band_frac,lower=worse,0.7162
+sqi_hf_kurtosis,higher=worse,0.2853
+sqi_clip,higher=worse,0.6076
+gate_spectral_ratio,lower=worse,0.7792

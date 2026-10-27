@@ -1,0 +1,393 @@
+$ java -Xmx2g -cp /home/claude/ec418-circor-research/tools/weka.jar:/home/claude/ec418-circor-research/tools/mtj.jar:/home/claude/ec418-circor-research/tools/arpack_combined.jar:/home/claude/ec418-circor-research/tools/core.jar:/home/claude/ec418-circor-research/tools/build WekaBatchRunner experiments/main/jobs_0.tsv
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=45149 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WEKA version 3.9.7
+Oct 27, 2026 1:18:12 PM com.github.fommil.netlib.ARPACK <clinit>
+WARNING: Failed to load implementation from: com.github.fommil.netlib.NativeSystemARPACK
+Oct 27, 2026 1:18:12 PM com.github.fommil.netlib.ARPACK <clinit>
+WARNING: Failed to load implementation from: com.github.fommil.netlib.NativeRefARPACK
+job W_stft|MLP|0|3|inner2 ok train=466 test=233 fit_s=5.254 predict_s=0.0232 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|0|4|inner0 ok train=466 test=233 fit_s=1.315 predict_s=0.0753 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|0|4|inner0 ok train=466 test=233 fit_s=4.219 predict_s=0.0131 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|0|4|inner2 ok train=466 test=233 fit_s=0.693 predict_s=0.0973 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|0|4|inner2 ok train=466 test=233 fit_s=4.019 predict_s=0.0068 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|1|0|inner0 ok train=467 test=233 fit_s=0.478 predict_s=0.0241 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|1|0|inner0 ok train=467 test=233 fit_s=3.715 predict_s=0.0133 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|1|0|inner2 ok train=467 test=233 fit_s=0.608 predict_s=0.0250 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|1|0|inner2 ok train=467 test=233 fit_s=4.159 predict_s=0.0044 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|1|1|inner0 ok train=466 test=233 fit_s=0.612 predict_s=0.0370 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|1|1|inner0 ok train=466 test=233 fit_s=4.287 predict_s=0.0055 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|1|1|inner2 ok train=466 test=233 fit_s=0.657 predict_s=0.0388 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|1|1|inner2 ok train=466 test=233 fit_s=3.984 predict_s=0.0044 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|1|2|inner0 ok train=466 test=233 fit_s=0.457 predict_s=0.0231 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|1|2|inner0 ok train=466 test=233 fit_s=3.964 predict_s=0.0128 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|1|2|inner2 ok train=466 test=233 fit_s=0.516 predict_s=0.0336 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|1|2|inner2 ok train=466 test=233 fit_s=4.315 predict_s=0.0037 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|1|3|inner0 ok train=466 test=233 fit_s=0.655 predict_s=0.0176 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|1|3|inner0 ok train=466 test=233 fit_s=4.018 predict_s=0.0063 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|1|3|inner2 ok train=466 test=233 fit_s=0.722 predict_s=0.0220 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|1|3|inner2 ok train=466 test=233 fit_s=4.196 predict_s=0.0037 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|1|4|inner0 ok train=466 test=233 fit_s=0.495 predict_s=0.0167 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|1|4|inner0 ok train=466 test=233 fit_s=3.981 predict_s=0.0043 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|1|4|inner2 ok train=466 test=233 fit_s=0.500 predict_s=0.0139 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|1|4|inner2 ok train=466 test=233 fit_s=3.963 predict_s=0.0038 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|2|0|inner0 ok train=467 test=233 fit_s=0.489 predict_s=0.0268 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|2|0|inner0 ok train=467 test=233 fit_s=4.395 predict_s=0.0038 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|2|0|inner2 ok train=466 test=234 fit_s=0.491 predict_s=0.0207 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|2|0|inner2 ok train=466 test=234 fit_s=3.896 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|2|1|inner0 ok train=466 test=233 fit_s=0.399 predict_s=0.0177 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|2|1|inner0 ok train=466 test=233 fit_s=3.799 predict_s=0.0139 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|2|1|inner2 ok train=466 test=233 fit_s=0.522 predict_s=0.0165 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|2|1|inner2 ok train=466 test=233 fit_s=4.103 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|2|2|inner0 ok train=466 test=233 fit_s=0.525 predict_s=0.0133 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|2|2|inner0 ok train=466 test=233 fit_s=4.172 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|2|2|inner2 ok train=466 test=233 fit_s=0.421 predict_s=0.0133 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|2|2|inner2 ok train=466 test=233 fit_s=3.993 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|2|3|inner0 ok train=466 test=233 fit_s=0.546 predict_s=0.0122 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|2|3|inner0 ok train=466 test=233 fit_s=3.728 predict_s=0.0039 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|2|3|inner2 ok train=466 test=233 fit_s=0.430 predict_s=0.0346 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|2|3|inner2 ok train=466 test=233 fit_s=4.041 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|2|4|inner0 ok train=466 test=233 fit_s=0.461 predict_s=0.0415 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|2|4|inner0 ok train=466 test=233 fit_s=4.055 predict_s=0.0056 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|2|4|inner2 ok train=466 test=233 fit_s=0.432 predict_s=0.0171 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|2|4|inner2 ok train=466 test=233 fit_s=3.805 predict_s=0.0037 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|3|0|inner0 ok train=466 test=234 fit_s=0.479 predict_s=0.0180 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|3|0|inner0 ok train=466 test=234 fit_s=4.405 predict_s=0.0039 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|3|0|inner2 ok train=467 test=233 fit_s=0.655 predict_s=0.0182 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|3|0|inner2 ok train=467 test=233 fit_s=4.153 predict_s=0.0070 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|3|1|inner0 ok train=466 test=233 fit_s=0.434 predict_s=0.0235 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|3|1|inner0 ok train=466 test=233 fit_s=3.840 predict_s=0.0038 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|3|1|inner2 ok train=466 test=233 fit_s=0.508 predict_s=0.0138 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|3|1|inner2 ok train=466 test=233 fit_s=4.068 predict_s=0.0056 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|3|2|inner0 ok train=466 test=233 fit_s=0.650 predict_s=0.0193 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|3|2|inner0 ok train=466 test=233 fit_s=3.887 predict_s=0.0098 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|3|2|inner2 ok train=466 test=233 fit_s=0.460 predict_s=0.0187 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|3|2|inner2 ok train=466 test=233 fit_s=3.903 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|3|3|inner0 ok train=466 test=233 fit_s=0.442 predict_s=0.0205 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|3|3|inner0 ok train=466 test=233 fit_s=3.626 predict_s=0.0040 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|3|3|inner2 ok train=466 test=233 fit_s=0.482 predict_s=0.0127 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|3|3|inner2 ok train=466 test=233 fit_s=3.884 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|3|4|inner0 ok train=466 test=233 fit_s=0.486 predict_s=0.0258 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|3|4|inner0 ok train=466 test=233 fit_s=4.097 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|3|4|inner2 ok train=466 test=233 fit_s=0.388 predict_s=0.0134 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|3|4|inner2 ok train=466 test=233 fit_s=3.833 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|4|0|inner0 ok train=467 test=233 fit_s=0.465 predict_s=0.0351 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|4|0|inner0 ok train=467 test=233 fit_s=3.567 predict_s=0.0037 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|4|0|inner2 ok train=467 test=233 fit_s=0.499 predict_s=0.0225 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|4|0|inner2 ok train=467 test=233 fit_s=4.051 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|4|1|inner0 ok train=466 test=233 fit_s=0.603 predict_s=0.0451 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|4|1|inner0 ok train=466 test=233 fit_s=3.898 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|4|1|inner2 ok train=466 test=233 fit_s=0.436 predict_s=0.0174 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|4|1|inner2 ok train=466 test=233 fit_s=3.881 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|4|2|inner0 ok train=466 test=233 fit_s=0.445 predict_s=0.0298 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|4|2|inner0 ok train=466 test=233 fit_s=3.923 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|4|2|inner2 ok train=466 test=233 fit_s=0.462 predict_s=0.0210 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|4|2|inner2 ok train=466 test=233 fit_s=3.868 predict_s=0.0045 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|4|3|inner0 ok train=466 test=233 fit_s=0.461 predict_s=0.0110 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|4|3|inner0 ok train=466 test=233 fit_s=3.759 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|4|3|inner2 ok train=466 test=233 fit_s=0.466 predict_s=0.0187 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|4|3|inner2 ok train=466 test=233 fit_s=3.741 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|4|4|inner0 ok train=466 test=233 fit_s=0.456 predict_s=0.0117 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|4|4|inner0 ok train=466 test=233 fit_s=3.734 predict_s=0.0040 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|RF|4|4|inner2 ok train=466 test=233 fit_s=0.425 predict_s=0.0206 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|MLP|4|4|inner2 ok train=466 test=233 fit_s=4.069 predict_s=0.0039 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|0|0|inner0 ok train=466 test=233 fit_s=0.441 predict_s=0.0126 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|0|0|inner0 ok train=466 test=233 fit_s=3.947 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|0|0|inner2 ok train=466 test=233 fit_s=0.443 predict_s=0.0282 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|0|0|inner2 ok train=466 test=233 fit_s=3.970 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|0|1|inner0 ok train=466 test=234 fit_s=0.428 predict_s=0.0166 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|0|1|inner0 ok train=466 test=234 fit_s=4.194 predict_s=0.0053 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|0|1|inner2 ok train=467 test=233 fit_s=0.455 predict_s=0.0303 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|0|1|inner2 ok train=467 test=233 fit_s=3.672 predict_s=0.0045 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|0|2|inner0 ok train=466 test=233 fit_s=0.430 predict_s=0.0186 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|0|2|inner0 ok train=466 test=233 fit_s=4.199 predict_s=0.0061 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|0|2|inner2 ok train=466 test=233 fit_s=0.567 predict_s=0.0146 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|0|2|inner2 ok train=466 test=233 fit_s=3.916 predict_s=0.0054 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|0|3|inner0 ok train=466 test=233 fit_s=0.438 predict_s=0.0226 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|0|3|inner0 ok train=466 test=233 fit_s=3.889 predict_s=0.0047 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|0|3|inner2 ok train=466 test=233 fit_s=0.488 predict_s=0.0155 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|0|3|inner2 ok train=466 test=233 fit_s=3.982 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|0|4|inner0 ok train=466 test=233 fit_s=0.414 predict_s=0.0225 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|0|4|inner0 ok train=466 test=233 fit_s=3.778 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|0|4|inner2 ok train=466 test=233 fit_s=0.483 predict_s=0.0162 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|0|4|inner2 ok train=466 test=233 fit_s=4.013 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|1|0|inner0 ok train=467 test=233 fit_s=0.538 predict_s=0.0250 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|1|0|inner0 ok train=467 test=233 fit_s=3.855 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|1|0|inner2 ok train=467 test=233 fit_s=0.444 predict_s=0.0160 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|1|0|inner2 ok train=467 test=233 fit_s=4.442 predict_s=0.0055 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|1|1|inner0 ok train=466 test=233 fit_s=0.454 predict_s=0.0319 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|1|1|inner0 ok train=466 test=233 fit_s=3.984 predict_s=0.0032 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|1|1|inner2 ok train=466 test=233 fit_s=0.483 predict_s=0.0358 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|1|1|inner2 ok train=466 test=233 fit_s=4.183 predict_s=0.0056 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|1|2|inner0 ok train=466 test=233 fit_s=0.579 predict_s=0.0238 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|1|2|inner0 ok train=466 test=233 fit_s=4.064 predict_s=0.0038 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|1|2|inner2 ok train=466 test=233 fit_s=0.472 predict_s=0.0316 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|1|2|inner2 ok train=466 test=233 fit_s=3.811 predict_s=0.0038 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|1|3|inner0 ok train=466 test=233 fit_s=0.432 predict_s=0.0191 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|1|3|inner0 ok train=466 test=233 fit_s=4.112 predict_s=0.0051 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|1|3|inner2 ok train=466 test=233 fit_s=0.532 predict_s=0.0323 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|1|3|inner2 ok train=466 test=233 fit_s=4.943 predict_s=0.0043 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|1|4|inner0 ok train=466 test=233 fit_s=0.724 predict_s=0.0215 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|1|4|inner0 ok train=466 test=233 fit_s=4.630 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|1|4|inner2 ok train=466 test=233 fit_s=0.458 predict_s=0.0275 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|1|4|inner2 ok train=466 test=233 fit_s=3.811 predict_s=0.0039 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|2|0|inner0 ok train=467 test=233 fit_s=0.434 predict_s=0.0189 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|2|0|inner0 ok train=467 test=233 fit_s=4.051 predict_s=0.0041 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|2|0|inner2 ok train=466 test=234 fit_s=0.458 predict_s=0.0129 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|2|0|inner2 ok train=466 test=234 fit_s=3.757 predict_s=0.0037 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|2|1|inner0 ok train=466 test=233 fit_s=0.538 predict_s=0.0211 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|2|1|inner0 ok train=466 test=233 fit_s=4.083 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|2|1|inner2 ok train=466 test=233 fit_s=0.486 predict_s=0.0378 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|2|1|inner2 ok train=466 test=233 fit_s=3.899 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|2|2|inner0 ok train=466 test=233 fit_s=0.501 predict_s=0.0247 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|2|2|inner0 ok train=466 test=233 fit_s=4.372 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|2|2|inner2 ok train=466 test=233 fit_s=0.552 predict_s=0.0213 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|2|2|inner2 ok train=466 test=233 fit_s=3.937 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|2|3|inner0 ok train=466 test=233 fit_s=0.452 predict_s=0.0295 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|2|3|inner0 ok train=466 test=233 fit_s=3.704 predict_s=0.0049 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|2|3|inner2 ok train=466 test=233 fit_s=0.420 predict_s=0.0248 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|2|3|inner2 ok train=466 test=233 fit_s=3.827 predict_s=0.0038 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|2|4|inner0 ok train=466 test=233 fit_s=0.443 predict_s=0.0130 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|2|4|inner0 ok train=466 test=233 fit_s=4.013 predict_s=0.0039 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|2|4|inner2 ok train=466 test=233 fit_s=0.440 predict_s=0.0222 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|2|4|inner2 ok train=466 test=233 fit_s=3.844 predict_s=0.0041 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|3|0|inner0 ok train=466 test=234 fit_s=0.451 predict_s=0.0171 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|3|0|inner0 ok train=466 test=234 fit_s=3.856 predict_s=0.0037 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|3|0|inner2 ok train=467 test=233 fit_s=0.454 predict_s=0.0257 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|3|0|inner2 ok train=467 test=233 fit_s=3.786 predict_s=0.0039 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|3|1|inner0 ok train=466 test=233 fit_s=0.433 predict_s=0.0148 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|3|1|inner0 ok train=466 test=233 fit_s=3.867 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|3|1|inner2 ok train=466 test=233 fit_s=0.436 predict_s=0.0288 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|3|1|inner2 ok train=466 test=233 fit_s=4.502 predict_s=0.0032 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|3|2|inner0 ok train=466 test=233 fit_s=0.456 predict_s=0.0183 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|3|2|inner0 ok train=466 test=233 fit_s=3.881 predict_s=0.0041 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|3|2|inner2 ok train=466 test=233 fit_s=0.464 predict_s=0.0136 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|3|2|inner2 ok train=466 test=233 fit_s=3.813 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|3|3|inner0 ok train=466 test=233 fit_s=0.475 predict_s=0.0230 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|3|3|inner0 ok train=466 test=233 fit_s=4.009 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|3|3|inner2 ok train=466 test=233 fit_s=0.444 predict_s=0.0189 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|3|3|inner2 ok train=466 test=233 fit_s=3.903 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|3|4|inner0 ok train=466 test=233 fit_s=0.451 predict_s=0.0236 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|3|4|inner0 ok train=466 test=233 fit_s=3.865 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|3|4|inner2 ok train=466 test=233 fit_s=0.420 predict_s=0.0129 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|3|4|inner2 ok train=466 test=233 fit_s=3.689 predict_s=0.0068 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|4|0|inner0 ok train=467 test=233 fit_s=0.443 predict_s=0.0272 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|4|0|inner0 ok train=467 test=233 fit_s=3.796 predict_s=0.0049 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|4|0|inner2 ok train=467 test=233 fit_s=0.436 predict_s=0.0175 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|4|0|inner2 ok train=467 test=233 fit_s=3.836 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|4|1|inner0 ok train=466 test=233 fit_s=0.525 predict_s=0.0422 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|4|1|inner0 ok train=466 test=233 fit_s=3.987 predict_s=0.0065 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|4|1|inner2 ok train=466 test=233 fit_s=0.480 predict_s=0.0150 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|4|1|inner2 ok train=466 test=233 fit_s=4.021 predict_s=0.0055 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|4|2|inner0 ok train=466 test=233 fit_s=0.423 predict_s=0.0189 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|4|2|inner0 ok train=466 test=233 fit_s=4.192 predict_s=0.0056 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|4|2|inner2 ok train=466 test=233 fit_s=0.463 predict_s=0.0327 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|4|2|inner2 ok train=466 test=233 fit_s=3.639 predict_s=0.0040 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|4|3|inner0 ok train=466 test=233 fit_s=0.437 predict_s=0.0384 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|4|3|inner0 ok train=466 test=233 fit_s=3.840 predict_s=0.0048 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|4|3|inner2 ok train=466 test=233 fit_s=0.436 predict_s=0.0139 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|4|3|inner2 ok train=466 test=233 fit_s=3.828 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|4|4|inner0 ok train=466 test=233 fit_s=0.444 predict_s=0.0222 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|4|4|inner0 ok train=466 test=233 fit_s=3.792 predict_s=0.0057 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|RF|4|4|inner2 ok train=466 test=233 fit_s=0.512 predict_s=0.0250 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|MLP|4|4|inner2 ok train=466 test=233 fit_s=3.891 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|0|0|inner0 ok train=466 test=233 fit_s=0.599 predict_s=0.0393 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|0|0|inner0 ok train=466 test=233 fit_s=4.255 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|0|0|inner2 ok train=466 test=233 fit_s=0.463 predict_s=0.0166 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|0|0|inner2 ok train=466 test=233 fit_s=4.061 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|0|1|inner0 ok train=466 test=234 fit_s=0.459 predict_s=0.0186 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|0|1|inner0 ok train=466 test=234 fit_s=3.942 predict_s=0.0046 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|0|1|inner2 ok train=467 test=233 fit_s=0.466 predict_s=0.0355 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|0|1|inner2 ok train=467 test=233 fit_s=3.907 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|0|2|inner0 ok train=466 test=233 fit_s=0.432 predict_s=0.0252 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|0|2|inner0 ok train=466 test=233 fit_s=3.870 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|0|2|inner2 ok train=466 test=233 fit_s=0.407 predict_s=0.0111 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|0|2|inner2 ok train=466 test=233 fit_s=4.143 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|0|3|inner0 ok train=466 test=233 fit_s=0.517 predict_s=0.0135 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|0|3|inner0 ok train=466 test=233 fit_s=4.065 predict_s=0.0059 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|0|3|inner2 ok train=466 test=233 fit_s=0.474 predict_s=0.0303 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|0|3|inner2 ok train=466 test=233 fit_s=4.255 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|0|4|inner0 ok train=466 test=233 fit_s=0.412 predict_s=0.0216 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|0|4|inner0 ok train=466 test=233 fit_s=4.066 predict_s=0.0037 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|0|4|inner2 ok train=466 test=233 fit_s=0.418 predict_s=0.0281 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|0|4|inner2 ok train=466 test=233 fit_s=4.427 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|1|0|inner0 ok train=467 test=233 fit_s=0.455 predict_s=0.0110 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|1|0|inner0 ok train=467 test=233 fit_s=3.808 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|1|0|inner2 ok train=467 test=233 fit_s=0.450 predict_s=0.0150 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|1|0|inner2 ok train=467 test=233 fit_s=3.880 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|1|1|inner0 ok train=466 test=233 fit_s=0.479 predict_s=0.0183 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|1|1|inner0 ok train=466 test=233 fit_s=4.161 predict_s=0.0040 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|1|1|inner2 ok train=466 test=233 fit_s=0.480 predict_s=0.0242 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|1|1|inner2 ok train=466 test=233 fit_s=3.788 predict_s=0.0032 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|1|2|inner0 ok train=466 test=233 fit_s=0.418 predict_s=0.0251 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|1|2|inner0 ok train=466 test=233 fit_s=4.107 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|1|2|inner2 ok train=466 test=233 fit_s=0.466 predict_s=0.0141 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|1|2|inner2 ok train=466 test=233 fit_s=4.033 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|1|3|inner0 ok train=466 test=233 fit_s=0.450 predict_s=0.0310 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|1|3|inner0 ok train=466 test=233 fit_s=3.993 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|1|3|inner2 ok train=466 test=233 fit_s=0.463 predict_s=0.0212 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|1|3|inner2 ok train=466 test=233 fit_s=3.784 predict_s=0.0041 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|1|4|inner0 ok train=466 test=233 fit_s=0.404 predict_s=0.0222 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|1|4|inner0 ok train=466 test=233 fit_s=3.853 predict_s=0.0038 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|1|4|inner2 ok train=466 test=233 fit_s=0.404 predict_s=0.0453 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|1|4|inner2 ok train=466 test=233 fit_s=3.855 predict_s=0.0045 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|2|0|inner0 ok train=467 test=233 fit_s=0.441 predict_s=0.0121 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|2|0|inner0 ok train=467 test=233 fit_s=4.094 predict_s=0.0038 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|2|0|inner2 ok train=466 test=234 fit_s=0.429 predict_s=0.0151 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|2|0|inner2 ok train=466 test=234 fit_s=4.094 predict_s=0.0037 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|2|1|inner0 ok train=466 test=233 fit_s=0.438 predict_s=0.0186 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|2|1|inner0 ok train=466 test=233 fit_s=3.875 predict_s=0.0032 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|2|1|inner2 ok train=466 test=233 fit_s=0.428 predict_s=0.0210 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|2|1|inner2 ok train=466 test=233 fit_s=3.800 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|2|2|inner0 ok train=466 test=233 fit_s=0.493 predict_s=0.0266 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|2|2|inner0 ok train=466 test=233 fit_s=3.952 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|2|2|inner2 ok train=466 test=233 fit_s=0.526 predict_s=0.0171 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|2|2|inner2 ok train=466 test=233 fit_s=4.627 predict_s=0.0037 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|2|3|inner0 ok train=466 test=233 fit_s=0.608 predict_s=0.0191 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|2|3|inner0 ok train=466 test=233 fit_s=4.203 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|2|3|inner2 ok train=466 test=233 fit_s=0.453 predict_s=0.0218 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|2|3|inner2 ok train=466 test=233 fit_s=3.764 predict_s=0.0046 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|2|4|inner0 ok train=466 test=233 fit_s=0.441 predict_s=0.0217 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|2|4|inner0 ok train=466 test=233 fit_s=3.951 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|2|4|inner2 ok train=466 test=233 fit_s=0.545 predict_s=0.0261 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|2|4|inner2 ok train=466 test=233 fit_s=3.864 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|3|0|inner0 ok train=466 test=234 fit_s=0.396 predict_s=0.0107 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|3|0|inner0 ok train=466 test=234 fit_s=3.833 predict_s=0.0039 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|3|0|inner2 ok train=467 test=233 fit_s=0.543 predict_s=0.0152 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|3|0|inner2 ok train=467 test=233 fit_s=3.942 predict_s=0.0044 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|3|1|inner0 ok train=466 test=233 fit_s=0.453 predict_s=0.0180 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|3|1|inner0 ok train=466 test=233 fit_s=3.932 predict_s=0.0051 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|3|1|inner2 ok train=466 test=233 fit_s=0.445 predict_s=0.0229 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|3|1|inner2 ok train=466 test=233 fit_s=3.989 predict_s=0.0075 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|3|2|inner0 ok train=466 test=233 fit_s=0.471 predict_s=0.0344 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|3|2|inner0 ok train=466 test=233 fit_s=3.931 predict_s=0.0053 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|3|2|inner2 ok train=466 test=233 fit_s=0.458 predict_s=0.0352 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|3|2|inner2 ok train=466 test=233 fit_s=3.606 predict_s=0.0079 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|3|3|inner0 ok train=466 test=233 fit_s=0.438 predict_s=0.0160 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|3|3|inner0 ok train=466 test=233 fit_s=3.750 predict_s=0.0049 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|3|3|inner2 ok train=466 test=233 fit_s=0.506 predict_s=0.0231 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|3|3|inner2 ok train=466 test=233 fit_s=4.278 predict_s=0.0093 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|3|4|inner0 ok train=466 test=233 fit_s=0.436 predict_s=0.0208 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|3|4|inner0 ok train=466 test=233 fit_s=4.517 predict_s=0.0110 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|3|4|inner2 ok train=466 test=233 fit_s=0.471 predict_s=0.0289 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|3|4|inner2 ok train=466 test=233 fit_s=4.212 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|4|0|inner0 ok train=467 test=233 fit_s=0.412 predict_s=0.0239 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|4|0|inner0 ok train=467 test=233 fit_s=4.089 predict_s=0.0038 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|4|0|inner2 ok train=467 test=233 fit_s=0.499 predict_s=0.0130 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|4|0|inner2 ok train=467 test=233 fit_s=4.058 predict_s=0.0048 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|4|1|inner0 ok train=466 test=233 fit_s=0.520 predict_s=0.0151 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|4|1|inner0 ok train=466 test=233 fit_s=3.837 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|4|1|inner2 ok train=466 test=233 fit_s=0.420 predict_s=0.0184 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|4|1|inner2 ok train=466 test=233 fit_s=4.016 predict_s=0.0032 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|4|2|inner0 ok train=466 test=233 fit_s=0.417 predict_s=0.0242 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|4|2|inner0 ok train=466 test=233 fit_s=3.754 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|4|2|inner2 ok train=466 test=233 fit_s=0.423 predict_s=0.0260 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|4|2|inner2 ok train=466 test=233 fit_s=4.066 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|4|3|inner0 ok train=466 test=233 fit_s=0.414 predict_s=0.0117 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|4|3|inner0 ok train=466 test=233 fit_s=3.852 predict_s=0.0042 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|4|3|inner2 ok train=466 test=233 fit_s=0.467 predict_s=0.0153 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|4|3|inner2 ok train=466 test=233 fit_s=3.908 predict_s=0.0038 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|4|4|inner0 ok train=466 test=233 fit_s=0.431 predict_s=0.0177 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|4|4|inner0 ok train=466 test=233 fit_s=3.724 predict_s=0.0118 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|RF|4|4|inner2 ok train=466 test=233 fit_s=0.456 predict_s=0.0325 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|MLP|4|4|inner2 ok train=466 test=233 fit_s=3.965 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|0|0|inner0 ok train=466 test=233 fit_s=0.448 predict_s=0.0391 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|0|0|inner0 ok train=466 test=233 fit_s=3.644 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|0|0|inner2 ok train=466 test=233 fit_s=0.473 predict_s=0.0187 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|0|0|inner2 ok train=466 test=233 fit_s=3.939 predict_s=0.0032 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|0|1|inner0 ok train=466 test=234 fit_s=0.458 predict_s=0.0184 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|0|1|inner0 ok train=466 test=234 fit_s=3.803 predict_s=0.0049 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|0|1|inner2 ok train=467 test=233 fit_s=0.433 predict_s=0.0324 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|0|1|inner2 ok train=467 test=233 fit_s=4.073 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|0|2|inner0 ok train=466 test=233 fit_s=0.413 predict_s=0.0248 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|0|2|inner0 ok train=466 test=233 fit_s=3.879 predict_s=0.0055 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|0|2|inner2 ok train=466 test=233 fit_s=0.460 predict_s=0.0106 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|0|2|inner2 ok train=466 test=233 fit_s=3.792 predict_s=0.0032 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|0|3|inner0 ok train=466 test=233 fit_s=0.459 predict_s=0.0128 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|0|3|inner0 ok train=466 test=233 fit_s=3.687 predict_s=0.0032 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|0|3|inner2 ok train=466 test=233 fit_s=0.500 predict_s=0.0189 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|0|3|inner2 ok train=466 test=233 fit_s=3.746 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|0|4|inner0 ok train=466 test=233 fit_s=0.435 predict_s=0.0364 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|0|4|inner0 ok train=466 test=233 fit_s=3.799 predict_s=0.0032 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|0|4|inner2 ok train=466 test=233 fit_s=0.425 predict_s=0.0244 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|0|4|inner2 ok train=466 test=233 fit_s=3.851 predict_s=0.0042 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|1|0|inner0 ok train=467 test=233 fit_s=0.413 predict_s=0.0118 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|1|0|inner0 ok train=467 test=233 fit_s=3.734 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|1|0|inner2 ok train=467 test=233 fit_s=0.460 predict_s=0.0248 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|1|0|inner2 ok train=467 test=233 fit_s=3.938 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|1|1|inner0 ok train=466 test=233 fit_s=0.442 predict_s=0.0225 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|1|1|inner0 ok train=466 test=233 fit_s=3.730 predict_s=0.0050 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|1|1|inner2 ok train=466 test=233 fit_s=0.434 predict_s=0.0257 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|1|1|inner2 ok train=466 test=233 fit_s=3.606 predict_s=0.0055 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|1|2|inner0 ok train=466 test=233 fit_s=0.411 predict_s=0.0104 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|1|2|inner0 ok train=466 test=233 fit_s=3.714 predict_s=0.0044 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|1|2|inner2 ok train=466 test=233 fit_s=0.487 predict_s=0.0137 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|1|2|inner2 ok train=466 test=233 fit_s=4.031 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|1|3|inner0 ok train=466 test=233 fit_s=0.454 predict_s=0.0252 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|1|3|inner0 ok train=466 test=233 fit_s=3.990 predict_s=0.0038 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|1|3|inner2 ok train=466 test=233 fit_s=0.417 predict_s=0.0297 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|1|3|inner2 ok train=466 test=233 fit_s=3.709 predict_s=0.0043 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|1|4|inner0 ok train=466 test=233 fit_s=0.495 predict_s=0.0314 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|1|4|inner0 ok train=466 test=233 fit_s=3.880 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|1|4|inner2 ok train=466 test=233 fit_s=0.408 predict_s=0.0117 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|1|4|inner2 ok train=466 test=233 fit_s=3.734 predict_s=0.0088 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|2|0|inner0 ok train=467 test=233 fit_s=0.471 predict_s=0.0176 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|2|0|inner0 ok train=467 test=233 fit_s=3.807 predict_s=0.0054 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|2|0|inner2 ok train=466 test=234 fit_s=0.407 predict_s=0.0182 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|2|0|inner2 ok train=466 test=234 fit_s=3.617 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|2|1|inner0 ok train=466 test=233 fit_s=0.496 predict_s=0.0216 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|2|1|inner0 ok train=466 test=233 fit_s=4.114 predict_s=0.0049 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|2|1|inner2 ok train=466 test=233 fit_s=0.444 predict_s=0.0408 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|2|1|inner2 ok train=466 test=233 fit_s=3.764 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|2|2|inner0 ok train=466 test=233 fit_s=0.419 predict_s=0.0137 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|2|2|inner0 ok train=466 test=233 fit_s=3.826 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|2|2|inner2 ok train=466 test=233 fit_s=0.484 predict_s=0.0188 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|2|2|inner2 ok train=466 test=233 fit_s=4.303 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|2|3|inner0 ok train=466 test=233 fit_s=0.505 predict_s=0.0191 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|2|3|inner0 ok train=466 test=233 fit_s=4.389 predict_s=0.0039 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|2|3|inner2 ok train=466 test=233 fit_s=0.387 predict_s=0.0236 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|2|3|inner2 ok train=466 test=233 fit_s=4.552 predict_s=0.0060 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|2|4|inner0 ok train=466 test=233 fit_s=0.430 predict_s=0.0268 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|2|4|inner0 ok train=466 test=233 fit_s=3.943 predict_s=0.0051 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|2|4|inner2 ok train=466 test=233 fit_s=0.499 predict_s=0.0129 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|2|4|inner2 ok train=466 test=233 fit_s=3.869 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|3|0|inner0 ok train=466 test=234 fit_s=0.434 predict_s=0.0160 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|3|0|inner0 ok train=466 test=234 fit_s=3.923 predict_s=0.0091 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|3|0|inner2 ok train=467 test=233 fit_s=0.470 predict_s=0.0197 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|3|0|inner2 ok train=467 test=233 fit_s=3.803 predict_s=0.0035 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|3|1|inner0 ok train=466 test=233 fit_s=0.414 predict_s=0.0343 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|3|1|inner0 ok train=466 test=233 fit_s=3.674 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|3|1|inner2 ok train=466 test=233 fit_s=0.486 predict_s=0.0144 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|3|1|inner2 ok train=466 test=233 fit_s=3.876 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|3|2|inner0 ok train=466 test=233 fit_s=0.464 predict_s=0.0117 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|3|2|inner0 ok train=466 test=233 fit_s=3.782 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|3|2|inner2 ok train=466 test=233 fit_s=0.471 predict_s=0.0191 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|3|2|inner2 ok train=466 test=233 fit_s=3.888 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|3|3|inner0 ok train=466 test=233 fit_s=0.461 predict_s=0.0210 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|3|3|inner0 ok train=466 test=233 fit_s=4.025 predict_s=0.0042 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|3|3|inner2 ok train=466 test=233 fit_s=0.415 predict_s=0.0312 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|3|3|inner2 ok train=466 test=233 fit_s=3.955 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|3|4|inner0 ok train=466 test=233 fit_s=0.448 predict_s=0.0114 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|3|4|inner0 ok train=466 test=233 fit_s=4.105 predict_s=0.0066 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|3|4|inner2 ok train=466 test=233 fit_s=0.426 predict_s=0.0300 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|3|4|inner2 ok train=466 test=233 fit_s=3.905 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|4|0|inner0 ok train=467 test=233 fit_s=0.406 predict_s=0.0180 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|4|0|inner0 ok train=467 test=233 fit_s=3.663 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|4|0|inner2 ok train=467 test=233 fit_s=0.453 predict_s=0.0216 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|4|0|inner2 ok train=467 test=233 fit_s=3.757 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|4|1|inner0 ok train=466 test=233 fit_s=0.414 predict_s=0.0241 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|4|1|inner0 ok train=466 test=233 fit_s=3.762 predict_s=0.0034 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|4|1|inner2 ok train=466 test=233 fit_s=0.430 predict_s=0.0115 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|4|1|inner2 ok train=466 test=233 fit_s=3.811 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|4|2|inner0 ok train=466 test=233 fit_s=0.486 predict_s=0.0200 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|4|2|inner0 ok train=466 test=233 fit_s=3.778 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|4|2|inner2 ok train=466 test=233 fit_s=0.406 predict_s=0.0244 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|4|2|inner2 ok train=466 test=233 fit_s=3.763 predict_s=0.0031 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|4|3|inner0 ok train=466 test=233 fit_s=0.452 predict_s=0.0220 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|4|3|inner0 ok train=466 test=233 fit_s=3.883 predict_s=0.0049 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|4|3|inner2 ok train=466 test=233 fit_s=0.449 predict_s=0.0336 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|4|3|inner2 ok train=466 test=233 fit_s=3.925 predict_s=0.0039 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|4|4|inner0 ok train=466 test=233 fit_s=0.562 predict_s=0.0158 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|4|4|inner0 ok train=466 test=233 fit_s=3.986 predict_s=0.0049 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|RF|4|4|inner2 ok train=466 test=233 fit_s=0.420 predict_s=0.0158 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|MLP|4|4|inner2 ok train=466 test=233 fit_s=3.919 predict_s=0.0049 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+completed 385/385 jobs

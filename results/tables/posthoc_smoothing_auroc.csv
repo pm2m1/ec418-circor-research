@@ -1,0 +1,7 @@
+set,auroc,sd
+W_stft,0.7444,0.0103
+W_wpd_db4,0.6781,0.0132
+W_wpd_db4_smooth,0.7389,0.0063
+A_stft,0.8115,0.0067
+A_wpd_db4,0.7934,0.0078
+A_wpd_db4_smooth,0.7964,0.0105

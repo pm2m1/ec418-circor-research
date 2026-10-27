@@ -102,4 +102,12 @@ Using test folds to select features, wavelet, depth, thresholds, hyper-parameter
 which result to report. Class balancing before splitting. Scaling fitted on all patients.
 
 ## Amendments
-(none at lock time)
+* **E1 (execution only, no methodological change):** the first WEKA run put all RF+MLP jobs on one JVM.
+  It was stopped after 1,631/2,400 jobs and resumed with (i) a skip of jobs whose prediction file was
+  complete and valid, and (ii) distribution by train/test pair. Same folds, ARFFs (deterministic) and
+  classifier settings; first-attempt logs kept in `results/logs/run_main_attempt1/`.
+* **A1 (post-hoc, exploratory, added after H2 results were seen):** WPD energy maps smoothed with the
+  STFT's 64-sample Hann window (`scripts/10_posthoc_wpd_smoothing.py`) to test an estimator-variance
+  explanation. Reported separately; it does not alter any pre-registered verdict.
+* **N1 (note):** `B1` patient vector = median & max of the authors' 8 demo features (16 dims), fixed before
+  modelling in `scripts/06_*`. RF `-num-slots 1` (thread count only; results seeded, not affected).

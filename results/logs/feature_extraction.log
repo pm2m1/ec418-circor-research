@@ -1,0 +1,14 @@
+extracted 3163 recordings in 164.6s
+errors: []
+rec_features_B0: (3163, 23), recordings with all-missing features: 0
+rec_features_W_wpd_db4: (3163, 39), recordings with all-missing features: 0
+rec_features_A_wpd_db4: (3163, 39), recordings with all-missing features: 1
+rec_features_W_stft: (3163, 39), recordings with all-missing features: 0
+rec_features_A_stft: (3163, 39), recordings with all-missing features: 1
+seg_coverage: (3163, 9), recordings with all-missing features: 0
+rec_features_W_wpd_db6: (3163, 39), recordings with all-missing features: 0
+rec_features_A_wpd_db6: (3163, 39), recordings with all-missing features: 1
+rec_features_W_wpd_sym8: (3163, 39), recordings with all-missing features: 0
+rec_features_A_wpd_sym8: (3163, 39), recordings with all-missing features: 1
+rec_features_W_wpd_coif3: (3163, 39), recordings with all-missing features: 0
+rec_features_A_wpd_coif3: (3163, 39), recordings with all-missing features: 1

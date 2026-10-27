@@ -1,0 +1,9 @@
+W_wpd_db6: 68 patient features, patients with all-missing: 0
+W_wpd_sym8: 68 patient features, patients with all-missing: 0
+W_wpd_coif3: 68 patient features, patients with all-missing: 0
+A_wpd_db6: 68 patient features, patients with all-missing: 0
+A_wpd_sym8: 68 patient features, patients with all-missing: 0
+A_wpd_coif3: 68 patient features, patients with all-missing: 0
+jobs to run: 600, already complete (resumed): 0
+WEKA: 600 jobs in 398s
+saved (26220, 10)

@@ -1,0 +1,13 @@
+{
+ "present": {
+  "rec": "9979_TV",
+  "patient": 9979,
+  "grade": "III/VI",
+  "pitch": "High",
+  "timing": "Holosystolic"
+ },
+ "absent": {
+  "rec": "2530_TV",
+  "patient": 2530
+ }
+}

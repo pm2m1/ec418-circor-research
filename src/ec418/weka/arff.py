@@ -83,7 +83,7 @@ def run_jobs(jobs_tsv: str, log_path: str, heap="3g") -> str:
 
 # Fixed, pre-registered classifier specifications (no tuning on test data).
 CLASSIFIERS = {
-    "RF": ("weka.classifiers.trees.RandomForest", "-I 300 -K 0 -S 1 -num-slots 2"),
+    "RF": ("weka.classifiers.trees.RandomForest", "-I 300 -K 0 -S 1 -num-slots 1"),
     "SMO": ("weka.classifiers.functions.SMO",
             "-C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K \"weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007\""),
     "MLP": ("weka.classifiers.functions.MultilayerPerceptron", "-L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a"),

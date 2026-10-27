@@ -1,0 +1,27 @@
+              index  orientation  auroc_unknown_vs_known
+    sqi_periodicity  lower=worse                   0.689
+      sqi_band_frac  lower=worse                   0.716
+    sqi_hf_kurtosis higher=worse                   0.285
+           sqi_clip higher=worse                   0.608
+gate_spectral_ratio  lower=worse                   0.779
+model                gate  coverage  auroc  sens  spec  wacc  kept_present  rejected_present_frac  rejected_absent_frac
+   P1     sqi_periodicity      1.00  0.793 0.626 0.809 0.706         179.0                  0.000                 0.000
+   P1     sqi_periodicity      0.95  0.799 0.640 0.812 0.714         172.0                  0.039                 0.053
+   P1     sqi_periodicity      0.90  0.798 0.635 0.811 0.709         170.0                  0.050                 0.114
+   P1     sqi_periodicity      0.80  0.796 0.638 0.806 0.706         158.0                  0.117                 0.222
+   P1     sqi_periodicity      0.70  0.800 0.650 0.804 0.709         151.0                  0.156                 0.337
+   P1 gate_spectral_ratio      1.00  0.793 0.626 0.809 0.706         179.0                  0.000                 0.000
+   P1 gate_spectral_ratio      0.95  0.801 0.633 0.818 0.714         170.0                  0.050                 0.050
+   P1 gate_spectral_ratio      0.90  0.804 0.640 0.819 0.717         164.0                  0.084                 0.105
+   P1 gate_spectral_ratio      0.80  0.808 0.649 0.821 0.720         155.0                  0.134                 0.217
+   P1 gate_spectral_ratio      0.70  0.812 0.659 0.814 0.723         138.0                  0.229                 0.318
+   B0     sqi_periodicity      1.00  0.743 0.572 0.815 0.678         179.0                  0.000                 0.000
+   B0     sqi_periodicity      0.95  0.744 0.574 0.811 0.677         172.0                  0.039                 0.053
+   B0     sqi_periodicity      0.90  0.742 0.581 0.805 0.675         170.0                  0.050                 0.114
+   B0     sqi_periodicity      0.80  0.749 0.594 0.791 0.674         158.0                  0.117                 0.222
+   B0     sqi_periodicity      0.70  0.747 0.608 0.777 0.672         151.0                  0.156                 0.337
+   B0 gate_spectral_ratio      1.00  0.743 0.572 0.815 0.678         179.0                  0.000                 0.000
+   B0 gate_spectral_ratio      0.95  0.750 0.584 0.808 0.682         170.0                  0.050                 0.050
+   B0 gate_spectral_ratio      0.90  0.752 0.593 0.804 0.684         164.0                  0.084                 0.105
+   B0 gate_spectral_ratio      0.80  0.753 0.605 0.790 0.682         155.0                  0.134                 0.217
+   B0 gate_spectral_ratio      0.70  0.763 0.632 0.776 0.690         138.0                  0.229                 0.318

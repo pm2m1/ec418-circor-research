@@ -1,0 +1,5 @@
+a,b,delta,ci_lo,ci_hi
+A_wpd_db4_smooth,A_stft,-0.0147,-0.032,0.0025
+W_wpd_db4_smooth,W_stft,-0.0073,-0.025,0.0091
+A_wpd_db4_smooth,A_wpd_db4,0.0027,-0.0082,0.0133
+W_wpd_db4_smooth,W_wpd_db4,0.0587,0.0267,0.0906

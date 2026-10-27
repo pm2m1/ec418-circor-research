@@ -1,0 +1,10 @@
+{
+ "auc_A_mean": 0.7382806320756318,
+ "auc_B_mean": 0.723769517873561,
+ "delta": 0.01451111420207074,
+ "delta_ci95": [
+  -0.004372638157906866,
+  0.034908922206598775
+ ],
+ "note": "CI from resampling the 25 split-level AUCs per protocol (splits share data; CI is indicative only)"
+}
