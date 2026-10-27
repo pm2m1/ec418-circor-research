@@ -38,6 +38,7 @@ SETFILE["A_wpd_db4_smooth"] = "rec_features_A_wpd_db4_smooth.csv"
 for rep in ["stft", "wpd", "wpds"]:          # Phase-2 E2 (scripts/15_e2_extract_label_nulls.py)
     for cond in ["true", "perm", "shift"]:
         SETFILE[f"E2_{rep}_{cond}"] = f"e2/rec_features_E2_{rep}_{cond}.csv"
+    SETFILE[f"E1_{rep}_auto"] = f"e1/rec_features_E1_{rep}_auto.csv"   # Phase-2 E1 (scripts/19)
 B1_USED = ["b1_entropy_cv", "b1_slope", "b1_Hurst_spectral_mode", "b1_LeftSlope", "b1_RightSlope",
            "b1_LeftTangent", "b1_LeftTangentPoint", "b1_RightTangentPoint"]
 

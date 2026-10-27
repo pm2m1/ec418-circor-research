@@ -119,3 +119,34 @@ submission 3 Nov.
   now skips segmentation rows with a label outside 0–4 or end ≤ start and lists them (v1.0.3: 16 rows — this
   one plus 15 zero-length label-0 rows, which add 0 s to every duration); its v1.0.3 output goes to
   `results/tables/v103_*.csv` and `results/logs/dataset_audit_v103.json`. No feature or model code changed.
+
+* **I2 (2026-10-27, implementation clarification for E1; written and committed after the segmentation metrics
+  and before any E1 classification run; no segmenter constant, hypothesis or decision rule changed).**
+  Code: `src/ec418/segmentation/autoseg.py`, `scripts/18_e1_autosegment.py`, `19_e1_extract_auto_features.py`,
+  `20_e1_analyze.py`. Pre-registered constants used unchanged: 25–400 Hz band, 8 Hz envelope low-pass, 50 Hz
+  envelope, T in [0.3, 1.5] s, peak spacing ≥ 0.2·T, height ≥ 25th percentile, sound extent ≥ 50 % of peak clipped
+  to [40, 160] ms. Details the protocol leaves open, fixed here:
+  1. Filters: 25–400 Hz Butterworth order 4, zero-phase (as the v1 band-pass); 8 Hz Butterworth order 1,
+     zero-phase (Springer et al. homomorphic envelope); log(|Hilbert| + 1e-12); 50 Hz = every 40th sample.
+  2. T = highest *local* maximum of the normalised autocorrelation of the mean-removed envelope at lags 15–75
+     (0.3–1.5 s); no local maximum → failure.
+  3. "Consecutive intervals paired" = non-overlapping pairs (d0, d1), (d2, d3), …; shorter = systole, longer =
+     diastole; equal or unpaired → 0; an interval with the same state as a neighbour (alternation broken) → 0.
+     A peak is S1 if it starts a valid systole or ends a valid diastole, S2 in the opposite case.
+  4. Sound extent: walk from the peak while envelope ≥ 50 % of the peak; < 40 ms → widened symmetrically to 40 ms,
+     > 160 ms → peak ± 80 ms; overlapping sounds split at the midpoint of their peaks; systole/diastole fill the
+     gap between the two sounds of a valid interval. Failure (flat/too short, no period, < 3 peaks, no valid
+     pairing) → no segments (all labels 0). There is **no periodicity gate**, so irregular rhythms are not forced
+     to all-zero (the unit test checks only that such input does not crash).
+  5. Evaluation (inside expert-annotated spans = merged valid expert rows with labels 1–4): centre = segment
+     midpoint; one-to-one greedy matching at ±50 ms; pooled TP/FP/FN; frame accuracy on the 8 ms column grid over
+     expert-labelled columns; failure = no segments. Low-quality flag if S1 or S2 F1 < 0.70.
+  6. Classification: tag `e1` = `E1_{stft,wpd,wpds}_auto` + `B1`, `W_stft`, `W_wpd_db4` (committed features,
+     unchanged on v1.0.3), RF + SMO, frozen folds. `true` = `E2_<rep>_true` from tag `e2`. Δ = AUROC of
+     repeat-averaged scores; H6a/H6c(a): Δ(auto − true) ≥ −0.03; H6b/H6c(b): Δ(auto − B1) > 0 and subject-bootstrap
+     CI lower bound > 0; fold counts and both AUROC summaries reported; whole-signal comparison and grade
+     sensitivity descriptive.
+  Segmentation metrics seen before this amendment (`results/logs/e1_segmentation.json`): S1 F1 0.510, S2 F1 0.493,
+  frame accuracy 0.325, failures 11/3163 → **flagged low-quality segmentation**; per protocol, E1 continues with
+  the constants unchanged. Unit tests also show the locked peak rule is noise-sensitive: noise-free synthetic PCG
+  is segmented correctly, but 0.1 % white noise already adds envelope peaks inside diastole.

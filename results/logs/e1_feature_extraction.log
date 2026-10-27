@@ -1,0 +1,42 @@
+{
+  "errors": [],
+  "stft": {
+    "recordings_without_aligned": 90,
+    "recordings_total": 3163,
+    "binary_task_recordings_without_aligned": 79,
+    "binary_task_recordings": 3007,
+    "binary_task_patients_without_any_aligned": 0,
+    "binary_task_patients": 874,
+    "by_murmur_recordings_without_aligned": {
+      "Absent": 44,
+      "Present": 35,
+      "Unknown": 11
+    }
+  },
+  "wpd": {
+    "recordings_without_aligned": 90,
+    "recordings_total": 3163,
+    "binary_task_recordings_without_aligned": 79,
+    "binary_task_recordings": 3007,
+    "binary_task_patients_without_any_aligned": 0,
+    "binary_task_patients": 874,
+    "by_murmur_recordings_without_aligned": {
+      "Absent": 44,
+      "Present": 35,
+      "Unknown": 11
+    }
+  },
+  "wpds": {
+    "recordings_without_aligned": 90,
+    "recordings_total": 3163,
+    "binary_task_recordings_without_aligned": 79,
+    "binary_task_recordings": 3007,
+    "binary_task_patients_without_any_aligned": 0,
+    "binary_task_patients": 874,
+    "by_murmur_recordings_without_aligned": {
+      "Absent": 44,
+      "Present": 35,
+      "Unknown": 11
+    }
+  }
+}
