@@ -7,6 +7,7 @@ For every feature set x repeat x outer fold:
 Outputs results/predictions/<tag>_predictions.csv (one row per set/clf/repeat/patient).
 
 usage: python scripts/06_run_patient_level_weka.py TAG SET[,SET..] CLF[,CLF..] [NJVM]
+       env FEATDIR=<dir> reads recording features from <dir> instead of data/processed
 """
 import json
 import os
@@ -22,6 +23,8 @@ from ec418.evaluation.metrics import threshold_for_specificity, threshold_max_we
 from ec418.features.extract import aggregate_patient
 from ec418.weka.arff import CLASSIFIERS, build_runner, classpath, read_arff_header, write_arff
 
+# FEATDIR: folder holding the rec_features_*.csv (default the committed data/processed)
+FEATDIR = os.environ.get("FEATDIR", "data/processed")
 META = ["rec_id", "patient_id", "subject_id", "location", "murmur"]
 SETFILE = {
     "B0": "rec_features_B0.csv", "B1": "rec_features_B1.csv",
@@ -40,7 +43,7 @@ B1_USED = ["b1_entropy_cv", "b1_slope", "b1_Hurst_spectral_mode", "b1_LeftSlope"
 
 
 def patient_matrix(set_name: str, patients: pd.DataFrame) -> pd.DataFrame:
-    rec = pd.read_csv(os.path.join("data/processed", SETFILE[set_name]))
+    rec = pd.read_csv(os.path.join(FEATDIR, SETFILE[set_name]))
     cols = B1_USED if set_name == "B1" else [c for c in rec.columns if c not in META]
     P = aggregate_patient(rec, cols)
     P = patients[["patient_id"]].merge(P, left_on="patient_id", right_index=True, how="left").set_index("patient_id")

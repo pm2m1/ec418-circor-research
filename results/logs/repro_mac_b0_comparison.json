@@ -1,0 +1,7 @@
+{
+  "rows_compared": 17480,
+  "max_abs_score_diff": 0.14,
+  "max_abs_thr_spec80_diff": 0.033106097,
+  "max_abs_delta_auroc": 0.0012579880229893758,
+  "all_within_0_002": true
+}

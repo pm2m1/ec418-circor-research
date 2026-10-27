@@ -1,8 +1,10 @@
 # REPRO_MAC — Phase-1 reproduction on the Mac (2026-10-27)
 
-**Verdict: reproduced, with one tolerance exceedance.** Folds, audit, segmentation, B1 and all STFT/WPD
-features reproduce. WEKA AUROCs reproduce within 0.00035 (limit 0.002). **B0's 13 MFCC means differ by up to
-1.53e-5, outside the 1e-6 tolerance** (float32 rounding, §2) — reported, not worked around. Frozen files untouched
+**Verdict: reproduced, with one documented float32 deviation.** Folds, audit, segmentation, B1 and all STFT/WPD
+features reproduce within the 1e-6 absolute rule. WEKA AUROCs reproduce within 0.00035 (limit 0.002). **B0's 13
+MFCC means differ by up to 1.53e-5** (absolute), which is outside the 1e-6 rule; that rule was set for float64
+features, and the MFCCs are float32 — a Linux-vs-macOS float32 difference (§2a). Retraining B0 on the Mac-computed
+features keeps every AUROC within 0.00126 of v1 (§3a). Frozen files untouched
 (`shasum -a 256 -c results/v1_freeze/MANIFEST_v1.sha256`: 52/52 OK).
 
 Environment: `configs/environment_mac.txt` (macOS 26.6, Apple M5 Pro, OpenJDK 21.0.13 Homebrew, Python 3.12.14,
@@ -35,6 +37,22 @@ rounding; every difference is a multiple of a float32 ulp at the value's magnitu
 per-column max relative difference ranges from 2.8e-7 (MFCC-1) to 1.7e-3 (MFCC-0), the large ones on values near zero. This is a platform
 float32 effect, not a pipeline difference, but it does not meet the stated 1e-6 absolute tolerance.
 
+## 2a. Tolerance for the float32 MFCCs (decision 2026-10-27)
+The 1e-6 absolute limit was set for float64 features. librosa computes MFCCs in float32, so for the 13 MFCC means
+the appropriate check is relative error within a few float32 ulps (relative error ≤ ~1e-6 ≈ 8 ulps). **The 1e-6
+absolute rule is unchanged for every other feature** (all of which pass it). Observed
+(`scripts/14_repro_mac_compare.py b0float32` → `results/tables/repro_mac_b0_float32.csv`, 41,119 MFCC values):
+
+* **Max relative error 1.7e-3** (MFCC-0, on a value of 1.9e-4). Median relative error per column 0 – 2.1e-7.
+* **730 / 41,119 values (1.8 %) exceed relative 1e-6; 1,161 (2.8 %) exceed 8 ulps of their own value.** These are
+  small values relative to their column (|value| 1.9e-4 – 3.8, median 0.56, 76 % below 1; column medians 2.5 – 43):
+  a mean of float32 frames carries rounding at the scale of the summed frames, not of the small result, so relative
+  error is ill-conditioned there. In absolute terms every difference is ≤ 1.53e-5; relative to each column's median
+  |value| the largest difference is 8.5e-7.
+* So the relative-ulp criterion is met for 98.2 % of values, **not for all**; the deviation is a Linux-vs-macOS
+  float32 difference in librosa's FFT/mel/DCT arithmetic, not a pipeline difference. Its downstream effect is
+  measured in §3a.
+
 ## 3. WEKA main study under a new tag
 `scripts/06_run_patient_level_weka.py repro_mac B0,B1,W_stft,W_wpd_db4,A_stft,A_wpd_db4 RF,SMO,MLP,LR 8` on the
 **committed** `data/processed/` features and frozen folds: 2,400 jobs in 219 s (8 JVMs).
@@ -57,6 +75,22 @@ float32 effect, not a pipeline difference, but it does not meet the stated 1e-6 
 
 "Mean of repeats" = mean of the 5 per-repeat patient AUROCs; "repeat-averaged" = AUROC of each patient's score
 averaged over the 5 repeats (the summary the subject-bootstrap CI and contrasts use).
+
+## 3a. B0 retrained on the Mac-computed features (tag `repro_mac_b0`)
+`FEATDIR=data/interim/repro_mac_shadow/data/processed scripts/06_run_patient_level_weka.py repro_mac_b0 B0 RF,SMO,MLP,LR 8`
+(frozen folds; `FEATDIR` only changes where recording features are read), compared by
+`scripts/14_repro_mac_compare.py weka repro_mac_b0` → `results/tables/repro_mac_b0_auroc_comparison.csv`.
+
+| B0 | v1 mean of repeats | Mac-features mean of repeats | v1 repeat-averaged | Mac-features repeat-averaged | max \|Δ score\| |
+|---|---:|---:|---:|---:|---:|
+| LR | 0.7664 | 0.7664 | 0.7694 | 0.7694 | 0 |
+| MLP | 0.7188 | 0.7188 | 0.7405 | 0.7405 | 0.00006 |
+| RF | 0.7432 | 0.7422 | 0.7470 | 0.7457 | 0.140 |
+| SMO | 0.7683 | 0.7689 | 0.7754 | 0.7750 | 0.134 |
+
+**Pass: max |ΔAUROC| 0.00126 (RF, repeat-averaged) ≤ 0.002.** Individual RF/SMO patient scores move more (up to
+0.14) because ulp-level feature changes flip some RF splits and SMO decisions; ranking performance is unaffected
+within the limit.
 
 ## 4. Tests
 `.venv/bin/python -m pytest -q` with the v1.0.3 data present: **52 passed** (39 original + 13 E2 label-null tests).

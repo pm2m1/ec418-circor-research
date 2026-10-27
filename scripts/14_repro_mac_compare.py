@@ -9,7 +9,12 @@ AUROC summaries: "auroc_mean_of_repeats" = mean over the 5 repeats of the per-re
 `auroc` column of main_metrics_full.csv); "auroc_repeat_averaged" = AUROC of the per-patient score averaged
 over the 5 repeats (`auroc_avgscore`).
 
+B0 MFCCs are float32 in librosa, so "b0float32 SHADOW_DIR" reports their differences as relative error and in
+float32 ulps of each committed value -> results/tables/repro_mac_b0_float32.csv (the 1e-6 absolute rule is kept
+for every float64 feature).
+
 usage: python scripts/14_repro_mac_compare.py features data/interim/repro_mac_shadow
+       python scripts/14_repro_mac_compare.py b0float32 data/interim/repro_mac_shadow
        python scripts/14_repro_mac_compare.py weka repro_mac
 """
 import glob
@@ -72,6 +77,7 @@ def per_set_auroc(pred):
 def compare_weka(tag):
     new = pd.read_csv(f"results/predictions/{tag}_predictions.csv")
     old = pd.read_csv("results/predictions/main_predictions.csv")
+    old = old.merge(new[["set", "clf"]].drop_duplicates(), on=["set", "clf"])   # only the pairs that were rerun
     key = ["set", "clf", "repeat", "fold", "patient_id"]
     J = old.merge(new, on=key, suffixes=("_v1", "_mac"), how="outer", indicator=True)
     assert (J._merge == "both").all(), "prediction rows differ between runs"
@@ -94,5 +100,24 @@ def compare_weka(tag):
     print(json.dumps(summary, indent=2))
 
 
+def compare_b0_float32(shadow):
+    A = pd.read_csv("data/processed/rec_features_B0.csv").set_index("rec_id")
+    B = pd.read_csv(os.path.join(shadow, "data/processed/rec_features_B0.csv")).set_index("rec_id")
+    rows = []
+    for c in [c for c in A.columns if c.startswith("b0_mfcc")]:
+        a, b = A[c].to_numpy(), B.loc[A.index, c].to_numpy()
+        ok = np.isfinite(a) & np.isfinite(b)
+        a, b = a[ok], b[ok]
+        d = np.abs(a - b)
+        rel = d / np.abs(a)
+        ulp = d / np.spacing(np.abs(a).astype(np.float32)).astype(float)
+        rows.append(dict(feature=c, n=int(ok.sum()), max_abs=d.max(), max_rel=rel.max(), median_rel=np.median(rel),
+                         frac_rel_le_1e6=float((rel <= 1e-6).mean()), max_ulps=ulp.max(), frac_ulps_le_8=float((ulp <= 8).mean()),
+                         abs_value_at_max_rel=float(np.abs(a[rel.argmax()])), median_abs_value=float(np.median(np.abs(a)))))
+    R = pd.DataFrame(rows)
+    R.to_csv("results/tables/repro_mac_b0_float32.csv", index=False)
+    print(R.to_string(index=False))
+
+
 if __name__ == "__main__":
-    {"features": compare_features, "weka": compare_weka}[sys.argv[1]](sys.argv[2])
+    {"features": compare_features, "b0float32": compare_b0_float32, "weka": compare_weka}[sys.argv[1]](sys.argv[2])
