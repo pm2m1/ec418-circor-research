@@ -27,6 +27,8 @@ def test_dwtr_energy_preserved():
 
 
 @pytest.mark.skipif(not os.path.exists(os.path.join(ROOT, "data/processed/rec_features_B1.csv")), reason="needs data")
+@pytest.mark.skipif(not all(os.path.exists(os.path.join(ROOT, "data/raw/circor_training_data", r + ".wav"))
+                            for r in ["13918_AV", "2530_MV"]), reason="real CirCor wav files not present")
 def test_realigned_b1_rows_match_recomputed_entropy():
     b1 = pd.read_csv(os.path.join(ROOT, "data/processed/rec_features_B1.csv"))
     for rec in ["13918_AV", "2530_MV"]:
