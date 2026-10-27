@@ -73,3 +73,21 @@ submission 3 Nov.
 
 ## Amendments
 (none at lock time)
+
+* **I1 (2026-10-27, implementation clarification for E2, written and committed before any E2 extraction or
+  WEKA run; no constant, null definition, representation or decision rule changed).** Code:
+  `src/ec418/features/label_nulls.py`, `scripts/15_e2_extract_label_nulls.py`, `scripts/16_e2_analyze.py`.
+  1. Both nulls act on the per-column label vector from `column_labels` (level-4 columns, 8 ms) — the exact
+     vector the `true` arm feeds to `aligned_features`. `perm` permutes the whole vector, unannotated (0)
+     columns included, so every label count equals `true`.
+  2. `shift`: S1 events = starts of contiguous runs of label 1 in that vector; T = median onset-to-onset
+     difference in columns (0.6 s = 75 columns if < 2 S1 events); shift = round(u·T) columns, applied with
+     `np.roll` (forward, circular).
+  3. Seeding: each null uses its own `np.random.default_rng(zlib.crc32(rec_id.encode()))`; `perm` takes
+     `.permutation(labels)`, `shift` takes one `.uniform(0.2, 0.8)` draw.
+  4. One label vector per recording serves `stft`, `wpd` and `wpds` (column counts are identical; asserted).
+     `wpds` uses the v1 kernel `hanning(6)[1:-1]`, normalised (4 taps over level-4 columns = 64 samples).
+  5. The `true` arm is re-extracted by the same code path (feature names as v1) and checked against the
+     frozen v1 features; all nine sets run under the new tag `e2` (RF + SMO, frozen folds, `scripts/06`).
+  6. The decision-rule Δ is the AUROC of repeat-averaged patient scores (as `scripts/07` did for v1); the
+     mean-of-repeats Δ is reported alongside and labelled.
