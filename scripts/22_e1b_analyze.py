@@ -9,7 +9,7 @@ fold counts and both AUROC summaries reported. Descriptive: vs W_stft / W_wpd_db
 murmur grade, aligned-feature coverage.
 
 usage: python scripts/22_e1b_analyze.py
-Writes results/tables/e1b_{auroc,hypotheses,descriptive_contrasts,grade_sensitivity,feature_coverage}.csv,
+Writes results/tables/e1b_{auroc,hypotheses,descriptive_contrasts,grade_sensitivity,feature_coverage,label_coverage}.csv,
 results/logs/e1b_analysis.json.
 """
 import json
@@ -120,6 +120,28 @@ for d in sorted(os.listdir("data/interim/e1b/features")):
 CV = pd.DataFrame(cov)
 CV.to_csv("results/tables/e1b_feature_coverage.csv", index=False)
 
+# label coverage (descriptive): share of level-4 columns each labelling marks 1-4, and share inside expert spans
+from ec418.data.circor import load_patients, load_segmentation, recording_table
+from ec418.segmentation.evaluation import valid_rows
+from ec418.wavelets.bands import column_labels
+rt = recording_table(load_patients("data/raw/circor_training_data"))
+rt = rt[rt.patient_id.isin(folds.patient_id)]
+n2k = pd.read_csv("data/interim/e1b/features/r0_f0/decode_log.csv").set_index("rec_id").n_samples
+lc = []
+for x in rt.itertuples():
+    n = int(np.ceil(n2k[x.rec_id] / 16))
+    ex = column_labels(valid_rows(load_segmentation(x.tsv)), n, 16, 2000) > 0
+    row = dict(rec_id=x.rec_id, murmur=x.murmur, expert_labelled_frac=ex.mean())
+    for name, path in [("e1", f"data/interim/autoseg/{x.rec_id}.tsv"), ("e1b", f"data/interim/e1b/autoseg/r0/{x.rec_id}.tsv")]:
+        au = column_labels(load_segmentation(path), n, 16, 2000) > 0
+        row[f"{name}_labelled_frac"] = au.mean()
+        row[f"{name}_labelled_outside_expert_frac"] = (au & ~ex).sum() / max(1, au.sum())
+    lc.append(row)
+LC = pd.DataFrame(lc)
+LCS = LC.groupby("murmur").median(numeric_only=True).assign(stat="median").reset_index()
+LCS = pd.concat([LCS, LC.median(numeric_only=True).to_frame().T.assign(murmur="all", stat="median")], ignore_index=True)
+LCS.to_csv("results/tables/e1b_label_coverage.csv", index=False)
+
 json.dump(dict(repeats=[int(x) for x in repeats], segmentation=dict((k, seg[k]) for k in ["s1_f1", "s2_f1",
                "frame_accuracy_4state", "failure_frac", "low_quality_segmentation"]),
                rf_verdicts=H[H.clf == "RF"][["hypothesis", "representation", "b", "delta_auroc_repeat_averaged", "ci_lo",
@@ -127,6 +149,7 @@ json.dump(dict(repeats=[int(x) for x in repeats], segmentation=dict((k, seg[k]) 
           open("results/logs/e1b_analysis.json", "w"), indent=2, default=float)
 pd.set_option("display.width", 250)
 for name, df in [("AUROC", A), ("HYPOTHESES", H), ("DESCRIPTIVE", D), ("COVERAGE", CV.describe().loc[["min", "max"]]),
+                 ("LABEL COVERAGE (median per recording)", LCS),
                  ("GRADE SENSITIVITY (RF)", G[G.clf == "RF"].pivot(index="grade", columns="set",
                                                                    values="sensitivity_spec80_mean_over_repeats"))]:
     print(f"\n== {name} ==\n" + df.round(4).to_string())
