@@ -1,0 +1,60 @@
+
+== AUROC ==
+             set  clf  n_patients  auroc_mean_of_repeats  auroc_mean_of_repeats_sd  auroc_repeat_averaged  auroc_repeat_averaged_ci_lo  auroc_repeat_averaged_ci_hi
+0             B1   RF         874                 0.7213                    0.0087                 0.7259                       0.6767                       0.7733
+2   E1_stft_auto   RF         874                 0.7579                    0.0117                 0.7652                       0.7229                       0.8068
+4    E1_wpd_auto   RF         874                 0.7331                    0.0059                 0.7362                       0.6909                       0.7807
+6   E1_wpds_auto   RF         874                 0.7179                    0.0066                 0.7230                       0.6774                       0.7670
+8   E2_stft_true   RF         874                 0.8114                    0.0067                 0.8151                       0.7715                       0.8525
+10   E2_wpd_true   RF         874                 0.7934                    0.0078                 0.7977                       0.7527                       0.8376
+12  E2_wpds_true   RF         874                 0.7965                    0.0104                 0.8004                       0.7563                       0.8387
+14        W_stft   RF         874                 0.7442                    0.0101                 0.7508                       0.7013                       0.7944
+16     W_wpd_db4   RF         874                 0.6781                    0.0137                 0.6848                       0.6373                       0.7320
+1             B1  SMO         874                 0.7411                    0.0104                 0.7444                       0.6977                       0.7881
+3   E1_stft_auto  SMO         874                 0.7742                    0.0060                 0.7771                       0.7345                       0.8175
+5    E1_wpd_auto  SMO         874                 0.7695                    0.0055                 0.7726                       0.7303                       0.8123
+7   E1_wpds_auto  SMO         874                 0.7559                    0.0018                 0.7597                       0.7187                       0.7999
+9   E2_stft_true  SMO         874                 0.8144                    0.0048                 0.8161                       0.7736                       0.8563
+11   E2_wpd_true  SMO         874                 0.7829                    0.0065                 0.7847                       0.7364                       0.8286
+13  E2_wpds_true  SMO         874                 0.7926                    0.0064                 0.7939                       0.7464                       0.8368
+15        W_stft  SMO         874                 0.7433                    0.0081                 0.7470                       0.6980                       0.7951
+17     W_wpd_db4  SMO         874                 0.6800                    0.0134                 0.6865                       0.6332                       0.7367
+
+== HYPOTHESES ==
+   hypothesis  clf representation             a             b                        rule  delta_auroc_repeat_averaged   ci_lo   ci_hi folds_positive  delta_auroc_mean_of_repeats        verdict  low_quality_segmentation
+0         H6a   RF            wpd   E1_wpd_auto   E2_wpd_true              delta >= -0.03                      -0.0615 -0.1017 -0.0209           3/25                      -0.0602  NOT SUPPORTED                      True
+1         H6b   RF            wpd   E1_wpd_auto            B1  delta > 0 and CI lower > 0                       0.0103 -0.0380  0.0603          15/25                       0.0119  NOT SUPPORTED                      True
+2      H6c(a)   RF           stft  E1_stft_auto  E2_stft_true              delta >= -0.03                      -0.0499 -0.0901 -0.0107           1/25                      -0.0535  NOT SUPPORTED                      True
+3      H6c(b)   RF           stft  E1_stft_auto            B1  delta > 0 and CI lower > 0                       0.0393 -0.0085  0.0880          20/25                       0.0367  NOT SUPPORTED                      True
+4      H6c(a)   RF           wpds  E1_wpds_auto  E2_wpds_true              delta >= -0.03                      -0.0774 -0.1203 -0.0367           1/25                      -0.0786  NOT SUPPORTED                      True
+5      H6c(b)   RF           wpds  E1_wpds_auto            B1  delta > 0 and CI lower > 0                      -0.0029 -0.0511  0.0469          12/25                      -0.0033  NOT SUPPORTED                      True
+6         H6a  SMO            wpd   E1_wpd_auto   E2_wpd_true              delta >= -0.03                      -0.0121 -0.0560  0.0332           9/25                      -0.0134    descriptive                      True
+7         H6b  SMO            wpd   E1_wpd_auto            B1  delta > 0 and CI lower > 0                       0.0282 -0.0164  0.0759          19/25                       0.0284    descriptive                      True
+8      H6c(a)  SMO           stft  E1_stft_auto  E2_stft_true              delta >= -0.03                      -0.0390 -0.0795  0.0014           4/25                      -0.0403    descriptive                      True
+9      H6c(b)  SMO           stft  E1_stft_auto            B1  delta > 0 and CI lower > 0                       0.0327 -0.0142  0.0807          21/25                       0.0330    descriptive                      True
+10     H6c(a)  SMO           wpds  E1_wpds_auto  E2_wpds_true              delta >= -0.03                      -0.0342 -0.0757  0.0098           4/25                      -0.0366    descriptive                      True
+11     H6c(b)  SMO           wpds  E1_wpds_auto            B1  delta > 0 and CI lower > 0                       0.0153 -0.0275  0.0610          14/25                       0.0148    descriptive                      True
+
+== VS WHOLE-SIGNAL ==
+    clf             a          b  delta_auroc_repeat_averaged   ci_lo   ci_hi folds_positive  delta_auroc_mean_of_repeats
+0    RF   E1_wpd_auto     W_stft                      -0.0146 -0.0590  0.0319          11/25                      -0.0110
+1    RF   E1_wpd_auto  W_wpd_db4                       0.0514  0.0041  0.1022          22/25                       0.0551
+2    RF  E1_stft_auto     W_stft                       0.0144 -0.0298  0.0624          16/25                       0.0138
+3    RF  E1_stft_auto  W_wpd_db4                       0.0804  0.0316  0.1314          24/25                       0.0799
+4    RF  E1_wpds_auto     W_stft                      -0.0278 -0.0739  0.0186           8/25                      -0.0262
+5    RF  E1_wpds_auto  W_wpd_db4                       0.0381 -0.0072  0.0885          22/25                       0.0399
+6   SMO   E1_wpd_auto     W_stft                       0.0256 -0.0225  0.0728          19/25                       0.0262
+7   SMO   E1_wpd_auto  W_wpd_db4                       0.0861  0.0396  0.1349          25/25                       0.0896
+8   SMO  E1_stft_auto     W_stft                       0.0301 -0.0164  0.0769          19/25                       0.0308
+9   SMO  E1_stft_auto  W_wpd_db4                       0.0906  0.0455  0.1374          25/25                       0.0942
+10  SMO  E1_wpds_auto     W_stft                       0.0127 -0.0337  0.0599          16/25                       0.0126
+11  SMO  E1_wpds_auto  W_wpd_db4                       0.0732  0.0261  0.1200          24/25                       0.0760
+
+== GRADE SENSITIVITY (RF) ==
+set              B1  E1_stft_auto  E1_wpd_auto  E1_wpds_auto  E2_stft_true  E2_wpd_true  E2_wpds_true  W_stft  W_wpd_db4
+grade                                                                                                                   
+I/VI         0.4577        0.4173       0.4058        0.3904        0.5385       0.4788        0.4962  0.4750     0.3846
+II/VI        0.3857        0.5143       0.4643        0.3786        0.5929       0.5643        0.5786  0.5214     0.3643
+III/VI       0.8739        0.9565       0.8826        0.8696        1.0000       1.0000        1.0000  0.8522     0.6609
+all Present  0.5508        0.5687       0.5352        0.5095        0.6626       0.6268        0.6358  0.5765     0.4503
+none         0.0000        0.0000       0.0000        0.0000        0.0000       0.6000        0.0000  0.0000     0.0000
