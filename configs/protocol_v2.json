@@ -97,5 +97,31 @@
     ],
     "classification": "WEKA RF primary, SMO secondary, frozen folds, tag diag (D1 fold-specific) + W_wpd_db4_smooth on committed features as Mac comparator; comparators E2_<rep>_true, E2_<rep>_perm (e2), E1b_<rep>_auto (e1b), W_stft, W_wpd_db4 (e1)",
     "reporting": "repeat-averaged AUROC + subject-bootstrap CI (2000, seed 1) and mean of repeats; paired contrasts on repeat-averaged scores, subject bootstrap 2000 seed 2, folds positive: (1) true - D1, (2) true - D2, (3) D3 - full-recording whole-signal, (4) D1 - E1b HSMM-full, plus D2 - E2 perm; decomposition identities true-perm = (true-D2)+(D2-perm), true-HSMMfull = (true-D1)+(D1-HSMMfull)"
+  },
+  "E4_span_selector": {
+    "preregistered": "2026-10-27 23:30 IST, designed AFTER diagnostics D1-D3 were known; tag e4-prereg; no E4 code before it",
+    "windows": "non-overlapping 1-s windows from t=0 (125 level-4 columns, 50 HSMM samples, 4000 raw samples); trailing partial window dropped (never selected, not used for training/evaluation)",
+    "target": "window annotated iff >= 50% of its columns have expert label 1-4 (column_labels of the expert .tsv); no murmur labels or patient metadata",
+    "features": [
+      "log10 P(20-200 Hz)/P(0-1000 Hz), Hann power spectrum of the raw 4 kHz window, eps 1e-12",
+      "log10 P(25-400 Hz)/P(0-2000 Hz), same spectrum",
+      "highest local max of the normalised autocorrelation of the E1 homomorphic envelope (v1-preprocessed 2 kHz signal) at lags 0.3-1.5 s on a 3-s context centred on the window (shifted inside the recording; whole recording if shorter); 0 if none",
+      "Fisher kurtosis of the raw signal band-passed 500-1000 Hz (Butterworth order 4 zero-phase, whole recording) within the window",
+      "clipping fraction: share of raw int16 samples with |x| >= 32767",
+      "mean over the window's 50 Hz samples of max over states of the LR-HSMM per-state logistic-regression P(state|o) (no forward-backward in the port: LR state probability, not an HSMM posterior), from the patient's E1b HSMM model"
+    ],
+    "model": "StandardScaler on the detector's training windows + L2 LogisticRegression C=1.0 (lbfgs, max_iter=1000)",
+    "threshold": "probability quantile on the detector's own training windows at which the predicted annotated fraction equals that set's expert annotated fraction",
+    "cross_fitting": "test patients: detector trained on all training patients of (r,k); training patients in inner fold i: detector trained on the other training patients; HSMM labels and feature 6 use the E1b per-patient HSMM assignment (re-decoded, checked identical)",
+    "classification": "E1b HSMM labels kept only in predicted-annotated windows; same 34 aligned features stft/wpd/wpds, coverage minimum, aggregation; WEKA RF primary, SMO secondary; frozen folds; tag e4",
+    "report": "detector window AUROC/accuracy and predicted vs expert annotated fraction on test-fold windows (primary repeat 0), by Present/Absent and age; missing features by class; classification both AUROC summaries",
+    "hypotheses": {
+      "H9a": "RF AUROC(E4) >= AUROC(E2_<rep>_true) - 0.03",
+      "H9b": "RF AUROC(E4) > AUROC(B1), subject-bootstrap 95% CI lower bound > 0",
+      "H9c": "RF AUROC(E4) > AUROC(W_stft), CI lower bound > 0 (deployability test)",
+      "primary_representation": "wpd; stft and wpds reported under the same rules"
+    },
+    "references": "D1 (upper) and E1b (lower), descriptive: E4 - D1, E4 - E1b",
+    "timebox": "complete by 2026-10-29 23:59 IST or report as incomplete; no extensions; no tuning after classification results"
   }
 }

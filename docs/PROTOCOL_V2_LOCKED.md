@@ -150,6 +150,56 @@ paired contrasts Δ = AUROC(a) − AUROC(b) on repeat-averaged scores, subject-b
 true − perm = (true − D2) [within-span timing] + (D2 − perm) [span selection without timing] and
 true − HSMM-full = (true − D1) [timing error inside the spans] + (D1 − HSMM-full) [span selection with HSMM timing].
 
+## E4 — Automatic span selector + LR-HSMM timing (pre-registered 2026-10-27 23:30 IST)
+**Designed after the diagnostics D1–D3 were known** (`docs/D_DIAGNOSTICS.md`: HSMM timing inside the expert spans comes
+within 0.010–0.015 AUROC of the expert labels, and 84–89 % of the expert-vs-HSMM gap is span selection). E4 asks whether an
+automatic, deployable span selector recovers that. Machine-readable: `configs/protocol_v2.json` → `E4_span_selector`
+(hash in `configs/protocol_v2_e4.sha256`). Tag `e4-prereg` marks this commit; no E4 code exists before it.
+
+**Windows and target.** Non-overlapping 1-s windows from t = 0 (125 level-4 columns, 50 HSMM samples, 4,000 raw samples);
+a trailing partial window (< 1 s) is dropped (its columns are never selected and it is not used for training or
+evaluation). Target = window annotated if ≥ 50 % of its columns have expert label 1–4 (`column_labels` of the expert
+`.tsv`, as the E2 `true` arm). The detector never sees murmur labels or patient metadata.
+
+**Window features (fixed now):**
+1. log10 spectral ratio P(20–200 Hz) / P(0–1000 Hz);
+2. log10 band fraction P(25–400 Hz) / P(0–2000 Hz). Features 1 and 2 use the Hann-windowed power spectrum of the raw
+   4 kHz window (mean removed); ε = 1e-12;
+3. envelope periodicity = highest local maximum of the normalised autocorrelation of the E1 homomorphic envelope (25–400 Hz,
+   8 Hz, 50 Hz, on the v1-preprocessed 2 kHz signal) at lags 0.3–1.5 s, computed on a 3-s context centred on the window
+   (shifted to stay inside the recording; the whole recording if it is shorter); 0 if there is no local maximum;
+4. kurtosis (Fisher, `scipy.stats.kurtosis`) of the raw signal band-passed 500–1000 Hz (Butterworth order 4, zero-phase,
+   whole recording) within the window;
+5. clipping fraction = share of raw int16 samples with |x| ≥ 32767 in the window;
+6. HSMM confidence = mean over the window's 50 Hz samples of max over the 4 states of the LR-HSMM per-state
+   logistic-regression probability P(state | o) (the port has no forward–backward, so this is the LR state probability
+   used in the emission, not an HSMM posterior), from the same fold-wise HSMM model that labels that patient in E1b.
+
+**Model.** `StandardScaler` fitted on the detector's training windows, then L2 logistic regression with default C = 1.0
+(`sklearn` lbfgs, `max_iter = 1000`). **Threshold:** on the detector's own training windows, the probability quantile at which
+the predicted annotated fraction equals that training set's expert annotated fraction (share of target-1 windows).
+**Cross-fitting (as E1b):** for outer fold (r, k), test patients' spans come from a detector trained on all training patients
+of (r, k); training patients in inner fold i from a detector trained on the other training patients. The HSMM labels
+and feature 6 use exactly the E1b per-patient HSMM model assignment (re-decoded and checked identical to the saved E1b
+test decodes).
+
+**Features for classification.** E1b HSMM labels kept only inside predicted-annotated windows (all other columns 0), then
+the same 34 aligned features for `stft`, `wpd`, `wpds`, same coverage minimum, same median + max aggregation. WEKA RF
+(primary) and SMO (secondary), frozen folds, tag `e4`, fold-specific feature files.
+
+**Report.** Span detector vs the expert mask on the test-fold windows (outer detectors; primary repeat 0, all repeats
+also): window AUROC and accuracy, predicted vs expert annotated fraction, by Present/Absent and v1.0.3 age;
+recordings/patients without aligned features by class; classification with both AUROC summaries.
+
+**Hypotheses** (RF; same statistics as E1/E1b: repeat-averaged scores, subject bootstrap 2000 seed 2, folds reported;
+**primary representation `wpd`**, `stft` and `wpds` reported under the same rules):
+* **H9a:** AUROC(E4) ≥ AUROC(expert labels, `E2_<rep>_true`) − 0.03.
+* **H9b:** AUROC(E4) > AUROC(B1) with subject-bootstrap 95 % CI lower bound > 0.
+* **H9c (the deployability test):** AUROC(E4) > AUROC(W_stft, whole-signal STFT) with CI lower bound > 0.
+References (descriptive): D1 (expert spans, upper) and E1b (no span selection, lower): E4 − D1 and E4 − E1b.
+**Timebox:** complete by **2026-10-29 23:59 IST** or report as incomplete. No extensions; no tuning after seeing
+classification results.
+
 ## Equivalence reporting
 For `wpds` vs `stft` (aligned, `true`): report Δ and 95 % CI; claim "no meaningful difference" only if
 the entire CI lies within ±0.03.
