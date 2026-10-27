@@ -1,0 +1,307 @@
+$ java -Xmx2g -cp /Users/kiyo/Desktop/ec418-circor-research/tools/weka.jar:/Users/kiyo/Desktop/ec418-circor-research/tools/mtj.jar:/Users/kiyo/Desktop/ec418-circor-research/tools/arpack_combined.jar:/Users/kiyo/Desktop/ec418-circor-research/tools/core.jar:/Users/kiyo/Desktop/ec418-circor-research/tools/build WekaBatchRunner experiments/repro_mac/jobs_4.tsv
+WEKA version 3.9.7
+Oct 27, 2026 9:22:56 PM com.github.fommil.netlib.ARPACK <clinit>
+WARNING: Failed to load implementation from: com.github.fommil.netlib.NativeSystemARPACK
+Oct 27, 2026 9:22:56 PM com.github.fommil.netlib.ARPACK <clinit>
+WARNING: Failed to load implementation from: com.github.fommil.netlib.NativeRefARPACK
+job B0|RF|0|0|inner2 ok train=466 test=233 fit_s=0.590 predict_s=0.0839 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B0|SMO|0|0|inner2 ok train=466 test=233 fit_s=0.126 predict_s=0.0032 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B0|MLP|0|0|inner2 ok train=466 test=233 fit_s=0.839 predict_s=0.0037 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B0|LR|0|0|inner2 ok train=466 test=233 fit_s=0.034 predict_s=0.0019 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B0|RF|0|2|inner2 ok train=466 test=233 fit_s=0.412 predict_s=0.0519 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B0|SMO|0|2|inner2 ok train=466 test=233 fit_s=0.031 predict_s=0.0021 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B0|MLP|0|2|inner2 ok train=466 test=233 fit_s=0.881 predict_s=0.0029 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B0|LR|0|2|inner2 ok train=466 test=233 fit_s=0.023 predict_s=0.0088 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B0|RF|0|4|inner2 ok train=466 test=233 fit_s=0.267 predict_s=0.0229 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B0|SMO|0|4|inner2 ok train=466 test=233 fit_s=0.028 predict_s=0.0012 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B0|MLP|0|4|inner2 ok train=466 test=233 fit_s=0.890 predict_s=0.0036 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B0|LR|0|4|inner2 ok train=466 test=233 fit_s=0.008 predict_s=0.0007 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B0|RF|1|1|inner2 ok train=466 test=233 fit_s=0.228 predict_s=0.0196 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B0|SMO|1|1|inner2 ok train=466 test=233 fit_s=0.014 predict_s=0.0008 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B0|MLP|1|1|inner2 ok train=466 test=233 fit_s=0.835 predict_s=0.0016 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B0|LR|1|1|inner2 ok train=466 test=233 fit_s=0.007 predict_s=0.0008 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B0|RF|1|3|inner2 ok train=466 test=233 fit_s=0.211 predict_s=0.0214 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B0|SMO|1|3|inner2 ok train=466 test=233 fit_s=0.019 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B0|MLP|1|3|inner2 ok train=466 test=233 fit_s=0.834 predict_s=0.0015 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B0|LR|1|3|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0007 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B0|RF|2|0|inner2 ok train=466 test=234 fit_s=0.210 predict_s=0.0130 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B0|SMO|2|0|inner2 ok train=466 test=234 fit_s=0.008 predict_s=0.0007 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B0|MLP|2|0|inner2 ok train=466 test=234 fit_s=0.817 predict_s=0.0016 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B0|LR|2|0|inner2 ok train=466 test=234 fit_s=0.009 predict_s=0.0007 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B0|RF|2|2|inner2 ok train=466 test=233 fit_s=0.216 predict_s=0.0213 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B0|SMO|2|2|inner2 ok train=466 test=233 fit_s=0.013 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B0|MLP|2|2|inner2 ok train=466 test=233 fit_s=0.815 predict_s=0.0013 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B0|LR|2|2|inner2 ok train=466 test=233 fit_s=0.006 predict_s=0.0006 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B0|RF|2|4|inner2 ok train=466 test=233 fit_s=0.205 predict_s=0.0121 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B0|SMO|2|4|inner2 ok train=466 test=233 fit_s=0.011 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B0|MLP|2|4|inner2 ok train=466 test=233 fit_s=0.831 predict_s=0.0013 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B0|LR|2|4|inner2 ok train=466 test=233 fit_s=0.005 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B0|RF|3|1|inner2 ok train=466 test=233 fit_s=0.201 predict_s=0.0149 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B0|SMO|3|1|inner2 ok train=466 test=233 fit_s=0.009 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B0|MLP|3|1|inner2 ok train=466 test=233 fit_s=0.832 predict_s=0.0030 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B0|LR|3|1|inner2 ok train=466 test=233 fit_s=0.005 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B0|RF|3|3|inner2 ok train=466 test=233 fit_s=0.210 predict_s=0.0245 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B0|SMO|3|3|inner2 ok train=466 test=233 fit_s=0.012 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B0|MLP|3|3|inner2 ok train=466 test=233 fit_s=0.844 predict_s=0.0012 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B0|LR|3|3|inner2 ok train=466 test=233 fit_s=0.007 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B0|RF|4|0|inner2 ok train=467 test=233 fit_s=0.219 predict_s=0.0219 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B0|SMO|4|0|inner2 ok train=467 test=233 fit_s=0.026 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B0|MLP|4|0|inner2 ok train=467 test=233 fit_s=0.824 predict_s=0.0014 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B0|LR|4|0|inner2 ok train=467 test=233 fit_s=0.005 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B0|RF|4|2|inner2 ok train=466 test=233 fit_s=0.194 predict_s=0.0153 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B0|SMO|4|2|inner2 ok train=466 test=233 fit_s=0.015 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B0|MLP|4|2|inner2 ok train=466 test=233 fit_s=0.842 predict_s=0.0012 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B0|LR|4|2|inner2 ok train=466 test=233 fit_s=0.006 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B0|RF|4|4|inner2 ok train=466 test=233 fit_s=0.209 predict_s=0.0093 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B0|SMO|4|4|inner2 ok train=466 test=233 fit_s=0.009 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B0|MLP|4|4|inner2 ok train=466 test=233 fit_s=0.842 predict_s=0.0017 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B0|LR|4|4|inner2 ok train=466 test=233 fit_s=0.007 predict_s=0.0006 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B1|RF|0|1|inner2 ok train=467 test=233 fit_s=0.192 predict_s=0.0206 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B1|SMO|0|1|inner2 ok train=467 test=233 fit_s=0.005 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B1|MLP|0|1|inner2 ok train=467 test=233 fit_s=0.201 predict_s=0.0007 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B1|LR|0|1|inner2 ok train=467 test=233 fit_s=0.004 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B1|RF|0|3|inner2 ok train=466 test=233 fit_s=0.186 predict_s=0.0189 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B1|SMO|0|3|inner2 ok train=466 test=233 fit_s=0.006 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B1|MLP|0|3|inner2 ok train=466 test=233 fit_s=0.200 predict_s=0.0007 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B1|LR|0|3|inner2 ok train=466 test=233 fit_s=0.002 predict_s=0.0006 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B1|RF|1|0|inner2 ok train=467 test=233 fit_s=0.165 predict_s=0.0081 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B1|SMO|1|0|inner2 ok train=467 test=233 fit_s=0.008 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B1|MLP|1|0|inner2 ok train=467 test=233 fit_s=0.202 predict_s=0.0007 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B1|LR|1|0|inner2 ok train=467 test=233 fit_s=0.003 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B1|RF|1|2|inner2 ok train=466 test=233 fit_s=0.169 predict_s=0.0211 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B1|SMO|1|2|inner2 ok train=466 test=233 fit_s=0.007 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B1|MLP|1|2|inner2 ok train=466 test=233 fit_s=0.210 predict_s=0.0007 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B1|LR|1|2|inner2 ok train=466 test=233 fit_s=0.002 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B1|RF|1|4|inner2 ok train=466 test=233 fit_s=0.169 predict_s=0.0209 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B1|SMO|1|4|inner2 ok train=466 test=233 fit_s=0.005 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B1|MLP|1|4|inner2 ok train=466 test=233 fit_s=0.209 predict_s=0.0008 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B1|LR|1|4|inner2 ok train=466 test=233 fit_s=0.003 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B1|RF|2|1|inner2 ok train=466 test=233 fit_s=0.176 predict_s=0.0180 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B1|SMO|2|1|inner2 ok train=466 test=233 fit_s=0.009 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B1|MLP|2|1|inner2 ok train=466 test=233 fit_s=0.187 predict_s=0.0008 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B1|LR|2|1|inner2 ok train=466 test=233 fit_s=0.002 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B1|RF|2|3|inner2 ok train=466 test=233 fit_s=0.180 predict_s=0.0162 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B1|SMO|2|3|inner2 ok train=466 test=233 fit_s=0.007 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B1|MLP|2|3|inner2 ok train=466 test=233 fit_s=0.187 predict_s=0.0006 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B1|LR|2|3|inner2 ok train=466 test=233 fit_s=0.002 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B1|RF|3|0|inner2 ok train=467 test=233 fit_s=0.180 predict_s=0.0176 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B1|SMO|3|0|inner2 ok train=467 test=233 fit_s=0.007 predict_s=0.0004 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B1|MLP|3|0|inner2 ok train=467 test=233 fit_s=0.187 predict_s=0.0006 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B1|LR|3|0|inner2 ok train=467 test=233 fit_s=0.002 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B1|RF|3|2|inner2 ok train=466 test=233 fit_s=0.154 predict_s=0.0138 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B1|SMO|3|2|inner2 ok train=466 test=233 fit_s=0.005 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B1|MLP|3|2|inner2 ok train=466 test=233 fit_s=0.191 predict_s=0.0007 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B1|LR|3|2|inner2 ok train=466 test=233 fit_s=0.002 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B1|RF|3|4|inner2 ok train=466 test=233 fit_s=0.170 predict_s=0.0124 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B1|SMO|3|4|inner2 ok train=466 test=233 fit_s=0.004 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B1|MLP|3|4|inner2 ok train=466 test=233 fit_s=0.188 predict_s=0.0006 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B1|LR|3|4|inner2 ok train=466 test=233 fit_s=0.002 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B1|RF|4|1|inner2 ok train=466 test=233 fit_s=0.170 predict_s=0.0177 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B1|SMO|4|1|inner2 ok train=466 test=233 fit_s=0.005 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B1|MLP|4|1|inner2 ok train=466 test=233 fit_s=0.191 predict_s=0.0006 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B1|LR|4|1|inner2 ok train=466 test=233 fit_s=0.003 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job B1|RF|4|3|inner2 ok train=466 test=233 fit_s=0.178 predict_s=0.0192 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job B1|SMO|4|3|inner2 ok train=466 test=233 fit_s=0.006 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job B1|MLP|4|3|inner2 ok train=466 test=233 fit_s=0.199 predict_s=0.0007 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job B1|LR|4|3|inner2 ok train=466 test=233 fit_s=0.003 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_stft|RF|0|0|inner2 ok train=466 test=233 fit_s=0.253 predict_s=0.0119 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|SMO|0|0|inner2 ok train=466 test=233 fit_s=0.018 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_stft|MLP|0|0|inner2 ok train=466 test=233 fit_s=2.816 predict_s=0.0027 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|LR|0|0|inner2 ok train=466 test=233 fit_s=0.011 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_stft|RF|0|2|inner2 ok train=466 test=233 fit_s=0.266 predict_s=0.0181 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|SMO|0|2|inner2 ok train=466 test=233 fit_s=0.018 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_stft|MLP|0|2|inner2 ok train=466 test=233 fit_s=2.827 predict_s=0.0027 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|LR|0|2|inner2 ok train=466 test=233 fit_s=0.011 predict_s=0.0006 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_stft|RF|0|4|inner2 ok train=466 test=233 fit_s=0.251 predict_s=0.0127 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|SMO|0|4|inner2 ok train=466 test=233 fit_s=0.021 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_stft|MLP|0|4|inner2 ok train=466 test=233 fit_s=2.843 predict_s=0.0029 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|LR|0|4|inner2 ok train=466 test=233 fit_s=0.011 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_stft|RF|1|1|inner2 ok train=466 test=233 fit_s=0.261 predict_s=0.0146 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|SMO|1|1|inner2 ok train=466 test=233 fit_s=0.015 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_stft|MLP|1|1|inner2 ok train=466 test=233 fit_s=2.703 predict_s=0.0028 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|LR|1|1|inner2 ok train=466 test=233 fit_s=0.011 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_stft|RF|1|3|inner2 ok train=466 test=233 fit_s=0.249 predict_s=0.0132 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|SMO|1|3|inner2 ok train=466 test=233 fit_s=0.017 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_stft|MLP|1|3|inner2 ok train=466 test=233 fit_s=2.773 predict_s=0.0030 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|LR|1|3|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_stft|RF|2|0|inner2 ok train=466 test=234 fit_s=0.242 predict_s=0.0179 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|SMO|2|0|inner2 ok train=466 test=234 fit_s=0.016 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_stft|MLP|2|0|inner2 ok train=466 test=234 fit_s=2.675 predict_s=0.0030 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|LR|2|0|inner2 ok train=466 test=234 fit_s=0.011 predict_s=0.0007 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_stft|RF|2|2|inner2 ok train=466 test=233 fit_s=0.246 predict_s=0.0158 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|SMO|2|2|inner2 ok train=466 test=233 fit_s=0.023 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_stft|MLP|2|2|inner2 ok train=466 test=233 fit_s=2.664 predict_s=0.0029 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|LR|2|2|inner2 ok train=466 test=233 fit_s=0.012 predict_s=0.0006 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_stft|RF|2|4|inner2 ok train=466 test=233 fit_s=0.244 predict_s=0.0144 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|SMO|2|4|inner2 ok train=466 test=233 fit_s=0.015 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_stft|MLP|2|4|inner2 ok train=466 test=233 fit_s=2.713 predict_s=0.0030 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|LR|2|4|inner2 ok train=466 test=233 fit_s=0.011 predict_s=0.0006 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_stft|RF|3|1|inner2 ok train=466 test=233 fit_s=0.245 predict_s=0.0172 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|SMO|3|1|inner2 ok train=466 test=233 fit_s=0.016 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_stft|MLP|3|1|inner2 ok train=466 test=233 fit_s=2.713 predict_s=0.0028 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|LR|3|1|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_stft|RF|3|3|inner2 ok train=466 test=233 fit_s=0.241 predict_s=0.0160 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|SMO|3|3|inner2 ok train=466 test=233 fit_s=0.016 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_stft|MLP|3|3|inner2 ok train=466 test=233 fit_s=2.637 predict_s=0.0031 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|LR|3|3|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_stft|RF|4|0|inner2 ok train=467 test=233 fit_s=0.253 predict_s=0.0143 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|SMO|4|0|inner2 ok train=467 test=233 fit_s=0.016 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_stft|MLP|4|0|inner2 ok train=467 test=233 fit_s=2.681 predict_s=0.0028 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|LR|4|0|inner2 ok train=467 test=233 fit_s=0.011 predict_s=0.0006 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_stft|RF|4|2|inner2 ok train=466 test=233 fit_s=0.237 predict_s=0.0143 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|SMO|4|2|inner2 ok train=466 test=233 fit_s=0.015 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_stft|MLP|4|2|inner2 ok train=466 test=233 fit_s=2.649 predict_s=0.0026 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|LR|4|2|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_stft|RF|4|4|inner2 ok train=466 test=233 fit_s=0.244 predict_s=0.0151 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_stft|SMO|4|4|inner2 ok train=466 test=233 fit_s=0.015 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_stft|MLP|4|4|inner2 ok train=466 test=233 fit_s=2.659 predict_s=0.0032 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_stft|LR|4|4|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0007 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_wpd_db4|RF|0|1|inner2 ok train=467 test=233 fit_s=0.241 predict_s=0.0149 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|SMO|0|1|inner2 ok train=467 test=233 fit_s=0.019 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_wpd_db4|MLP|0|1|inner2 ok train=467 test=233 fit_s=2.661 predict_s=0.0031 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|LR|0|1|inner2 ok train=467 test=233 fit_s=0.010 predict_s=0.0006 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_wpd_db4|RF|0|3|inner2 ok train=466 test=233 fit_s=0.245 predict_s=0.0169 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|SMO|0|3|inner2 ok train=466 test=233 fit_s=0.038 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_wpd_db4|MLP|0|3|inner2 ok train=466 test=233 fit_s=2.660 predict_s=0.0029 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|LR|0|3|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0006 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_wpd_db4|RF|1|0|inner2 ok train=467 test=233 fit_s=0.241 predict_s=0.0074 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|SMO|1|0|inner2 ok train=467 test=233 fit_s=0.026 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_wpd_db4|MLP|1|0|inner2 ok train=467 test=233 fit_s=2.674 predict_s=0.0031 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|LR|1|0|inner2 ok train=467 test=233 fit_s=0.010 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_wpd_db4|RF|1|2|inner2 ok train=466 test=233 fit_s=0.248 predict_s=0.0159 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|SMO|1|2|inner2 ok train=466 test=233 fit_s=0.022 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_wpd_db4|MLP|1|2|inner2 ok train=466 test=233 fit_s=2.651 predict_s=0.0029 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|LR|1|2|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_wpd_db4|RF|1|4|inner2 ok train=466 test=233 fit_s=0.233 predict_s=0.0092 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|SMO|1|4|inner2 ok train=466 test=233 fit_s=0.020 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_wpd_db4|MLP|1|4|inner2 ok train=466 test=233 fit_s=2.658 predict_s=0.0030 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|LR|1|4|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0007 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_wpd_db4|RF|2|1|inner2 ok train=466 test=233 fit_s=0.242 predict_s=0.0150 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|SMO|2|1|inner2 ok train=466 test=233 fit_s=0.020 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_wpd_db4|MLP|2|1|inner2 ok train=466 test=233 fit_s=2.634 predict_s=0.0028 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|LR|2|1|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_wpd_db4|RF|2|3|inner2 ok train=466 test=233 fit_s=0.239 predict_s=0.0096 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|SMO|2|3|inner2 ok train=466 test=233 fit_s=0.034 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_wpd_db4|MLP|2|3|inner2 ok train=466 test=233 fit_s=2.638 predict_s=0.0026 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|LR|2|3|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_wpd_db4|RF|3|0|inner2 ok train=467 test=233 fit_s=0.254 predict_s=0.0159 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|SMO|3|0|inner2 ok train=467 test=233 fit_s=0.021 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_wpd_db4|MLP|3|0|inner2 ok train=467 test=233 fit_s=2.680 predict_s=0.0026 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|LR|3|0|inner2 ok train=467 test=233 fit_s=0.010 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_wpd_db4|RF|3|2|inner2 ok train=466 test=233 fit_s=0.253 predict_s=0.0112 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|SMO|3|2|inner2 ok train=466 test=233 fit_s=0.054 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_wpd_db4|MLP|3|2|inner2 ok train=466 test=233 fit_s=2.666 predict_s=0.0031 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|LR|3|2|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0006 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_wpd_db4|RF|3|4|inner2 ok train=466 test=233 fit_s=0.231 predict_s=0.0159 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|SMO|3|4|inner2 ok train=466 test=233 fit_s=0.017 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_wpd_db4|MLP|3|4|inner2 ok train=466 test=233 fit_s=2.675 predict_s=0.0026 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|LR|3|4|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_wpd_db4|RF|4|1|inner2 ok train=466 test=233 fit_s=0.242 predict_s=0.0121 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|SMO|4|1|inner2 ok train=466 test=233 fit_s=0.022 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_wpd_db4|MLP|4|1|inner2 ok train=466 test=233 fit_s=2.669 predict_s=0.0028 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|LR|4|1|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0006 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job W_wpd_db4|RF|4|3|inner2 ok train=466 test=233 fit_s=0.241 predict_s=0.0158 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job W_wpd_db4|SMO|4|3|inner2 ok train=466 test=233 fit_s=0.023 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job W_wpd_db4|MLP|4|3|inner2 ok train=466 test=233 fit_s=2.665 predict_s=0.0027 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job W_wpd_db4|LR|4|3|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_stft|RF|0|0|inner2 ok train=466 test=233 fit_s=0.238 predict_s=0.0121 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|SMO|0|0|inner2 ok train=466 test=233 fit_s=0.016 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_stft|MLP|0|0|inner2 ok train=466 test=233 fit_s=2.712 predict_s=0.0028 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|LR|0|0|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_stft|RF|0|2|inner2 ok train=466 test=233 fit_s=0.237 predict_s=0.0118 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|SMO|0|2|inner2 ok train=466 test=233 fit_s=0.016 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_stft|MLP|0|2|inner2 ok train=466 test=233 fit_s=2.672 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|LR|0|2|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0007 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_stft|RF|0|4|inner2 ok train=466 test=233 fit_s=0.245 predict_s=0.0137 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|SMO|0|4|inner2 ok train=466 test=233 fit_s=0.016 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_stft|MLP|0|4|inner2 ok train=466 test=233 fit_s=2.728 predict_s=0.0027 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|LR|0|4|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_stft|RF|1|1|inner2 ok train=466 test=233 fit_s=0.228 predict_s=0.0139 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|SMO|1|1|inner2 ok train=466 test=233 fit_s=0.014 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_stft|MLP|1|1|inner2 ok train=466 test=233 fit_s=2.708 predict_s=0.0033 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|LR|1|1|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0006 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_stft|RF|1|3|inner2 ok train=466 test=233 fit_s=0.249 predict_s=0.0116 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|SMO|1|3|inner2 ok train=466 test=233 fit_s=0.015 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_stft|MLP|1|3|inner2 ok train=466 test=233 fit_s=2.670 predict_s=0.0029 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|LR|1|3|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_stft|RF|2|0|inner2 ok train=466 test=234 fit_s=0.228 predict_s=0.0141 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|SMO|2|0|inner2 ok train=466 test=234 fit_s=0.015 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_stft|MLP|2|0|inner2 ok train=466 test=234 fit_s=2.725 predict_s=0.0032 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|LR|2|0|inner2 ok train=466 test=234 fit_s=0.010 predict_s=0.0008 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_stft|RF|2|2|inner2 ok train=466 test=233 fit_s=0.249 predict_s=0.0113 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|SMO|2|2|inner2 ok train=466 test=233 fit_s=0.015 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_stft|MLP|2|2|inner2 ok train=466 test=233 fit_s=2.707 predict_s=0.0030 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|LR|2|2|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_stft|RF|2|4|inner2 ok train=466 test=233 fit_s=0.246 predict_s=0.0133 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|SMO|2|4|inner2 ok train=466 test=233 fit_s=0.015 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_stft|MLP|2|4|inner2 ok train=466 test=233 fit_s=2.741 predict_s=0.0029 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|LR|2|4|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_stft|RF|3|1|inner2 ok train=466 test=233 fit_s=0.227 predict_s=0.0090 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|SMO|3|1|inner2 ok train=466 test=233 fit_s=0.014 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_stft|MLP|3|1|inner2 ok train=466 test=233 fit_s=2.717 predict_s=0.0029 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|LR|3|1|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_stft|RF|3|3|inner2 ok train=466 test=233 fit_s=0.243 predict_s=0.0124 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|SMO|3|3|inner2 ok train=466 test=233 fit_s=0.013 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_stft|MLP|3|3|inner2 ok train=466 test=233 fit_s=2.684 predict_s=0.0030 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|LR|3|3|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0007 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_stft|RF|4|0|inner2 ok train=467 test=233 fit_s=0.257 predict_s=0.0138 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|SMO|4|0|inner2 ok train=467 test=233 fit_s=0.015 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_stft|MLP|4|0|inner2 ok train=467 test=233 fit_s=2.718 predict_s=0.0028 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|LR|4|0|inner2 ok train=467 test=233 fit_s=0.010 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_stft|RF|4|2|inner2 ok train=466 test=233 fit_s=0.238 predict_s=0.0118 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|SMO|4|2|inner2 ok train=466 test=233 fit_s=0.014 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_stft|MLP|4|2|inner2 ok train=466 test=233 fit_s=2.623 predict_s=0.0032 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|LR|4|2|inner2 ok train=466 test=233 fit_s=0.009 predict_s=0.0006 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_stft|RF|4|4|inner2 ok train=466 test=233 fit_s=0.236 predict_s=0.0118 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_stft|SMO|4|4|inner2 ok train=466 test=233 fit_s=0.013 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_stft|MLP|4|4|inner2 ok train=466 test=233 fit_s=2.600 predict_s=0.0032 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_stft|LR|4|4|inner2 ok train=466 test=233 fit_s=0.009 predict_s=0.0006 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_wpd_db4|RF|0|1|inner2 ok train=467 test=233 fit_s=0.232 predict_s=0.0128 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|SMO|0|1|inner2 ok train=467 test=233 fit_s=0.012 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_wpd_db4|MLP|0|1|inner2 ok train=467 test=233 fit_s=2.718 predict_s=0.0032 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|LR|0|1|inner2 ok train=467 test=233 fit_s=0.010 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_wpd_db4|RF|0|3|inner2 ok train=466 test=233 fit_s=0.248 predict_s=0.0109 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|SMO|0|3|inner2 ok train=466 test=233 fit_s=0.017 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_wpd_db4|MLP|0|3|inner2 ok train=466 test=233 fit_s=2.637 predict_s=0.0029 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|LR|0|3|inner2 ok train=466 test=233 fit_s=0.011 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_wpd_db4|RF|1|0|inner2 ok train=467 test=233 fit_s=0.237 predict_s=0.0144 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|SMO|1|0|inner2 ok train=467 test=233 fit_s=0.014 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_wpd_db4|MLP|1|0|inner2 ok train=467 test=233 fit_s=2.598 predict_s=0.0028 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|LR|1|0|inner2 ok train=467 test=233 fit_s=0.011 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_wpd_db4|RF|1|2|inner2 ok train=466 test=233 fit_s=0.238 predict_s=0.0128 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|SMO|1|2|inner2 ok train=466 test=233 fit_s=0.013 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_wpd_db4|MLP|1|2|inner2 ok train=466 test=233 fit_s=2.660 predict_s=0.0028 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|LR|1|2|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_wpd_db4|RF|1|4|inner2 ok train=466 test=233 fit_s=0.233 predict_s=0.0132 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|SMO|1|4|inner2 ok train=466 test=233 fit_s=0.014 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_wpd_db4|MLP|1|4|inner2 ok train=466 test=233 fit_s=2.537 predict_s=0.0026 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|LR|1|4|inner2 ok train=466 test=233 fit_s=0.010 predict_s=0.0005 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_wpd_db4|RF|2|1|inner2 ok train=466 test=233 fit_s=0.230 predict_s=0.0092 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|SMO|2|1|inner2 ok train=466 test=233 fit_s=0.014 predict_s=0.0004 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_wpd_db4|MLP|2|1|inner2 ok train=466 test=233 fit_s=2.559 predict_s=0.0025 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|LR|2|1|inner2 ok train=466 test=233 fit_s=0.009 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_wpd_db4|RF|2|3|inner2 ok train=466 test=233 fit_s=0.215 predict_s=0.0122 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|SMO|2|3|inner2 ok train=466 test=233 fit_s=0.011 predict_s=0.0004 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_wpd_db4|MLP|2|3|inner2 ok train=466 test=233 fit_s=2.466 predict_s=0.0025 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|LR|2|3|inner2 ok train=466 test=233 fit_s=0.009 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_wpd_db4|RF|3|0|inner2 ok train=467 test=233 fit_s=0.228 predict_s=0.0090 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|SMO|3|0|inner2 ok train=467 test=233 fit_s=0.012 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_wpd_db4|MLP|3|0|inner2 ok train=467 test=233 fit_s=2.474 predict_s=0.0025 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|LR|3|0|inner2 ok train=467 test=233 fit_s=0.009 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_wpd_db4|RF|3|2|inner2 ok train=466 test=233 fit_s=0.222 predict_s=0.0104 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|SMO|3|2|inner2 ok train=466 test=233 fit_s=0.012 predict_s=0.0004 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_wpd_db4|MLP|3|2|inner2 ok train=466 test=233 fit_s=2.420 predict_s=0.0026 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|LR|3|2|inner2 ok train=466 test=233 fit_s=0.009 predict_s=0.0003 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_wpd_db4|RF|3|4|inner2 ok train=466 test=233 fit_s=0.205 predict_s=0.0083 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|SMO|3|4|inner2 ok train=466 test=233 fit_s=0.012 predict_s=0.0006 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_wpd_db4|MLP|3|4|inner2 ok train=466 test=233 fit_s=2.397 predict_s=0.0031 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|LR|3|4|inner2 ok train=466 test=233 fit_s=0.009 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_wpd_db4|RF|4|1|inner2 ok train=466 test=233 fit_s=0.213 predict_s=0.0103 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|SMO|4|1|inner2 ok train=466 test=233 fit_s=0.011 predict_s=0.0004 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_wpd_db4|MLP|4|1|inner2 ok train=466 test=233 fit_s=2.380 predict_s=0.0024 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|LR|4|1|inner2 ok train=466 test=233 fit_s=0.009 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+job A_wpd_db4|RF|4|3|inner2 ok train=466 test=233 fit_s=0.216 predict_s=0.0087 spec=weka.classifiers.trees.RandomForest -I 300 -K 0 -S 1 -num-slots 1
+job A_wpd_db4|SMO|4|3|inner2 ok train=466 test=233 fit_s=0.014 predict_s=0.0005 spec=weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -M -V 5 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007"
+job A_wpd_db4|MLP|4|3|inner2 ok train=466 test=233 fit_s=2.372 predict_s=0.0025 spec=weka.classifiers.functions.MultilayerPerceptron -L 0.1 -M 0.2 -N 300 -V 0 -S 1 -E 20 -H a
+job A_wpd_db4|LR|4|3|inner2 ok train=466 test=233 fit_s=0.009 predict_s=0.0004 spec=weka.classifiers.functions.Logistic -R 1.0 -M -1
+completed 300/300 jobs

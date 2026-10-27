@@ -1,0 +1,9 @@
+B0: 36 patient features, patients with all-missing: 0
+B1: 16 patient features, patients with all-missing: 0
+W_stft: 68 patient features, patients with all-missing: 0
+W_wpd_db4: 68 patient features, patients with all-missing: 0
+A_stft: 68 patient features, patients with all-missing: 0
+A_wpd_db4: 68 patient features, patients with all-missing: 0
+jobs to run: 2400, already complete (resumed): 0
+WEKA: 2400 jobs in 219s
+saved (104880, 10)
