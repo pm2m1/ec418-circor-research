@@ -233,8 +233,13 @@ def train(features: list[np.ndarray], segs: list[np.ndarray], seed: int) -> LRHS
     return LRHSMM(coef, inter, X.mean(axis=0), np.cov(X, rowvar=False), learn_duration_params(segs))
 
 
+def state_probabilities(model: LRHSMM, F: np.ndarray) -> np.ndarray:
+    """Per-state logistic-regression probabilities P(state | o_t), shape (T, 4) (one-vs-rest, not normalised)."""
+    return 1.0 / (1.0 + np.exp(-(F @ model.coef.T + model.intercept)))
+
+
 def observation_probs(model: LRHSMM, F: np.ndarray) -> np.ndarray:
-    p_state = 1.0 / (1.0 + np.exp(-(F @ model.coef.T + model.intercept)))
+    p_state = state_probabilities(model, F)
     p_o = multivariate_normal(model.mu, model.cov, allow_singular=True).pdf(F)
     return p_state * np.atleast_1d(p_o)[:, None] / PI
 
