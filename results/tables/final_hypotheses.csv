@@ -1,0 +1,42 @@
+experiment,hypothesis,contrast,rule,delta,ci_lo,ci_hi,folds_positive,verdict,source
+v1,H1,B1+SVM recording AUC: random split - subject-grouped,material inflation (v1 PILOT_RESULTS §1),0.01451111420207074,-0.004372638157906866,0.034908922206598775,n/a,NOT SUPPORTED,results/tables/h1_summary.json
+v1,H2a,A_wpd_db4 - A_stft,"delta>=0.03, CI lo>0, >=18/25",-0.0173,-0.0341,-0.0004,3/25,NOT SUPPORTED,results/tables/contrasts.csv
+v1,H2b,W_wpd_db4 - W_stft,"delta>=0.03, CI lo>0, >=18/25",-0.0661,-0.0951,-0.0361,1/25,NOT SUPPORTED,results/tables/contrasts.csv
+v1,H3,A_wpd_db4 - W_wpd_db4,"delta>=0.03, CI lo>0, >=18/25",0.1132,0.0651,0.1653,25/25,SUPPORTED,results/tables/contrasts.csv
+v1,H4a,A_wpd_db4 - B0,"delta>=0.03, CI lo>0, >=18/25",0.0509,-0.002,0.1021,21/25,NOT SUPPORTED,results/tables/contrasts.csv
+v1,H4b,A_wpd_db4 - B1,"delta>=0.03, CI lo>0, >=18/25",0.072,0.0265,0.1222,24/25,SUPPORTED,results/tables/contrasts.csv
+E2,H5a,E2_wpd_true - E2_wpd_perm,"delta>=0.03, CI lo>0, >=18/25",0.14659780555443924,0.09435225641913414,0.19936370599241054,25/25,SUPPORTED,results/tables/e2_contrasts.csv
+E2,H5b,E2_stft_true - E2_stft_perm,"delta>=0.03, CI lo>0, >=18/25",0.1735300028133917,0.11505659031837379,0.22899769701773573,25/25,SUPPORTED,results/tables/e2_contrasts.csv
+E2,H5c,E2_wpds_true - E2_wpds_perm,"delta>=0.03, CI lo>0, >=18/25",0.13128491620111737,0.0792018786396542,0.18513883673383605,25/25,SUPPORTED,results/tables/e2_contrasts.csv
+E2,H5d,E2_wpd_true - E2_wpd_shift,"delta>=0.03, CI lo>0, >=18/25",0.19213456050801825,0.14070000582405134,0.24768435910604544,25/25,SUPPORTED,results/tables/e2_contrasts.csv
+E2,H5d,E2_stft_true - E2_stft_shift,"delta>=0.03, CI lo>0, >=18/25",0.20235922993448818,0.1520706225111795,0.2539390928342068,25/25,SUPPORTED,results/tables/e2_contrasts.csv
+E2,H5d,E2_wpds_true - E2_wpds_shift,"delta>=0.03, CI lo>0, >=18/25",0.2058397974357944,0.1526117312942248,0.2597236522984267,25/25,SUPPORTED,results/tables/e2_contrasts.csv
+E1,H6a,E1_wpd_auto - E2_wpd_true,delta >= -0.03,-0.061508781801374646,-0.10165324694990345,-0.0209276862004991,3/25,NOT SUPPORTED,results/tables/e1_hypotheses.csv
+E1,H6b,E1_wpd_auto - B1,delta > 0 and CI lower > 0,0.010329166834130543,-0.0380099216874881,0.06033297830665649,15/25,NOT SUPPORTED,results/tables/e1_hypotheses.csv
+E1,H6c(a),E1_stft_auto - E2_stft_true,delta >= -0.03,-0.04991358868212692,-0.0900603012167278,-0.010733651615804108,1/25,NOT SUPPORTED,results/tables/e1_hypotheses.csv
+E1,H6c(b),E1_stft_auto - B1,delta > 0 and CI lower > 0,0.039319159197781506,-0.00851557982862731,0.0879589454990115,20/25,NOT SUPPORTED,results/tables/e1_hypotheses.csv
+E1,H6c(a),E1_wpds_auto - E2_wpds_true,delta >= -0.03,-0.07744463646959532,-0.12034012005651702,-0.036655640119325476,1/25,NOT SUPPORTED,results/tables/e1_hypotheses.csv
+E1,H6c(b),E1_wpds_auto - B1,delta > 0 and CI lower > 0,-0.0029219082834290866,-0.05109022196222192,0.046934685916940944,12/25,NOT SUPPORTED,results/tables/e1_hypotheses.csv
+E1b,H8a,E1b_wpd_auto - E2_wpd_true,delta >= -0.03,-0.09121417949439348,-0.13475890525022857,-0.04508523978093802,1/25,NOT SUPPORTED,results/tables/e1b_hypotheses.csv
+E1b,H8b,E1b_wpd_auto - B1,delta > 0 and CI lower > 0,-0.019376230858888288,-0.06379618983875002,0.028675445589269516,6/25,NOT SUPPORTED,results/tables/e1b_hypotheses.csv
+E1b,H8c(a),E1b_stft_auto - E2_stft_true,delta >= -0.03,-0.10573530002813403,-0.14844302530158318,-0.06297499394660384,0/25,NOT SUPPORTED,results/tables/e1b_hypotheses.csv
+E1b,H8c(b),E1b_stft_auto - B1,delta > 0 and CI lower > 0,-0.016502552148225602,-0.06143931735376622,0.03053301331873991,11/25,NOT SUPPORTED,results/tables/e1b_hypotheses.csv
+E1b,H8c(a),E1b_wpds_auto - E2_wpds_true,delta >= -0.03,-0.08797877898798279,-0.12974109150889288,-0.04496367270005188,0/25,NOT SUPPORTED,results/tables/e1b_hypotheses.csv
+E1b,H8c(b),E1b_wpds_auto - B1,delta > 0 and CI lower > 0,-0.013456050801816555,-0.05719636952119242,0.03443635991924285,10/25,NOT SUPPORTED,results/tables/e1b_hypotheses.csv
+E4,H9a,E4_wpd - E2_wpd_true,delta >= -0.03,-0.0066637193038866505,-0.04388286613924438,0.03149192691677546,10/25,SUPPORTED,results/tables/e4_hypotheses.csv
+E4,H9b,E4_wpd - B1,delta > 0 and CI lower > 0,0.06517422933161854,0.021773725225955273,0.1150123078291342,25/25,SUPPORTED,results/tables/e4_hypotheses.csv
+E4,H9c,E4_wpd - W_stft,delta > 0 and CI lower > 0,0.04029178891523644,-0.003373934405466955,0.08867644804634492,21/25,NOT SUPPORTED,results/tables/e4_hypotheses.csv
+E4,H9a,E4_stft - E2_stft_true,delta >= -0.03,-0.006310035770266453,-0.04446790777916976,0.031289370831064714,8/25,SUPPORTED,results/tables/e4_hypotheses.csv
+E4,H9b,E4_stft - B1,delta > 0 and CI lower > 0,0.08292271210964197,0.03608407761333573,0.134984601404175,24/25,SUPPORTED,results/tables/e4_hypotheses.csv
+E4,H9c,E4_stft - W_stft,delta > 0 and CI lower > 0,0.05804027169325987,0.01133470647753606,0.10806726872288529,22/25,SUPPORTED,results/tables/e4_hypotheses.csv
+E4,H9a,E4_wpds - E2_wpds_true,delta >= -0.03,-0.0047747277038704405,-0.043966929056116016,0.035194386505246485,9/25,SUPPORTED,results/tables/e4_hypotheses.csv
+E4,H9b,E4_wpds - B1,delta > 0 and CI lower > 0,0.06974800048229579,0.027128447588330273,0.12018679253297596,25/25,SUPPORTED,results/tables/e4_hypotheses.csv
+E4,H9c,E4_wpds - W_stft,delta > 0 and CI lower > 0,0.04486556006591369,0.001454521771364553,0.09444852855907362,21/25,SUPPORTED,results/tables/e4_hypotheses.csv
+E2,equivalence,E2_wpds_true - E2_stft_true,CI within +/-0.03,-0.014710019693742193,-0.03205633218333662,0.0025850165675345422,5/25,equivalence NOT shown,results/tables/e2_equivalence.csv
+E3,H7,soft murmurs (grade I/VI sensitivity),-,,,,-,"NOT RUN (dropped, amendment E3-drop)",docs/PROTOCOL_V2_LOCKED.md
+S1 (diagnostic),S1(a),E4_stft - S1_Wstft_SC,CI lo>0 -> not shortcut-explained,0.04337446244122023,-0.0047356442705758315,0.09622970875357041,21/25,possibly shortcut-driven,results/tables/s1_contrasts.csv
+S1 (diagnostic),S1(a),E4_stft - S1_Wwpd_SC,CI lo>0 -> not shortcut-explained,0.09483541658293482,0.04277492999301423,0.14894971838258383,23/25,not explained by the span/missingness shortcut,results/tables/s1_contrasts.csv
+S1 (diagnostic),S1(a),E4_wpd - S1_Wstft_SC,CI lo>0 -> not shortcut-explained,0.025625979663196796,-0.01960968715650565,0.07497664798958517,21/25,possibly shortcut-driven,results/tables/s1_contrasts.csv
+S1 (diagnostic),S1(a),E4_wpd - S1_Wwpd_SC,CI lo>0 -> not shortcut-explained,0.07708693380491138,0.02719226877529169,0.13097318691220727,24/25,not explained by the span/missingness shortcut,results/tables/s1_contrasts.csv
+S1 (diagnostic),S1(a),E4_wpds - S1_Wstft_SC,CI lo>0 -> not shortcut-explained,0.03019975081387405,-0.014666401221600945,0.0811944098884174,18/25,possibly shortcut-driven,results/tables/s1_contrasts.csv
+S1 (diagnostic),S1(a),E4_wpds - S1_Wwpd_SC,CI lo>0 -> not shortcut-explained,0.08166070495558864,0.031274337290143235,0.13653831174900485,23/25,not explained by the span/missingness shortcut,results/tables/s1_contrasts.csv

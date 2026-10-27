@@ -1,0 +1,34 @@
+        set clf  n_patients  auroc_mean_of_repeats  auroc_mean_of_repeats_sd  auroc_repeat_averaged  auroc_repeat_averaged_ci_lo  auroc_repeat_averaged_ci_hi
+    E4_stft  RF         874                 0.8029                    0.0091                 0.8088                       0.7659                       0.8493
+     E4_wpd  RF         874                 0.7844                    0.0091                 0.7911                       0.7460                       0.8315
+    E4_wpds  RF         874                 0.7890                    0.0069                 0.7956                       0.7509                       0.8357
+ S1_SC_only  RF         874                 0.5619                    0.0215                 0.5871                       0.5331                       0.6409
+S1_Wstft_SC  RF         874                 0.7593                    0.0048                 0.7654                       0.7180                       0.8075
+ S1_Wwpd_SC  RF         874                 0.7074                    0.0137                 0.7140                       0.6659                       0.7591
+     W_stft  RF         874                 0.7442                    0.0101                 0.7508                       0.7013                       0.7944
+  W_wpd_db4  RF         874                 0.6781                    0.0137                 0.6848                       0.6373                       0.7320
+    E4_stft SMO         874                 0.8075                    0.0060                 0.8143                       0.7717                       0.8537
+     E4_wpd SMO         874                 0.8025                    0.0064                 0.8092                       0.7666                       0.8495
+    E4_wpds SMO         874                 0.8076                    0.0058                 0.8137                       0.7722                       0.8524
+ S1_SC_only SMO         874                 0.5130                    0.0442                 0.5359                       0.4848                       0.5854
+S1_Wstft_SC SMO         874                 0.7563                    0.0056                 0.7585                       0.7132                       0.8036
+ S1_Wwpd_SC SMO         874                 0.7138                    0.0064                 0.7175                       0.6706                       0.7649
+     W_stft SMO         874                 0.7433                    0.0081                 0.7470                       0.6980                       0.7951
+  W_wpd_db4 SMO         874                 0.6800                    0.0134                 0.6865                       0.6332                       0.7367
+part clf           a           b  delta_auroc_repeat_averaged   ci_lo  ci_hi folds_positive  delta_auroc_mean_of_repeats                                                        label
+ (a)  RF     E4_stft S1_Wstft_SC                       0.0434 -0.0047 0.0962          21/25                       0.0436                                     possibly shortcut-driven
+ (a)  RF     E4_stft  S1_Wwpd_SC                       0.0948  0.0428 0.1489          23/25                       0.0955               not explained by the span/missingness shortcut
+ (a)  RF      E4_wpd S1_Wstft_SC                       0.0256 -0.0196 0.0750          21/25                       0.0251                                     possibly shortcut-driven
+ (a)  RF      E4_wpd  S1_Wwpd_SC                       0.0771  0.0272 0.1310          24/25                       0.0770               not explained by the span/missingness shortcut
+ (a)  RF     E4_wpds S1_Wstft_SC                       0.0302 -0.0147 0.0812          18/25                       0.0297                                     possibly shortcut-driven
+ (a)  RF     E4_wpds  S1_Wwpd_SC                       0.0817  0.0313 0.1365          23/25                       0.0816               not explained by the span/missingness shortcut
+ (b)  RF S1_Wstft_SC      W_stft                       0.0147  0.0031 0.0280          21/25                       0.0151                                                  descriptive
+ (b)  RF  S1_Wwpd_SC   W_wpd_db4                       0.0292  0.0112 0.0479          25/25                       0.0293                                                  descriptive
+ (a) SMO     E4_stft S1_Wstft_SC                       0.0557  0.0090 0.1020          22/25                       0.0513 descriptive (not explained by the span/missingness shortcut)
+ (a) SMO     E4_stft  S1_Wwpd_SC                       0.0968  0.0474 0.1443          24/25                       0.0938 descriptive (not explained by the span/missingness shortcut)
+ (a) SMO      E4_wpd S1_Wstft_SC                       0.0506  0.0048 0.0949          22/25                       0.0462 descriptive (not explained by the span/missingness shortcut)
+ (a) SMO      E4_wpd  S1_Wwpd_SC                       0.0917  0.0430 0.1387          24/25                       0.0887 descriptive (not explained by the span/missingness shortcut)
+ (a) SMO     E4_wpds S1_Wstft_SC                       0.0552  0.0097 0.0990          22/25                       0.0513 descriptive (not explained by the span/missingness shortcut)
+ (a) SMO     E4_wpds  S1_Wwpd_SC                       0.0962  0.0484 0.1425          24/25                       0.0939 descriptive (not explained by the span/missingness shortcut)
+ (b) SMO S1_Wstft_SC      W_stft                       0.0115 -0.0093 0.0309          18/25                       0.0130                                                  descriptive
+ (b) SMO  S1_Wwpd_SC   W_wpd_db4                       0.0310  0.0023 0.0590          22/25                       0.0338                                                  descriptive
