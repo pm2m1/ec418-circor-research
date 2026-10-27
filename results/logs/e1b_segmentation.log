@@ -1,0 +1,64 @@
+/Users/kiyo/Desktop/ec418-circor-research/scripts/21_e1b_run.py:170: Pandas4Warning: 'str' is not supported as a fill value for float64 dtype. In a future version, calling fillna with an incompatible value will raise. Explicitly cast to a common dtype before filling.
+  L["failure"] = L.failure.fillna("")
+ repeat  group      value  n_recordings  n_patients  failure_frac  s1_precision  s1_recall  s1_f1  s2_precision  s2_recall  s2_f1  s1_f1_swapped  s2_f1_swapped  period_within_10pct  period_about_half  frame_accuracy_4state
+      0    all        all          3163         942           0.0         0.850      0.873  0.861         0.811      0.837  0.824          0.058          0.065                0.765              0.054                  0.787
+      0 murmur     Absent          2391         695           0.0         0.857      0.888  0.872         0.813      0.844  0.828          0.061          0.070                0.767              0.062                  0.791
+      0 murmur    Present           616         179           0.0         0.852      0.850  0.851         0.845      0.847  0.846          0.033          0.034                0.836              0.018                  0.795
+      0 murmur    Unknown           156          68           0.0         0.626      0.652  0.639         0.521      0.558  0.539          0.144          0.166                0.462              0.083                  0.598
+      0    age Adolescent           259          72           0.0         0.867      0.921  0.893         0.838      0.893  0.864          0.038          0.055                0.811              0.085                  0.828
+      0    age      Child          2386         664           0.0         0.854      0.880  0.867         0.826      0.855  0.840          0.055          0.063                0.790              0.047                  0.792
+      0    age     Infant           269         126           0.0         0.759      0.645  0.697         0.632      0.548  0.587          0.167          0.110                0.494              0.007                  0.580
+      0    age    Neonate            10           6           0.0         0.857      0.734  0.791         0.723      0.632  0.675          0.124          0.055                0.400              0.000                  0.638
+      0    age    missing           239          74           0.0         0.836      0.908  0.871         0.746      0.809  0.776          0.039          0.071                0.782              0.147                  0.794
+      1    all        all          3163         942           0.0         0.855      0.876  0.865         0.816      0.840  0.828          0.056          0.063                0.769              0.053                  0.791
+      2    all        all          3163         942           0.0         0.852      0.875  0.864         0.816      0.841  0.828          0.057          0.064                0.769              0.054                  0.790
+      3    all        all          3163         942           0.0         0.853      0.875  0.864         0.816      0.841  0.828          0.057          0.063                0.767              0.053                  0.790
+      4    all        all          3163         942           0.0         0.853      0.875  0.864         0.815      0.840  0.827          0.057          0.063                0.769              0.052                  0.790
+{
+  "primary_repeat": 0,
+  "repeats": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "n_recordings_primary": 3163,
+  "s1_f1": 0.8613336601357251,
+  "s2_f1": 0.8241594579786865,
+  "frame_accuracy_4state": 0.78719204289134,
+  "failure_frac": 0.0,
+  "low_quality_segmentation": false,
+  "overall_by_repeat": [
+    {
+      "repeat": 0,
+      "s1_f1": 0.8613336601357251,
+      "s2_f1": 0.8241594579786865,
+      "frame_accuracy_4state": 0.78719204289134
+    },
+    {
+      "repeat": 1,
+      "s1_f1": 0.865235603700919,
+      "s2_f1": 0.8280712601924489,
+      "frame_accuracy_4state": 0.7907547355817639
+    },
+    {
+      "repeat": 2,
+      "s1_f1": 0.8635844442570546,
+      "s2_f1": 0.82790525250809,
+      "frame_accuracy_4state": 0.7897145548624762
+    },
+    {
+      "repeat": 3,
+      "s1_f1": 0.8637318490577611,
+      "s2_f1": 0.8280320701960361,
+      "frame_accuracy_4state": 0.789907297948371
+    },
+    {
+      "repeat": 4,
+      "s1_f1": 0.8640761811295293,
+      "s2_f1": 0.8270747553090406,
+      "frame_accuracy_4state": 0.7899808141636466
+    }
+  ]
+}

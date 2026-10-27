@@ -167,7 +167,7 @@ def step_evaluate():
     if os.path.exists(f"{ROOT}/unknown_decode_log.csv"):
         U = pd.read_csv(f"{ROOT}/unknown_decode_log.csv")
         L = pd.concat([L, pd.concat([U.assign(repeat=r) for r in sorted(L.repeat.unique())])], ignore_index=True)
-    L["failure"] = L.failure.fillna("")
+    L["failure"] = L.failure.astype(object).fillna("")
     L = L.merge(RT[["rec_id", "patient_id", "murmur", "tsv"]], on="rec_id")
     ev = []
     for x in L.itertuples():
