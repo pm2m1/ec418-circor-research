@@ -21,7 +21,7 @@ scripts/      01 audit · 02 features · 03 B1 realign · 04 folds · 05 H1 leak
 tests/        39 unit/integration tests (pytest)
 references/   baseline repo snapshot (MIT), official Challenge scoring code (vendored, unmodified)
 results/      tables/ figures/ predictions/ logs/
-tools/        WEKA 3.9.7 jars (from the python-weka-wrapper3 0.3.3 sdist on PyPI) — not committed
+tools/        WEKA 3.9.7 jars (from the python-weka-wrapper3 0.3.3 sdist on PyPI; committed; WEKA is GPL-3.0)
 ```
 
 ## Setup (macOS Apple Silicon or Linux)
