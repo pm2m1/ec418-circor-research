@@ -28,7 +28,8 @@ tools/        WEKA 3.9.7 jars (from the python-weka-wrapper3 0.3.3 sdist on PyPI
 ```bash
 # Python 3.11+ and a JDK 11+ (macOS: brew install openjdk; or Temurin)
 uv venv -p 3.12 .venv && uv pip install -p .venv -e .
-# WEKA 3.9.7 jar: either the official installer from waikato.github.io/weka-wiki, or
+# WEKA 3.9.7 jars are already committed in tools/ (WEKA is GPL-3.0); nothing to download.
+# To re-obtain them: either the official installer from waikato.github.io/weka-wiki, or
 pip download --no-deps python-weka-wrapper3==0.3.3 -d /tmp/pww3 && \
   tar xzf /tmp/pww3/python_weka_wrapper3-0.3.3.tar.gz -C /tmp/pww3 && \
   cp /tmp/pww3/python_weka_wrapper3-0.3.3/python/weka/lib/{weka,mtj,arpack_combined,core}.jar tools/

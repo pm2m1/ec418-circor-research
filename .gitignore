@@ -6,3 +6,4 @@ data/interim/
 experiments/**/arff/
 tools/build/
 .pytest_cache/
+.DS_Store
