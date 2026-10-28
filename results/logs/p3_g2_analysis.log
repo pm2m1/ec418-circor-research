@@ -1,0 +1,2 @@
+GATE 2 (E4R == E4): {'rows_e4': 26220, 'rows_e4r': 26220, 'matched': 26220, 'max_abs_score_diff': 0.056493997699999965, 'max_abs_thr_diff': 0.011943275500000017, 'pass': False}
+reproduction gate failed: no G2 result is reported (amendment A1.2)
