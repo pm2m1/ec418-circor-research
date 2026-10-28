@@ -48,6 +48,11 @@ for rep in ["stft", "wpd", "wpds"]:          # Phase-2 E2 (scripts/15_e2_extract
     SETFILE[f"E4_{rep}"] = "data/interim/e4/features/r{r}_f{k}/rec_features_E4_" + rep + ".csv"   # E4 (scripts/26)
 for name in ["Wstft_SC", "Wwpd_SC", "SC_only"]:       # S1 shortcut control (scripts/29)
     SETFILE[f"S1_{name}"] = "data/interim/s1/features/r{r}_f{k}/rec_features_S1_" + name + ".csv"
+for rep in ["stft", "wpd", "wpds"]:            # Phase-3 G2 (scripts/p3_g2_run.py; sandbox PROTOCOL_V3_PREREG A1)
+    for sel in ["E4R", "E4q", "RQ", "SNRQ"]:
+        SETFILE[f"{sel}_{rep}"] = "data/interim/g2/features/r{r}_f{k}/rec_features_" + sel + "_" + rep + ".csv"
+for name in ["Wstft_SCq", "Wwpd_SCq", "SCq_only"]:
+    SETFILE[f"G2_{name}"] = "data/interim/g2/features/r{r}_f{k}/rec_features_G2_" + name + ".csv"
 B1_USED = ["b1_entropy_cv", "b1_slope", "b1_Hurst_spectral_mode", "b1_LeftSlope", "b1_RightSlope",
            "b1_LeftTangent", "b1_LeftTangentPoint", "b1_RightTangentPoint"]
 
