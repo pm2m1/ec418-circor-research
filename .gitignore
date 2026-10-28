@@ -7,3 +7,5 @@ experiments/**/arff/
 tools/build/
 .pytest_cache/
 .DS_Store
+.venv-scat/
+data/external/

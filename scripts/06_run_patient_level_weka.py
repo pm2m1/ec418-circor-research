@@ -35,6 +35,8 @@ for w in ["db4", "db6", "sym8", "coif3"]:
     SETFILE[f"A_wpd_{w}"] = f"rec_features_A_wpd_{w}.csv"
 SETFILE["W_wpd_db4_smooth"] = "rec_features_W_wpd_db4_smooth.csv"
 SETFILE["A_wpd_db4_smooth"] = "rec_features_A_wpd_db4_smooth.csv"
+for _s in ["A_scat1", "A_scat12", "W_scat1"]:   # Phase-3 G4 (scripts/p3_01)
+    SETFILE[_s] = f"rec_features_{_s}.csv"
 for rep in ["stft", "wpd", "wpds"]:          # Phase-2 E2 (scripts/15_e2_extract_label_nulls.py)
     for cond in ["true", "perm", "shift"]:
         SETFILE[f"E2_{rep}_{cond}"] = f"e2/rec_features_E2_{rep}_{cond}.csv"
