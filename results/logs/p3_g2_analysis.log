@@ -1,2 +1,11 @@
-GATE 2 (E4R == E4): {'rows_e4': 26220, 'rows_e4r': 26220, 'matched': 26220, 'max_abs_score_diff': 0.056493997699999965, 'max_abs_thr_diff': 0.011943275500000017, 'pass': False}
-reproduction gate failed: no G2 result is reported (amendment A1.2)
+GATE 2 (E4R == E4): {'rows_e4': 26220, 'rows_e4r': 26220, 'matched': 26220, 'max_abs_score_diff': 0.0, 'max_abs_thr_diff': 0.0, 'pass': True}
+Traceback (most recent call last):
+  File "/Users/kiyo/Desktop/ec418-circor-research/scripts/p3_g2_analyze.py", line 111, in <module>
+    prim = CT[CT.primary].iloc[0]
+           ~~^^^^^^^^^^^^
+  File "/Users/kiyo/Desktop/ec418-circor-research/.venv/lib/python3.12/site-packages/pandas/core/frame.py", line 4320, in __getitem__
+    if com.is_bool_indexer(key):
+       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kiyo/Desktop/ec418-circor-research/.venv/lib/python3.12/site-packages/pandas/core/common.py", line 152, in is_bool_indexer
+    raise ValueError(na_msg)
+ValueError: Cannot mask with non-boolean array containing NA / NaN values

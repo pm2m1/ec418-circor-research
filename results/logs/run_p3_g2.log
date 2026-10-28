@@ -374,5 +374,5 @@ G2_SCq_only r4 f2: 6 patient features, patients with all-missing: 0
 G2_SCq_only r4 f3: 6 patient features, patients with all-missing: 0
 G2_SCq_only r4 f4: 6 patient features, patients with all-missing: 0
 jobs to run: 3000, already complete (resumed): 0
-WEKA: 3000 jobs in 1028s
+WEKA: 3000 jobs in 113s
 saved (131100, 10)

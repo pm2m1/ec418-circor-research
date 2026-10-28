@@ -139,3 +139,6 @@ requires, no G2 result was produced or looked at. Decision (user, 2026-10-28): t
 platform of Phase 2, with A1 unchanged including the exact gate 2. The cloud predictions
 (`results/predictions/p3_g2_predictions.csv` on `phase3-g2`) stay unopened; after the Mac run they may be compared as a
 cross-platform robustness check only. G3a's E4q row waits for the Mac run.
+
+### A3 — 2026-10-29, code erratum (no analysis change)
+`p3_g2_analyze.py` crashed after writing all tables because one descriptive row lacked the `primary` field; fixed by setting it False. Gates, statistics, rules and labels unchanged; table hashes before/after the fix recorded and compared.

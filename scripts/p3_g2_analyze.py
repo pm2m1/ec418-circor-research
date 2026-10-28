@@ -89,7 +89,9 @@ for C in ["RF", "SMO"]:
             lab = "descriptive" if yes is None or C != "RF" else (yes if r["ci_lo"] > 0 else no)
             ct.append(dict(hypothesis=h, clf=C, rep=rep, a=x, b=y, **r, delta_ge_0_03=bool(r["delta"] >= 0.03),
                            primary=bool(h == "H12a" and rep == "stft" and C == "RF"), label=lab))
-    ct.append(dict(hypothesis="desc", clf=C, rep="-", a="G2_Wstft_SCq", b="W_stft", **contrast("G2_Wstft_SCq", "W_stft", C), label="descriptive"))
+    r = contrast("G2_Wstft_SCq", "W_stft", C)
+    ct.append(dict(hypothesis="desc", clf=C, rep="-", a="G2_Wstft_SCq", b="W_stft", **r, delta_ge_0_03=bool(r["delta"] >= 0.03),
+                   primary=False, label="descriptive"))
 CT = pd.DataFrame(ct)
 CT.to_csv("results/tables/p3/g2_contrasts.csv", index=False)
 
