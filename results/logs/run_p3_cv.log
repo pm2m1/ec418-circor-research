@@ -1,0 +1,6 @@
+A_scat1: 156 patient features, patients with all-missing: 0
+A_scat12: 330 patient features, patients with all-missing: 0
+W_scat1: 156 patient features, patients with all-missing: 0
+jobs to run: 600, already complete (resumed): 0
+WEKA: 600 jobs in 28s
+saved (26220, 10)

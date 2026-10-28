@@ -1,0 +1,179 @@
+             set clf variant subset   n  n_chd  circor_train_patients  circor_internal_auroc  auroc_any_chd  ci_lo  ci_hi  circor_thr_spec80  sens_any_chd  spec  d_VSD_minus_PFO d_VSD_minus_PFO_ci  d_VSD_minus_ASD d_VSD_minus_ASD_ci  d_PDA_minus_PFO d_PDA_minus_PFO_ci
+          W_stft  RF     all  clean 941    408                    874                  0.751          0.709  0.675  0.741              0.254         0.520 0.786            0.263     [0.180, 0.343]            0.126     [0.064, 0.184]            0.332     [0.245, 0.418]
+          W_stft  RF     all  noisy 318    158                    874                  0.751          0.535  0.471  0.597              0.254         0.247 0.744              NaN                NaN              NaN                NaN              NaN                NaN
+          W_stft SMO     all  clean 941    408                    874                  0.747          0.737  0.704  0.768              0.251         0.789 0.508            0.298     [0.224, 0.374]            0.121     [0.065, 0.177]            0.357     [0.269, 0.443]
+          W_stft SMO     all  noisy 318    158                    874                  0.747          0.458  0.393  0.522              0.251         0.696 0.238              NaN                NaN              NaN                NaN              NaN                NaN
+W_wpd_db4_smooth  RF     all  clean 941    408                    874                  0.743          0.784  0.751  0.813              0.248         0.900 0.246            0.257     [0.173, 0.340]            0.140     [0.082, 0.206]            0.262     [0.157, 0.363]
+W_wpd_db4_smooth  RF     all  noisy 318    158                    874                  0.743          0.497  0.436  0.562              0.248         0.886 0.144              NaN                NaN              NaN                NaN              NaN                NaN
+W_wpd_db4_smooth SMO     all  clean 941    408                    874                  0.746          0.776  0.745  0.807              0.254         0.882 0.394            0.299     [0.231, 0.370]            0.163     [0.111, 0.220]            0.292     [0.202, 0.379]
+W_wpd_db4_smooth SMO     all  noisy 318    158                    874                  0.746          0.476  0.415  0.541              0.254         0.905 0.112              NaN                NaN              NaN                NaN              NaN                NaN
+              B0  RF     all  clean 941    408                    874                  0.747          0.699  0.662  0.732              0.250         0.909 0.235            0.026    [-0.059, 0.116]            0.040    [-0.021, 0.105]            0.099    [-0.009, 0.200]
+              B0  RF     all  noisy 318    158                    874                  0.747          0.503  0.438  0.570              0.250         0.791 0.194              NaN                NaN              NaN                NaN              NaN                NaN
+              B0 SMO     all  clean 941    408                    874                  0.775          0.834  0.807  0.858              0.240         0.331 0.987           -0.015    [-0.074, 0.046]           -0.028    [-0.076, 0.020]            0.069    [-0.007, 0.137]
+              B0 SMO     all  noisy 318    158                    874                  0.775          0.450  0.388  0.515              0.240         0.139 0.862              NaN                NaN              NaN                NaN              NaN                NaN
+         W_scat1  RF     all  clean 941    408                    874                  0.727          0.559  0.521  0.597              0.263         0.360 0.737            0.039    [-0.050, 0.129]            0.005    [-0.068, 0.082]           -0.013    [-0.134, 0.115]
+         W_scat1  RF     all  noisy 318    158                    874                  0.727          0.411  0.347  0.471              0.263         0.190 0.750              NaN                NaN              NaN                NaN              NaN                NaN
+         W_scat1 SMO     all  clean 941    408                    874                  0.706          0.735  0.701  0.766              0.240         0.346 0.929            0.069    [-0.013, 0.151]            0.046    [-0.015, 0.110]            0.090    [-0.024, 0.202]
+         W_scat1 SMO     all  noisy 318    158                    874                  0.706          0.510  0.444  0.572              0.240         0.070 0.875              NaN                NaN              NaN                NaN              NaN                NaN
+          W_stft  RF      pv  clean 941    408                    731                    NaN          0.694  0.658  0.729                NaN           NaN   NaN            0.130     [0.050, 0.209]            0.060    [-0.004, 0.124]            0.212     [0.090, 0.316]
+          W_stft  RF      pv  noisy 318    158                    731                    NaN          0.487  0.421  0.549                NaN           NaN   NaN              NaN                NaN              NaN                NaN              NaN                NaN
+          W_stft SMO      pv  clean 941    408                    731                    NaN          0.665  0.628  0.700                NaN           NaN   NaN            0.228     [0.140, 0.317]            0.104     [0.037, 0.171]            0.346     [0.253, 0.442]
+          W_stft SMO      pv  noisy 318    158                    731                    NaN          0.464  0.402  0.527                NaN           NaN   NaN              NaN                NaN              NaN                NaN              NaN                NaN
+W_wpd_db4_smooth  RF      pv  clean 941    408                    731                    NaN          0.714  0.677  0.747                NaN           NaN   NaN            0.182     [0.097, 0.260]            0.124     [0.054, 0.197]            0.263     [0.173, 0.358]
+W_wpd_db4_smooth  RF      pv  noisy 318    158                    731                    NaN          0.580  0.518  0.639                NaN           NaN   NaN              NaN                NaN              NaN                NaN              NaN                NaN
+W_wpd_db4_smooth SMO      pv  clean 941    408                    731                    NaN          0.487  0.450  0.526                NaN           NaN   NaN            0.232     [0.158, 0.304]            0.112     [0.042, 0.177]            0.290     [0.171, 0.402]
+W_wpd_db4_smooth SMO      pv  noisy 318    158                    731                    NaN          0.475  0.410  0.538                NaN           NaN   NaN              NaN                NaN              NaN                NaN              NaN                NaN
+              B0  RF      pv  clean 941    408                    731                    NaN          0.260  0.228  0.294                NaN           NaN   NaN           -0.036    [-0.127, 0.044]           -0.053    [-0.126, 0.018]           -0.041    [-0.158, 0.088]
+              B0  RF      pv  noisy 318    158                    731                    NaN          0.440  0.379  0.505                NaN           NaN   NaN              NaN                NaN              NaN                NaN              NaN                NaN
+              B0 SMO      pv  clean 941    408                    731                    NaN          0.828  0.801  0.853                NaN           NaN   NaN           -0.042    [-0.098, 0.018]           -0.035    [-0.086, 0.018]            0.043    [-0.029, 0.118]
+              B0 SMO      pv  noisy 318    158                    731                    NaN          0.450  0.388  0.512                NaN           NaN   NaN              NaN                NaN              NaN                NaN              NaN                NaN
+         W_scat1  RF      pv  clean 941    408                    731                    NaN          0.608  0.570  0.645                NaN           NaN   NaN            0.056    [-0.042, 0.157]           -0.022    [-0.099, 0.058]            0.085    [-0.062, 0.237]
+         W_scat1  RF      pv  noisy 318    158                    731                    NaN          0.438  0.375  0.502                NaN           NaN   NaN              NaN                NaN              NaN                NaN              NaN                NaN
+         W_scat1 SMO      pv  clean 941    408                    731                    NaN          0.744  0.714  0.776                NaN           NaN   NaN            0.090     [0.016, 0.161]            0.052    [-0.008, 0.112]            0.165     [0.075, 0.259]
+         W_scat1 SMO      pv  noisy 318    158                    731                    NaN          0.480  0.418  0.542                NaN           NaN   NaN              NaN                NaN              NaN                NaN              NaN                NaN
+             set clf variant subset diagnosis   n  auroc_vs_normal  ci_lo  ci_hi  sens_at_circor_thr
+          W_stft  RF     all  clean       VSD 187            0.785  0.744  0.823               0.663
+          W_stft  RF     all  clean       PDA  32            0.854  0.796  0.905               0.688
+          W_stft  RF     all  clean       ASD 119            0.659  0.605  0.716               0.420
+          W_stft  RF     all  clean       PFO  70            0.522  0.447  0.596               0.229
+          W_stft  RF     all  noisy       VSD  14            0.550  0.417  0.683               0.286
+          W_stft  RF     all  noisy       PDA   7            0.497  0.290  0.682               0.143
+          W_stft  RF     all  noisy       ASD 102            0.507  0.439  0.576               0.225
+          W_stft  RF     all  noisy       PFO  35            0.615  0.522  0.711               0.314
+          W_stft SMO     all  clean       VSD 187            0.819  0.783  0.852               0.872
+          W_stft SMO     all  clean       PDA  32            0.878  0.813  0.929               0.938
+          W_stft SMO     all  clean       ASD 119            0.698  0.651  0.747               0.790
+          W_stft SMO     all  clean       PFO  70            0.521  0.452  0.590               0.500
+          W_stft SMO     all  noisy       VSD  14            0.561  0.360  0.754               0.714
+          W_stft SMO     all  noisy       PDA   7            0.629  0.400  0.841               0.714
+          W_stft SMO     all  noisy       ASD 102            0.474  0.403  0.544               0.725
+          W_stft SMO     all  noisy       PFO  35            0.338  0.243  0.433               0.600
+W_wpd_db4_smooth  RF     all  clean       VSD 187            0.868  0.834  0.900               0.947
+W_wpd_db4_smooth  RF     all  clean       PDA  32            0.874  0.793  0.938               0.969
+W_wpd_db4_smooth  RF     all  clean       ASD 119            0.728  0.674  0.782               0.882
+W_wpd_db4_smooth  RF     all  clean       PFO  70            0.612  0.534  0.685               0.771
+W_wpd_db4_smooth  RF     all  noisy       VSD  14            0.578  0.402  0.743               0.857
+W_wpd_db4_smooth  RF     all  noisy       PDA   7            0.550  0.332  0.761               1.000
+W_wpd_db4_smooth  RF     all  noisy       ASD 102            0.508  0.438  0.579               0.902
+W_wpd_db4_smooth  RF     all  noisy       PFO  35            0.419  0.322  0.517               0.829
+W_wpd_db4_smooth SMO     all  clean       VSD 187            0.875  0.845  0.903               0.952
+W_wpd_db4_smooth SMO     all  clean       PDA  32            0.868  0.795  0.933               0.969
+W_wpd_db4_smooth SMO     all  clean       ASD 119            0.712  0.662  0.762               0.840
+W_wpd_db4_smooth SMO     all  clean       PFO  70            0.576  0.510  0.640               0.729
+W_wpd_db4_smooth SMO     all  noisy       VSD  14            0.562  0.363  0.746               0.857
+W_wpd_db4_smooth SMO     all  noisy       PDA   7            0.688  0.508  0.854               1.000
+W_wpd_db4_smooth SMO     all  noisy       ASD 102            0.498  0.428  0.573               0.931
+W_wpd_db4_smooth SMO     all  noisy       PFO  35            0.334  0.249  0.423               0.829
+              B0  RF     all  clean       VSD 187            0.710  0.664  0.752               0.920
+              B0  RF     all  clean       PDA  32            0.783  0.696  0.853               0.938
+              B0  RF     all  clean       ASD 119            0.669  0.614  0.722               0.899
+              B0  RF     all  clean       PFO  70            0.684  0.608  0.759               0.886
+              B0  RF     all  noisy       VSD  14            0.392  0.265  0.529               0.857
+              B0  RF     all  noisy       PDA   7            0.731  0.593  0.854               1.000
+              B0  RF     all  noisy       ASD 102            0.557  0.488  0.628               0.873
+              B0  RF     all  noisy       PFO  35            0.343  0.230  0.455               0.486
+              B0 SMO     all  clean       VSD 187            0.817  0.778  0.853               0.337
+              B0 SMO     all  clean       PDA  32            0.901  0.846  0.950               0.500
+              B0 SMO     all  clean       ASD 119            0.845  0.806  0.882               0.303
+              B0 SMO     all  clean       PFO  70            0.831  0.774  0.882               0.286
+              B0 SMO     all  noisy       VSD  14            0.489  0.333  0.647               0.214
+              B0 SMO     all  noisy       PDA   7            0.737  0.524  0.892               0.429
+              B0 SMO     all  noisy       ASD 102            0.494  0.425  0.563               0.127
+              B0 SMO     all  noisy       PFO  35            0.249  0.159  0.352               0.086
+         W_scat1  RF     all  clean       VSD 187            0.572  0.518  0.624               0.390
+         W_scat1  RF     all  clean       PDA  32            0.520  0.416  0.630               0.250
+         W_scat1  RF     all  clean       ASD 119            0.567  0.505  0.630               0.370
+         W_scat1  RF     all  clean       PFO  70            0.532  0.455  0.612               0.314
+         W_scat1  RF     all  noisy       VSD  14            0.317  0.155  0.496               0.143
+         W_scat1  RF     all  noisy       PDA   7            0.651  0.471  0.825               0.571
+         W_scat1  RF     all  noisy       ASD 102            0.390  0.320  0.460               0.167
+         W_scat1  RF     all  noisy       PFO  35            0.462  0.362  0.560               0.200
+         W_scat1 SMO     all  clean       VSD 187            0.759  0.718  0.799               0.337
+         W_scat1 SMO     all  clean       PDA  32            0.779  0.691  0.860               0.469
+         W_scat1 SMO     all  clean       ASD 119            0.713  0.652  0.768               0.319
+         W_scat1 SMO     all  clean       PFO  70            0.689  0.612  0.762               0.357
+         W_scat1 SMO     all  noisy       VSD  14            0.521  0.361  0.679               0.143
+         W_scat1 SMO     all  noisy       PDA   7            0.746  0.606  0.863               0.143
+         W_scat1 SMO     all  noisy       ASD 102            0.470  0.397  0.543               0.059
+         W_scat1 SMO     all  noisy       PFO  35            0.574  0.484  0.668               0.057
+          W_stft  RF      pv  clean       VSD 187            0.727  0.680  0.771                 NaN
+          W_stft  RF      pv  clean       PDA  32            0.809  0.718  0.891                 NaN
+          W_stft  RF      pv  clean       ASD 119            0.667  0.613  0.723                 NaN
+          W_stft  RF      pv  clean       PFO  70            0.597  0.530  0.667                 NaN
+          W_stft  RF      pv  noisy       VSD  14            0.609  0.471  0.747                 NaN
+          W_stft  RF      pv  noisy       PDA   7            0.507  0.316  0.707                 NaN
+          W_stft  RF      pv  noisy       ASD 102            0.507  0.435  0.578                 NaN
+          W_stft  RF      pv  noisy       PFO  35            0.376  0.259  0.492                 NaN
+          W_stft SMO      pv  clean       VSD 187            0.725  0.679  0.772                 NaN
+          W_stft SMO      pv  clean       PDA  32            0.843  0.779  0.900                 NaN
+          W_stft SMO      pv  clean       ASD 119            0.621  0.564  0.678                 NaN
+          W_stft SMO      pv  clean       PFO  70            0.498  0.419  0.575                 NaN
+          W_stft SMO      pv  noisy       VSD  14            0.562  0.380  0.750                 NaN
+          W_stft SMO      pv  noisy       PDA   7            0.603  0.343  0.837                 NaN
+          W_stft SMO      pv  noisy       ASD 102            0.492  0.422  0.563                 NaN
+          W_stft SMO      pv  noisy       PFO  35            0.316  0.229  0.413                 NaN
+W_wpd_db4_smooth  RF      pv  clean       VSD 187            0.775  0.730  0.816                 NaN
+W_wpd_db4_smooth  RF      pv  clean       PDA  32            0.856  0.785  0.919                 NaN
+W_wpd_db4_smooth  RF      pv  clean       ASD 119            0.651  0.590  0.713                 NaN
+W_wpd_db4_smooth  RF      pv  clean       PFO  70            0.593  0.519  0.661                 NaN
+W_wpd_db4_smooth  RF      pv  noisy       VSD  14            0.600  0.453  0.740                 NaN
+W_wpd_db4_smooth  RF      pv  noisy       PDA   7            0.555  0.370  0.750                 NaN
+W_wpd_db4_smooth  RF      pv  noisy       ASD 102            0.596  0.528  0.666                 NaN
+W_wpd_db4_smooth  RF      pv  noisy       PFO  35            0.529  0.425  0.629                 NaN
+W_wpd_db4_smooth SMO      pv  clean       VSD 187            0.555  0.508  0.601                 NaN
+W_wpd_db4_smooth SMO      pv  clean       PDA  32            0.614  0.507  0.715                 NaN
+W_wpd_db4_smooth SMO      pv  clean       ASD 119            0.443  0.385  0.504                 NaN
+W_wpd_db4_smooth SMO      pv  clean       PFO  70            0.323  0.257  0.391                 NaN
+W_wpd_db4_smooth SMO      pv  noisy       VSD  14            0.585  0.452  0.716                 NaN
+W_wpd_db4_smooth SMO      pv  noisy       PDA   7            0.694  0.562  0.805                 NaN
+W_wpd_db4_smooth SMO      pv  noisy       ASD 102            0.518  0.445  0.587                 NaN
+W_wpd_db4_smooth SMO      pv  noisy       PFO  35            0.259  0.189  0.337                 NaN
+              B0  RF      pv  clean       VSD 187            0.238  0.192  0.284                 NaN
+              B0  RF      pv  clean       PDA  32            0.233  0.137  0.347                 NaN
+              B0  RF      pv  clean       ASD 119            0.291  0.235  0.352                 NaN
+              B0  RF      pv  clean       PFO  70            0.274  0.200  0.352                 NaN
+              B0  RF      pv  noisy       VSD  14            0.615  0.450  0.766                 NaN
+              B0  RF      pv  noisy       PDA   7            0.345  0.237  0.459                 NaN
+              B0  RF      pv  noisy       ASD 102            0.387  0.323  0.455                 NaN
+              B0  RF      pv  noisy       PFO  35            0.541  0.442  0.635                 NaN
+              B0 SMO      pv  clean       VSD 187            0.804  0.765  0.841                 NaN
+              B0 SMO      pv  clean       PDA  32            0.889  0.823  0.945                 NaN
+              B0 SMO      pv  clean       ASD 119            0.839  0.794  0.878                 NaN
+              B0 SMO      pv  clean       PFO  70            0.846  0.793  0.892                 NaN
+              B0 SMO      pv  noisy       VSD  14            0.459  0.303  0.616                 NaN
+              B0 SMO      pv  noisy       PDA   7            0.667  0.417  0.860                 NaN
+              B0 SMO      pv  noisy       ASD 102            0.473  0.398  0.546                 NaN
+              B0 SMO      pv  noisy       PFO  35            0.338  0.244  0.437                 NaN
+         W_scat1  RF      pv  clean       VSD 187            0.609  0.555  0.660                 NaN
+         W_scat1  RF      pv  clean       PDA  32            0.638  0.507  0.753                 NaN
+         W_scat1  RF      pv  clean       ASD 119            0.631  0.568  0.693                 NaN
+         W_scat1  RF      pv  clean       PFO  70            0.553  0.460  0.645                 NaN
+         W_scat1  RF      pv  noisy       VSD  14            0.495  0.338  0.646                 NaN
+         W_scat1  RF      pv  noisy       PDA   7            0.467  0.297  0.633                 NaN
+         W_scat1  RF      pv  noisy       ASD 102            0.419  0.352  0.489                 NaN
+         W_scat1  RF      pv  noisy       PFO  35            0.467  0.371  0.567                 NaN
+         W_scat1 SMO      pv  clean       VSD 187            0.769  0.732  0.807                 NaN
+         W_scat1 SMO      pv  clean       PDA  32            0.844  0.777  0.904                 NaN
+         W_scat1 SMO      pv  clean       ASD 119            0.717  0.665  0.765                 NaN
+         W_scat1 SMO      pv  clean       PFO  70            0.679  0.604  0.753                 NaN
+         W_scat1 SMO      pv  noisy       VSD  14            0.571  0.394  0.730                 NaN
+         W_scat1 SMO      pv  noisy       PDA   7            0.710  0.541  0.864                 NaN
+         W_scat1 SMO      pv  noisy       ASD 102            0.488  0.421  0.561                 NaN
+         W_scat1 SMO      pv  noisy       PFO  35            0.372  0.280  0.473                 NaN
+{
+ "H10a": {
+  "auroc": 0.7086598241548026,
+  "ci": [
+   0.6748020936798734,
+   0.7410056377147481
+  ],
+  "verdict": "SUPPORTED"
+ },
+ "H10b": {
+  "VSD_minus_PFO": 0.26318344496249824,
+  "ci1": "[0.180, 0.343]",
+  "VSD_minus_ASD": 0.12602892086392803,
+  "ci2": "[0.064, 0.184]",
+  "verdict": "SUPPORTED"
+ }
+}
