@@ -1,11 +1,84 @@
 GATE 2 (E4R == E4): {'rows_e4': 26220, 'rows_e4r': 26220, 'matched': 26220, 'max_abs_score_diff': 0.0, 'max_abs_thr_diff': 0.0, 'pass': True}
-Traceback (most recent call last):
-  File "/Users/kiyo/Desktop/ec418-circor-research/scripts/p3_g2_analyze.py", line 111, in <module>
-    prim = CT[CT.primary].iloc[0]
-           ~~^^^^^^^^^^^^
-  File "/Users/kiyo/Desktop/ec418-circor-research/.venv/lib/python3.12/site-packages/pandas/core/frame.py", line 4320, in __getitem__
-    if com.is_bool_indexer(key):
-       ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/kiyo/Desktop/ec418-circor-research/.venv/lib/python3.12/site-packages/pandas/core/common.py", line 152, in is_bool_indexer
-    raise ValueError(na_msg)
-ValueError: Cannot mask with non-boolean array containing NA / NaN values
+         set clf  n_patients  auroc_mean_of_repeats     sd  auroc_repeat_averaged  ci_lo  ci_hi
+     E4_stft  RF         874                 0.8029 0.0091                 0.8088 0.7659 0.8493
+      E4_wpd  RF         874                 0.7844 0.0091                 0.7911 0.7460 0.8315
+     E4_wpds  RF         874                 0.7890 0.0069                 0.7956 0.7509 0.8357
+    E4q_stft  RF         874                 0.7930 0.0079                 0.7995 0.7564 0.8420
+     E4q_wpd  RF         874                 0.7863 0.0074                 0.7919 0.7496 0.8349
+    E4q_wpds  RF         874                 0.7818 0.0135                 0.7887 0.7453 0.8323
+ G2_SCq_only  RF         874                 0.4877 0.0153                 0.4816 0.4344 0.5292
+G2_Wstft_SCq  RF         874                 0.7480 0.0062                 0.7540 0.7061 0.7971
+ G2_Wwpd_SCq  RF         874                 0.6741 0.0136                 0.6809 0.6322 0.7282
+     RQ_stft  RF         874                 0.7269 0.0115                 0.7340 0.6880 0.7789
+      RQ_wpd  RF         874                 0.7140 0.0104                 0.7213 0.6761 0.7669
+     RQ_wpds  RF         874                 0.7153 0.0110                 0.7222 0.6771 0.7684
+ S1_Wstft_SC  RF         874                 0.7593 0.0048                 0.7654 0.7180 0.8075
+   SNRQ_stft  RF         874                 0.7728 0.0035                 0.7792 0.7360 0.8220
+    SNRQ_wpd  RF         874                 0.7729 0.0052                 0.7787 0.7346 0.8217
+   SNRQ_wpds  RF         874                 0.7764 0.0070                 0.7820 0.7376 0.8240
+      W_stft  RF         874                 0.7442 0.0101                 0.7508 0.7013 0.7944
+     E4_stft SMO         874                 0.8075 0.0060                 0.8143 0.7717 0.8537
+      E4_wpd SMO         874                 0.8025 0.0064                 0.8092 0.7666 0.8495
+     E4_wpds SMO         874                 0.8076 0.0058                 0.8137 0.7722 0.8524
+    E4q_stft SMO         874                 0.7967 0.0057                 0.8013 0.7551 0.8460
+     E4q_wpd SMO         874                 0.7821 0.0064                 0.7851 0.7391 0.8329
+    E4q_wpds SMO         874                 0.7862 0.0067                 0.7893 0.7436 0.8359
+ G2_SCq_only SMO         874                 0.5002 0.0103                 0.4864 0.4373 0.5363
+G2_Wstft_SCq SMO         874                 0.7404 0.0084                 0.7460 0.6962 0.7935
+ G2_Wwpd_SCq SMO         874                 0.6797 0.0088                 0.6869 0.6350 0.7360
+     RQ_stft SMO         874                 0.7530 0.0055                 0.7596 0.7108 0.8048
+      RQ_wpd SMO         874                 0.7286 0.0050                 0.7363 0.6880 0.7819
+     RQ_wpds SMO         874                 0.7345 0.0085                 0.7428 0.6957 0.7883
+ S1_Wstft_SC SMO         874                 0.7563 0.0056                 0.7585 0.7132 0.8036
+   SNRQ_stft SMO         874                 0.7701 0.0053                 0.7746 0.7284 0.8192
+    SNRQ_wpd SMO         874                 0.7784 0.0026                 0.7832 0.7367 0.8276
+   SNRQ_wpds SMO         874                 0.7763 0.0039                 0.7802 0.7333 0.8256
+      W_stft SMO         874                 0.7433 0.0081                 0.7470 0.6980 0.7951
+hypothesis clf  rep            a            b   delta   ci_lo  ci_hi folds_positive  delta_mean_of_repeats  delta_ge_0_03  primary                     label
+      H12a  RF stft     E4q_stft G2_Wstft_SCq  0.0455 -0.0010 0.0929          23/25                 0.0450           True     True  possibly shortcut-driven
+      H12b  RF stft     E4q_stft      RQ_stft  0.0655  0.0300 0.1003          23/25                 0.0661           True    False learned selection matters
+      H12c  RF stft     E4q_stft    SNRQ_stft  0.0203 -0.0064 0.0456          18/25                 0.0202          False    False               descriptive
+      desc  RF stft     E4q_stft      E4_stft -0.0093 -0.0408 0.0190           9/25                -0.0099          False    False               descriptive
+      desc  RF stft     E4q_stft  S1_Wstft_SC  0.0341 -0.0136 0.0826          20/25                 0.0337           True    False               descriptive
+      desc  RF stft      RQ_stft G2_Wstft_SCq -0.0200 -0.0695 0.0316          10/25                -0.0211          False    False               descriptive
+      H12a  RF  wpd      E4q_wpd G2_Wstft_SCq  0.0380 -0.0096 0.0855          21/25                 0.0383           True    False  possibly shortcut-driven
+      H12b  RF  wpd      E4q_wpd       RQ_wpd  0.0706  0.0365 0.1020          22/25                 0.0723           True    False learned selection matters
+      H12c  RF  wpd      E4q_wpd     SNRQ_wpd  0.0132 -0.0134 0.0404          17/25                 0.0134          False    False               descriptive
+      desc  RF  wpd      E4q_wpd       E4_wpd  0.0009 -0.0295 0.0296          15/25                 0.0019          False    False               descriptive
+      desc  RF  wpd      E4q_wpd  S1_Wstft_SC  0.0265 -0.0218 0.0746          18/25                 0.0270          False    False               descriptive
+      desc  RF  wpd       RQ_wpd G2_Wstft_SCq -0.0326 -0.0811 0.0200           5/25                -0.0340          False    False               descriptive
+      H12a  RF wpds     E4q_wpds G2_Wstft_SCq  0.0347 -0.0133 0.0825          20/25                 0.0338           True    False  possibly shortcut-driven
+      H12b  RF wpds     E4q_wpds      RQ_wpds  0.0665  0.0312 0.0986          22/25                 0.0666           True    False learned selection matters
+      H12c  RF wpds     E4q_wpds    SNRQ_wpds  0.0067 -0.0206 0.0330          10/25                 0.0054          False    False               descriptive
+      desc  RF wpds     E4q_wpds      E4_wpds -0.0069 -0.0390 0.0224          10/25                -0.0072          False    False               descriptive
+      desc  RF wpds     E4q_wpds  S1_Wstft_SC  0.0233 -0.0253 0.0716          17/25                 0.0225          False    False               descriptive
+      desc  RF wpds      RQ_wpds G2_Wstft_SCq -0.0317 -0.0796 0.0198           5/25                -0.0327          False    False               descriptive
+      desc  RF    - G2_Wstft_SCq       W_stft  0.0032 -0.0019 0.0080          16/25                 0.0038          False    False               descriptive
+      H12a SMO stft     E4q_stft G2_Wstft_SCq  0.0553  0.0021 0.1030          23/25                 0.0563           True    False               descriptive
+      H12b SMO stft     E4q_stft      RQ_stft  0.0417  0.0080 0.0748          21/25                 0.0437           True    False               descriptive
+      H12c SMO stft     E4q_stft    SNRQ_stft  0.0267  0.0014 0.0521          22/25                 0.0266          False    False               descriptive
+      desc SMO stft     E4q_stft      E4_stft -0.0130 -0.0430 0.0162          12/25                -0.0108          False    False               descriptive
+      desc SMO stft     E4q_stft  S1_Wstft_SC  0.0427 -0.0050 0.0883          24/25                 0.0404           True    False               descriptive
+      desc SMO stft      RQ_stft G2_Wstft_SCq  0.0136 -0.0369 0.0610          15/25                 0.0126          False    False               descriptive
+      H12a SMO  wpd      E4q_wpd G2_Wstft_SCq  0.0392 -0.0118 0.0852          22/25                 0.0417           True    False               descriptive
+      H12b SMO  wpd      E4q_wpd       RQ_wpd  0.0488  0.0154 0.0820          22/25                 0.0535           True    False               descriptive
+      H12c SMO  wpd      E4q_wpd     SNRQ_wpd  0.0019 -0.0257 0.0284          12/25                 0.0037          False    False               descriptive
+      desc SMO  wpd      E4q_wpd       E4_wpd -0.0241 -0.0558 0.0088           6/25                -0.0204          False    False               descriptive
+      desc SMO  wpd      E4q_wpd  S1_Wstft_SC  0.0266 -0.0201 0.0723          20/25                 0.0258          False    False               descriptive
+      desc SMO  wpd       RQ_wpd G2_Wstft_SCq -0.0096 -0.0591 0.0378          11/25                -0.0118          False    False               descriptive
+      H12a SMO wpds     E4q_wpds G2_Wstft_SCq  0.0434 -0.0084 0.0905          21/25                 0.0458           True    False               descriptive
+      H12b SMO wpds     E4q_wpds      RQ_wpds  0.0466  0.0122 0.0793          21/25                 0.0517           True    False               descriptive
+      H12c SMO wpds     E4q_wpds    SNRQ_wpds  0.0092 -0.0163 0.0349          15/25                 0.0099          False    False               descriptive
+      desc SMO wpds     E4q_wpds      E4_wpds -0.0243 -0.0541 0.0066           6/25                -0.0214          False    False               descriptive
+      desc SMO wpds     E4q_wpds  S1_Wstft_SC  0.0308 -0.0153 0.0766          21/25                 0.0299           True    False               descriptive
+      desc SMO wpds      RQ_wpds G2_Wstft_SCq -0.0032 -0.0535 0.0443          10/25                -0.0059          False    False               descriptive
+      desc SMO    - G2_Wstft_SCq       W_stft -0.0011 -0.0046 0.0027           9/25                -0.0029          False    False               descriptive
+selection  murmur     n  nofeat  nofeat_frac
+      E4R  Absent 11955    1886       0.1578
+      E4R Present  3080     304       0.0987
+      E4q  Absent 11955      73       0.0061
+      E4q Present  3080      24       0.0078
+       RQ  Absent 11955      56       0.0047
+       RQ Present  3080      36       0.0117
+     SNRQ  Absent 11955      71       0.0059
+     SNRQ Present  3080      36       0.0117

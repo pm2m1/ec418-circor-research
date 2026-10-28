@@ -1,0 +1,75 @@
+{
+  "gate": {
+    "rows_e4": 26220,
+    "rows_e4r": 26220,
+    "matched": 26220,
+    "max_abs_score_diff": 0.0,
+    "max_abs_thr_diff": 0.0,
+    "pass": true
+  },
+  "H12a_primary": {
+    "delta": 0.04553273582251527,
+    "ci": [
+      -0.0009935077186535271,
+      0.09290042699092232
+    ],
+    "folds": "23/25",
+    "label": "possibly shortcut-driven"
+  },
+  "rf_labels": [
+    {
+      "hypothesis": "H12a",
+      "rep": "stft",
+      "delta": 0.04553273582251527,
+      "ci_lo": -0.0009935077186535271,
+      "ci_hi": 0.09290042699092232,
+      "folds_positive": "23/25",
+      "label": "possibly shortcut-driven"
+    },
+    {
+      "hypothesis": "H12b",
+      "rep": "stft",
+      "delta": 0.06551987460311093,
+      "ci_lo": 0.029975164760962646,
+      "ci_hi": 0.10028526549830025,
+      "folds_positive": "23/25",
+      "label": "learned selection matters"
+    },
+    {
+      "hypothesis": "H12a",
+      "rep": "wpd",
+      "delta": 0.03796069289819548,
+      "ci_lo": -0.009589290410503928,
+      "ci_hi": 0.08553642187271938,
+      "folds_positive": "21/25",
+      "label": "possibly shortcut-driven"
+    },
+    {
+      "hypothesis": "H12b",
+      "rep": "wpd",
+      "delta": 0.07059201800570736,
+      "ci_lo": 0.03651857927326032,
+      "ci_hi": 0.10204197868887442,
+      "folds_positive": "22/25",
+      "label": "learned selection matters"
+    },
+    {
+      "hypothesis": "H12a",
+      "rep": "wpds",
+      "delta": 0.03474940717816821,
+      "ci_lo": -0.013347118853138495,
+      "ci_hi": 0.08251384647517271,
+      "folds_positive": "20/25",
+      "label": "possibly shortcut-driven"
+    },
+    {
+      "hypothesis": "H12b",
+      "rep": "wpds",
+      "delta": 0.06648848518950223,
+      "ci_lo": 0.031172233620437237,
+      "ci_hi": 0.09862610910196448,
+      "folds_positive": "22/25",
+      "label": "learned selection matters"
+    }
+  ]
+}
