@@ -142,3 +142,4 @@ cross-platform robustness check only. G3a's E4q row waits for the Mac run.
 
 ### A3 — 2026-10-29, code erratum (no analysis change)
 `p3_g2_analyze.py` crashed after writing all tables because one descriptive row lacked the `primary` field; fixed by setting it False. Gates, statistics, rules and labels unchanged; table hashes before/after the fix recorded and compared.
+g2_contrasts.csv differs only in the 4 cells the fix fills (descriptive row, RF+SMO × primary, delta_ge_0_03); re-blanking them reproduces the pre-fix sha256; g2_auroc.csv and g2_coverage.csv byte-identical.
