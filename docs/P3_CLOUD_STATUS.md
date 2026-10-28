@@ -4,7 +4,7 @@ Phase 3 was pre-registered and partly run in a cloud workspace before the Mac ru
 
 | Item | Where | Commit / time (IST) |
 |---|---|---|
-| Pre-registration `docs/PROTOCOL_V3_PREREG.md`, `configs/protocol_v3.json` | cloud sandbox repo (Phase-1 base) | `7acc9fc` 2026-10-28 18:38:40, tag `protocol-v3-prereg`; lock hashes `54de9b3` |
+| Pre-registration `docs/PROTOCOL_V3_PREREG.md`, `configs/protocol_v3.json` | cloud sandbox repo (Phase-1 base) | content commit `7acc9fc` 2026-10-28 18:38:40; tag `protocol-v3-prereg` → `54de9b3` (lock hashes; = `7acc9fc` + `configs/protocol_v3_lock.sha256`, same timestamp) |
 | G4/G1a code + amendment A1 (G2 details) | sandbox | `4f85d9d` 18:57:16 (scattering extraction had started at ~18:41 from the same code) |
 | G2 code + gate (this repo, branch `phase3-g2`) | `2ccf398` 18:58, analysis `96ccfec` | before any G2 run |
 | Amendment A2 (G2 official run on the Mac) | sandbox | `4661383` 2026-10-29 01:06 |

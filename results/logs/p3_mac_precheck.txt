@@ -1,0 +1,13 @@
+# Phase-3 Mac precheck 2026-10-29 03:34 IST
+## git
+## main...origin/main
+HEAD cae9708 | results-final -> cae9708
+## v1 manifest
+  52 OK
+## final manifest
+ 311 OK
+## pytest
+81 passed, 1 warning in 1.93s
+## package
+cloud-sandbox-provenance.bundle: OK
+phase3-g2.bundle: OK
