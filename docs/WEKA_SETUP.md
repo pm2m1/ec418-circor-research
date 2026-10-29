@@ -1,8 +1,6 @@
 # WEKA_SETUP — how WEKA is used in this study
 
-**Version.** WEKA 3.9.7 (`tools/weka.jar`, sha256 `e60fffff…8cc3`, with `mtj.jar`, `arpack_combined.jar`, `core.jar`), taken from the
-python-weka-wrapper3 0.3.3 sdist on PyPI and committed in `tools/` (WEKA is GPL-3.0). Java: OpenJDK 21 (Homebrew on the Mac;
-Ubuntu build in Phase 1).
+**Version.** WEKA 3.9.7 (SHA-256 of `tools/weka.jar`: `e60fffff…8cc3`), with `mtj.jar`, `arpack_combined.jar` and `core.jar`. These four files are **not tracked** in the current Git repository. Install/verify them in a fresh clone using `python scripts/install_weka_jars.py` (see [`tools/WEKA_DEPENDENCIES.md`](../tools/WEKA_DEPENDENCIES.md)). They were previously tracked and remain in older Git commits. Java: OpenJDK 21 on macOS; Phase 1 used Ubuntu.
 
 ## Classifiers (fixed before any model was trained; `src/ec418/weka/arff.py`, `CLASSIFIERS`)
 | Name | WEKA class | Options (exact strings) |

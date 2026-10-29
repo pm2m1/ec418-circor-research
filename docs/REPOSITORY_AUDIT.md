@@ -1,5 +1,14 @@
 # REPOSITORY_AUDIT — final audit before submission (2026-10-29)
 
+> **Repository scope update (2026-10-29):**
+> The assignment report, presentation, and submission checklist
+> were prepared separately but are no longer tracked in this
+> repository. They remain local coursework artifacts.
+> References to `submission/` below describe the state at the
+> time of the original audit, not the current repository contents.
+> Research code, protocols, tables, figures, and reproducibility
+> records remain tracked.
+
 Branch `docs/final-submission-readiness`, created from `phase4-writeup` at `4966715` (which contains all three phases,
 the write-up and the history record). Frozen evidence was not modified: `scripts/p5_verify_integrity.py` passes before
 and after every commit (both manifests, folds, protocol locks, history map).

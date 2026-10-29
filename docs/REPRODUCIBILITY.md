@@ -9,6 +9,7 @@ times.
 uname -a                                      # macOS 26.6 / Ubuntu were used
 .venv/bin/python --version                    # Python 3.12.14 (Phase 2–3, Mac); Phase 1 used 3.13 on Linux
 java -version                                 # OpenJDK 21 (macOS: export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH")
+python scripts/install_weka_jars.py             # first run: download/verify pinned runtime JARs
 java -cp "tools/weka.jar" weka.core.Version   # 3.9.7
 .venv/bin/python -c "import numpy, scipy, pandas, pywt, sklearn, librosa; print(numpy.__version__, scipy.__version__, pandas.__version__, pywt.__version__, sklearn.__version__, librosa.__version__)"
 ls data/raw/circor_training_data/training_data.csv   # only needed for Level 3
@@ -18,7 +19,7 @@ packages: `configs/requirements_frozen.txt` — its line `-e file:///home/claude
 build machine's editable install, so drop it:
 `grep -v '^-e ' configs/requirements_frozen.txt > /tmp/ec418_req.txt && uv pip install -p .venv -r /tmp/ec418_req.txt && uv pip install -p .venv -e .`.
 Phase-3 scattering features use a separate environment `.venv-scat` with kymatio 0.3.0, scipy 1.14.1, numpy 2.1.3
-(`docs/P3_RESULTS.md`). The write-up needs `tectonic` (PDF) and `python-pptx` (`uv pip install -p .venv -e ".[writeup]"`).
+(`docs/P3_RESULTS.md`). Optional local report and slide builds need `tectonic` (PDF) and `python-pptx` (`uv pip install -p .venv -e ".[writeup]"`). They are not required to reproduce the research.
 
 ## 1. Data integrity (needed only for Level 3)
 The study uses the **official PhysioNet CirCor v1.0.3** download, verified against PhysioNet's own checksum list
@@ -36,7 +37,7 @@ cd - && ln -s "$PWD/physionet.org/files/circor-heart-sound/1.0.3/training_data" 
 ```bash
 .venv/bin/python scripts/p5_verify_integrity.py       # manifests, frozen folds, protocol locks, history hash map
 .venv/bin/python -m pytest -q                         # 81 tests collected, 81 passed (2026-10-29)
-.venv/bin/python scripts/p4_check_numbers.py          # report and slides use registry numbers only
+.venv/bin/python scripts/p4_check_numbers.py          # tracked research tables; local write-ups optional
 ```
 Expected output of the first command: `MANIFEST_v1.sha256: 52/52 OK`, `MANIFEST_final.sha256: 311/311 OK`, folds OK
 (sha256 `c4aa74c7…2339`), every protocol lock OK at the commit where it was made, and `ALL INTEGRITY CHECKS PASSED`.
@@ -100,9 +101,9 @@ afterwards. `NPROC` sets the number of worker processes; the last argument of `0
 `scripts/p3_02_external_zch.py <ZCHSound dir>` (G1a) → `p3_04_zch_age_check.py`; `NPROC=2 python scripts/p3_g2_run.py 0,1,2,3,4`
 → `p3_g2_analyze.py` (G2); `p3_g3a_table.py` (G3a); cross-platform checks `p3_05_compare_cloud.py`, `p3_06_g2_sealed_compare.py`.
 
-**Write-up:** `p4_operating_points.py` → `p4_numbers.py` → `p4_figures.py` → `p4_report_tables.py` →
-`(cd report && tectonic EC418_report.tex)`, `p4_slides.py`, `p4_check_numbers.py`; submission report:
-`(cd submission/report_src && tectonic EC418_Assignment2_Research_Report.tex)`.
+**Research numbers, tables and figures:** Run `p4_operating_points.py` → `p4_numbers.py` → `p4_figures.py` → `p4_report_tables.py` in a disposable worktree and compare the results. `p4_check_numbers.py` checks the tracked `report/tables/*.tex` against the numbers registry.
+
+**Optional local coursework build (not in Git):** Existing `p4_slides.py` and `p5_submission_slides.py` can generate draft slides if desired. Authors may create their own report source at `report/EC418_report.tex` or under `submission/report_src/` and compile it locally. Those reports and decks are git-ignored, are not needed for research reproduction and can optionally be checked using `python scripts/p4_check_numbers.py --include-local`. Do not interpret a passing default number check as validation of absent local documents.
 
 **Verification criteria for Level 3:** folds hash identical; Phase-1 AUROCs within the tolerances of `docs/REPRO_MAC.md`
 (WEKA RF with fixed seeds reproduced within 0.00035 across platforms); `p5_verify_integrity.py` still passes on the

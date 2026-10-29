@@ -1,4 +1,4 @@
-# Physiology-Aligned Multiresolution Analysis for Patient-Independent Heart-Murmur Detection: A Comparative Study of Wavelet and Fourier Features
+# Cardiac-Cycle Timing and Wavelet–Fourier Features for Patient-Independent Heart-Murmur Screening
 
 **EC418 — Biomedical Instrumentation and Signal Processing**, National Institute of Technology Warangal.
 Mini Research Project (Assignment 2): Medical Signal Analysis and Disease Diagnosis. Author: Parth Mishra.
@@ -10,7 +10,7 @@ cardiac-cycle-aligned and whole-signal designs, with WEKA classifiers, shortcut-
 > **Start here:** [`docs/INDEX.md`](docs/INDEX.md) (all documents, in order) · [`docs/RESULTS_SUMMARY.md`](docs/RESULTS_SUMMARY.md)
 > (final Phase 1–2 results) · [`docs/P3_RESULTS.md`](docs/P3_RESULTS.md) (Phase 3) ·
 > [`docs/INTERPRETATION_GUIDE.md`](docs/INTERPRETATION_GUIDE.md) (what the results do and do not support) ·
-> [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md) · [`submission/`](submission/) (report and slides).
+> [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
 
 ## 1. Research overview
 A **heart murmur** is an extra sound produced by turbulent blood flow, heard between the normal first (S1) and second (S2)
@@ -107,8 +107,7 @@ PCG recording (4 kHz) → resample 2 kHz, band-pass 25–900 Hz, z-score
   → held-out patients: 5 repeats × 5 subject-grouped outer folds, inner-fold thresholds, subject bootstrap CIs
 ```
 Expert annotations are used at test time only in the experiments labelled "expert" or "oracle" (E2 `true`, D1–D3);
-E1, E1b, E4 and E4q segment test recordings automatically, with all models trained on the training folds only. Full
-methods: [`submission/`](submission/) report, [`docs/PROTOCOL_LOCKED.md`](docs/PROTOCOL_LOCKED.md) (Phase 1),
+E1, E1b, E4 and E4q segment test recordings automatically, with all models trained on the training folds only. Full methods: [`docs/PROTOCOL_LOCKED.md`](docs/PROTOCOL_LOCKED.md) (Phase 1),
 [`docs/PROTOCOL_V2_LOCKED.md`](docs/PROTOCOL_V2_LOCKED.md) (Phase 2), [`docs/PROTOCOL_V3_PREREG.md`](docs/PROTOCOL_V3_PREREG.md)
 (Phase 3), [`docs/WEKA_SETUP.md`](docs/WEKA_SETUP.md).
 
@@ -141,15 +140,14 @@ scripts/      01–10  Phase 1: audit, features, baseline, folds, leakage test, 
                      diagnostics (24, 25), E4 (26–28), S1 (29, 30), final figures and summary (31, 32)
               p3_*   Phase 3: scattering (G4), ZCHSound (G1a), shortcut-free E4q (G2), conditioning gaps (G3a), checks
               p4_*   write-up: numbers registry, figures, tables, slides, number check, literature-search records
-              p5_*   README tables
+              p5_*   README result tables and optional local slide generator
 tests/        pytest suite (81 tests)
 results/      tables/ predictions/ figures/ figures_final/ logs/; v1_freeze/ and final_freeze/ checksum manifests
 references/   baseline repository snapshot (MIT), official Challenge scoring code (BSD-2-Clause), dataset checksums,
               literature-search records (g3b/)
-report/       short IEEE-format paper draft, numbers registry (numbers.json / numbers.tex), figures, slides
-submission/   EC418 deliverables: research report (PDF + LaTeX source), presentation (PPTX), checklist
+report/       tracked research numbers registry (JSON/TeX), tables and figures; PDF/PPT outputs are local-only
 weka_demo/    one fold reproduced with the WEKA command line, and steps for the WEKA Explorer GUI
-tools/        WEKA 3.9.7 jars (GPL-3.0) and the compiled batch runner
+tools/        local WEKA runtime JARs (git-ignored); pinned checksums and installation notes
 experiments/  ARFF files of the WEKA runs (large ones git-ignored)
 ```
 
@@ -161,8 +159,8 @@ OpenJDK 21.0.12 (`configs/environment_mac.txt`, `configs/environment.txt`).
 uv venv -p 3.12 .venv && uv pip install -p .venv -e .
 # exact versions used: configs/requirements_frozen.txt (drop its "-e file:///..." line, which is the original machine's path)
 grep -v '^-e ' configs/requirements_frozen.txt > /tmp/ec418_req.txt && uv pip install -p .venv -r /tmp/ec418_req.txt
-# WEKA 3.9.7 jars are committed in tools/ — nothing to download. Phase 3 scattering needs a second env (.venv-scat with
-# kymatio 0.3.0; see scripts/p3_01_scattering_features.py). Report/slides: tectonic, python-pptx (uv pip install -e ".[writeup]").
+# WEKA 3.9.7 JARs are not tracked in Git; install them using `python scripts/install_weka_jars.py` (see `tools/WEKA_DEPENDENCIES.md`). Phase 3 scattering needs a second env (.venv-scat with
+# kymatio 0.3.0; see scripts/p3_01_scattering_features.py). Optional local report/slides: tectonic, python-pptx (uv pip install -e ".[writeup]").
 ```
 **Data placement:** download CirCor v1.0.3 from PhysioNet (`wget -r -N -c -np https://physionet.org/files/circor-heart-sound/1.0.3/`)
 and link its `training_data/` to `data/raw/circor_training_data` (`ln -s <download>/training_data data/raw/circor_training_data`).
@@ -235,10 +233,12 @@ test time and are diagnostics. Destroying timing (D2, E2 perm) removes most of t
 
 How to cite this repository: [`CITATION.cff`](CITATION.cff).
 
+**Coursework files:** The assignment report, editable LaTeX source, PowerPoint and WEKA screenshots are kept locally under git-ignored `submission/`, not distributed on GitHub. These files are not required to reproduce the research.
+
 ## 13. Licensing
 No licence has been chosen yet for the project's own code, so by default all rights are reserved by the author; see
 [`docs/LICENSING_DECISION_REQUIRED.md`](docs/LICENSING_DECISION_REQUIRED.md). Third-party components keep their own
-licences ([`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)): WEKA 3.9.7 jars (GPL-3.0), the LR-HSMM port in
+licences ([`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)): WEKA 3.9.7 JARs (GPL-3.0, installed locally; previously committed), the LR-HSMM port in
 `src/ec418/segmentation/lr_hsmm.py` (derived from GPL-3.0 code, distributed under GPL-3.0), the baseline repository
 snapshot (MIT), the PhysioNet Challenge scoring code (BSD-2-Clause), CirCor-derived data (ODC-By 1.0) and
 ZCHSound-derived scores (CC BY 4.0).

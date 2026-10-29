@@ -6,7 +6,7 @@ the author. No licence has been added on the owner's behalf. Third-party compone
 
 ## Facts that constrain the choice
 1. `src/ec418/segmentation/lr_hsmm.py` is a port of GPL-3.0 code and is declared GPL-3.0; it must stay GPL-3.0.
-2. `tools/weka.jar` (GPL-3.0) is redistributed, and `src/ec418/weka/WekaBatchRunner.java` links against WEKA.
+2. `tools/weka.jar` (GPL-3.0) and its supporting JARs were redistributed in older Git commits; the current repository version excludes them. `src/ec418/weka/WekaBatchRunner.java` links against WEKA.
 3. `references/baseline_repo/` (MIT) and `references/official_eval/` (BSD-2-Clause) keep their own licences.
 4. Data derived from CirCor (ODC-By 1.0) and ZCHSound (CC BY 4.0) keep their licences and need attribution.
 
@@ -24,8 +24,7 @@ For example CC BY 4.0, or the same as Decision 1, or all rights reserved. Check 
 has rules on publishing coursework.
 
 ## Decision 3 — compliance actions (independent of 1 and 2)
-* Add the GPL-3.0 and LGPL texts and a WEKA 3.9.7 source pointer under `tools/` (or stop redistributing the jars and
-  document how to obtain them; the old README gave a recipe).
+* The current revision no longer tracks the WEKA/MTJ/netlib/ARPACK JARs; the pinned installation recipe and checksums are in `tools/WEKA_DEPENDENCIES.md`. Historical distributions remain available in prior commits; their compliance obligations may still need attention. Preserve and provide the full GPL-3.0 terms for the GPL-derived LR-HSMM port, regardless of the licence chosen for original code.
 * Confirm the licences of `tools/core.jar` and `tools/arpack_combined.jar`.
 * Decide whether to ask the baseline authors about the origin of `dwtr.m`.
 

@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this repository, please cite it as below. No licence has been chosen yet (see docs/LICENSING_DECISION_REQUIRED.md)."
 type: software
-title: "Physiology-Aligned Multiresolution Analysis for Patient-Independent Heart-Murmur Detection: A Comparative Study of Wavelet and Fourier Features"
+title: "Cardiac-Cycle Timing and Wavelet–Fourier Features for Patient-Independent Heart-Murmur Screening"
 abstract: "Pre-registered, patient-independent comparison of wavelet-packet, Fourier (STFT) and wavelet-scattering features for heart-murmur detection on the PhysioNet CirCor DigiScope v1.0.3 dataset, with cardiac-cycle timing controls, automatic segmentation, shortcut-learning controls and an external test on ZCHSound. EC418 course project, National Institute of Technology Warangal."
 authors:
   - family-names: Mishra
