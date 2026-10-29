@@ -1,0 +1,46 @@
+# Typed numbers allowed in the report/slides (token | reason). Results never appear here: they come from report/numbers.json.
+0 | small integer (comparisons such as Delta > 0, CI bound > 0)
+1 | small integer (phase number, first order, 1-s windows)
+2 | small integer (phase number, 2 kHz sampling, (Se+Sp)/2 formula, second order)
+3 | small integer (phase number, cited equation number)
+4 | small integer (4 kHz, filter order 4, WPD depth 4, four sites, cited section numbers)
+5 | small integer (5 repeats x 5 folds, 5-s snippets)
+6 | small integer (six window features)
+8 | small integer (8 ms time grid)
+9 | small integer (cited page number, 10^-9 exponent)
+10 | exponent base in 10^-9 (feature agreement across platforms, docs/P3_RESULTS.md)
+12 | slide count / slide number reference
+13 | slide count / slide number reference
+14 | slide count / slide number reference
+15 | slide count / slide number reference
+16 | WPD depth 4 gives 16 bands (docs/PROTOCOL_LOCKED.md section 6)
+18 | decision rule: at least 18 of 25 folds (pre-registered protocols)
+25 | 25 outer folds (5 x 5) and the 25 Hz band-pass edge (protocol)
+30 | G3b coding sample size (docs/G3B_AUDIT_PROTOCOL.md amendment A1)
+50 | q50 quantile in the burstiness feature definition
+90 | q90 quantile in the burstiness feature definition
+95 | confidence level of the 95 % CIs
+300 | WEKA RandomForest -I 300 (classifier option)
+900 | band-pass upper edge 900 Hz (protocol)
+2000 | subject-bootstrap resamples (protocol)
+2016 | dataset name (PhysioNet/CinC 2016) / year
+2018 | dataset name (Yaseen 2018)
+2022 | dataset name (PhysioNet Challenge 2022)
+2024 | year (publication)
+2025 | year (publication)
+2026 | year (publication)
+0.03 | pre-registered decision margin (protocols)
+0.80 | pre-registered specificity target for the operating point (protocol)
+0.5 | WEKA default decision threshold (demo slide) / chance level
+62.5 | WPD band width in Hz (docs/PROTOCOL_LOCKED.md section 6)
+3.9.7 | WEKA version
+4.0 | CC BY 4.0 licence version
+942 | CirCor v1.0.3 training set: patients (docs/DATASET_AUDIT.md)
+3,163 | CirCor v1.0.3 training set: recordings (docs/DATASET_AUDIT.md)
+874 | binary task: patients (Present + Absent)
+179 | binary task: Present patients
+695 | binary task: Absent patients
+816 | binary task: subjects (linked visits grouped)
+1,259 | ZCHSound participants (Jia et al. 2024)
+735 | Nogueira et al. 2026 cohort size, quoted from their section 2
+256 | hash name SHA-256 (reproducibility slide)
