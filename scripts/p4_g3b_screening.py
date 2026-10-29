@@ -7,8 +7,8 @@ search_log.json (for the identification counts).
 Checks: every deduplicated record has exactly one decision; every excluded record has a reason; the 11 pilot papers of
 docs/P3_G3_AUDIT.md are present and screened.
 Writes references/g3b/screening.csv, references/g3b/prisma_counts.json, references/g3b/prisma.md (all counts filled from
-prisma_counts.json, none typed by hand), references/g3b/included.csv and the BLANK sheets
-references/g3b/coding_coderA.csv / coding_coderB.csv (one row per included paper, no code pre-filled).
+prisma_counts.json, none typed by hand) and references/g3b/included.csv. The coding sheets come from
+scripts/p4_g3b_sample.py (amendments A1, A2).
 usage: .venv/bin/python scripts/p4_g3b_screening.py
 """
 import json
@@ -19,9 +19,6 @@ OUT = "references/g3b"
 PILOT = {"Nogueira 2026": "O001", "Nie 2024": "R162", "Patwa 2025": "R215", "Niizumi 2024": "R140", "Zhang ICASSP 2024": "R160",
          "McDonald 2024": "R123", "Walker 2022": "R075", "Elola 2023": "R067", "Vimalajeewa 2025": "R221",
          "Dehghan Manshadi & Mihandoost 2024": "R164", "Ameen 2026": "R244"}
-FIELDS = ["f1_test_time_expert_segmentation", "f2_evaluation_unit", "f3_split_grouping", "f3_linked_visits",
-          "f4_unknown_handling", "f5_hidden_test", "f6_headline_metric_name", "f6_headline_value",
-          "f7_evidence_f1_quote_and_page", "f7_evidence_f2_quote_and_page", "f7_evidence_f3_quote_and_page", "comment"]
 
 D = pd.read_csv(f"{OUT}/dedup.csv")
 O = pd.read_csv(f"{OUT}/other_sources.csv")
@@ -62,11 +59,6 @@ json.dump(c, open(f"{OUT}/prisma_counts.json", "w"), indent=1)
 
 inc = T[T.final == "include"][["record_id", "title", "authors", "year", "venue", "doi", "url", "source_stream", "fulltext_source"]]
 inc.to_csv(f"{OUT}/included.csv", index=False)
-for coder in ["A", "B"]:
-    sheet = inc[["record_id", "title"]].copy()
-    for f in FIELDS:
-        sheet[f] = ""
-    sheet.to_csv(f"{OUT}/coding_coder{coder}.csv", index=False)
 print(json.dumps({k: v for k, v in c.items() if k not in ("pilot_records",)}, indent=1))
 
 # ---- prisma.md (every number below is read from c)

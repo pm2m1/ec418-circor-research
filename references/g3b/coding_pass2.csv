@@ -1,0 +1,11 @@
+record_id,title,f1_test_time_expert_segmentation,f2_evaluation_unit,f3_split_grouping,f3_linked_visits,f4_unknown_handling,f5_hidden_test,f6_headline_metric_name,f6_headline_value,f7_evidence_f1_quote_and_page,f7_evidence_f2_quote_and_page,f7_evidence_f3_quote_and_page,comment
+R174,A Deep Learning Framework for Early Detection of Potential Cardiac Anomalies via Murmur Pattern Analysis in Phonocardiograms,,,,,,,,,,,,
+R256,Diagnostic Techniques Using Phonocardiogram and Based on Artificial Neural Network (ANN),,,,,,,,,,,,
+R239,A Metric Learning Approach to Heart Murmur Detection from Phonocardiogram Recordings,,,,,,,,,,,,
+R008,Beat-wise Uncertainty Learning for Murmur Detection in Heart Sounds,,,,,,,,,,,,
+R092,MCHeart: Multi-Channel-Based Heart Signal Processing Scheme for Heart Noise Detection Using Deep Learning,,,,,,,,,,,,
+R145,FunnelNet: An End-to-End Deep Learning Framework to Monitor Digital Heart Murmur in Real-Time,,,,,,,,,,,,
+R181,AI-Enhanced Detection of Heart Murmurs: Advancing Non-Invasive Cardiovascular Diagnostics,,,,,,,,,,,,
+R038,Murmur Identification Using Supervised Contrastive Learning,,,,,,,,,,,,
+R035,Multitask and Transfer Learning for Cardiac Abnormality Detections in Heart Sounds,,,,,,,,,,,,
+R198,Detection of Abnormal Heart Sounds Using MFCC and Deep Neural Networks,,,,,,,,,,,,

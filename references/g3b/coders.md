@@ -1,14 +1,14 @@
-# G3b coders (docs/G3B_AUDIT_PROTOCOL.md §4)
+# G3b coder (docs/G3B_AUDIT_PROTOCOL.md §4, amendment A2)
 
 | Role | Name |
 |---|---|
-| Coder A (codes `coding_coderA.csv`, blind to Coder B) | **<NAME 1> — TO BE FILLED IN** |
-| Coder B (codes `coding_coderB.csv`, blind to Coder A) | **<NAME 2> — TO BE FILLED IN** |
-| Resolver (third team member; resolves disagreements into `coding_final.csv`) | **<NAME 3> — TO BE FILLED IN** |
+| Coder (pass 1: all 30 sampled records; pass 2: the sealed 10, ≥ 24 h later, blind to pass 1) | **Parth Mishra (NIT Warangal)** |
 
-The authors' instructions (2026-10-29, twice: "<NAME 1/2/3>", then "Coder A = <NAME>, Coder B = <NAME>, resolver = <NAME>", then
-"Coder A = <REAL NAME>, Coder B = <REAL NAME>, resolver = <REAL NAME>")
-contained placeholders, not names. Fill in the real names here (and commit) before
-coding starts. Claude Code is never one of the two coders; an optional "AI coder" is reported separately and never enters κ.
+Single-author study: there is no second coder and no resolver. Reliability is intra-rater test–retest (Cohen's κ for
+fields 1–3 between `coding_pass1.csv` and `coding_pass2.csv`); primary results use pass 1. The single coder is reported as
+a limitation.
 
-Under amendment A1 both coders code the same 30 sampled records (`sample30.csv`); the sheets contain only those rows.
+Procedure:
+1. Fill `coding_pass1.csv` (30 rows) from the full texts (`evidence_pack.md`, `need_library_access.md`); do not open
+   `recode_sample.csv` or `coding_pass2.csv` before pass 1 is finished. Commit pass 1 (the commit time starts the ≥ 24 h).
+2. After ≥ 24 h, fill `coding_pass2.csv` without looking at pass 1, then commit.

@@ -1,11 +1,14 @@
-"""G3b literature audit, step 1f: draw the coding sample fixed by amendment A1 (docs/G3B_AUDIT_PROTOCOL.md).
+"""G3b literature audit, step 1f: draw the coding sample (amendment A1) and the re-code sample (amendment A2).
 
 Frame = every record whose final screening status is `include` or `pending` (references/g3b/screening.csv), sorted by
 record ID. Order = numpy.random.default_rng(20261029).permutation over that sorted frame. Sample = first 30 in the order.
 Replacements (pending record unobtainable or ineligible at full text) are logged in references/g3b/sample_replacements.csv
 (columns: record_id, reason, date) and the next record in the order takes its place; this script applies them.
-Writes references/g3b/sample_order.csv (full order), sample30.csv, the BLANK coding sheets coding_coderA.csv /
-coding_coderB.csv (the 30 rows only) and need_library_access.md.
+A2 (single coder, test-retest): the re-code sample is the first 10 of numpy.random.default_rng(20261030).permutation(30)
+over the 30 sample slots (slot = position 1-30 in sample30.csv); a replacement record inherits its slot. It is written once
+to references/g3b/recode_sample.csv (sealed: not printed, and an existing file is never redrawn, only checked).
+Writes references/g3b/sample_order.csv (full order), sample30.csv, recode_sample.csv, the BLANK sheets coding_pass1.csv
+(30 rows) and coding_pass2.csv (the 10, in drawn order; to be filled >= 24 h after pass 1), and need_library_access.md.
 usage: .venv/bin/python scripts/p4_g3b_sample.py
 """
 import os
@@ -14,6 +17,7 @@ import numpy as np
 import pandas as pd
 
 OUT, SEED, N = "references/g3b", 20261029, 30
+SEED_RECODE, N_RECODE = 20261030, 10
 FIELDS = ["f1_test_time_expert_segmentation", "f2_evaluation_unit", "f3_split_grouping", "f3_linked_visits",
           "f4_unknown_handling", "f5_hidden_test", "f6_headline_metric_name", "f6_headline_value",
           "f7_evidence_f1_quote_and_page", "f7_evidence_f2_quote_and_page", "f7_evidence_f3_quote_and_page", "comment"]
@@ -28,14 +32,32 @@ rep = pd.read_csv(f"{OUT}/sample_replacements.csv") if os.path.exists(f"{OUT}/sa
     pd.DataFrame(columns=["record_id", "reason", "date"])
 O["replaced"] = O.record_id.isin(rep.record_id)
 O.to_csv(f"{OUT}/sample_order.csv", index=False)
-S = O[~O.replaced].head(N)
+S = O[~O.replaced].head(N).reset_index(drop=True)
+S.insert(0, "slot", range(1, len(S) + 1))
 S.to_csv(f"{OUT}/sample30.csv", index=False)
 
-for coder in ["A", "B"]:
-    sheet = S[["record_id", "title"]].copy()
+slots = [int(x) + 1 for x in np.random.default_rng(SEED_RECODE).permutation(N)[:N_RECODE]]
+RC = pd.DataFrame(dict(recode_order=range(1, N_RECODE + 1), slot=slots))
+RC["record_id"] = [S.set_index("slot").loc[x, "record_id"] for x in slots]
+if os.path.exists(f"{OUT}/recode_sample.csv"):  # sealed: never redrawn; slots must match, record IDs follow replacements
+    old = pd.read_csv(f"{OUT}/recode_sample.csv")
+    assert list(old.slot) == slots, "recode_sample.csv does not match the A2 draw"
+RC.to_csv(f"{OUT}/recode_sample.csv", index=False)
+
+
+def blank(rows):
+    sheet = rows[["record_id", "title"]].copy()
     for f in FIELDS:
         sheet[f] = ""
-    sheet.to_csv(f"{OUT}/coding_coder{coder}.csv", index=False)
+    return sheet
+
+
+P1 = f"{OUT}/coding_pass1.csv"
+if not os.path.exists(P1) or pd.read_csv(P1, keep_default_na=False)[FIELDS].eq("").all().all():  # never overwrite codes
+    blank(S).to_csv(P1, index=False)
+P2 = f"{OUT}/coding_pass2.csv"
+if not os.path.exists(P2) or pd.read_csv(P2, keep_default_na=False)[FIELDS].eq("").all().all():
+    blank(S.set_index("record_id").loc[RC.record_id].reset_index()).to_csv(P2, index=False)
 
 E = pd.read_csv(f"{OUT}/evidence_pack_index.csv")
 nofull = set(E[~E.fulltext_retrieved].record_id)
@@ -51,5 +73,5 @@ L += ["", f"## Included, but no open full text was retrieved by script ({len(Q)}
 L += [f"* **{r.record_id}** (order {r.order}) — {r.title}. {r.authors} ({r.year}), *{r.venue}*. {link(r)}" for r in Q.itertuples()]
 open(f"{OUT}/need_library_access.md", "w").write("\n".join(L) + "\n")
 print(f"frame {len(F)}; sample {len(S)}: {int((S.final == 'include').sum())} included, {len(P)} pending; "
-      f"included without open full text: {len(Q)}; replacements applied: {len(rep)}")
+      f"included without open full text: {len(Q)}; replacements applied: {len(rep)}; re-code sample sealed: {len(RC)} rows")
 print(S[["order", "record_id", "final", "year", "title"]].assign(title=S.title.str[:75]).to_string(index=False))
