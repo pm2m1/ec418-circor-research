@@ -9168,5 +9168,40 @@
   "value": "97.49",
   "raw": 0.9749,
   "source": "references/g3b/case_study_numbers.csv"
+ },
+ "litNiizumiWacc": {
+  "value": "0.832",
+  "raw": 0.832,
+  "source": "references/g3b/case_study_numbers.csv"
+ },
+ "litDppatWacc": {
+  "value": "84.27",
+  "raw": 0.8427,
+  "source": "references/g3b/case_study_numbers.csv"
+ },
+ "litScattransWacc": {
+  "value": "0.786",
+  "raw": 0.786,
+  "source": "references/g3b/case_study_numbers.csv"
+ },
+ "litDehghanAcc": {
+  "value": "93",
+  "raw": 0.93,
+  "source": "references/g3b/case_study_numbers.csv"
+ },
+ "litKutluExtHetero": {
+  "value": "0.738",
+  "raw": 0.738,
+  "source": "references/g3b/case_study_numbers.csv"
+ },
+ "litKutluExtHomo": {
+  "value": "0.985",
+  "raw": 0.985,
+  "source": "references/g3b/case_study_numbers.csv"
+ },
+ "litLadislausWacc": {
+  "value": "0.8021",
+  "raw": 0.8021,
+  "source": "references/g3b/case_study_numbers.csv"
  }
 }

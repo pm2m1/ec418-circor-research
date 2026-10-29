@@ -90,10 +90,10 @@ def box(s, text, left, top, width, height, size=18):
 
 
 # 1 title
-s = slide("Timing, Not Transform", "This talk asks which part of a classical heart-sound pipeline carries the murmur information. "
+s = slide("Physiology-Aligned Multiresolution Analysis", "This talk asks which part of a classical heart-sound pipeline carries the murmur information. "
           "Every number on these slides is generated from saved result tables by a script, and every hypothesis was "
           "pre-registered with a fixed decision rule.")
-bullets(s, ["Shortcut-controlled and externally validated murmur detection on CirCor",
+bullets(s, ["for Patient-Independent Heart-Murmur Detection: a comparative study of wavelet and Fourier features",
             "Parth Mishra — National Institute of Technology Warangal"], top=2.3, size=26)
 
 # 2 problem
@@ -180,11 +180,11 @@ bullets(s, [f"WPD − STFT: |{v('wvsAllRange')}",
 
 # 9 automatic + shortcut
 s = slide("Automatic pipeline and the shortcut check",
-          "With a learned span detector the automatic pipeline matches expert labels. But its span fraction is itself predictive, "
+          "With a learned span detector the automatic pipeline comes within the pre-registered margin of expert labels on the point estimate, although the confidence interval is too wide to establish non-inferiority. Its span fraction is also predictive, "
           "so we built a shortcut-free version, E4q. E4q keeps the AUROC and beats random windows, yet its margin over a "
           "whole-signal STFT baseline with the same span information has a confidence interval that touches zero, so that "
           "advantage is not established.")
-bullets(s, [f"E4 vs expert labels (H9a): |{rng('famRangeH9a')}, non-inferior",
+bullets(s, [f"E4 vs expert labels (H9a): |{rng('famRangeH9a')}; rule met, non-inferiority not established",
             f"E4 vs B1 (H9b): |{rng('famRangeH9b')}",
             f"Span fraction alone predicts the class: AUROC {v('eFourShortcutPredFrac')}",
             f"E4q removes it: shortcut alone {v('gTwoAucG2SCqOnly')}; missing features {v('gTwoNofeatE4RAbsent')} % → {v('gTwoNofeatE4qAbsent')} % (Absent)",

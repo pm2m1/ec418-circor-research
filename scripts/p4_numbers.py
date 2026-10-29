@@ -225,7 +225,7 @@ for f in ["g3b_summary.csv", "g3b_kappa.csv"]:
 # ---- literature numbers quoted in the case study (sourced: page + quote in the CSV)
 for _, r in pd.read_csv("references/g3b/case_study_numbers.csv").iterrows():
     put(k("lit", r.key), r.value, "references/g3b/case_study_numbers.csv",
-        d=2 if "nie" in r.key else 3, pct=("nie" in r.key))
+        d=int(r.decimals), pct=bool(r.pct))  # printed as the paper reports it (decimals, percent)
 
 os.makedirs("report", exist_ok=True)
 json.dump(N, open("report/numbers.json", "w"), indent=1, ensure_ascii=False)

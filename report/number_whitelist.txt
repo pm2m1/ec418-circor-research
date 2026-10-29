@@ -44,3 +44,14 @@
 1,259 | ZCHSound participants (Jia et al. 2024)
 735 | Nogueira et al. 2026 cohort size, quoted from their section 2
 256 | hash name SHA-256 (reproducibility slide)
+10,434 | files in the official PhysioNet CirCor v1.0.3 checksum list (docs/PROVENANCE_PHYSIONET.md)
+100 | lower end of the 100-300 ms systolic interval that motivated db4 (docs/PROTOCOL_LOCKED.md section 6)
+21 | CirCor age range: patients aged up to 21 years (dataset description)
+1.0.3 | CirCor dataset version
+1998 | year (Platt, SMO citation)
+2000 | year (Goldberger et al., PhysioNet citation)
+2001 | year (Breiman, random forests citation)
+2014 | year (Andén & Mallat, scattering citation)
+10315 | article number of Vimalajeewa et al., Sci Rep 15:10315 (citation)
+3.0 | licence version (GPL-3.0)
+71 | journal volume (Jia et al., IEEE TBME 71(8), citation)
