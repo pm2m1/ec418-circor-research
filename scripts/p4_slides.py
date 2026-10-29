@@ -3,7 +3,7 @@
 One message per slide, body text >= 18 pt, speaker notes on every slide. Figures: report/figures/slide_*.png
 (scripts/p4_figures.py) and the frozen results/figures/fig7_packet_frequency_responses.png. The WEKA slide has placeholders for
 the Explorer screenshots in weka_demo/screenshots/ (taken by the authors); a screenshot that exists is inserted instead.
-The G3b audit is a placeholder until Part 1d. Check with scripts/p4_check_numbers.py; render with LibreOffice to PNG.
+Check with scripts/p4_check_numbers.py; render with LibreOffice to PNG.
 usage: .venv/bin/python scripts/p4_slides.py
 """
 import json
@@ -204,16 +204,15 @@ bullets(s, [f"Clean set (H10a): |{v('hTenAFull')}",
 bullets(s, ["Labels are CHD diagnoses, not murmurs; age does not explain the result (post-hoc check)"], top=6.1, height=0.9, size=18)
 
 # 11 literature + case study
-s = slide("Literature audit and a 2026 comparison",
-          "The literature audit codes whether published CirCor papers use expert segmentation on test data; its result will be "
-          "added once the coding of the random sample is complete. The case study shows why headline numbers differ: a recent paper reports a "
-          "balanced accuracy with test segments cut at expert S1 labels, which is not on the same scale as our AUROC.")
-box(s, "G3b audit result — to be added after coding (random sample of 30 records; test–retest on 10)", 0.6, 1.6, 12.1, 1.0, size=20)
+s = slide("Comparison with recent work",
+          "Recent papers report much higher numbers than ours, and these two show why they are not on the same scale. One "
+          "reports a balanced accuracy at a single threshold with test segments cut at expert S1 labels; the other reports "
+          "snippet accuracy on annotated periods. On the same balanced-accuracy scale our expert-label model is far lower.")
 bullets(s, [f"Nogueira et al. 2026: |(Se+Sp)/2 = {v('litNogueiraOverall')}, test segments start at expert S1 labels",
             f"Ours on the same scale (expert labels): {v('opE2E2StftTrueRFBacc')}; E4 {v('opE4E4StftRFBacc')}",
             f"Nie et al. 2024: {v('litNieAccuracy')} % on 5-s snippets from annotated periods",
             f"Oracle conditioning is worth up to {v('gThreeAE1bStftAuto')} AUROC in our data",
-            "Kutlu & Çolak 2026 already validate CirCor models externally (CinC 2016, Yaseen)"], top=2.9, height=4.3, size=20)
+            "Kutlu & Çolak 2026 already validate CirCor models externally (CinC 2016, Yaseen)"], top=1.7, height=5.2, size=22)
 
 # 12 limitations
 s = slide("Limitations (all negatives reported)",
@@ -231,11 +230,12 @@ bullets(s, [f"H12a not established: {v('gTwoH12aStftFull')}",
 s = slide("Conclusion",
           "Timing matters, the transform does not, and a simple whole-signal model transfers to an independent CHD cohort with "
           "the expected physiological ordering. Future work is quality gating for noisy recordings, learned models under the "
-          "same protocol, and a murmur-labelled external set.")
+          "same protocol, a murmur-labelled external set, and a systematic audit of test-time expert segmentation in the literature.")
 bullets(s, ["Cardiac-cycle |timing| carries the murmur information",
             "The |transform| (WPD, STFT, scattering) does not matter",
             "External transfer to paediatric CHD with the |physiological order|",
-            "Next: quality gating, learned models under the same protocol, murmur-labelled external data"], size=24)
+            "Next: quality gating, learned models under the same protocol, murmur-labelled external data",
+            "Future: a systematic audit of test-time expert segmentation in published CirCor work"], size=24)
 
 # 14 reproducibility
 s = slide("Reproducibility",

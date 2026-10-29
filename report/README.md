@@ -11,5 +11,6 @@ Everything here is generated from saved outputs; no number is typed by hand.
 .venv/bin/python scripts/p4_check_numbers.py    # fails on any number not from the registry (whitelist: number_whitelist.txt)
 ```
 
-The G3b literature-audit section and slide are placeholders until Part 1d (coding of the A1 sample) is complete; the
-sentence on ZCHSound novelty is conditional on the pending G3b full-text checks (docs/P4_FRAMING.md).
+The G3b literature audit was not completed (docs/G3B_AUDIT_PROTOCOL.md amendment A3): the report and slides contain no
+audit result or prevalence claim, keep the Nogueira/Nie case studies, and list the audit as future work. The ZCHSound
+"first evaluation" sentence was removed, because its condition (completed G3b full-text checks) can no longer be met.

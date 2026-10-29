@@ -5,8 +5,6 @@
 \usepackage[hidelinks]{hyperref}
 \graphicspath{{figures/}{../results/figures_final/}}
 \input{numbers.tex}
-\newcommand{\placeholder}[1]{\fbox{\parbox{0.95\linewidth}{\centering\small\color{gray}#1}}}
-\newcommand{\pending}[1]{{\color{gray}[#1]}}
 
 \begin{document}
 \title{Timing, Not Transform: Shortcut-Controlled and Externally Validated Murmur Detection on CirCor}
@@ -44,14 +42,7 @@ hidden semi-Markov models \cite{mcdonald2024}; HSMM segmentation follows Springe
 so external validation of CirCor-trained models is not new; ZCHSound \cite{jia2024} was not among their targets. Ladislaus
 et al.\ \cite{ladislaus2026} show on CirCor that aggregation rules and metric conventions change measured noise robustness,
 a point related to ours about test-time conditioning. Nogueira et al.\ \cite{nogueira2026} and Nie et al.\ \cite{nie2024}
-segment test data from the expert annotations (Section~\ref{sec:case}). \pending{Conditional on the pending G3b full-text
-checks finding no other CirCor$\rightarrow$ZCHSound evaluation:} to our knowledge this is the first evaluation of
-CirCor-trained murmur models on ZCHSound, an independent paediatric CHD cohort, with a pre-registered physiology
-(subtype-ordering) check.
-
-\textbf{Literature audit (G3b).} \placeholder{G3b result to be inserted after coding (Part 1d): proportion of included
-papers with test-time expert segmentation, test--retest Cohen's $\kappa$ per field, and the headline values by group.
-Random sample of 30 records (amendment A1), coded by the single author, 10 re-coded blind (amendment A2).}
+segment test data from the expert annotations (Section~\ref{sec:case}).
 
 \section{Data}
 \textbf{CirCor DigiScope} v1.0.3 training set (PhysioNet): 942 patients, 3,163 recordings at 4\,kHz from up to four
@@ -191,7 +182,6 @@ ZCHSound is the only fully independent evaluation.
 \item \textbf{SMO is unstable on scattering features:} with features identical to $10^{-9}$ across platforms, SMO scores moved
 by up to \nm{smoScatMaxShiftCv} (CV) and \nm{smoScatMaxShiftZch} (ZCHSound), against \nm{rfMaxShift} for RF; no SMO
 scattering AUROC is used as evidence.
-\item \textbf{Single coder} for the literature audit: reliability is intra-rater test--retest only (amendment A2).
 \item \textbf{B0 artefact:} B0 SMO reaches \nm{zchB0SMOAllClean} on ZCHSound, but B0 RF trained on pulmonary-site
 recordings is far below chance (\nm{zchB0RFPvClean}); the B0 external signal reflects recording characteristics, not murmur.
 \end{itemize}
@@ -200,7 +190,8 @@ recordings is far below chance (\nm{zchB0RFPvClean}); the B0 external signal ref
 On CirCor, cardiac-cycle timing carries the murmur information and the choice of time--frequency transform does not; a
 whole-signal model transfers to an independent paediatric CHD cohort with the expected physiological ordering. Next steps:
 signal-quality gating (the noisy set), learned models evaluated under the same subject-grouped and shortcut-controlled
-protocol, and a murmur-labelled external set.
+protocol, a murmur-labelled external set, and a systematic audit of how often published CirCor results use the expert
+segmentation on test data.
 
 \section*{Reproducibility}
 Code, protocols and saved outputs: private repository \texttt{pm2m1/ec418-circor-research}. Tags \texttt{v1.0-pilot}
