@@ -67,3 +67,13 @@ authors report them, and the reasons why they are not comparable with ours are g
 * The same values by evaluation unit and by split grouping. One figure: one dot per paper (headline value by test-time
   segmentation group, marker by unit and split).
 * Computed by `scripts/p4_g3b_summary.py` → `results/tables/p4/g3b_summary.csv`, `g3b_kappa.csv` and the figure.
+
+## Amendments (each dated and committed before the step it affects)
+* **A1 (2026-10-29): coding sample.** Sampling frame = all 137 records (98 included + 39 pending full-text). Random order
+  via `numpy.random.default_rng(20261029).permutation` over the frame sorted by record ID. Coding sample = first 30 in that
+  order. Pending records in the sample are retrieved by the team via library access; one that truly cannot be obtained, or
+  turns out ineligible at full text, is replaced by the next record in the order (logged with reason). Both coders code the
+  same 30. κ and all proportions are estimated on the sample, with Wilson 95% CIs, generalised to the frame; the remaining
+  records are listed but not coded. The AI coder may code the 30 as a separate labelled comparison only.
+  *Reason:* 98–137 eligible records is more than two coders can code in the time available. Written and committed before any
+  paper was coded and before the sample was drawn.
