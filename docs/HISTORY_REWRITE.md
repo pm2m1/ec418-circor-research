@@ -9,7 +9,8 @@ exception to project rule 2 (recorded in `docs/PROJECT_RULES.md`). Only commit/t
   (author and commit dates, and tag dates, unchanged);
 * message lines starting with `Co-Authored-By:`, `Claude-Session:` or `🤖 Generated with` removed;
 * the subject of the 2026-10-27 "Mac setup" commit (old `6b64b85`) reworded to "Mac setup: project rules file, environment
-  record, README wording", and its body's "CLAUDE.md records" to "The project rules file records".
+  record, README wording", and its body's "CLAUDE.md records" to "The project rules file records" (the project rules
+  file, then `CLAUDE.md`, is now `docs/PROJECT_RULES.md`).
 
 No file was added, removed or changed (no path filtering). Tool: `git filter-repo` 2.47.0 with `--preserve-commit-hashes`
 (old hashes cited inside commit messages were left as written) and `--replace-refs delete-no-add`, run on a fresh mirror clone.

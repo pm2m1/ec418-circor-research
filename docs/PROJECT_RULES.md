@@ -1,4 +1,4 @@
-# CLAUDE.md — project rules for every session
+# PROJECT_RULES — project rules for every session
 
 EC418 CirCor murmur-detection study. Phase 1 is frozen at tag `v1.0-pilot`; Phase 2 is pre-registered in
 `docs/PROTOCOL_V2_LOCKED.md` (tag `protocol-v2-lock`). Before changing anything, read `README.md`,
@@ -8,6 +8,11 @@ EC418 CirCor murmur-detection study. Phase 1 is frozen at tag `v1.0-pilot`; Phas
 1. Never modify, regenerate or delete files listed in `results/v1_freeze/MANIFEST_v1.sha256`; new runs use
    new tags/paths. Check with `shasum -a 256 -c results/v1_freeze/MANIFEST_v1.sha256`.
 2. Never rewrite history, force-push, or move/delete tags.
+   *Exception (2026-10-29, author's explicit decision, one operation only):* the repository owner, Parth Mishra, rewrote the
+   history once to normalise commit metadata to the sole author (author/committer/tagger; AI attribution trailer lines
+   removed; one commit subject reworded), with every tree hash unchanged, and force-pushed all branches and tags. Details,
+   verification and the old → new hash map: `docs/HISTORY_REWRITE.md`, `results/history_hash_map.csv`. Rule 2 applies again
+   without exception from this point on.
 3. Any deviation from `docs/PROTOCOL_V2_LOCKED.md` must be written in its "Amendments" section and committed
    BEFORE the affected run.
 4. No tuning or choice (features, wavelet, thresholds, segmenter constants, which result to report) based on
