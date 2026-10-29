@@ -1,5 +1,7 @@
 # PILOT_RESULTS — real-data experiments actually executed (2026-10-27)
 
+> **Historical phase document — superseded by later experimental results.** Covers Phase 1 (validation pilot, frozen at tag `v1.0-pilot`; wording errata in [`ERRATA_v1.md`](ERRATA_v1.md)). Its numbers are the frozen Phase-1 results and remain valid; the study continued with Phase 2 (timing nulls, automatic segmentation, shortcut controls) and Phase 3 (scattering, external test). Current conclusions: [`RESULTS_SUMMARY.md`](RESULTS_SUMMARY.md), [`P3_RESULTS.md`](P3_RESULTS.md), [`INTERPRETATION_GUIDE.md`](INTERPRETATION_GUIDE.md). The historical content and results below are unchanged.
+
 Everything below was run in this repository on the 942-patient CirCor public training set.
 Unit of analysis: **patient** (874 patients, 179 Present / 695 Absent, 816 subjects), unless stated.
 Splits: frozen subject-grouped 5-fold × 5 repeats (`configs/folds_patient_level.csv`). Classifiers: WEKA 3.9.7.

@@ -1,0 +1,14 @@
+# Phase-3 provenance check on the Mac, 2026-10-29 03:35 IST (read-only; sandbox history not merged)
+bundle: /Users/kiyo/Desktop/Phase3_circor/phase3-g2.bundle is okay
+phase3-g2 = c737b99; merge-base with main = cae9708; commits on top = 7 (2ccf398 ... c737b99)
+
+sandbox clone: /tmp/p3_sandbox (from cloud-sandbox-provenance.bundle)
+tag protocol-v3-prereg: annotated tag object cc079a1 -> commit 54de9b3 'Phase 3 lock hashes' 2026-10-28 18:38:40 +0530
+  EXPECTED (prompt): -> 7acc9fc.  RESULT: MISMATCH. 54de9b3 is the direct child of 7acc9fc (same second), adding only configs/protocol_v3_lock.sha256.
+commit 7acc9fc: Pre-register Phase 3 (G1 external validation, G2 shortcut-free E4, G3 audit, G4 scattering) | 2026-10-28 18:38:40 +0530
+docs/PROTOCOL_V3_PREREG.md sandbox HEAD vs repo: byte-identical
+configs/protocol_v3_lock.sha256 vs files at 7acc9fc:
+  docs/PROTOCOL_V3_PREREG.md: at 7acc9fc 89d555ca42ab4f396074598e35ae67638237914ca3e9802aaa4d457ac9753055 | lock 89d555ca42ab4f396074598e35ae67638237914ca3e9802aaa4d457ac9753055 | MATCH
+  configs/protocol_v3.json: at 7acc9fc f6188fc1494a178dfec5d8409b7338acafa73572ee77b823e339e5e7b6f01b2b | lock f6188fc1494a178dfec5d8409b7338acafa73572ee77b823e339e5e7b6f01b2b | MATCH
+current repo PROTOCOL_V3_PREREG.md: the 7acc9fc text is an exact byte prefix; appended = amendments A1, A2 only. protocol_v3.json unchanged since 7acc9fc.
+Prompt said tag→7acc9fc; actual tag→54de9b3 (child, adds only the lock file, which names 7acc9fc). Prompt error confirmed by the author 2026-10-29; accepted. All other provenance checks pass.

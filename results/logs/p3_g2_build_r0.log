@@ -1,0 +1,7 @@
+ repeat  fold  recordings  detector_max_abs_diff_vs_e4  gate_pass    seconds
+      0     0        3007                 1.421085e-14       True 537.474522
+      0     1        3007                 2.842171e-14       True 534.246074
+      0     2        3007                 2.842171e-14       True 535.295757
+      0     3        3007                 2.842171e-14       True 539.392325
+      0     4        3007                 1.421085e-14       True 283.164493
+reproduction gate (detectors identical to E4): True

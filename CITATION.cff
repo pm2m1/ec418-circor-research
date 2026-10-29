@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below. No licence has been chosen yet (see docs/LICENSING_DECISION_REQUIRED.md)."
+type: software
+title: "Cardiac-Cycle Timing and Wavelet–Fourier Features for Patient-Independent Heart-Murmur Screening"
+abstract: "Pre-registered, patient-independent comparison of wavelet-packet, Fourier (STFT) and wavelet-scattering features for heart-murmur detection on the PhysioNet CirCor DigiScope v1.0.3 dataset, with cardiac-cycle timing controls, automatic segmentation, shortcut-learning controls and an external test on ZCHSound. EC418 course project, National Institute of Technology Warangal."
+authors:
+  - family-names: Mishra
+    given-names: Parth
+    affiliation: "National Institute of Technology Warangal"
+repository-code: "https://github.com/pm2m1/ec418-circor-research"
+keywords:
+  - phonocardiogram
+  - heart murmur
+  - wavelet packet decomposition
+  - STFT
+  - CirCor
+  - WEKA
+  - reproducibility
+references:
+  - type: data
+    title: "CirCor DigiScope Phonocardiogram Dataset (version 1.0.3)"
+    url: "https://physionet.org/content/circor-heart-sound/1.0.3/"
+    authors:
+      - name: "Oliveira, J. et al."
+  - type: article
+    title: "Multiscale analysis of heart sound signals in the wavelet domain for heart murmur detection"
+    authors:
+      - family-names: Vimalajeewa
+        given-names: Dixon
+      - family-names: Lee
+        given-names: Chihoon
+      - family-names: Vidaković
+        given-names: Brani
+    journal: "Scientific Reports"
+    volume: 15
+    year: 2025
+    doi: "10.1038/s41598-025-93989-0"

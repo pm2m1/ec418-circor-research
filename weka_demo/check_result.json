@@ -1,0 +1,14 @@
+{
+  "n_test": 175,
+  "cli_equals_pipeline_pred_file_exactly": true,
+  "cli_equals_repro_mac_predictions_exactly": true,
+  "actual_labels_identical": true,
+  "confusion_matrix_at_0_5": {
+    "TN": 131,
+    "FP": 8,
+    "FN": 19,
+    "TP": 17
+  },
+  "ties_at_0_5": 0,
+  "max_abs_diff_vs_frozen_linux_v1": 0.009999999999999995
+}

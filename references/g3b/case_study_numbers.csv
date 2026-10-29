@@ -1,0 +1,12 @@
+key,value,paper,location,quote,decimals,pct
+nogueira_overall,0.965,"Nogueira et al. 2026, arXiv 2608.21499v1","Table 1, p. 9",Multi-input CNN | CNN | 0.955 | 0.976 | 0.965 (0.043),3,False
+nogueira_se,0.955,"Nogueira et al. 2026, arXiv 2608.21499v1","Table 1, p. 9",Multi-input CNN | CNN | 0.955 | 0.976 | 0.965 (0.043),3,False
+nogueira_sp,0.976,"Nogueira et al. 2026, arXiv 2608.21499v1","Table 1, p. 9",Multi-input CNN | CNN | 0.955 | 0.976 | 0.965 (0.043),3,False
+nie_accuracy,0.9749,"Nie et al. 2024, arXiv 2407.18424v1","section 4, p. 4",The best 2dCNN-MTL models for murmur detection achieve an accuracy of 97.49%,2,True
+niizumi_wacc,0.832,"Niizumi et al. 2024, IEEE EMBC (doi 10.1109/EMBC53108.2024.10782479)",abstract,a weighted accuracy of 0.832 and an unweighted average recall of 0.713,3,False
+dppat_wacc,0.8427,"DPPAT, IEEE JBHI 2025 (doi 10.1109/JBHI.2025.3638048)",abstract,our proposed method achieves a weighted accuracy of 84.27% and an F1-score of 70.38% through 10-fold cross-validation,2,True
+scattrans_wacc,0.786,"Zewail, Scattering Transformer, LNCS 2026 (doi 10.1007/978-3-032-19865-5_12)",abstract,The Scattering Transformer achieves a Weighted Accuracy(WAR) of 0.786,3,False
+dehghan_acc,0.93,"Dehghan Manshadi & Mihandoost 2024, Sci Rep (doi 10.1038/s41598-024-58274-6)",abstract,"For Task I, which focuses on heart murmur detection, the proposed approach achieved an average accuracy of 93%",0,True
+kutlu_ext_hetero,0.738,"Kutlu & Colak 2026, J Clin Med 15(20) (doi 10.3390/jcm15208058)",abstract,"On the heterogeneous external dataset, the highest AUROC was 0.738",3,False
+kutlu_ext_homo,0.985,"Kutlu & Colak 2026, J Clin Med 15(20) (doi 10.3390/jcm15208058)",abstract,"On the homogeneous external dataset, PCG-MambaConformer reached an AUROC of 0.985",3,False
+ladislaus_wacc,0.8021,"Ladislaus et al. 2026, arXiv 2609.37161v1","section 3.1, p. 2",Our clean baseline reaches 0.8021 ± 0.0228 (HMS-Net) and 0.7464 (BiLSTM) official W.acc,4,False

@@ -1,0 +1,59 @@
+{
+ "identified_by_source": {
+  "OpenAlex": 320,
+  "SemanticScholar": 231,
+  "GoogleScholar": 100,
+  "PubMed": 14,
+  "arXiv": 13
+ },
+ "identified_total": 678,
+ "semantic_scholar_queries_blocked": [
+  "CirCor murmur",
+  "PhysioNet 2022 murmur"
+ ],
+ "duplicates_removed": 399,
+ "records_screened": 279,
+ "ta_excluded": 141,
+ "ta_excluded_by_reason": {
+  "not about heart sounds": 90,
+  "no CirCor murmur performance number": 37,
+  "duplicate": 9,
+  "review/survey": 5
+ },
+ "fulltext_assessed": 138,
+ "fulltext_pending": 39,
+ "fulltext_excluded": 3,
+ "fulltext_excluded_by_reason": {
+  "Outcome-only": 2,
+  "duplicate": 1
+ },
+ "included_from_databases": 96,
+ "included_from_other_sources": 2,
+ "included_total": 98,
+ "pilot_records": {
+  "Nogueira 2026": "O001",
+  "Nie 2024": "R162",
+  "Patwa 2025": "R215",
+  "Niizumi 2024": "R140",
+  "Zhang ICASSP 2024": "R160",
+  "McDonald 2024": "R123",
+  "Walker 2022": "R075",
+  "Elola 2023": "R067",
+  "Vimalajeewa 2025": "R221",
+  "Dehghan Manshadi & Mihandoost 2024": "R164",
+  "Ameen 2026": "R244"
+ },
+ "pilot_status": {
+  "Nogueira 2026": "include",
+  "Nie 2024": "include",
+  "Patwa 2025": "include",
+  "Niizumi 2024": "include",
+  "Zhang ICASSP 2024": "include",
+  "McDonald 2024": "include",
+  "Walker 2022": "include",
+  "Elola 2023": "include",
+  "Vimalajeewa 2025": "include",
+  "Dehghan Manshadi & Mihandoost 2024": "include",
+  "Ameen 2026": "include"
+ }
+}

@@ -1,0 +1,19 @@
+clf  rep      gap       oracle         other  auroc_oracle  auroc_other  delta  ci_lo  ci_hi
+ RF stft Delta_oe E2_stft_true  E1_stft_auto         0.815        0.765  0.050  0.011  0.090
+ RF stft Delta_oe E2_stft_true E1b_stft_auto         0.815        0.709  0.106  0.063  0.148
+ RF stft Delta_oe E2_stft_true       E4_stft         0.815        0.809  0.006 -0.031  0.044
+ RF stft Delta_oe E2_stft_true      E4q_stft         0.815        0.799  0.016 -0.022  0.055
+ RF stft Delta_or E2_stft_true  E2_stft_perm         0.815        0.642  0.174  0.115  0.229
+ RF stft Delta_or E2_stft_true E2_stft_shift         0.815        0.613  0.202  0.152  0.254
+ RF  wpd Delta_oe  E2_wpd_true   E1_wpd_auto         0.798        0.736  0.062  0.021  0.102
+ RF  wpd Delta_oe  E2_wpd_true  E1b_wpd_auto         0.798        0.707  0.091  0.045  0.135
+ RF  wpd Delta_oe  E2_wpd_true        E4_wpd         0.798        0.791  0.007 -0.031  0.044
+ RF  wpd Delta_oe  E2_wpd_true       E4q_wpd         0.798        0.792  0.006 -0.034  0.047
+ RF  wpd Delta_or  E2_wpd_true   E2_wpd_perm         0.798        0.651  0.147  0.094  0.199
+ RF  wpd Delta_or  E2_wpd_true  E2_wpd_shift         0.798        0.606  0.192  0.141  0.248
+ RF wpds Delta_oe E2_wpds_true  E1_wpds_auto         0.800        0.723  0.077  0.037  0.120
+ RF wpds Delta_oe E2_wpds_true E1b_wpds_auto         0.800        0.712  0.088  0.045  0.130
+ RF wpds Delta_oe E2_wpds_true       E4_wpds         0.800        0.796  0.005 -0.035  0.044
+ RF wpds Delta_oe E2_wpds_true      E4q_wpds         0.800        0.789  0.012 -0.029  0.053
+ RF wpds Delta_or E2_wpds_true  E2_wpds_perm         0.800        0.669  0.131  0.079  0.185
+ RF wpds Delta_or E2_wpds_true E2_wpds_shift         0.800        0.595  0.206  0.153  0.260

@@ -1,0 +1,3 @@
+record_id,title,doi,url,year,venue,authors,source,abstract
+O001,Selection of Heart Sound Segments for Synchronous Classification of Multi-channel Heart Sounds,10.48550/arXiv.2608.21499,https://arxiv.org/abs/2608.21499,2026,arXiv preprint (2608.21499v1),Marcelo Nogueira; Jorge H. Oliveira; Carlos G. Ferreira; Miguel T. Coimbra; Alípio M. Jorge,pilot list (docs/P3_G3_AUDIT.md),
+O002,The Vote Hides the Failure: Aggregation Choice and Noise Robustness in Heart Murmur Detection,10.48550/arXiv.2609.37161,https://arxiv.org/abs/2609.37161,2026,arXiv preprint (2609.37161v1),Nicholaus Dismas Ladislaus; Damilare Emmanuel Olatunji; Samuel Chol Buol,related-work check (docs/P4_RELATED_WORK_CHECK.md),

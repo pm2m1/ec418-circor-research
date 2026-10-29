@@ -1,5 +1,7 @@
 # GO / NO-GO — CirCor wavelet murmur project (decision of 2026-10-27)
 
+> **Historical phase document — superseded by later experimental results.** Covers the end of Phase 1 (validation pilot, 2026-10-27). Its conditional GO and its listing of automatic segmentation as future work were correct at that time; "verify on Mac" was later done (official PhysioNet v1.0.3 verified, `docs/PROVENANCE_PHYSIONET.md`, amendments D1/D2), and automatic segmentation was then tested in Phase 2 (E1, E1b, E4, S1). Current status: [`RESULTS_SUMMARY.md`](RESULTS_SUMMARY.md), [`P3_RESULTS.md`](P3_RESULTS.md), [`INDEX.md`](INDEX.md). The historical content and results below are unchanged.
+
 ## Decision: **CONDITIONAL GO** — stay on CirCor, but change the claim
 
 The project is feasible and already produces a defensible result. But the originally proposed

@@ -1,5 +1,7 @@
 # S1_SHORTCUT — Does E4 still beat whole-signal features once they get the span/missingness shortcut? (diagnostic)
 
+> **Interpretation note (2026-10-29).** Numbers and verdicts below are unchanged. "Reaches expert-label performance" (§ conclusions) means only that H9a's point-estimate rule was met; statistical non-inferiority is not established (erratum E2-2, [`ERRATA_PHASE2.md`](ERRATA_PHASE2.md)). The Phase-3 shortcut-free test H12a likewise does not establish a gain ([`P3_RESULTS.md`](P3_RESULTS.md)).
+
 Pre-registered in `docs/PROTOCOL_V2_LOCKED.md` "S1" + `configs/protocol_v2.json` (commit `a2bddb5`, tag `s1-prereg`, pushed
 before any S1 code; the section header says 00:05 IST, the commit was made at 00:03 IST on 2026-10-28). **Designed after
 the E4 results were known; a diagnostic.** WEKA RF (decides the label) and SMO (descriptive), frozen folds, 874 patients,

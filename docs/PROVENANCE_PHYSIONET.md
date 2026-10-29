@@ -1,5 +1,7 @@
 # PROVENANCE_PHYSIONET — E0: PhysioNet CirCor v1.0.3 vs the Phase-1 copy (2026-10-27, Mac)
 
+> **Historical phase document — superseded by later experimental results.** Covers step E0 of Phase 2 (2026-10-27). "STOPPED for a decision" was the correct status when this was written; the decision was then taken and committed before any Phase-2 run: use the official PhysioNet v1.0.3 download exactly as downloaded (amendments D1 and D2 in [`PROTOCOL_V2_LOCKED.md`](PROTOCOL_V2_LOCKED.md); D2 corrects D1(a)). All 10,434 files match PhysioNet's `SHA256SUMS.txt`. Current status: [`RESULTS_SUMMARY.md`](RESULTS_SUMMARY.md), [`INDEX.md`](INDEX.md). The historical content and results below are unchanged.
+
 **Status: STOPPED for a decision.** The recordings are byte-identical and all murmur labels / Additional IDs
 match, but two kinds of header content differ beyond the allowed extra `#Outcome` field (§4). Nothing after
 E0 (folds rerun, Phase-1 reproduction, E2) has been run on this data yet.

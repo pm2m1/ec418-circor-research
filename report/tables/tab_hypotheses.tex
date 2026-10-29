@@ -1,0 +1,62 @@
+\begin{tabular}{@{}llccl@{}}
+\toprule
+Hyp. & Contrast (RF) & $\Delta$ AUROC [95\,\% CI] & folds $>0$ & verdict \\
+\midrule
+H1 & B1+SVM recording AUC: random split - subject-grouped & \nm{hypH1Full} & \nm{hypH1Folds} & \nm{hypH1Verdict} \\
+H2a & A\_wpd\_db4 - A\_stft & \nm{hypH2aWpdFull} & \nm{hypH2aWpdFolds} & \nm{hypH2aWpdVerdict} \\
+H2b & W\_wpd\_db4 - W\_stft & \nm{hypH2bWpdFull} & \nm{hypH2bWpdFolds} & \nm{hypH2bWpdVerdict} \\
+H3 & A\_wpd\_db4 - W\_wpd\_db4 & \nm{hypH3WpdFull} & \nm{hypH3WpdFolds} & \nm{hypH3WpdVerdict} \\
+H4a & A\_wpd\_db4 - B0 & \nm{hypH4aWpdFull} & \nm{hypH4aWpdFolds} & \nm{hypH4aWpdVerdict} \\
+H4b & A\_wpd\_db4 - B1 & \nm{hypH4bWpdFull} & \nm{hypH4bWpdFolds} & \nm{hypH4bWpdVerdict} \\
+H5a & E2\_wpd\_true - E2\_wpd\_perm & \nm{hypH5aWpdFull} & \nm{hypH5aWpdFolds} & \nm{hypH5aWpdVerdict} \\
+H5b & E2\_stft\_true - E2\_stft\_perm & \nm{hypH5bStftFull} & \nm{hypH5bStftFolds} & \nm{hypH5bStftVerdict} \\
+H5c & E2\_wpds\_true - E2\_wpds\_perm & \nm{hypH5cWpdsFull} & \nm{hypH5cWpdsFolds} & \nm{hypH5cWpdsVerdict} \\
+H5d & E2\_wpd\_true - E2\_wpd\_shift & \nm{hypH5dWpdFull} & \nm{hypH5dWpdFolds} & \nm{hypH5dWpdVerdict} \\
+H5d & E2\_stft\_true - E2\_stft\_shift & \nm{hypH5dStftFull} & \nm{hypH5dStftFolds} & \nm{hypH5dStftVerdict} \\
+H5d & E2\_wpds\_true - E2\_wpds\_shift & \nm{hypH5dWpdsFull} & \nm{hypH5dWpdsFolds} & \nm{hypH5dWpdsVerdict} \\
+H6a & E1\_wpd\_auto - E2\_wpd\_true & \nm{hypH6aWpdFull} & \nm{hypH6aWpdFolds} & \nm{hypH6aWpdVerdict} \\
+H6b & E1\_wpd\_auto - B1 & \nm{hypH6bWpdFull} & \nm{hypH6bWpdFolds} & \nm{hypH6bWpdVerdict} \\
+H6c(a) & E1\_stft\_auto - E2\_stft\_true & \nm{hypH6cAStftFull} & \nm{hypH6cAStftFolds} & \nm{hypH6cAStftVerdict} \\
+H6c(b) & E1\_stft\_auto - B1 & \nm{hypH6cBStftFull} & \nm{hypH6cBStftFolds} & \nm{hypH6cBStftVerdict} \\
+H6c(a) & E1\_wpds\_auto - E2\_wpds\_true & \nm{hypH6cAWpdsFull} & \nm{hypH6cAWpdsFolds} & \nm{hypH6cAWpdsVerdict} \\
+H6c(b) & E1\_wpds\_auto - B1 & \nm{hypH6cBWpdsFull} & \nm{hypH6cBWpdsFolds} & \nm{hypH6cBWpdsVerdict} \\
+H8a & E1b\_wpd\_auto - E2\_wpd\_true & \nm{hypH8aWpdFull} & \nm{hypH8aWpdFolds} & \nm{hypH8aWpdVerdict} \\
+H8b & E1b\_wpd\_auto - B1 & \nm{hypH8bWpdFull} & \nm{hypH8bWpdFolds} & \nm{hypH8bWpdVerdict} \\
+H8c(a) & E1b\_stft\_auto - E2\_stft\_true & \nm{hypH8cAStftFull} & \nm{hypH8cAStftFolds} & \nm{hypH8cAStftVerdict} \\
+H8c(b) & E1b\_stft\_auto - B1 & \nm{hypH8cBStftFull} & \nm{hypH8cBStftFolds} & \nm{hypH8cBStftVerdict} \\
+H8c(a) & E1b\_wpds\_auto - E2\_wpds\_true & \nm{hypH8cAWpdsFull} & \nm{hypH8cAWpdsFolds} & \nm{hypH8cAWpdsVerdict} \\
+H8c(b) & E1b\_wpds\_auto - B1 & \nm{hypH8cBWpdsFull} & \nm{hypH8cBWpdsFolds} & \nm{hypH8cBWpdsVerdict} \\
+H9a & E4\_wpd - E2\_wpd\_true & \nm{hypH9aWpdFull} & \nm{hypH9aWpdFolds} & \nm{hypH9aWpdVerdict} \\
+H9b & E4\_wpd - B1 & \nm{hypH9bWpdFull} & \nm{hypH9bWpdFolds} & \nm{hypH9bWpdVerdict} \\
+H9c & E4\_wpd - W\_stft & \nm{hypH9cWpdFull} & \nm{hypH9cWpdFolds} & \nm{hypH9cWpdVerdict} \\
+H9a & E4\_stft - E2\_stft\_true & \nm{hypH9aStftFull} & \nm{hypH9aStftFolds} & \nm{hypH9aStftVerdict} \\
+H9b & E4\_stft - B1 & \nm{hypH9bStftFull} & \nm{hypH9bStftFolds} & \nm{hypH9bStftVerdict} \\
+H9c & E4\_stft - W\_stft & \nm{hypH9cStftFull} & \nm{hypH9cStftFolds} & \nm{hypH9cStftVerdict} \\
+H9a & E4\_wpds - E2\_wpds\_true & \nm{hypH9aWpdsFull} & \nm{hypH9aWpdsFolds} & \nm{hypH9aWpdsVerdict} \\
+H9b & E4\_wpds - B1 & \nm{hypH9bWpdsFull} & \nm{hypH9bWpdsFolds} & \nm{hypH9bWpdsVerdict} \\
+H9c & E4\_wpds - W\_stft & \nm{hypH9cWpdsFull} & \nm{hypH9cWpdsFolds} & \nm{hypH9cWpdsVerdict} \\
+equivalence & E2\_wpds\_true - E2\_stft\_true & \nm{hypEquivalenceWpdsFull} & \nm{hypEquivalenceWpdsFolds} & \nm{hypEquivalenceWpdsVerdict} \\
+H7 & soft murmurs (grade I/VI sensitivity) & -- & \nm{hypH7Folds} & \nm{hypH7Verdict} \\
+S1(a) & E4\_stft - S1\_Wstft\_SC & \nm{hypS1AStftWstftFull} & \nm{hypS1AStftWstftFolds} & \nm{hypS1AStftWstftVerdict} \\
+S1(a) & E4\_stft - S1\_Wwpd\_SC & \nm{hypS1AStftWwpdFull} & \nm{hypS1AStftWwpdFolds} & \nm{hypS1AStftWwpdVerdict} \\
+S1(a) & E4\_wpd - S1\_Wstft\_SC & \nm{hypS1AWpdWstftFull} & \nm{hypS1AWpdWstftFolds} & \nm{hypS1AWpdWstftVerdict} \\
+S1(a) & E4\_wpd - S1\_Wwpd\_SC & \nm{hypS1AWpdWwpdFull} & \nm{hypS1AWpdWwpdFolds} & \nm{hypS1AWpdWwpdVerdict} \\
+S1(a) & E4\_wpds - S1\_Wstft\_SC & \nm{hypS1AWpdsWstftFull} & \nm{hypS1AWpdsWstftFolds} & \nm{hypS1AWpdsWstftVerdict} \\
+S1(a) & E4\_wpds - S1\_Wwpd\_SC & \nm{hypS1AWpdsWwpdFull} & \nm{hypS1AWpdsWwpdFolds} & \nm{hypS1AWpdsWwpdVerdict} \\
+H12a & E4q $-$ (W\_stft + SC$_q$), stft & \nm{gTwoH12aStftFull} & \nm{gTwoH12aStftFolds} & \nm{gTwoH12aStftVerdict} \\
+H12a & E4q $-$ (W\_stft + SC$_q$), wpd & \nm{gTwoH12aWpdFull} & \nm{gTwoH12aWpdFolds} & \nm{gTwoH12aWpdVerdict} \\
+H12a & E4q $-$ (W\_stft + SC$_q$), wpds & \nm{gTwoH12aWpdsFull} & \nm{gTwoH12aWpdsFolds} & \nm{gTwoH12aWpdsVerdict} \\
+H12b & E4q $-$ rand-q, stft & \nm{gTwoH12bStftFull} & \nm{gTwoH12bStftFolds} & \nm{gTwoH12bStftVerdict} \\
+H12b & E4q $-$ rand-q, wpd & \nm{gTwoH12bWpdFull} & \nm{gTwoH12bWpdFolds} & \nm{gTwoH12bWpdVerdict} \\
+H12b & E4q $-$ rand-q, wpds & \nm{gTwoH12bWpdsFull} & \nm{gTwoH12bWpdsFolds} & \nm{gTwoH12bWpdsVerdict} \\
+H12c (desc.) & E4q $-$ snr-q, stft & \nm{gTwoH12cStftFull} & \nm{gTwoH12cStftFolds} & \nm{gTwoH12cStftVerdict} \\
+H12c (desc.) & E4q $-$ snr-q, wpd & \nm{gTwoH12cWpdFull} & \nm{gTwoH12cWpdFolds} & \nm{gTwoH12cWpdVerdict} \\
+H12c (desc.) & E4q $-$ snr-q, wpds & \nm{gTwoH12cWpdsFull} & \nm{gTwoH12cWpdsFolds} & \nm{gTwoH12cWpdsVerdict} \\
+H11a & A\_scat1 $-$ A\_stft & \nm{gFourH11aAScat1AStftFull} & \nm{gFourH11aAScat1AStftFolds} & \nm{gFourH11aAScat1AStftVerdict} \\
+H11b & A\_scat12 $-$ A\_stft & \nm{gFourH11bAScat12AStftFull} & \nm{gFourH11bAScat12AStftFolds} & \nm{gFourH11bAScat12AStftVerdict} \\
+H11c & A\_scat12 $-$ A\_scat1 & \nm{gFourH11cAScat12AScat1Full} & \nm{gFourH11cAScat12AScat1Folds} & \nm{gFourH11cAScat12AScat1Verdict} \\
+H10a & ZCHSound clean any-CHD AUROC, W\_stft & \nm{hTenAFull} & n/a & \nm{h10aVerdict} \\
+H10b & AUROC(VSD) $-$ AUROC(PFO) & \nm{hTenBvsdPfoFull} & n/a & \nm{h10bVerdict} \\
+H10b & AUROC(VSD) $-$ AUROC(ASD) & \nm{hTenBvsdAsdFull} & n/a & \nm{h10bVerdict} \\
+\bottomrule
+\end{tabular}

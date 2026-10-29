@@ -1,0 +1,12 @@
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Model (RF) & AUROC [95\,\% CI] & Se & Sp & W.acc \\
+\midrule
+B0 acoustic baseline & \nm{v1B0RFAucFull} & \nm{opReproMacB0RFSens} & \nm{opReproMacB0RFSpec} & \nm{opReproMacB0RFWacc} \\
+B1 Vimalajeewa et al. & \nm{v1B1RFAucFull} & \nm{opReproMacB1RFSens} & \nm{opReproMacB1RFSpec} & \nm{opReproMacB1RFWacc} \\
+whole-signal STFT (W\_stft) & \nm{decWholeStftFull} & \nm{opReproMacWStftRFSens} & \nm{opReproMacWStftRFSpec} & \nm{opReproMacWStftRFWacc} \\
+expert-aligned STFT (oracle) & \nm{decExpertStftFull} & \nm{opE2E2StftTrueRFSens} & \nm{opE2E2StftTrueRFSpec} & \nm{opE2E2StftTrueRFWacc} \\
+E4 automatic STFT & \nm{decEFourStftFull} & \nm{opE4E4StftRFSens} & \nm{opE4E4StftRFSpec} & \nm{opE4E4StftRFWacc} \\
+E4q shortcut-free STFT & \nm{gTwoAucE4qStftFull} & \nm{opP3G2E4qStftRFSens} & \nm{opP3G2E4qStftRFSpec} & \nm{opP3G2E4qStftRFWacc} \\
+\bottomrule
+\end{tabular}

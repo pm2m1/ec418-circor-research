@@ -7,3 +7,14 @@ experiments/**/arff/
 tools/build/
 .pytest_cache/
 .DS_Store
+.venv-scat/
+data/external/
+
+# Coursework submission artifacts (maintained locally)
+submission/
+report/EC418_report.pdf
+report/EC418_report.tex
+report/EC418_slides.pptx
+
+# Java dependencies obtained separately for local WEKA execution
+tools/*.jar

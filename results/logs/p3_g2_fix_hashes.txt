@@ -1,0 +1,13 @@
+# sha256 of the G2 tables written by the crashed run (before the A3 fix; files not read), 2026-10-29 04:21 IST
+72621e58ed2e2a725eef6e874320f2368e538816cea8a083e176486cc3788a24  results/tables/p3/g2_auroc.csv
+9786118048c4cf502ce88395e740fc0eaed521f50b90d819ad8c7f2474891073  results/tables/p3/g2_contrasts.csv
+95af6dd4355f35532f838b1092d78a2e958138678bf62be11191edeabc5ddcc4  results/tables/p3/g2_coverage.csv
+
+# after the A3 fix (2026-10-29 04:27 IST): rerun of p3_g2_analyze.py, gate 2 pass (exact)
+72621e58ed2e2a725eef6e874320f2368e538816cea8a083e176486cc3788a24  results/tables/p3/g2_auroc.csv
+7b2628d690c08df41de3cccf5c63ce4525de1c86de06d8ed2d11e2f117826c31  results/tables/p3/g2_contrasts.csv
+95af6dd4355f35532f838b1092d78a2e958138678bf62be11191edeabc5ddcc4  results/tables/p3/g2_coverage.csv
+g2_auroc.csv: byte-identical to pre-fix | g2_coverage.csv: byte-identical to pre-fix
+g2_contrasts.csv: differs only in the 4 cells the fix fills: rows 18 (RF) and 37 (SMO), the descriptive "G2_Wstft_SCq - W_stft" row,
+  x columns primary, delta_ge_0_03 (empty before the fix). Re-blanking those 4 cells and writing the table the same way reproduces
+  the pre-fix sha256 9786118048c4cf502ce88395e740fc0eaed521f50b90d819ad8c7f2474891073 exactly (checked without printing any value).

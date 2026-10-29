@@ -1,0 +1,16 @@
+{
+  "OpenAlex title_and_abstract.search: (\"CirCor\" OR \"PhysioNet 2022\" OR \"PhysioNet Challenge 2022\" OR \"Moody PhysioNet Challenge 2022\") AND murmur; years 2022-2026": 107,
+  "OpenAlex cites:Oliveira2022_JBHI (W3191193899) AND murmur; years 2022-2026": 116,
+  "OpenAlex cites:Reyna2023_PLOSDH (W4386615065) AND murmur; years 2022-2026": 32,
+  "OpenAlex cites:Reyna2022_medRxiv (W4292183371) AND murmur; years 2022-2026": 58,
+  "OpenAlex cites:Reyna2022_CinC (W4323027640) AND murmur; years 2022-2026": 7,
+  "S2 search: CirCor murmur (FAILED at offset 0: HTTP 429)": 0,
+  "S2 search: CirCor murmur": 0,
+  "S2 search: PhysioNet 2022 murmur (FAILED at offset 0: HTTP 429)": 0,
+  "S2 search: PhysioNet 2022 murmur": 0,
+  "S2 search: PhysioNet Challenge 2022 murmur": 99,
+  "S2 search: George B. Moody PhysioNet Challenge 2022 murmur": 132,
+  "PubMed: (CirCor OR \"PhysioNet 2022\" OR \"PhysioNet Challenge 2022\" OR \"George B. Moody PhysioNet Challenge 2022\") AND murmur": 14,
+  "arXiv: (all:CirCor OR all:\"PhysioNet 2022\" OR all:\"PhysioNet Challenge 2022\" OR all:\"George B. Moody PhysioNet Challenge 2022\") AND all:murmur": 13
+}
+total raw hits: 578

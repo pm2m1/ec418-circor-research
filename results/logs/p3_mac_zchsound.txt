@@ -1,0 +1,10 @@
+# ZCHSound on the Mac (2026-10-29 03:44 IST)
+source: GitHub LFS mirror https://github.com/WeiJieOvO/ZCHSound-Dataset (official site http://zchsound.ncrcch.org.cn/)
+download URL: https://media.githubusercontent.com/media/WeiJieOvO/ZCHSound-Dataset/main/ZCHSound.zip
+LFS pointer: oid sha256:112432cb10c5ab768cabf217f0a090a20bd0102b093d8b42dbdabc19e39b58b7, size 339554986
+downloaded file: 339554986 bytes, sha256 112432cb10c5ab768cabf217f0a090a20bd0102b093d8b42dbdabc19e39b58b7 -> MATCHES the expected hash and size
+licence: CC BY 4.0 (Jia et al., "ZCHSound", IEEE TBME 71(8):2278-2286, 2024, doi 10.1109/TBME.2023.3348800)
+extracted to data/external/ZCHSound/ (gitignored; __MACOSX entries skipped; 0 unsafe paths)
+contents: 'Clean Heartsound Data Details.csv' 941 rows (NORMAL 533, VSD 187, ASD 119, PFO 70, PDA 32), 941 wav in 'clean Heartsound Data/';
+          'Noise Heartsound Data Details.csv' 318 rows, ';'-separated (NORMAL 160, ASD 102, PFO 35, VSD 14, PDA 7), 318 wav in 'Noise Heartsound Data Details/'
+ZCHSound is never used in any training, tuning or threshold step (PROTOCOL_V3 "Forbidden").
