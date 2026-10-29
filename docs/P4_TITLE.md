@@ -1,5 +1,7 @@
 # P4_TITLE — title candidates and clash checks (2026-10-29)
 
+> **Historical phase document — superseded by later experimental results.** Title candidates and clash checks of 2026-10-29. On a later instruction of the author the submission uses "Physiology-Aligned Multiresolution Analysis for Patient-Independent Heart-Murmur Detection: A Comparative Study of Wavelet and Fourier Features", the title this document had dropped (overlap with Lin et al., LNCS 2026, and the wording note below); that choice is the author's. The historical content and results below are unchanged.
+
 Excluded by instruction: "Physiology-Aligned Hierarchical Network for Heart Murmur Detection" (Lin et al., LNCS 2026; the
 title exists in OpenAlex, 2026) and close variants. Our earlier working title, "Physiology-Aligned Multiresolution Analysis…",
 is also dropped (too close, and "multiresolution" overstates the role of the transform, which our results show does not matter).

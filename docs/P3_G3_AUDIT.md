@@ -1,5 +1,7 @@
 # G3 — Oracle-segmentation ("conditioning-availability") audit — pilot
 
+> **Historical phase document — superseded by later experimental results.** Part (b) is an 11-paper pilot of the G3 literature audit. The systematic audit (G3b, [`G3B_AUDIT_PROTOCOL.md`](G3B_AUDIT_PROTOCOL.md)) was searched and screened but its coding was not completed (amendment A3, 2026-10-29), so no prevalence estimate is reported anywhere; the pilot pattern below is not a finding. Part (a) (conditioning gaps from our own results) is current and matches [`P3_RESULTS.md`](P3_RESULTS.md) §6. The historical content and results below are unchanged.
+
 Pre-registered in `docs/PROTOCOL_V3_PREREG.md` (G3). Status: **(a) done from reported numbers; (b) pilot, 11 papers,
 single coder (Claude) — must be completed and double-coded by the team.**
 

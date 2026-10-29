@@ -1,5 +1,7 @@
 # P4_FRAMING — decisions for the report and slides (author, 2026-10-29)
 
+> **Historical phase document — superseded by later experimental results.** Framing decisions of 2026-10-29 for the first report draft (`report/`). Superseded where later decisions differ: the title (now the one in [`../README.md`](../README.md)), the G3b audit (not completed, amendment A3, so no audit result is reported), and the ZCHSound "first evaluation" sentence (removed, because its condition can no longer be checked). The historical content and results below are unchanged.
+
 * **Title:** "Timing, Not Transform: Shortcut-Controlled and Externally Validated Murmur Detection on CirCor" (#1 in
   `docs/P4_TITLE.md`).
 * **Comparison with a 2024–26 journal paper:** lead with **B1** (Vimalajeewa et al., *Sci Rep* 2025), reproduced on the same data

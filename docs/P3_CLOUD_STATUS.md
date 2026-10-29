@@ -1,5 +1,7 @@
 # Phase 3 — cloud-workspace status (2026-10-28/29) and what the Mac run must do
 
+> **Historical phase document — superseded by later experimental results.** Records the Phase-3 cloud-workspace state (2026-10-28/29) before the Mac run. The Mac run then completed G4, G1a, G2 and G3a; official Phase-3 numbers are the Mac values in [`P3_RESULTS.md`](P3_RESULTS.md). The historical content and results below are unchanged.
+
 Phase 3 was pre-registered and partly run in a cloud workspace before the Mac run. Provenance:
 
 | Item | Where | Commit / time (IST) |

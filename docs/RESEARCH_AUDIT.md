@@ -1,5 +1,7 @@
 # RESEARCH_AUDIT — corrections to the earlier dossier, source checks, novelty
 
+> **Historical phase document — superseded by later experimental results.** Written at the start of the study (2026-10-27) to check an earlier project dossier against sources. Its novelty assessment predates the Phase 2–3 results and the 2026 literature checks; the current related-work position is in [`P4_RELATED_WORK_CHECK.md`](P4_RELATED_WORK_CHECK.md) and [`P4_CASE_STUDY.md`](P4_CASE_STUDY.md), and current results in [`RESULTS_SUMMARY.md`](RESULTS_SUMMARY.md). The historical content and results below are unchanged.
+
 Evidence levels: **[run]** = measured in this repository; **[code]** = read in released source code;
 **[FT]** = paper full text / landing page fetched this session; **[abs]** = abstract only; **[inf]** = inference.
 

@@ -1,5 +1,7 @@
 # RESULTS_SUMMARY — EC418 CirCor study, final (tag `results-final`)
 
+> **Interpretation note (2026-10-29).** The numbers, rules and verdicts below are unchanged. Two wordings must be read with [`ERRATA_PHASE2.md`](ERRATA_PHASE2.md): **E2-2** — H9a's rule (Δ ≥ −0.03 on the point estimate) is met, but statistical non-inferiority within −0.03 is *not* established (CI lower bound ≈ −0.044); **E2-3** — "this gain is all timing" refers to the decomposition against the timing-destroyed null only. Phase 3 (scattering, shortcut-free E4q, external test) is in [`P3_RESULTS.md`](P3_RESULTS.md); guide: [`INTERPRETATION_GUIDE.md`](INTERPRETATION_GUIDE.md).
+
 PhysioNet CirCor DigiScope v1.0.3 (training set, 942 patients / 3,163 recordings; binary task 874 patients, 179 Present /
 695 Absent, 816 subjects), frozen subject-grouped folds (5 repeats × 5 folds, sha256 `c4aa74c7…2339`), WEKA 3.9.7
 (RF primary, SMO secondary), patient-level AUROC. Phase 1 = tag `v1.0-pilot` (Linux), Phase 2 = this Mac (OpenJDK 21,

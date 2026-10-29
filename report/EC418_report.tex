@@ -7,7 +7,7 @@
 \input{numbers.tex}
 
 \begin{document}
-\title{Timing, Not Transform: Shortcut-Controlled and Externally Validated Murmur Detection on CirCor}
+\title{Physiology-Aligned Multiresolution Analysis for Patient-Independent Heart-Murmur Detection: A Comparative Study of Wavelet and Fourier Features}
 \author{\IEEEauthorblockN{Parth Mishra}\IEEEauthorblockA{National Institute of Technology Warangal, India}}
 \maketitle
 
@@ -20,8 +20,8 @@ time--frequency transform does not:} wavelet packets (WPD db4) are never better 
 \nm{wvsAllRange}), and wavelet scattering does not beat them either (H11a/b not supported). \emph{(iii) External
 validation:} a whole-signal STFT model trained once on all CirCor patients reaches AUROC \nm{hTenAFull} for congenital heart
 disease (CHD) on the independent paediatric ZCHSound cohort, with the physiological subtype order PDA $>$ VSD $>$ ASD $>$
-PFO (H10a/b supported). An automatic segmentation pipeline with a learned span detector matches expert-label performance
-(H9a), but its advantage over a whole-signal STFT baseline that is given the same span information is not established
+PFO (H10a/b supported). With a learned span detector, the automatic pipeline's point estimate is within the pre-registered $-0.03$ of
+expert labels (H9a rule met; statistical non-inferiority not established), but its advantage over a whole-signal STFT baseline that is given the same span information is not established
 (H12a: \nm{gTwoH12aStftFull}). A test-time oracle changes what a number measures: in our data the expert segmentation is worth
 up to \nm{gThreeAE1bStftAuto} AUROC over a naive automatic pipeline.
 \end{abstract}
@@ -83,7 +83,7 @@ patient's recordings across folds. Folds: 5 repeats $\times$ 5 subject-grouped o
 (sha256 \texttt{c4aa74c7\ldots2339}). AUROC is computed on repeat-averaged patient scores, with a subject bootstrap
 (2000 resamples) for 95\,\% CIs. Thresholds come from inner training folds only (specificity $\geq 0.80$).
 \textbf{Decision rules} (pre-registered per hypothesis): typically $\Delta \geq 0.03$, CI lower bound $>0$ and $\geq 18/25$
-folds with $\Delta>0$; non-inferiority $\Delta \geq -0.03$ for H6a/H8a/H9a. \textbf{Timeline.} Phase 1 (v1, Linux) was
+folds with $\Delta>0$; a point-estimate criterion $\Delta \geq -0.03$ for H6a/H8a/H9a (not a formal non-inferiority test). \textbf{Timeline.} Phase 1 (v1, Linux) was
 locked before any result; Phase 2 experiments E1b, D1--D3, E4 and S1 were each pre-registered after the preceding results;
 Phase 3 (G1a, G2, G3, G4) was pre-registered after all Phase 1--2 results (Appendix~\ref{app:timeline}).
 
@@ -101,8 +101,9 @@ H5d); all are supported in 25/25 folds. The diagnostics split this exactly (Fig.
 \nm{decDiffWithinSpanTimingRange}, while span selection without timing contributes \nm{decDiffSpanSelNoTimingRange}.
 Automatic segmentation alone fails: the LR-HSMM is near expert timing inside expert spans (expert $-$ D1:
 \nm{decDiffHsmmTimingErrorRange}), but on whole recordings it loses \nm{decDiffSpanSelHsmmRange} through span selection
-(H8a: \nm{hypH8aWpdFull}). E4's learned span detector closes this gap (H9a, non-inferior to expert labels:
-\nm{hypH9aWpdFull} for wpd) and beats B1 (H9b: \nm{hNineBRange}).
+(H8a: \nm{hypH8aWpdFull}). E4's learned span detector brings the point estimate within $-0.03$ of expert labels (H9a rule met:
+\nm{hypH9aWpdFull} for wpd), although the CI lower bound is below $-0.03$, so statistical non-inferiority is not
+established and beats B1 (H9b: \nm{hNineBRange}).
 \begin{figure}[t]\centering\includegraphics[width=\linewidth]{fig_final_decomposition.png}
 \caption{Decomposition (RF AUROC, 95\,\% CI). D1--D3 use the expert annotation at test time (diagnostics).}\label{fig:dec}
 \end{figure}
@@ -201,6 +202,9 @@ Phase 3 pre-registration tag \texttt{protocol-v3-prereg} lives in the separate c
 \texttt{results/final\_freeze/MANIFEST\_final.sha256}. Phase 1 ran on Linux and was reproduced on macOS
 (\texttt{docs/REPRO\_MAC.md}); every number in this report is generated from saved tables by \texttt{scripts/p4\_numbers.py}
 and checked by \texttt{scripts/p4\_check\_numbers.py}.
+\textbf{AI assistance.} The code, analyses, literature screening and drafts of this report were produced with substantial
+assistance from an AI coding assistant (Anthropic's Claude, via Claude Code); the author defined the study, made the
+recorded decisions and is responsible for the content.
 
 \begin{thebibliography}{99}\footnotesize
 \bibitem{oliveira2022} J.~Oliveira et al., ``The CirCor DigiScope dataset: From murmur detection to murmur classification,''

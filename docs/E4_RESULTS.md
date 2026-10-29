@@ -1,5 +1,7 @@
 # E4_RESULTS — Automatic span selector + LR-HSMM timing (Phase 2)
 
+> **Interpretation note (2026-10-29).** Numbers and verdicts below are unchanged. "SUPPORTED" for H9a means the pre-registered point-estimate rule (Δ ≥ −0.03) is met; statistical non-inferiority within −0.03 is not established (CI lower bound ≈ −0.044) — erratum E2-2 in [`ERRATA_PHASE2.md`](ERRATA_PHASE2.md). The later shortcut controls (S1, Phase-3 H12a) do not establish an advantage over a shortcut-aware whole-signal baseline.
+
 Pre-registered in `docs/PROTOCOL_V2_LOCKED.md` "E4" + `configs/protocol_v2.json` (commit `64e0e91`, tag `e4-prereg`, pushed
 before any E4 code; the section header says 23:30 IST, the commit was made at 23:26 IST). **E4 was designed after the
 diagnostics D1–D3 were known.** Data: PhysioNet CirCor v1.0.3, frozen folds, 874 patients, all 5 repeats × 5 folds.
