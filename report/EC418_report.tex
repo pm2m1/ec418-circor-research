@@ -129,8 +129,8 @@ H11b \nm{gFourH11bAScat12AStftFull}. Second-order paths add \nm{gFourH11cAScat12
 \caption{G4: matched STFT, WPD and scattering features (RF AUROC, 95\,\% CI).}\label{fig:scat}\end{figure}
 
 \subsection{Automatic pipeline and the shortcut check}
-E4 beats plain whole-signal STFT for stft (H9c: \nm{hypH9cStftFull}) but not for the pre-registered primary wpd
-(\nm{hypH9cWpdFull}). Once W\_stft is given the span/missingness shortcut variables (S1), E4's margin is
+Against plain whole-signal STFT, the H9c rule is met for stft (\nm{hypH9cStftFull}) but not for the pre-registered
+primary wpd (\nm{hypH9cWpdFull}); this comparison does not yet account for the span shortcut. Once W\_stft is given the span/missingness shortcut variables (S1), E4's margin is
 \nm{sOneWstftRange} with CIs including zero (``possibly shortcut-driven''). E4q removes the shortcut: the shortcut variables
 alone drop to AUROC \nm{gTwoAucG2SCqOnlyFull}, the share of test recordings without aligned features falls from
 \nm{gTwoNofeatE4RAbsent}\,\% (Absent) and \nm{gTwoNofeatE4RPresent}\,\% (Present) under E4 to \nm{gTwoNofeatE4qAbsent}\,\% and
