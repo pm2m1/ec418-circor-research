@@ -16,5 +16,21 @@
     "arXiv: (all:CirCor OR all:\"PhysioNet 2022\" OR all:\"PhysioNet Challenge 2022\" OR all:\"George B. Moody PhysioNet Challenge 2022\") AND all:murmur": 13
   },
   "total": 578,
-  "google_scholar": "manual export by the team -> references/g3b/scholar_manual.csv"
+  "google_scholar": "manual export by the team -> references/g3b/scholar_manual.csv",
+  "semantic_scholar_retry": {
+    "date": "2026-10-29",
+    "rule": ">= 5 s between calls, max 3 tries per call",
+    "results": {
+      "CirCor murmur": {
+        "ok": false,
+        "hits": 0,
+        "error": "HTTP 429 after 3 tries at offset 0"
+      },
+      "PhysioNet 2022 murmur": {
+        "ok": false,
+        "hits": 0,
+        "error": "HTTP 429 after 3 tries at offset 0"
+      }
+    }
+  }
 }
