@@ -94,7 +94,7 @@ s = slide("Timing, Not Transform", "This talk asks which part of a classical hea
           "Every number on these slides is generated from saved result tables by a script, and every hypothesis was "
           "pre-registered with a fixed decision rule.")
 bullets(s, ["Shortcut-controlled and externally validated murmur detection on CirCor",
-            "EC418 team — author names to be added"], top=2.3, size=26)
+            "Parth Mishra — National Institute of Technology Warangal"], top=2.3, size=26)
 
 # 2 problem
 s = slide("Problem: what actually helps murmur detection?",
@@ -206,9 +206,9 @@ bullets(s, ["Labels are CHD diagnoses, not murmurs; age does not explain the res
 # 11 literature + case study
 s = slide("Literature audit and a 2026 comparison",
           "The literature audit codes whether published CirCor papers use expert segmentation on test data; its result will be "
-          "added after the two coders finish. The case study shows why headline numbers differ: a recent paper reports a "
+          "added once the coding of the random sample is complete. The case study shows why headline numbers differ: a recent paper reports a "
           "balanced accuracy with test segments cut at expert S1 labels, which is not on the same scale as our AUROC.")
-box(s, "G3b audit result — to be added after coding (sample of 30 records, two blind coders)", 0.6, 1.6, 12.1, 1.0, size=20)
+box(s, "G3b audit result — to be added after coding (random sample of 30 records; test–retest on 10)", 0.6, 1.6, 12.1, 1.0, size=20)
 bullets(s, [f"Nogueira et al. 2026: |(Se+Sp)/2 = {v('litNogueiraOverall')}, test segments start at expert S1 labels",
             f"Ours on the same scale (expert labels): {v('opE2E2StftTrueRFBacc')}; E4 {v('opE4E4StftRFBacc')}",
             f"Nie et al. 2024: {v('litNieAccuracy')} % on 5-s snippets from annotated periods",

@@ -10,7 +10,7 @@
 
 \begin{document}
 \title{Timing, Not Transform: Shortcut-Controlled and Externally Validated Murmur Detection on CirCor}
-\author{\IEEEauthorblockN{EC418 team \pending{author names to be added}}}
+\author{\IEEEauthorblockN{Parth Mishra}\IEEEauthorblockA{National Institute of Technology Warangal, India}}
 \maketitle
 
 \begin{abstract}
@@ -50,8 +50,8 @@ CirCor-trained murmur models on ZCHSound, an independent paediatric CHD cohort, 
 (subtype-ordering) check.
 
 \textbf{Literature audit (G3b).} \placeholder{G3b result to be inserted after coding (Part 1d): proportion of included
-papers with test-time expert segmentation, Cohen's $\kappa$ per field, and the headline values by group. Sample of 30
-records under amendment A1.}
+papers with test-time expert segmentation, test--retest Cohen's $\kappa$ per field, and the headline values by group.
+Random sample of 30 records (amendment A1), coded by the single author, 10 re-coded blind (amendment A2).}
 
 \section{Data}
 \textbf{CirCor DigiScope} v1.0.3 training set (PhysioNet): 942 patients, 3,163 recordings at 4\,kHz from up to four
@@ -191,6 +191,7 @@ ZCHSound is the only fully independent evaluation.
 \item \textbf{SMO is unstable on scattering features:} with features identical to $10^{-9}$ across platforms, SMO scores moved
 by up to \nm{smoScatMaxShiftCv} (CV) and \nm{smoScatMaxShiftZch} (ZCHSound), against \nm{rfMaxShift} for RF; no SMO
 scattering AUROC is used as evidence.
+\item \textbf{Single coder} for the literature audit: reliability is intra-rater test--retest only (amendment A2).
 \item \textbf{B0 artefact:} B0 SMO reaches \nm{zchB0SMOAllClean} on ZCHSound, but B0 RF trained on pulmonary-site
 recordings is far below chance (\nm{zchB0RFPvClean}); the B0 external signal reflects recording characteristics, not murmur.
 \end{itemize}
