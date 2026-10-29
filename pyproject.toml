@@ -8,6 +8,9 @@ dependencies = [
   "soundfile", "librosa", "seaborn", "pytest",
 ]
 
+[project.optional-dependencies]
+writeup = ["python-pptx"]  # report/EC418_slides.pptx (scripts/p4_slides.py); the PDF needs tectonic (brew install tectonic)
+
 [build-system]
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"

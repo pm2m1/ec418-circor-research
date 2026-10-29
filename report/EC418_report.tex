@@ -1,0 +1,261 @@
+% EC418 report. Build: cd report && tectonic EC418_report.tex   (all numbers via numbers.tex; check: scripts/p4_check_numbers.py)
+\documentclass[conference]{IEEEtran}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx,booktabs,amsmath,url,xcolor}
+\usepackage[hidelinks]{hyperref}
+\graphicspath{{figures/}{../results/figures_final/}}
+\input{numbers.tex}
+\newcommand{\placeholder}[1]{\fbox{\parbox{0.95\linewidth}{\centering\small\color{gray}#1}}}
+\newcommand{\pending}[1]{{\color{gray}[#1]}}
+
+\begin{document}
+\title{Timing, Not Transform: Shortcut-Controlled and Externally Validated Murmur Detection on CirCor}
+\author{\IEEEauthorblockN{EC418 team \pending{author names to be added}}}
+\maketitle
+
+\begin{abstract}
+We asked which part of a classical phonocardiogram (PCG) pipeline carries murmur information on the CirCor DigiScope data,
+using pre-registered contrasts, subject-grouped cross-validation in WEKA and a fixed decision rule per hypothesis.
+\emph{(i) Cardiac-cycle timing matters:} keeping the same band features but destroying their alignment to the expert
+S1/systole/S2/diastole labels costs \nm{hFivePermRange} patient AUROC (H5a--c; all 25 folds). \emph{(ii) The
+time--frequency transform does not:} wavelet packets (WPD db4) are never better than matched STFT bands (differences
+\nm{wvsAllRange}), and wavelet scattering does not beat them either (H11a/b not supported). \emph{(iii) External
+validation:} a whole-signal STFT model trained once on all CirCor patients reaches AUROC \nm{hTenAFull} for congenital heart
+disease (CHD) on the independent paediatric ZCHSound cohort, with the physiological subtype order PDA $>$ VSD $>$ ASD $>$
+PFO (H10a/b supported). An automatic segmentation pipeline with a learned span detector matches expert-label performance
+(H9a), but its advantage over a whole-signal STFT baseline that is given the same span information is not established
+(H12a: \nm{gTwoH12aStftFull}). A test-time oracle changes what a number measures: in our data the expert segmentation is worth
+up to \nm{gThreeAE1bStftAuto} AUROC over a naive automatic pipeline.
+\end{abstract}
+
+\section{Introduction and related work}
+Automated murmur detection from PCG has been driven by the George B.\ Moody PhysioNet Challenge 2022 and the CirCor DigiScope
+dataset \cite{oliveira2022,reyna2023}. Many pipelines segment each recording into cardiac cycles and compute time--frequency
+features per phase; the CirCor release includes expert S1/systole/S2/diastole annotations (\texttt{.tsv}) that make this easy.
+Two questions are rarely separated: is it the \emph{timing} (alignment to the cardiac cycle) or the \emph{transform}
+(e.g.\ wavelets) that helps, and how much of a reported number depends on expert information that a deployed system would
+not have? Following Cao et al.\ \cite{cao2026}, we call a test-time use of expert annotations \emph{oracle conditioning} and
+report the gap between oracle and estimated conditioning.
+
+\textbf{Related work.} Vimalajeewa et al.\ \cite{vimalajeewa2025} (B1) proposed multiscale wavelet features for murmur
+detection on CirCor; we re-implement their features under our folds. The winning Challenge entry used an RNN with parallel
+hidden semi-Markov models \cite{mcdonald2024}; HSMM segmentation follows Springer et al.\ \cite{springer2016}. Kutlu and
+\c{C}olak \cite{kutlu2026} already test CirCor-trained murmur classifiers zero-shot on PhysioNet/CinC 2016 and Yaseen 2018,
+so external validation of CirCor-trained models is not new; ZCHSound \cite{jia2024} was not among their targets. Ladislaus
+et al.\ \cite{ladislaus2026} show on CirCor that aggregation rules and metric conventions change measured noise robustness,
+a point related to ours about test-time conditioning. Nogueira et al.\ \cite{nogueira2026} and Nie et al.\ \cite{nie2024}
+segment test data from the expert annotations (Section~\ref{sec:case}). \pending{Conditional on the pending G3b full-text
+checks finding no other CirCor$\rightarrow$ZCHSound evaluation:} to our knowledge this is the first evaluation of
+CirCor-trained murmur models on ZCHSound, an independent paediatric CHD cohort, with a pre-registered physiology
+(subtype-ordering) check.
+
+\textbf{Literature audit (G3b).} \placeholder{G3b result to be inserted after coding (Part 1d): proportion of included
+papers with test-time expert segmentation, Cohen's $\kappa$ per field, and the headline values by group. Sample of 30
+records under amendment A1.}
+
+\section{Data}
+\textbf{CirCor DigiScope} v1.0.3 training set (PhysioNet): 942 patients, 3,163 recordings at 4\,kHz from up to four
+auscultation sites, with murmur labels Present/Absent/Unknown and expert segmentation. We use the binary task Present vs
+Absent (Unknown excluded): 874 patients (179 Present, 695 Absent) from 816 subjects; linked visits share a subject ID.
+The CirCor hidden test set is not public and was not used.
+\textbf{ZCHSound} \cite{jia2024} (Zhejiang University Children's Hospital; GitHub \texttt{WeiJieOvO/ZCHSound-Dataset},
+CC BY 4.0): 1,259 participants, one recording each, labelled by echocardiography-confirmed diagnosis (CHD subtypes or
+NORMAL), split by the authors into a clean set (\nm{zchNClean} children, \nm{zchNchdClean} with CHD) and a noisy neonatal
+set (\nm{zchNNoisy} children aged five days or less). Its labels are CHD diagnoses, \emph{not} murmur labels. ZCHSound was
+used for no training, tuning or threshold choice.
+
+\section{Methods}
+\textbf{Preprocessing} (fixed, training-independent): resampling to 2\,kHz (polyphase FIR), zero-phase Butterworth band-pass
+25--900\,Hz (order 4), per-recording z-score.
+\textbf{Representations.} WPD: depth 4, db4 (fixed a priori; db6, sym8 and coif3 as sensitivity only), periodisation,
+frequency-ordered nodes, giving 16 bands of 62.5\,Hz on an 8\,ms grid. STFT bands are matched to the same 16 band edges,
+time grid and dimensionality, so wavelet vs Fourier is a like-for-like contrast. \emph{wpds} is WPD with the STFT's Hann
+window applied as temporal smoothing. Wavelet scattering (G4): kymatio \cite{andreux2020} \texttt{Scattering1D(J=6,
+Q=(8,1))} at 2\,kHz, first order (scat1) and first+second order (scat12) \cite{anden2014}, aggregated into the same bands.
+\textbf{Features.} Whole-signal (W): log relative band energies, burstiness log$(q_{90}/q_{50})$ per band, two entropies.
+Cycle-aligned (A, E2, E4): per band log(systolic/S1 energy) and log(systolic/diastolic energy), two entropies; a recording
+contributes aligned features only with enough annotated systole, diastole and S1. Patient vector: median and maximum over
+the patient's recordings. Baselines: B0 (MFCC and spectral descriptors) and B1 \cite{vimalajeewa2025}.
+\textbf{Segmentation.} \emph{Expert} labels (oracle). Controls with timing destroyed: \emph{perm} (labels permuted within a
+recording) and \emph{shift} (circular shift). Automatic: E1 envelope-peak segmenter; E1b LR-HSMM \cite{springer2016} on the
+whole recording; E4 = HSMM plus a learned span detector (logistic regression on six window features) that keeps 1-s windows
+likely to be annotatable, trained on training folds only. Diagnostics D1--D3 use the expert spans at test time and are
+labelled as such. \textbf{Shortcut control.} E4's selected-span fraction and missingness predict the class on their own
+(span fraction alone: AUROC \nm{eFourShortcutPredFrac}). S1 adds these shortcut variables (SC) to whole-signal STFT. G2
+defines E4q, which keeps in every recording the same top-$q$ fraction of windows ($q$ from the training fold), removing the
+shortcut by construction, and compares it with W\_stft + SC$_q$ (H12a), with random windows of the same fraction (rand-q,
+H12b) and an SNR gate (snr-q, H12c).
+\textbf{Classifiers and evaluation.} WEKA 3.9.7 \cite{frank2016}: RandomForest \cite{breiman2001}
+(\texttt{-I 300 -K 0 -S 1 -num-slots 1}, primary) and SMO \cite{platt1998} (linear PolyKernel, logistic calibration,
+secondary), called in batch from Python; WEKA's own row-wise cross-validation is never used because it would split a
+patient's recordings across folds. Folds: 5 repeats $\times$ 5 subject-grouped outer folds, fixed before any result
+(sha256 \texttt{c4aa74c7\ldots2339}). AUROC is computed on repeat-averaged patient scores, with a subject bootstrap
+(2000 resamples) for 95\,\% CIs. Thresholds come from inner training folds only (specificity $\geq 0.80$).
+\textbf{Decision rules} (pre-registered per hypothesis): typically $\Delta \geq 0.03$, CI lower bound $>0$ and $\geq 18/25$
+folds with $\Delta>0$; non-inferiority $\Delta \geq -0.03$ for H6a/H8a/H9a. \textbf{Timeline.} Phase 1 (v1, Linux) was
+locked before any result; Phase 2 experiments E1b, D1--D3, E4 and S1 were each pre-registered after the preceding results;
+Phase 3 (G1a, G2, G3, G4) was pre-registered after all Phase 1--2 results (Appendix~\ref{app:timeline}).
+
+\section{Results}
+\subsection{Baselines and the main models}
+Table~\ref{tab:main} lists the RF AUROCs and operating points of the reference models. Cycle-aligned WPD beats whole-signal
+WPD (H3: \nm{hypH3WpdFull}) and B1 (H4b: \nm{hypH4bWpdFull}), but not B0 (H4a: \nm{hypH4aWpdFull}).
+\begin{table}[t]\centering\caption{Main models (RF, patient level; operating point: inner-fold threshold for specificity
+$\geq 0.80$; W.acc = Challenge weighted accuracy at that threshold).}\label{tab:main}
+\resizebox{\linewidth}{!}{\input{tables/tab_main.tex}}\end{table}
+
+\subsection{Finding 1: timing, not span choice}
+With expert labels, destroying timing costs \nm{hFivePermRange} AUROC (perm, H5a--c) and \nm{hFiveShiftRange} (shift,
+H5d); all are supported in 25/25 folds. The diagnostics split this exactly (Fig.~\ref{fig:dec}): within-span timing is worth
+\nm{decDiffWithinSpanTimingRange}, while span selection without timing contributes \nm{decDiffSpanSelNoTimingRange}.
+Automatic segmentation alone fails: the LR-HSMM is near expert timing inside expert spans (expert $-$ D1:
+\nm{decDiffHsmmTimingErrorRange}), but on whole recordings it loses \nm{decDiffSpanSelHsmmRange} through span selection
+(H8a: \nm{hypH8aWpdFull}). E4's learned span detector closes this gap (H9a, non-inferior to expert labels:
+\nm{hypH9aWpdFull} for wpd) and beats B1 (H9b: \nm{hNineBRange}).
+\begin{figure}[t]\centering\includegraphics[width=\linewidth]{fig_final_decomposition.png}
+\caption{Decomposition (RF AUROC, 95\,\% CI). D1--D3 use the expert annotation at test time (diagnostics).}\label{fig:dec}
+\end{figure}
+
+\subsection{Finding 2: the transform does not matter}
+Under every labelling, WPD and smoothed WPD are at most equal to matched STFT bands (Fig.~\ref{fig:wvs}; H2a:
+\nm{hypH2aWpdFull}, not supported), and equivalence within $\pm 0.03$ is not shown either (\nm{hypEquivalenceWpdsFull}).
+Wavelet scattering (G4, Fig.~\ref{fig:scat}) does not beat matched STFT bands: H11a \nm{gFourH11aAScat1AStftFull},
+H11b \nm{gFourH11bAScat12AStftFull}. Second-order paths add \nm{gFourH11cAScat12AScat1Full}, below the pre-registered
+0.03 (H11c not supported).
+\begin{figure}[t]\centering\includegraphics[width=\linewidth]{fig_final_wavelet_vs_stft.png}
+\caption{Wavelet packets minus matched STFT bands, same aligned features (RF, 95\,\% CI; shaded band $\pm 0.03$).}\label{fig:wvs}
+\end{figure}
+\begin{figure}[t]\centering\includegraphics[width=\linewidth]{fig_scattering.png}
+\caption{G4: matched STFT, WPD and scattering features (RF AUROC, 95\,\% CI).}\label{fig:scat}\end{figure}
+
+\subsection{Automatic pipeline and the shortcut check}
+E4 beats plain whole-signal STFT for stft (H9c: \nm{hypH9cStftFull}) but not for the pre-registered primary wpd
+(\nm{hypH9cWpdFull}). Once W\_stft is given the span/missingness shortcut variables (S1), E4's margin is
+\nm{sOneWstftRange} with CIs including zero (``possibly shortcut-driven''). E4q removes the shortcut: the shortcut variables
+alone drop to AUROC \nm{gTwoAucG2SCqOnlyFull}, the share of test recordings without aligned features falls from
+\nm{gTwoNofeatE4RAbsent}\,\% (Absent) and \nm{gTwoNofeatE4RPresent}\,\% (Present) under E4 to \nm{gTwoNofeatE4qAbsent}\,\% and
+\nm{gTwoNofeatE4qPresent}\,\%, and AUROC is essentially unchanged (E4q $-$ E4: \nm{gTwoDescStftE4StftFull}). Learned selection
+beats random windows (H12b: \nm{gTwoH12bStftFull}). The primary contrast H12a, E4q $-$ (W\_stft + SC$_q$), is
+\nm{gTwoH12aStftFull} with \nm{gTwoH12aStftFolds} folds positive: the CI lower bound is below zero, so H12a is \emph{not
+established} (``possibly shortcut-driven'').
+
+\subsection{Finding 3: external validation on ZCHSound}
+Models were trained once on all 874 CirCor patients (whole-signal features, since ZCHSound has one recording and no
+annotation) and applied unchanged (Fig.~\ref{fig:ext}, Table~\ref{tab:ext}). On the clean set, W\_stft reaches AUROC
+\nm{hTenAFull} (H10a supported; internal CirCor \nm{zchWStftRFAllCleanInternal}); at the CirCor threshold, sensitivity
+\nm{zchWStftRFAllCleanSens} and specificity \nm{zchWStftRFAllCleanSpec}. By subtype vs NORMAL: PDA \nm{zchSubWStftRFPDAFull},
+VSD \nm{zchSubWStftRFVSDFull}, ASD \nm{zchSubWStftRFASDFull}, PFO \nm{zchSubWStftRFPFOFull}; the pre-registered order holds
+(H10b: VSD $-$ PFO \nm{hTenBvsdPfoFull}, VSD $-$ ASD \nm{hTenBvsdAsdFull}). On the noisy neonatal set every model is at
+chance (W\_stft \nm{zchWStftRFAllNoisyFull}). A post-hoc age check (not pre-registered) shows that age alone separates CHD
+from NORMAL (AUROC \nm{ageAgeAloneDaysAuc}), but the W\_stft score is unrelated to age (Spearman \nm{ageWStftRFAllRho}) and
+its AUROC within age tertiles is \nm{ageWStftRFAllTZero}, \nm{ageWStftRFAllTOne} and \nm{ageWStftRFAllTTwo}.
+\begin{figure*}[t]\centering\includegraphics[width=0.85\textwidth]{fig_external.png}
+\caption{ZCHSound clean set, RF W\_stft trained on CirCor: any-CHD ROC and AUROC by subtype vs NORMAL (95\,\% CI).}\label{fig:ext}
+\end{figure*}
+\begin{table}[t]\centering\caption{External AUROC [95\,\% CI] for any CHD (RF). B0 enters no verdict (artefact, see text).}
+\label{tab:ext}\resizebox{\linewidth}{!}{\input{tables/tab_external.tex}}\end{table}
+
+\subsection{Conditioning gaps (G3a)}
+Table~\ref{tab:g3a} gives the oracle--estimated gaps $\Delta_{oe}$ and the oracle--random gaps $\Delta_{or}$ \cite{cao2026}.
+Replacing the expert segmentation by a naive automatic one costs \nm{gThreeAE1StftAutoFull} (E1) to
+\nm{gThreeAE1bStftAutoFull} (E1b) AUROC for stft; with E4 and E4q the gap is \nm{gThreeAE4StftFull} and
+\nm{gThreeAE4qStftFull}.
+\begin{table}[t]\centering\caption{Conditioning gaps (RF AUROC differences, 95\,\% CI).}\label{tab:g3a}
+\resizebox{\linewidth}{!}{\input{tables/tab_g3a.tex}}\end{table}
+
+\subsection{Comparison with recent work}\label{sec:case}
+\textbf{B1.} Against the closest published classical method \cite{vimalajeewa2025}, re-implemented under our folds, E4 is
+better by \nm{hypH9bStftFull} (stft, \nm{hypH9bStftFolds} folds) and cycle-aligned WPD by \nm{hypH4bWpdFull} (H4b).
+\textbf{Case study.} Nogueira et al.\ \cite{nogueira2026} report an ``overall accuracy'' of \nm{litNogueiraOverall}, defined
+as (Se+Sp)/2 (their Eq.~3, p.~9), for patients whose test segments start at expert-annotated S1 onsets (their \S3.2, p.~4),
+in a ten-fold patient-level CV of the 735 patients with all four sites (\S2, \S4). The metric is a balanced accuracy at one
+threshold, not an AUROC, and the label is described as ``normal vs abnormal''. On the same balanced-accuracy scale, our
+expert-label model reaches \nm{opE2E2StftTrueRFBacc} at the inner-fold specificity-0.80 threshold, E4 \nm{opE4E4StftRFBacc} and
+E4q \nm{opP3G2E4qStftRFBacc}. Nie et al.\ \cite{nie2024} report \nm{litNieAccuracy}\,\% snippet-level accuracy on 5-s snippets
+taken only from annotated periods (their \S2, \S4), and note themselves that this differs from recording-level Challenge
+evaluation (\S5). These numbers are not on the same scale as ours: different metric, unit and cohort, and test-time
+conditioning on the expert annotation, which in our data is worth up to \nm{gThreeAE1bStftAuto} AUROC over a naive automatic
+pipeline.
+
+\section{Discussion and limitations}
+\begin{itemize}\setlength\itemsep{1pt}
+\item \textbf{H12a is not established} (\nm{gTwoH12aStftFull}); a deployable gain of the timing pipeline over a
+shortcut-aware whole-signal STFT baseline is not shown.
+\item \textbf{Chance on noisy recordings:} all models fail on the noisy neonatal ZCHSound set.
+\item \textbf{G4 is negative:} scattering adds nothing over matched STFT bands.
+\item \textbf{ZCHSound labels are CHD diagnoses, not murmurs;} silent defects (PFO) are at chance, as expected.
+\item \textbf{No CirCor hidden test set;} all CirCor results are cross-validated on the public training set.
+\item \textbf{The Unknown class is excluded,} so the task is easier than the three-class Challenge task.
+\item \textbf{Sequential design:} E1b, D1--D3, E4, S1 and Phase 3 were designed after earlier results on the same folds;
+ZCHSound is the only fully independent evaluation.
+\item \textbf{SMO is unstable on scattering features:} with features identical to $10^{-9}$ across platforms, SMO scores moved
+by up to \nm{smoScatMaxShiftCv} (CV) and \nm{smoScatMaxShiftZch} (ZCHSound), against \nm{rfMaxShift} for RF; no SMO
+scattering AUROC is used as evidence.
+\item \textbf{B0 artefact:} B0 SMO reaches \nm{zchB0SMOAllClean} on ZCHSound, but B0 RF trained on pulmonary-site
+recordings is far below chance (\nm{zchB0RFPvClean}); the B0 external signal reflects recording characteristics, not murmur.
+\end{itemize}
+
+\section{Conclusion and future work}
+On CirCor, cardiac-cycle timing carries the murmur information and the choice of time--frequency transform does not; a
+whole-signal model transfers to an independent paediatric CHD cohort with the expected physiological ordering. Next steps:
+signal-quality gating (the noisy set), learned models evaluated under the same subject-grouped and shortcut-controlled
+protocol, and a murmur-labelled external set.
+
+\section*{Reproducibility}
+Code, protocols and saved outputs: private repository \texttt{pm2m1/ec418-circor-research}. Tags \texttt{v1.0-pilot}
+(Phase 1), \texttt{protocol-v2-lock}, \texttt{results-final} (Phase 2), \texttt{protocol-v3-prereg} and
+\texttt{phase3-results} (Phase 3); manifests \texttt{results/v1\_freeze/MANIFEST\_v1.sha256} and
+\texttt{results/final\_freeze/MANIFEST\_final.sha256}. Phase 1 ran on Linux and was reproduced on macOS
+(\texttt{docs/REPRO\_MAC.md}); every number in this report is generated from saved tables by \texttt{scripts/p4\_numbers.py}
+and checked by \texttt{scripts/p4\_check\_numbers.py}.
+
+\begin{thebibliography}{99}\footnotesize
+\bibitem{oliveira2022} J.~Oliveira et al., ``The CirCor DigiScope dataset: From murmur detection to murmur classification,''
+\emph{IEEE J. Biomed. Health Inform.}, vol.~26, no.~6, pp.~2524--2535, 2022.
+\bibitem{reyna2023} M.~A. Reyna et al., ``Heart murmur detection from phonocardiogram recordings: The George B. Moody PhysioNet
+Challenge 2022,'' \emph{PLOS Digit. Health}, vol.~2, no.~9, e0000324, 2023.
+\bibitem{cao2026} D.~P.~M. Cao, H.~D. Pham, H.~Pham, ``When oracle conditioning misleads deployment: Conditioning-availability
+bias in echocardiographic segmentation,'' arXiv:2608.03342, 2026.
+\bibitem{vimalajeewa2025} D.~Vimalajeewa, C.~Lee, B.~Vidakovi\'c, ``Multiscale analysis of heart sound signals in the wavelet
+domain for heart murmur detection,'' \emph{Sci. Rep.}, 2025, doi:10.1038/s41598-025-93989-0.
+\bibitem{mcdonald2024} A.~McDonald, M.~Gales, A.~Agarwal, ``A recurrent neural network and parallel hidden Markov model
+algorithm to segment and detect heart murmurs in phonocardiograms,'' \emph{PLOS Digit. Health}, e0000436, 2024.
+\bibitem{springer2016} D.~B. Springer, L.~Tarassenko, G.~D. Clifford, ``Logistic regression-HSMM-based heart sound
+segmentation,'' \emph{IEEE Trans. Biomed. Eng.}, vol.~63, no.~4, pp.~822--832, 2016.
+\bibitem{kutlu2026} H.~Kutlu, C.~\c{C}olak, ``Cross-dataset generalization in phonocardiogram murmur classification: A benchmark
+study of domain-conditional performance and the role of multi-representation fusion,'' \emph{J. Clin. Med.}, vol.~15, no.~20,
+2026, doi:10.3390/jcm15208058.
+\bibitem{ladislaus2026} N.~D. Ladislaus, D.~E. Olatunji, S.~C. Buol, ``The vote hides the failure: Aggregation choice and noise
+robustness in heart murmur detection,'' arXiv:2609.37161, 2026.
+\bibitem{nogueira2026} M.~Nogueira, J.~H. Oliveira, C.~G. Ferreira, M.~T. Coimbra, A.~M. Jorge, ``Selection of heart sound
+segments for synchronous classification of multi-channel heart sounds,'' arXiv:2608.21499, 2026.
+\bibitem{nie2024} J.~Nie, R.~Liu, B.~Mahasseni, E.~Azemi, V.~Mitra, ``Model-driven heart rate estimation and heart murmur
+detection based on phonocardiogram,'' in \emph{Proc. IEEE MLSP}, 2024 (arXiv:2407.18424).
+\bibitem{jia2024} Jia et al., ``ZCHSound: Open-source ZJU paediatric heart sound database with congenital heart disease,''
+\emph{IEEE Trans. Biomed. Eng.}, vol.~71, no.~8, pp.~2278--2286, 2024.
+\bibitem{anden2014} J.~And\'en, S.~Mallat, ``Deep scattering spectrum,'' \emph{IEEE Trans. Signal Process.}, vol.~62, no.~16,
+pp.~4114--4128, 2014.
+\bibitem{andreux2020} M.~Andreux et al., ``Kymatio: Scattering transforms in Python,'' \emph{J. Mach. Learn. Res.}, vol.~21,
+no.~60, pp.~1--6, 2020.
+\bibitem{frank2016} E.~Frank, M.~A. Hall, I.~H. Witten, ``The WEKA Workbench,'' online appendix to \emph{Data Mining: Practical
+Machine Learning Tools and Techniques}, 4th ed., Morgan Kaufmann, 2016.
+\bibitem{breiman2001} L.~Breiman, ``Random forests,'' \emph{Mach. Learn.}, vol.~45, no.~1, pp.~5--32, 2001.
+\bibitem{platt1998} J.~Platt, ``Fast training of support vector machines using sequential minimal optimization,'' in
+\emph{Advances in Kernel Methods}, MIT Press, 1998.
+\end{thebibliography}
+
+\appendices
+\section{Every pre-registered hypothesis}\label{app:hyp}
+Table~\ref{tab:hyp} lists every pre-registered hypothesis with its result (RF), including those not supported.
+\begin{table*}[t]\centering\caption{All pre-registered hypotheses (RF, repeat-averaged patient AUROC, subject-bootstrap 95\,\% CI).}
+\label{tab:hyp}\resizebox{\textwidth}{!}{\input{tables/tab_hypotheses.tex}}\end{table*}
+
+\section{Pre-registration timeline}\label{app:timeline}
+v1 protocol and folds locked before any result (tag \texttt{v1.0-pilot} after the pilot); Phase 2 locked after v1 (tag
+\texttt{protocol-v2-lock}); E1b, D1--D3, E4 and S1 each pre-registered (tags \texttt{e1b-prereg}, \texttt{diag-prereg},
+\texttt{e4-prereg}, \texttt{s1-prereg}) after the preceding results; Phase 3 pre-registered after all Phase 1--2 results
+(tag \texttt{protocol-v3-prereg}, amendments A1--A3). Full commit-level timeline: \texttt{docs/RESULTS\_SUMMARY.md}.
+
+\section{Pipeline}\label{app:pipe}
+\begin{figure}[h]\centering\includegraphics[width=\linewidth]{fig_pipeline.png}\caption{Pipeline and controls.}\end{figure}
+\end{document}
