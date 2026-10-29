@@ -88,3 +88,6 @@ authors report them, and the reasons why they are not comparable with ours are g
   (`scripts/p4_g3b_summary.py`): κ per field 1–3 between pass 1 and pass 2 (`sklearn.metrics.cohen_kappa_score`),
   percentile bootstrap over the 10 records (2000 resamples, seed 0); proportions and group medians from pass 1 with Wilson
   95 % CIs. This replaces §4 (two coders, resolver, `disagreements.csv`, `coding_final.csv`, optional AI coder).
+* **A3 (2026-10-29): coding not completed.** Single author, time constraint before the EC418 deadline. Search and
+  screening records are kept as documentation only; no prevalence estimate is reported. (No record of the A1 sample was
+  coded; `coding_pass1.csv` and `coding_pass2.csv` stay blank and untouched. The systematic audit is listed as future work.)
