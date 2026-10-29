@@ -204,8 +204,9 @@ protocol, and a murmur-labelled external set.
 
 \section*{Reproducibility}
 Code, protocols and saved outputs: private repository \texttt{pm2m1/ec418-circor-research}. Tags \texttt{v1.0-pilot}
-(Phase 1), \texttt{protocol-v2-lock}, \texttt{results-final} (Phase 2), \texttt{protocol-v3-prereg} and
-\texttt{phase3-results} (Phase 3); manifests \texttt{results/v1\_freeze/MANIFEST\_v1.sha256} and
+(Phase 1), \texttt{protocol-v2-lock}, \texttt{results-final} (Phase 2) and \texttt{phase3-results} (Phase 3); the
+Phase 3 pre-registration tag \texttt{protocol-v3-prereg} lives in the separate cloud-sandbox history, verified in
+\texttt{results/logs/p3\_mac\_provenance.txt}; manifests \texttt{results/v1\_freeze/MANIFEST\_v1.sha256} and
 \texttt{results/final\_freeze/MANIFEST\_final.sha256}. Phase 1 ran on Linux and was reproduced on macOS
 (\texttt{docs/REPRO\_MAC.md}); every number in this report is generated from saved tables by \texttt{scripts/p4\_numbers.py}
 and checked by \texttt{scripts/p4\_check\_numbers.py}.
@@ -255,7 +256,7 @@ Table~\ref{tab:hyp} lists every pre-registered hypothesis with its result (RF), 
 v1 protocol and folds locked before any result (tag \texttt{v1.0-pilot} after the pilot); Phase 2 locked after v1 (tag
 \texttt{protocol-v2-lock}); E1b, D1--D3, E4 and S1 each pre-registered (tags \texttt{e1b-prereg}, \texttt{diag-prereg},
 \texttt{e4-prereg}, \texttt{s1-prereg}) after the preceding results; Phase 3 pre-registered after all Phase 1--2 results
-(tag \texttt{protocol-v3-prereg}, amendments A1--A3). Full commit-level timeline: \texttt{docs/RESULTS\_SUMMARY.md}.
+(tag \texttt{protocol-v3-prereg} in the cloud-sandbox history, amendments A1--A3). Full commit-level timeline: \texttt{docs/RESULTS\_SUMMARY.md}.
 
 \section{Pipeline}\label{app:pipe}
 \begin{figure}[h]\centering\includegraphics[width=\linewidth]{fig_pipeline.png}\caption{Pipeline and controls.}\end{figure}

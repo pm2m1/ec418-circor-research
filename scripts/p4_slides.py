@@ -242,7 +242,7 @@ s = slide("Reproducibility",
           "Everything is versioned: protocols were tagged before the runs, results are frozen with hash manifests, and Phase 1 "
           "was reproduced on a second platform. The numbers on these slides and in the report are generated from the saved "
           "tables and checked automatically.")
-bullets(s, ["Pre-registration tags: v1.0-pilot, protocol-v2-lock, e1b/diag/e4/s1-prereg, protocol-v3-prereg",
+bullets(s, ["Pre-registration tags: v1.0-pilot, protocol-v2-lock, e1b/diag/e4/s1-prereg; protocol-v3-prereg in the cloud-sandbox history",
             "Frozen results: results-final and phase3-results, with SHA-256 manifests",
             "Linux (Phase 1) reproduced on macOS; WEKA CLI = pipeline exactly",
             "Numbers registry: scripts/p4_numbers.py; check: scripts/p4_check_numbers.py"], size=21)
