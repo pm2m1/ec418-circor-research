@@ -77,3 +77,14 @@ authors report them, and the reasons why they are not comparable with ours are g
   records are listed but not coded. The AI coder may code the 30 as a separate labelled comparison only.
   *Reason:* 98–137 eligible records is more than two coders can code in the time available. Written and committed before any
   paper was coded and before the sample was drawn.
+* **A2 (2026-10-29): single coder.** The study has one author, so the two-coder design is replaced by intra-rater
+  test–retest reliability: the author codes all 30 sampled records; after ≥ 24 h, a random 10 of the 30
+  (`numpy.random.default_rng(20261030)`, drawn now and sealed in `references/g3b/recode_sample.csv`) are re-coded blind to
+  the first codes, on a fresh sheet. Cohen's κ (fields 1–3) between pass 1 and pass 2 with bootstrap CI; primary results use
+  pass-1 codes. Reported as a limitation (single coder). No resolver; no AI coder.
+  *Implementation (fixed with A2):* the 10 are drawn as the first 10 of `default_rng(20261030).permutation(30)` over the 30
+  sample slots in `sample30.csv` order (slot = position 1–30); if an A1 replacement fills a slot, the replacement inherits
+  it. Sheets: `coding_pass1.csv` (30 rows) and `coding_pass2.csv` (the 10, in the drawn order), both blank. Part 1d
+  (`scripts/p4_g3b_summary.py`): κ per field 1–3 between pass 1 and pass 2 (`sklearn.metrics.cohen_kappa_score`),
+  percentile bootstrap over the 10 records (2000 resamples, seed 0); proportions and group medians from pass 1 with Wilson
+  95 % CIs. This replaces §4 (two coders, resolver, `disagreements.csv`, `coding_final.csv`, optional AI coder).
