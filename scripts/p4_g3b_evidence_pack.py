@@ -20,7 +20,8 @@ import pandas as pd
 
 OUT, CACHE = "references/g3b", "data/interim/g3b_fulltext"
 os.makedirs(CACHE, exist_ok=True)
-UA = {"User-Agent": "Mozilla/5.0 (EC418-G3b-audit/1.0; mailto:mishraparth787@gmail.com)"}
+CONTACT = os.environ.get("EC418_CONTACT_EMAIL", "")  # optional polite-pool contact for the APIs; never hard-coded
+UA = {"User-Agent": "Mozilla/5.0 (EC418-G3b-audit/1.0" + (f"; mailto:{CONTACT}" if CONTACT else "") + ")"}
 KEYS = {
     "Field 1 (segmentation source)": r"annotat|\.tsv|segmentation|segmented|S1 and S2|S1/S2|HSMM|Springer|boundar|expert",
     "Field 2 (evaluation unit)": r"patient[- ]level|per patient|each patient|recording[- ]level|per recording|segment[- ]level|"
@@ -37,7 +38,7 @@ def get(url):
 
 def unpaywall(doi):
     try:
-        d = json.loads(get("https://api.unpaywall.org/v2/" + urllib.parse.quote(doi) + "?email=mishraparth787@gmail.com"))
+        d = json.loads(get("https://api.unpaywall.org/v2/" + urllib.parse.quote(doi) + f"?email={CONTACT or 'anonymous@example.org'}"))
         locs = [l.get("url_for_pdf") for l in d.get("oa_locations") or [] if l.get("url_for_pdf")]
         return d.get("oa_status") or "closed", locs
     except Exception:

@@ -28,7 +28,8 @@ import urllib.request
 import pandas as pd
 
 OUT = "references/g3b"
-UA = {"User-Agent": "EC418-G3b-audit/1.0 (mailto:mishraparth787@gmail.com)"}
+CONTACT = os.environ.get("EC418_CONTACT_EMAIL", "")  # optional polite-pool contact for the APIs; never hard-coded
+UA = {"User-Agent": "EC418-G3b-audit/1.0" + (f" (mailto:{CONTACT})" if CONTACT else "")}
 PREPRINT_DOI = ("10.48550/", "10.1101/", "10.2139/", "10.21203/", "10.36227/", "10.5281/", "10.20944/")
 SCHOLAR_METHOD = dict(
     method="manual Google Scholar export as 14 screenshots (no HTML, no Publish or Perish)",
@@ -89,7 +90,7 @@ def resolve(row):
     q = str(row.title).rstrip("…")
     try:
         d = get("https://api.openalex.org/works?per-page=10&filter=title.search:" + urllib.parse.quote(re.sub(r"[,:|]", " ", q)) +
-                "&mailto=mishraparth787@gmail.com")
+                (f"&mailto={CONTACT}" if CONTACT else ""))
     except urllib.error.HTTPError as e:
         if e.code != 429:
             raise
@@ -107,7 +108,7 @@ def resolve(row):
                                           abstract=inv(w.get("abstract_inverted_index"))), tb)
     if best is None:
         d = get("https://api.crossref.org/works?rows=10&query.bibliographic=" + urllib.parse.quote(q) +
-                "&mailto=mishraparth787@gmail.com")
+                (f"&mailto={CONTACT}" if CONTACT else ""))
         for w in d.get("message", {}).get("items", []):
             t = (w.get("title") or [""])[0]
             y = ((w.get("issued") or {}).get("date-parts") or [[None]])[0][0]

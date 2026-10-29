@@ -7,6 +7,7 @@ usage: .venv/bin/python scripts/p4_g3b_s2_retry.py
 """
 import datetime as dt
 import json
+import os
 import time
 import urllib.error
 import urllib.parse
@@ -15,7 +16,8 @@ import urllib.request
 import pandas as pd
 
 OUT = "references/g3b"
-UA = {"User-Agent": "EC418-G3b-audit/1.0 (mailto:mishraparth787@gmail.com)"}
+CONTACT = os.environ.get("EC418_CONTACT_EMAIL", "")  # optional polite-pool contact for the APIs; never hard-coded
+UA = {"User-Agent": "EC418-G3b-audit/1.0" + (f" (mailto:{CONTACT})" if CONTACT else "")}
 QUERIES = ["CirCor murmur", "PhysioNet 2022 murmur"]
 today = dt.date.today().isoformat()
 rows, status = [], {}

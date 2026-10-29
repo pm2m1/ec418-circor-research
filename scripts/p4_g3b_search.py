@@ -21,7 +21,8 @@ OUT = "references/g3b"
 TODAY = dt.date.today().isoformat()
 TERMS = ['"CirCor"', '"PhysioNet 2022"', '"PhysioNet Challenge 2022"', '"George B. Moody PhysioNet Challenge 2022"']
 BOOL = "(" + " OR ".join(TERMS) + ") AND murmur"
-UA = {"User-Agent": "EC418-G3b-audit/1.0 (mailto:mishraparth787@gmail.com)"}
+CONTACT = os.environ.get("EC418_CONTACT_EMAIL", "")  # optional polite-pool contact for the APIs; never hard-coded
+UA = {"User-Agent": "EC418-G3b-audit/1.0" + (f" (mailto:{CONTACT})" if CONTACT else "")}
 CITED = {"Oliveira2022_JBHI": "W3191193899", "Reyna2023_PLOSDH": "W4386615065", "Reyna2022_medRxiv": "W4292183371",
          "Reyna2022_CinC": "W4323027640"}
 rows, log = [], {}
@@ -49,7 +50,7 @@ def openalex(filter_str, label):
     n, cursor = 0, "*"
     while cursor:
         url = ("https://api.openalex.org/works?per-page=200&cursor=" + urllib.parse.quote(cursor) + "&filter=" +
-               urllib.parse.quote(filter_str, safe=":,|") + "&mailto=mishraparth787@gmail.com")
+               urllib.parse.quote(filter_str, safe=":,|") + (f"&mailto={CONTACT}" if CONTACT else ""))
         d = json.loads(get(url))
         for w in d["results"]:
             loc = (w.get("primary_location") or {}).get("source") or {}
