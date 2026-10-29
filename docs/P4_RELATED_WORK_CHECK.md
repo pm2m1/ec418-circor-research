@@ -82,7 +82,8 @@ text (8 pages).
 ## Consequences for the wording (to be applied in Parts 3 and 5)
 1. Do **not** write that external validation of CirCor-trained murmur models is new. Kutlu & Çolak 2026 already do it, on
    CinC 2016 and Yaseen 2018. The report cites them.
-2. A narrower statement, "CirCor-trained, evaluated on the pediatric ZCHSound CHD set", may only be called new if the G3b
-   screening (all included papers) also finds no CirCor → ZCHSound evaluation. The final wording waits for the screening.
+2. Author decision (2026-10-29): the allowed claim is "to our knowledge the first evaluation of CirCor-trained murmur models on
+   ZCHSound, an independent paediatric CHD cohort, with a pre-registered physiology (subtype-ordering) check", and only if
+   the pending G3b full-text checks find no other CirCor → ZCHSound evaluation (see `docs/P4_FRAMING.md`).
 3. Ladislaus et al. 2026 are cited next to the oracle-conditioning message as related work on evaluation choices. No claim of
    novelty is made for patient-level folds or leakage checks.
